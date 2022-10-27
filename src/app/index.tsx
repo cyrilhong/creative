@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter,HashRouter, Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
@@ -27,8 +27,8 @@ import Footer from './components/Footer'
 export function App() {
   const { i18n } = useTranslation();
   return (
-    // <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <HashRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {/* <HashRouter> */}
       <Helmet
         titleTemplate="%s - React Boilerplate"
         defaultTitle="React Boilerplate"
@@ -50,6 +50,6 @@ export function App() {
       </Routes>
       <Footer />
       <GlobalStyle />
-    </HashRouter>
+    </BrowserRouter>
   );
 }

@@ -136,27 +136,27 @@ export function Nav({ isBlack }) {
 
   return (
     <Wrapper>
-      <Item className="hover" href="/creative/case" title="專案實例" rel="專案實例">
+      <Item className="hover" href="/case" title="專案實例" rel="專案實例">
         專案實例
       </Item>
       <Item
         className="hover"
-        href="/creative/service"
+        href="/service"
         title="設計服務與流程"
         rel="設計服務與流程"
       >
         設計服務與流程
       </Item>
-      <Item className="hover" href="/creative/about-us" title="關於我們" rel="關於我們">
+      <Item className="hover" href="/about-us" title="關於我們" rel="關於我們">
         關於我們
       </Item>
-      <Item className="hover" href="/creative/customer" title="客戶群" rel="客戶群">
+      <Item className="hover" href="/customer" title="客戶群" rel="客戶群">
         客戶群
       </Item>
-      <Item className="hover" href="/creative/join-us" title="加入我們" rel="加入我們">
+      <Item className="hover" href="/join-us" title="加入我們" rel="加入我們">
         加入我們
       </Item>
-      <Item className="hover" href="/creative/contact" title="聯絡我們" rel="聯絡我們">
+      <Item className="hover" href="/contact" title="聯絡我們" rel="聯絡我們">
         聯絡我們
       </Item>
     </Wrapper>
