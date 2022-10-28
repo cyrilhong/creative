@@ -19,25 +19,7 @@ import arrowWhite from './assets/arrow.svg';
 import roundArrowBtn from './assets/round-arrow-btn.svg';
 import location from './assets/location.jpg';
 import pin from './assets/pin.jpg';
-import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => (
-  <div
-    style={{
-      color: 'white',
-      background: 'grey',
-      padding: '15px 10px',
-      display: 'inline-flex',
-      textAlign: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '100%',
-      transform: 'translate(-50%, -50%)',
-    }}
-  >
-    {text}
-  </div>
-);
+import Map from './map'
 
 export function ContactPage() {
   const [state, handleSubmit] = useForm('mdojganb');
@@ -49,7 +31,7 @@ export function ContactPage() {
     // setSubmitted(true);
     return <p>Thanks for joining!</p>;
   } else {
-    console.log('error');
+    // console.log('error');
   }
   function Mark() {
     const { ref } = useParallax<HTMLDivElement>({});
@@ -75,13 +57,6 @@ export function ContactPage() {
       setBottomSticky(false);
     }
   });
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
   return (
     <ParallaxProvider>
       <Controller>
@@ -203,9 +178,8 @@ export function ContactPage() {
             <Grid container spacing={8}>
               <Grid item xs={5} ref={positionRef} position="relative">
                 <div
-                  className={`left ${sticky ? 'sticky-top' : ''} ${
-                    bottomSticky ? 'sticky-bottom' : ''
-                  }`}
+                  className={`left ${sticky ? 'sticky-top' : ''} ${bottomSticky ? 'sticky-bottom' : ''
+                    }`}
                 >
                   <div className="huge eng">
                     Let's Do <br /> This.
@@ -662,19 +636,9 @@ export function ContactPage() {
                   </Grid>
                   <Grid item xs={7}>
                     {/* <img src={pin} alt="" /> */}
-                    <div style={{ height: '100%', width: '100%' }}>
-                      {/* <GoogleMapReact
-                        bootstrapURLKeys={{
-                          key: 'AIzaSyDwTmCz16W_NBRQmW-gEMi9v4mom_22waE',
-                        }}
-                        defaultCenter={{ lat: 22.3700556, lng: 114.1535941 }}
-                        defaultZoom={10}
-                        yesIWantToUseGoogleMapApiInternals
-                        onGoogleApiLoaded={({ map, maps }) =>
-                          handleApiLoaded(map, maps)
-                        }
-                      ></GoogleMapReact> */}
-                      <iframe style={{width: '100%', height: '100%'}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.630963869905!2d121.55583181577032!3d25.080494183950655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa33e89a7453%3A0x49bc12e190a1a6fd!2z5aSn5LqI5Ym15oSP6Kit6KiI6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1666725553062!5m2!1szh-TW!2stw" />
+                    <div style={{ height: '400px', width: '100%' }}>
+                      {/* <iframe style={{width: '100%', height: '100%'}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.630963869905!2d121.55583181577032!3d25.080494183950655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa33e89a7453%3A0x49bc12e190a1a6fd!2z5aSn5LqI5Ym15oSP6Kit6KiI6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1666725553062!5m2!1szh-TW!2stw" /> */}
+                      <Map />
                     </div>
                   </Grid>
                 </Grid>
@@ -1082,7 +1046,7 @@ const Horizon = styled.div<{
       margin-bottom: 2px;
       border-radius: 100%;
       background-color: ${prop =>
-        prop.blackBg ? colors.BGGrey : colors.DarkBlue};
+    prop.blackBg ? colors.BGGrey : colors.DarkBlue};
       margin-right: 8px;
     }
     h4 {

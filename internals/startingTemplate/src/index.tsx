@@ -33,9 +33,9 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 ReactDOMClient.createRoot(MOUNT_NODE!).render(
   <Provider store={store}>
     <HelmetProvider>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </HelmetProvider>
   </Provider>,
 );
