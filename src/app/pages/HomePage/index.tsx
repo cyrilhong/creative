@@ -16,6 +16,8 @@ import Yoxi from './assets/yoxi.jpg';
 import arrow from './assets/button.svg';
 import arrowBlack from './assets/arrow-black.svg';
 import arrowWhite from './assets/arrow.svg';
+import arrowHollow from './assets/arrow-hollow-left.svg';
+import arrowHollowRight from './assets/arrow-hollow-right.svg';
 import Fade from 'react-reveal/Fade';
 import CaseStudy from './CaseStudy';
 import Idea from './assets/idea.svg';
@@ -116,19 +118,23 @@ export function HomePage() {
   const [blackBg, setBlackBg] = useState(true);
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
     // centerMode: true,
-    centerPadding: '40px',
-    initialSlide: activeSlide,
-    afterChange: e => {
-      // if (!sliderRef.current) return;
-      Slider.current?.slickGoTo(e);
-      setActiveSlide(e);
+    centerPadding: '80px',
+    initialSlide: 0,
+    customPaging: function (i) {
+      return <div className="dot"></div>;
     },
+    dotsClass: "slick-dots slick-thumb"
+    // afterChange: e => {
+    //   // if (!sliderRef.current) return;
+    //   Slider.current?.slickGoTo(e);
+    //   setActiveSlide(e);
+    // },
   };
   const gotoSlick = index => {
     // console.log(carouselRef.current);
@@ -146,14 +152,14 @@ export function HomePage() {
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
 
-    if (themeColorRef.current!.getBoundingClientRect().top < 550) {
+    if (themeColorRef.current!.getBoundingClientRect().top < 100) {
       // debugger
       setBlackBg(false);
     } else {
       setBlackBg(true);
     }
     if (
-      helpColorRef.current!.getBoundingClientRect().top < 550 &&
+      helpColorRef.current!.getBoundingClientRect().top < 100 &&
       Math.abs(currPos.y) > 7000
     ) {
       // debugger
@@ -175,6 +181,7 @@ export function HomePage() {
     responsive: true,
     fluid: true,
     muted: true,
+    loop: true,
     sources: [
       {
         src: showreel,
@@ -196,9 +203,15 @@ export function HomePage() {
     });
 
     player.on('click', () => {
-      console.log('click');
+      // console.log('click');
       player.requestFullscreen();
       player.muted(false);
+    });
+    player.on('fullscreenchange', function () {
+      if (player.isFullscreen()) {
+      } else {
+        player.muted(true);
+      }
     });
   };
 
@@ -267,8 +280,13 @@ export function HomePage() {
             <h4 className="eng">01</h4>
           </Horizon>
           <div className="huge eng">
-            We meet each business critical situation with a tailored
-            <br /> solution.
+            <Fade bottom cascade duration={1000} delay={100}>
+              We meet each business critical situation with a tailored
+            </Fade>
+            {/* <br /> */}
+            <Fade bottom cascade duration={1000} delay={100}>
+              solution.
+            </Fade>
           </div>
           <h1 style={{ display: 'flex' }}>
             我們透過
@@ -308,9 +326,7 @@ export function HomePage() {
             <Grid container>
               <Grid xs={7} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <Parallax scale={[1, 1.2]}>
-                    <img src={Yoxi} alt="Yoxi" />
-                  </Parallax>
+                  <img src={Yoxi} alt="Yoxi" />
                 </div>
                 <Fade bottom>
                   <h4>交通與運輸</h4>
@@ -354,9 +370,7 @@ export function HomePage() {
               </Grid>
               <Grid xs={4} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <Parallax scale={[1, 1.5]}>
-                    <img src={CTBC} alt="ctbc" />
-                  </Parallax>
+                  <img src={CTBC} alt="ctbc" />
                 </div>
                 <Fade bottom>
                   <h4>金融與保險</h4>
@@ -398,11 +412,9 @@ export function HomePage() {
                   </Button>
                 </Fade>
               </Grid>
-              <Grid xs={4} xsOffset={3} className="case">
+              <Grid xs={5} xsOffset={2} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <Parallax scale={[1, 1.2]}>
-                    <img src={Fetnet} alt="Fetnet" />
-                  </Parallax>
+                  <img src={Fetnet} alt="Fetnet" />
                 </div>
                 <Fade bottom>
                   <h4>電信媒體與科技</h4>
@@ -446,9 +458,7 @@ export function HomePage() {
               </Grid>
               <Grid xs={5} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <Parallax scale={[1, 1.2]}>
-                    <img src={Starlux} alt="Starlux" />
-                  </Parallax>
+                  <img src={Starlux} alt="Starlux" />
                 </div>
                 <Fade bottom>
                   <h4>交通與運輸</h4>
@@ -509,93 +519,130 @@ export function HomePage() {
               <h4 className="eng">02</h4>
             </Horizon>
             <div className="content">
-              <div className="super eng">Problems</div>
-              <div className="super eng">Solved.</div>
-              <h2>我們不斷累積跨領域經驗，將創新能量轉化為客戶價值</h2>
-              <div style={{ display: 'inline-flex' }}>
-                <CTA href={'#'}>
-                  <h4 className="eng">OUR CLIENTS</h4>
-                  {/* <img src={arrowBlack} alt="arrow" /> */}
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M9.30701 20.0303H30.6952"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </CTA>
-              </div>
-              <div className="super eng">Experience</div>
-              <div className="super eng">Transformed. </div>
+              {!blackBg &&
+                <Grid container spacing={0} rowSpacing={0}>
+                  <Grid xs={9} xsOffset={3}>
+                    <Fade bottom duration={1000} delay={100}>
+                      <div className="super eng head-1">Problems</div>
+                    </Fade>
+                  </Grid>
+                  <Grid xs={6} xsOffset={6}>
+                    <Fade bottom duration={1000} delay={100}>
+                      <div className="super eng head-2">Solved.</div>
+                    </Fade>
+                  </Grid>
+                  <Grid className="sub-head" xs={9} xsOffset={2}>
+                    <h2>我們不斷累積跨領域經驗，將創新能量轉化為客戶價值</h2>
+                    <div style={{ display: 'inline-flex' }}>
+                      <CTA href={'#'}>
+                        <h4 className="eng">OUR CLIENTS</h4>
+                        {/* <img src={arrowBlack} alt="arrow" /> */}
+                        <svg
+                          width="40"
+                          height="40"
+                          viewBox="0 0 40 40"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
+                            stroke="#0C1C24"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
+                            stroke="#0C1C24"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M9.30701 20.0303H30.6952"
+                            stroke="#0C1C24"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </CTA>
+                    </div>
+                  </Grid>
+                  {!blackBg &&
+                    <>
+                      <Grid xs={8} xsOffset={1}>
+                        <div className="super eng head-3">Experience</div>
+                      </Grid>
+                      <Grid xs={10} xsOffset={1}>
+                        <div className="super eng head-4">Transformed. </div>
+                      </Grid>
+                    </>
+                  }
+                </Grid>
+              }
+
             </div>
             <div className="img-wall">
-              <Parallax
-                className="wall1"
-                speed={20}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall1} alt="wall1" />
-              </Parallax>
-              <Parallax
-                className="wall2"
-                speed={30}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall2} alt="wall2" />
-              </Parallax>
-              <Parallax
-                className="wall3"
-                speed={18}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall3} alt="wall3" />
-              </Parallax>
-              <Parallax
-                className="wall4"
-                speed={16}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall4} alt="wall4" />
-              </Parallax>
-              <Parallax
-                className="wall5"
-                speed={23}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall5} alt="wall5" />
-              </Parallax>
-              <Parallax
-                className="wall6"
-                speed={20}
-                scale={[1.5, 0]}
-                rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-              >
-                <img src={wall6} alt="wall6" />
-              </Parallax>
+              <Grid container spacing={0} rowSpacing={0}>
+                <Grid xs={3}>
+                  <Parallax
+                    className="wall1"
+                    speed={20}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall1} alt="wall1" />
+                  </Parallax>
+                </Grid>
+                <Grid xs={3}>
+                  <Parallax
+                    className="wall2"
+                    speed={30}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall2} alt="wall2" />
+                  </Parallax>
+                </Grid>
+                <Grid xs={4} xsOffset={2}>
+                  <Parallax
+                    className="wall3"
+                    speed={18}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall3} alt="wall3" />
+                  </Parallax>
+                </Grid>
+                <Grid xs={4}>
+                  <Parallax
+                    className="wall4"
+                    speed={16}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall4} alt="wall4" />
+                  </Parallax>
+                </Grid>
+                <Grid xs={3} xsOffset={3}>
+                  <Parallax
+                    className="wall5"
+                    speed={23}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall5} alt="wall5" />
+                  </Parallax>
+                </Grid>
+                <Grid xs={3} xsOffset={2}>
+                  <Parallax
+                    className="wall6"
+                    speed={20}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall6} alt="wall6" />
+                  </Parallax>
+                </Grid>
+              </Grid>
             </div>
             <Horizon blackBg={blackBg}>
               <div className="title">
@@ -613,24 +660,24 @@ export function HomePage() {
               <Mark color={colors.Yellow}>客戶創造價值</Mark>
               ，進而形塑共好的長期夥伴關係
             </h1>
-            {/* <Slider {...settings} ref={carouselRef}>
+            <Slider {...settings} ref={carouselRef}>
               {CaseSlider.map(item => {
                 return (
                   <SlideItem>
-                    <Fade bottom cascade>
-                      <img src={item.img.src} alt={item.img.alt} />
-                      <p>{item.content}</p>
-                      <span>{item.name}</span>
-                    </Fade>
+                    <img src={item.img.src} alt={item.img.alt} />
+                    <p>{item.content}</p>
+                    <span>{item.name}</span>
+                    {/* <Fade bottom>
+                    </Fade> */}
                   </SlideItem>
                 );
               })}
-            </Slider> */}
-            <SliderWrapper>
+            </Slider>
+            {/* <SliderWrapper>
               {CaseSlider.map((item, index) => {
                 return (
                   <SlideItem key={index}>
-                    <Fade bottom cascade>
+                    <Fade bottom>
                       <img src={item.img.src} alt={item.img.alt} />
                       <p>{item.content}</p>
                       <span>{item.name}</span>
@@ -638,11 +685,18 @@ export function HomePage() {
                   </SlideItem>
                 );
               })}
-            </SliderWrapper>
+            </SliderWrapper> */}
           </OurServices>
         </PageWrapper>
       </div>
       <Dedication>
+        <div className="bg">
+          <Parallax
+            speed={8}
+          >
+            <img src={dedicationBg} alt="dedicationBg" />
+          </Parallax>
+        </div>
         <Parallax translateX={[30, -55]}>
           <img src={dedicationWording} alt="Dedication beyond the expected" />
         </Parallax>
@@ -653,7 +707,7 @@ export function HomePage() {
       <div
         className="help-section"
         ref={helpColorRef}
-        // style={{ paddingBottom: '120px' }}
+      // style={{ paddingBottom: '120px' }}
       >
         <div className={blackBg ? 'black' : 'white'}>
           <PageWrapper
@@ -898,13 +952,15 @@ export function HomePage() {
 const SliderWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 80px;
   white-space: nowrap;
   overflow: auto;
   margin: 0 -60px;
   padding: 0 60px 120px;
   border-bottom: 1px solid ${colors.DarkBlue};
-
+  &:hover{
+    cursor: pointer;
+  }
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
@@ -971,12 +1027,28 @@ const CaseList = styled.div`
     }
     img {
       width: 100%;
+      transition: all .5s ease-in-out;
     }
     a {
       text-decoration: none;
+      h4{
+        margin: 0;
+      }
       img {
         width: 60px;
       }
+    }
+    &:hover{
+      img{
+        transform: scale(1.2);
+      }
+    }
+    h4{
+      letter-spacing: 2px;
+      margin: 32px 0 8px;
+    }
+    h2{
+      margin: 0 0 24px;
     }
   }
   .row {
@@ -1031,7 +1103,7 @@ const CaseList = styled.div`
     }
   }
   .pills {
-    margin-bottom: 32px;
+    margin-bottom: 48px;
     .pill {
       margin-right: 12px;
       border-radius: 100px;
@@ -1108,7 +1180,7 @@ const Cases = styled.div`
 `;
 
 const SlideItem = styled.div`
-  min-width: 480px;
+  /* min-width: 480px; */
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -1120,9 +1192,11 @@ const SlideItem = styled.div`
   p {
     font-size: 20px;
     margin: 48px 0;
+    height: 120px;
   }
   span {
     font-size: 16px;
+    font-weight: 500;
   }
 `;
 
@@ -1140,9 +1214,13 @@ const RoundButton = styled.a`
   border: 2px solid ${colors.White};
   position: relative;
   overflow: hidden;
+  svg{
+    transition: all .5s ease-in-out;
+  }
   h4 {
     margin: 0 0 0 12px;
     z-index: 1;
+    letter-spacing: 1px;
   }
   svg {
     z-index: 1;
@@ -1152,6 +1230,9 @@ const RoundButton = styled.a`
   }
   &:hover {
     color: ${colors.DarkBlue};
+    svg{
+      transform: translateX(20px);
+    }
     path {
       stroke: ${colors.DarkBlue};
     }
@@ -1205,6 +1286,7 @@ const Button = styled.a`
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   svg {
     width: 100%;
     height: 100%;
@@ -1332,30 +1414,40 @@ const OurServices = styled.div<{
     z-index: 1;
     position: relative;
     color: ${prop => (prop.blackBg ? colors.BGGreen : colors.DarkBlue)};
-    text-align: right;
+    text-align: left;
     /* max-width: 1086px; */
-    margin: 0 auto;
+    margin: 0 auto 210px;
+    min-height: 100vh;
     .super {
-      &:nth-child(1) {
-        margin-right: 284px;
+      display: inline-block;
+      &.head-1 {
+        /* margin-right: 284px; */
+        margin-left: -40px;
       }
-      &:nth-child(2) {
-        margin-right: 124px;
-        margin-bottom: 16px;
+      &.head-2 {
+        /* margin-right: 124px; */
+        /* margin-bottom: 16px; */
       }
-      &:nth-child(5) {
-        margin-right: 314px;
+      &.head-3 {
+        /* margin-right: 314px; */
+        margin-top: 256px;
+        margin-left: 20px;
       }
-      &:nth-child(6) {
-        margin-right: 124px;
-        margin-bottom: 300px;
+      &.head-4 {
+        margin-left: 50px;
+        margin-top: 10px;
+        /* margin-right: 124px;
+        margin-bottom: 300px; */
       }
+    }
+    .sub-head{
+      text-align: right;
     }
     h2 {
-      margin: 0 124px 44px;
+      margin: 28px 0 12px;
     }
     ${CTA} {
-      margin: 0 124px 234px;
+      /* margin: 0 124px 234px; */
     }
   }
   .img-wall {
@@ -1365,46 +1457,109 @@ const OurServices = styled.div<{
     left: 0;
     width: 100%;
     .wall1 {
-      width: 337px;
+      /* width: 337px; */
+      width: 100%;
+      margin-left: -80px;
     }
     .wall2 {
-      width: 288px;
-      margin-left: 26%;
-      margin-top: -17%;
+      /* width: 288px; */
+      /* margin-left: 30%; */
+      width: 100%;
+      margin-top: 17%;
+      padding-right: 40px;
     }
     .wall3 {
-      width: 398px;
-      margin-left: 70%;
-      margin-top: -6.9%;
+      /* width: 398px; */
+      width: 100%;
+      /* margin-left: 70%; */
+      margin-top: 19%;
     }
     .wall4 {
-      width: 400px;
-      margin-left: 8%;
-      margin-top: 11%;
+      /* width: 400px; */
+      width: 100%;
+      /* margin-left: 8%; */
+      margin-top: 210px;
+      /* padding-right: 40px; */
     }
     .wall5 {
-      width: 290px;
-      margin-left: 62%;
-      margin-top: -9%;
+      /* width: 290px; */
+      width: 100%;
+      /* margin-left: 62%; */
+      margin-top: 317px;
+      padding-right: 40px;
     }
     .wall6 {
-      width: 290px;
-      margin-left: 32%;
-      margin-top: 12.5%;
+      width: 100%;
+      /* width: 290px; */
+      /* margin-left: 32%; */
+      margin-top: 176px;
+      /* padding-right: 40px; */
     }
     img {
       width: 100%;
     }
   }
   .slick-track {
-    display: flex;
-    gap: 40px;
+    /* display: flex; */
+    /* gap: 80px; */
+  }
+  .slick-slide{
+    padding-right: 80px;
+  }
+  .slick-arrow{
+    z-index: 10;
+    opacity: 0;
+  }
+  .slick-list{
+    overflow: visible;
+  }
+  .slick-prev{
+    display: block;
+    position: absolute;
+    width: 50vw;
+    height: 100%;
+    left: 0;
+    cursor: url(${arrowHollow}), auto;
+  }
+  .slick-next{
+    display: block;
+    position: absolute;
+    width: 50vw;
+    height: 100%;
+    right: 0;
+    cursor: url(${arrowHollowRight}), auto;
   }
   .slick-dots {
+    display: flex!important;
+    align-items: baseline;
     margin-top: 100px;
     position: relative;
-    margin-bottom: 120px;
-    display: inline-block;
+    /* position: relative; */
+    /* margin-bottom: 120px; */
+    /* display: inline-block; */
+  }
+  .slick-dots.slick-thumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 5px;
+  }
+
+  .slick-dots.slick-thumb li {
+    /* width: 6px; */
+    height: 1px;
+    /* margin: 0 3px; */
+    flex: 1 1 auto;
+    margin: 0;
+    transition: all 0.5s ease-in-out;
+    /* will-change: width; */
+    background-color: ${colors.DarkBlue};
+  }
+
+  .slick-dots.slick-thumb li.slick-active {
+    background-color: ${colors.DarkBlue};
+    /* width: 24px; */
+    height: 5px;
   }
 `;
 
@@ -1444,7 +1599,7 @@ const Horizon = styled.div<{
       margin-bottom: 2px;
       border-radius: 100%;
       background-color: ${prop =>
-        prop.blackBg ? colors.BGGrey : colors.DarkBlue};
+    prop.blackBg ? colors.BGGrey : colors.DarkBlue};
       margin-right: 8px;
     }
     h4 {
@@ -1454,8 +1609,8 @@ const Horizon = styled.div<{
 `;
 
 const Dedication = styled.div`
-  background-image: url(${dedicationBg});
-  height: 900px;
+  /* background-image: url(${dedicationBg}); */
+  height: 720px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1464,6 +1619,14 @@ const Dedication = styled.div`
   background-size: cover;
   z-index: 1;
   position: relative;
+  .bg{
+    position: absolute;
+    left: 0;
+    img{
+      width: 100%;
+      margin-top: -20px;
+    }
+  }
   h1 {
     color: ${colors.White};
     margin: 0;

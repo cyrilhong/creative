@@ -133,6 +133,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colors.BGGreen};
     color: ${colors.AJABlue};
     transition: all .5s ease-in;
+    overflow: hidden;
     .lines {
       .line {
         border-right: 1px solid rgba(12,28,36,.03);

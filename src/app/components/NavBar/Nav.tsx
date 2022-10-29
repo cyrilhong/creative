@@ -20,7 +20,7 @@ export function Nav({ isBlack }) {
     cursor: pointer;
     text-decoration: none;
     display: flex;
-    /* padding: 0.25rem 1rem; */
+    letter-spacing: 1px;
     font-size: 16px;
     font-weight: normal;
     align-items: center;

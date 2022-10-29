@@ -15,9 +15,9 @@ export function NavBar(blackBg) {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: ${blackBg.theme ? colors.DarkBlue : colors.White};
+    background-color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
     z-index: 2;
-    color: ${blackBg.theme ? colors.DarkBlue : colors.White};
+    color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
     a{
       margin: 0;
       padding: 0;
@@ -30,15 +30,15 @@ export function NavBar(blackBg) {
     cursor: pointer;
     color: ${blackBg.theme ? colors.ConcreteGrey : colors.ConcreteGrey};
     &.active {
-      color: ${blackBg.theme ? colors.White : colors.AJABlue};
+      color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
     }
   `;
 
   const Language = styled.div`
     font-size: 14px;
-    color: ${blackBg.theme ? colors.White : colors.AJABlue};
-    border-bottom: 1px solid ${blackBg.theme ? colors.White : colors.AJABlue};
-    flex: 1 1 130px;
+    color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
+    border-bottom: 1px solid ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
+    flex: 0 1 120px;
     padding: 28px 24px;
     display: flex;
     align-items: center;

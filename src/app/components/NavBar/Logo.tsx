@@ -25,7 +25,8 @@ export function Logo(blackBg) {
     color: ${blackBg.isBlack ? colors.White : colors.AJABlue};
     font-weight: normal;
     margin-left: 16px;
-    width: 230px;
+    width: 240px;
+    letter-spacing: 1px;
     ${media.medium`
       font-size: 10px;
   `};
