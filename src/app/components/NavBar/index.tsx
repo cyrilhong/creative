@@ -6,34 +6,9 @@ import { Nav } from './Nav';
 import { PageWrapper } from '../PageWrapper';
 import * as colors from '../../../styles/colors';
 import { useNavigate } from 'react-router-dom';
+import { media } from 'styles/media';
 export function NavBar(blackBg) {
   const navigate = useNavigate();
-  const Wrapper = styled.header`
-    height: ${StyleConstants.NAV_BAR_HEIGHT};
-    display: flex;
-    transition: all 0.5s ease-in;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
-    z-index: 2;
-    color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
-    a{
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      display: flex;
-    }
-  `;
-
-  const Item = styled.div`
-    cursor: pointer;
-    color: ${blackBg.theme ? colors.ConcreteGrey : colors.ConcreteGrey};
-    &.active {
-      color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
-    }
-  `;
-
   const Language = styled.div`
     font-size: 14px;
     color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
@@ -45,12 +20,52 @@ export function NavBar(blackBg) {
     justify-content: center;
     min-width: 102px;
   `;
+  const Wrapper = styled.header`
+    height: ${StyleConstants.NAV_BAR_HEIGHT};
+    display: flex;
+    transition: all 0.5s ease-in;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
+    z-index: 2;
+    color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
+    .logo{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      display: flex;
+    }
+    ${media.medium`
+      height: ${StyleConstants.NAV_BAR_MOBILE_HEIGHT};
+      .logo{
+        width: 100%;
+        display: block;
+      }
+      nav{
+        display: none;
+      }
+      ${Language}{
+        display: none;
+      }
+    `}
+  `;
+
+  const Item = styled.div`
+    cursor: pointer;
+    color: ${blackBg.theme ? colors.ConcreteGrey : colors.ConcreteGrey};
+    &.active {
+      color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
+    }
+  `;
+
+
 
   return (
     <Wrapper>
-      <a href="/">
+      <div className='logo'>
         <Logo isBlack={blackBg.theme} />
-      </a>
+      </div>
       <Nav isBlack={blackBg.theme} />
       <Language className="eng">
         <Item>EN</Item>・<Item className="active">CN</Item>

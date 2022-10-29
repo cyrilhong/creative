@@ -22,6 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     padding-top: ${StyleConstants.NAV_BAR_HEIGHT};
     color: ${colors.DarkBlue};
     background-color: ${colors.BGGrey};
+    ${media.medium`
+      padding-top: ${StyleConstants.NAV_BAR_MOBILE_HEIGHT};
+    `}
   }
 
   body.fontLoaded {
@@ -90,6 +93,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     line-height: 30px;
     font-weight: 300;
+    &.eng{
+      letter-spacing: 0.05em;
+    }
     ${media.medium`
         font-size: 16px;
         line-height: 24px;
@@ -99,6 +105,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 24px;
     font-weight: 300;
+    &.eng{
+      letter-spacing: 0.05em;
+    }
     ${media.medium`
         font-size: 14px;
         line-height: 21px;
@@ -108,6 +117,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     line-height: 21px;
     font-weight: 300;
+    &.eng{
+      letter-spacing: 0.05em;
+    }
   }
   caption{
     font-size: 12px;

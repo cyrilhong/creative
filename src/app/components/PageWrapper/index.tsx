@@ -41,6 +41,9 @@ export function PageWrapper(props) {
     `}
     ${media.medium`
       padding: 0 20px;
+      .lines{
+        display: none;
+      }
     `};
   `;
 

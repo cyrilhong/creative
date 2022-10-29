@@ -5,7 +5,7 @@ import { Link } from 'app/components/Link';
 import { NavBar } from 'app/components/NavBar';
 import { Helmet } from 'react-helmet-async';
 import { StyleConstants } from 'styles/StyleConstants';
-
+import { media } from 'styles/media';
 export function NotFoundPage() {
   return (
     <>
@@ -36,6 +36,9 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 320px;
+  ${media.medium`
+    height: ${StyleConstants.NAV_BAR_MOBILE_HEIGHT};
+  `}
 `;
 
 const Title = styled.div`

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import * as colors from '../../../styles/colors';
-import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
-
+import { media } from 'styles/media';
 export function Nav({ isBlack }) {
   const Wrapper = styled.nav`
     display: flex;
@@ -13,6 +11,12 @@ export function Nav({ isBlack }) {
     border-right: 1px solid ${isBlack ? colors.White : colors.AJABlue};
     border-bottom: 1px solid ${isBlack ? colors.White : colors.AJABlue};
     flex: 1 1 auto;
+
+    ${media.large`
+      gap: 0;
+      justify-content: space-around;
+      padding: 28px 18px;
+    `}
   `;
 
   const Item = styled.a`
@@ -45,7 +49,7 @@ export function Nav({ isBlack }) {
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
         Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-      font-size: 100%;
+      /* font-size: 100%; */
       line-height: 1.5;
       margin: 0;
       -webkit-mask-image: -webkit-radial-gradient(#000, ${colors.AJABlue});
@@ -132,6 +136,9 @@ export function Nav({ isBlack }) {
         transform: translateX(0);
       }
     }
+    ${media.large`
+      font-size: 14px;
+    `}
   `;
 
   return (

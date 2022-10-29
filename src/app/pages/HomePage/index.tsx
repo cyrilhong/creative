@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, createRef, Children } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
+import { useWindowSize } from '../../hooks'
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
 import Slider from 'react-slick';
@@ -116,6 +117,7 @@ export function HomePage() {
   const carouselRef = React.useRef<Slider>(null);
   const sliderRef = React.createRef();
   const [blackBg, setBlackBg] = useState(true);
+  const windowWidth = useWindowSize().width
   const settings = {
     dots: true,
     infinite: true,
@@ -195,11 +197,11 @@ export function HomePage() {
 
     // You can handle player events here, for example:
     player.on('waiting', () => {
-      videojs.log('player is waiting');
+      // videojs.log('player is waiting');
     });
 
     player.on('dispose', () => {
-      videojs.log('player will dispose');
+      // videojs.log('player will dispose');
     });
 
     player.on('click', () => {
@@ -272,26 +274,51 @@ export function HomePage() {
               )}
             </Parallax>
           </VideoWrapper>
-          <Horizon>
+          <Horizon blackBg>
             <div className="title">
               <div className="dot" />
               <h4 className="eng">FEATURED WORKS</h4>
             </div>
             <h4 className="eng">01</h4>
           </Horizon>
-          <div className="huge eng">
+          {windowWidth > 960 ? <div className="huge eng">
             <Fade bottom cascade duration={1000} delay={100}>
-              We meet each business critical situation with a tailored
+              We meet each business critical
             </Fade>
-            {/* <br /> */}
+            <Fade bottom cascade duration={1000} delay={100}>
+              situation with a tailored
+            </Fade>
             <Fade bottom cascade duration={1000} delay={100}>
               solution.
             </Fade>
-          </div>
-          <h1 style={{ display: 'flex' }}>
-            我們透過
-            <Mark>量身定制的解決方案</Mark>，來應對不同商業需求的關鍵情境
-          </h1>
+          </div> :
+            <div className="huge eng">
+              <Fade bottom duration={1000} delay={100}>
+                We meet each
+              </Fade>
+              <Fade bottom cascade duration={1000} delay={100}>
+                business critical
+              </Fade>
+              <Fade bottom cascade duration={1000} delay={100}>
+                situation with a
+              </Fade>
+              <Fade bottom cascade duration={1000} delay={100}>
+                tailored solution.
+              </Fade>
+            </div>
+          }
+          <FeatureHead>
+            {windowWidth < 960 ?
+              <>
+                我們透過
+                <Mark>量身定制的解決方案</Mark>，來應對不同商業需求的關鍵情境
+              </> :
+              <>
+                我們透過
+                <div className='draw'>量身定制的解決方案</div>，來應對不同商業需求的關鍵情境
+              </>
+            }
+          </FeatureHead>
           <RoundButton href={'#'}>
             <h4 className="eng">OUR WORKS</h4>
             {/* <img src={arrowWhite} alt="arrow" /> */}
@@ -324,7 +351,7 @@ export function HomePage() {
           </RoundButton>
           <CaseList>
             <Grid container>
-              <Grid xs={7} className="case">
+              <Grid xs={12} md={7} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Yoxi} alt="Yoxi" />
                 </div>
@@ -368,7 +395,7 @@ export function HomePage() {
                   </Button>
                 </Fade>
               </Grid>
-              <Grid xs={4} className="case">
+              <Grid xs={12} md={4} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={CTBC} alt="ctbc" />
                 </div>
@@ -412,7 +439,7 @@ export function HomePage() {
                   </Button>
                 </Fade>
               </Grid>
-              <Grid xs={5} xsOffset={2} className="case">
+              <Grid xs={12} md={5} mdOffset={2} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Fetnet} alt="Fetnet" />
                 </div>
@@ -456,7 +483,7 @@ export function HomePage() {
                   </Button>
                 </Fade>
               </Grid>
-              <Grid xs={5} className="case">
+              <Grid xs={12} md={5} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Starlux} alt="Starlux" />
                 </div>
@@ -1116,6 +1143,27 @@ const CaseList = styled.div`
       color: #979ea0;
     }
   }
+  ${media.medium`
+    margin-top: 48px;
+    .case{
+      padding: 0 0 48px;
+      border-bottom: 1px solid rgba(162, 170, 164, 0.5);
+      &:nth-child(1){
+        border-left: 0;
+        border-right: 0;
+      }
+      &:nth-child(2){
+        border-right: 0;
+      }
+      &:nth-child(3){
+        border-left: 0;
+        border-right: 0;
+      }
+      &:nth-child(4){
+        border-right: 0;
+      }
+    }
+  `}
 `;
 
 const Cases = styled.div`
@@ -1274,6 +1322,9 @@ const RoundButton = styled.a`
       transform: translateX(200%);
     }
   }
+  ${media.medium`
+    padding: 8px 16px;
+  `}
 `;
 
 const Button = styled.a`
@@ -1567,6 +1618,9 @@ const VideoWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   height: 720px;
+  ${media.medium`
+    height: auto;
+  `}
 `;
 
 const Horizon = styled.div<{
@@ -1606,6 +1660,9 @@ const Horizon = styled.div<{
       margin: 0;
     }
   }
+  ${media.medium`
+    padding: 64px 0 72px;
+  `}
 `;
 
 const Dedication = styled.div`
@@ -1677,3 +1734,24 @@ const ServiceList = styled.div`
     }
   }
 `;
+
+const FeatureHead = styled.h1`
+  display: flex;
+  .draw::after{
+    content: '';
+    border-bottom: 15px solid ${colors.ElectricBlue};
+  }
+  ${media.medium`
+    display: block;
+    margin-bottom: 24px;
+    span{
+      display: inline-block;
+      height: 35px;
+    }
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 21px #0c1c24, inset 0px 54px #0931e1;
+    }
+  `}
+`
