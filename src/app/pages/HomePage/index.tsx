@@ -40,6 +40,7 @@ import wall6 from './assets/wall-6.jpg';
 import ctbaLogo from './assets/ctbc-logo.png';
 import dedicationWording from './assets/dedication.svg';
 import dedicationBg from './assets/dedication.jpg';
+import dedicationBgMb from './assets/dedicationBg-mb.jpg';
 import work01 from './assets/work-01.svg';
 import work02 from './assets/work-02.svg';
 import work03 from './assets/work-03.svg';
@@ -122,7 +123,7 @@ export function HomePage() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: windowWidth > 960 ? 2 : 1,
     slidesToScroll: 1,
     arrows: true,
     // centerMode: true,
@@ -153,6 +154,7 @@ export function HomePage() {
     // console.log(themeColorRef.current!.getBoundingClientRect().top);
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
+    // console.log(helpColorRef.current!.getBoundingClientRect().y);
 
     if (themeColorRef.current!.getBoundingClientRect().top < 100) {
       // debugger
@@ -161,8 +163,7 @@ export function HomePage() {
       setBlackBg(true);
     }
     if (
-      helpColorRef.current!.getBoundingClientRect().top < 100 &&
-      Math.abs(currPos.y) > 7000
+      helpColorRef.current!.getBoundingClientRect().y < 100
     ) {
       // debugger
       setBlackBg(true);
@@ -225,7 +226,7 @@ export function HomePage() {
     });
     const color = props.color ? props.color : colors.ElectricBlue;
     return (
-      <span>
+      <span style={{ height: windowWidth > 960 ? 'auto' : '24px', display: windowWidth > 960 ? 'block' : 'inline-block' }}>
         <div style={{ zIndex: 1, position: 'relative' }}>{props.children}</div>
         <span
           style={{
@@ -311,11 +312,12 @@ export function HomePage() {
             {windowWidth < 960 ?
               <>
                 我們透過
-                <Mark>量身定制的解決方案</Mark>，來應對不同商業需求的關鍵情境
-              </> :
+                <div className='draw'>量身定制的解決方案</div>，來應對不同商業需求的關鍵情境
+              </>
+              :
               <>
                 我們透過
-                <div className='draw'>量身定制的解決方案</div>，來應對不同商業需求的關鍵情境
+                <Mark>量身定制的解決方案</Mark>，來應對不同商業需求的關鍵情境
               </>
             }
           </FeatureHead>
@@ -548,18 +550,44 @@ export function HomePage() {
             <div className="content">
               {!blackBg &&
                 <Grid container spacing={0} rowSpacing={0}>
-                  <Grid xs={9} xsOffset={3}>
-                    <Fade bottom duration={1000} delay={100}>
-                      <div className="super eng head-1">Problems</div>
-                    </Fade>
-                  </Grid>
-                  <Grid xs={6} xsOffset={6}>
-                    <Fade bottom duration={1000} delay={100}>
-                      <div className="super eng head-2">Solved.</div>
-                    </Fade>
-                  </Grid>
-                  <Grid className="sub-head" xs={9} xsOffset={2}>
-                    <h2>我們不斷累積跨領域經驗，將創新能量轉化為客戶價值</h2>
+                  {windowWidth > 960 ?
+                    <>
+                      <Grid xs={9} xsOffset={3}>
+                        <Fade bottom duration={1000} delay={100}>
+                          <div className="super eng head-1">Problems</div>
+                        </Fade>
+                      </Grid>
+                      <Grid xs={6} xsOffset={6}>
+                        <Fade bottom duration={1000} delay={100}>
+                          <div className="super eng head-2">Solved.</div>
+                        </Fade>
+                      </Grid>
+                    </> :
+                    <>
+                      <Grid xs={9} xsOffset={3}>
+                        <div className="super eng head-1">Problems</div>
+                      </Grid>
+                      <Grid xs={6} xsOffset={6}>
+                        <div className="super eng head-2">Solved.</div>
+
+                      </Grid>
+                    </>
+                  }
+                  <Grid className="sub-head" xs={12} md={9} mdOffset={2} xsOffset={0}>
+                    <FeatureHeadYellow>
+                      {windowWidth < 960 ?
+                        <>
+                          我們不斷累積跨領域經驗，將
+                          <div className='draw'>創新能量轉化為客戶價值</div>
+                        </>
+                        :
+                        <>
+                          我們不斷累積跨領域經驗，將
+                          <Mark color={colors.Yellow}>創新能量轉化為客戶價值</Mark>
+                        </>
+                      }
+                    </FeatureHeadYellow>
+                    {/* <h2>我們不斷累積跨領域經驗，將創新能量轉化為客戶價值</h2> */}
                     <div style={{ display: 'inline-flex' }}>
                       <CTA href={'#'}>
                         <h4 className="eng">OUR CLIENTS</h4>
@@ -595,10 +623,10 @@ export function HomePage() {
                   </Grid>
                   {!blackBg &&
                     <>
-                      <Grid xs={8} xsOffset={1}>
+                      <Grid xs={12} md={8} mdOffset={1} xsOffset={0}>
                         <div className="super eng head-3">Experience</div>
                       </Grid>
-                      <Grid xs={10} xsOffset={1}>
+                      <Grid xs={12} md={10} mdOffset={1} xsOffset={0}>
                         <div className="super eng head-4">Transformed. </div>
                       </Grid>
                     </>
@@ -678,11 +706,11 @@ export function HomePage() {
               </div>
               <h4 className="eng">03</h4>
             </Horizon>
-            <div className="huge eng">
+            <div className="impact-title huge eng">
               We partner with our clients <br />
               to create value
             </div>
-            <h1 style={{ display: 'flex', marginBottom: '120px' }}>
+            <h1 className="impact-subtitle">
               我們協助
               <Mark color={colors.Yellow}>客戶創造價值</Mark>
               ，進而形塑共好的長期夥伴關係
@@ -690,7 +718,7 @@ export function HomePage() {
             <Slider {...settings} ref={carouselRef}>
               {CaseSlider.map(item => {
                 return (
-                  <SlideItem>
+                  <SlideItem key={item.name}>
                     <img src={item.img.src} alt={item.img.alt} />
                     <p>{item.content}</p>
                     <span>{item.name}</span>
@@ -719,13 +747,13 @@ export function HomePage() {
       <Dedication>
         <div className="bg">
           <Parallax
-            speed={8}
+            speed={windowWidth > 960 ? 8 : 3}
           >
-            <img src={dedicationBg} alt="dedicationBg" />
+            {windowWidth > 960 ? <img src={dedicationBg} alt="dedicationBg" /> : <img src={dedicationBgMb} alt="dedicationBg" />}
           </Parallax>
         </div>
         <Parallax translateX={[30, -55]}>
-          <img src={dedicationWording} alt="Dedication beyond the expected" />
+          <img className="marquee" src={dedicationWording} alt="Dedication beyond the expected" />
         </Parallax>
         <Fade bottom>
           <h1>我們的方法靈活多變，但專注的設計能量始終不變</h1>
@@ -754,12 +782,22 @@ export function HomePage() {
               What you can <br />
               expect from us
             </div>
-            <h1 style={{ display: 'flex' }}>
-              我們來自不同的專業領域，用
-              <Mark>多元的觀點碰撞出好的體驗</Mark>
-            </h1>
+            <FeatureHead>
+              {windowWidth < 960 ?
+                <Fade>
+                  我們來自不同的專業領域，用
+                  多元的觀點碰撞出好的體驗
+                </Fade> :
+                <>
+                  我們來自不同的專業領域，用
+                  <Mark>多元的觀點碰撞出好的體驗</Mark>
+                </>
+
+              }
+
+            </FeatureHead>
             <RoundButton href={'#'}>
-              <h4 className="eng">OUR WORKS</h4>
+              <h4 className="eng">OUR SERVICES</h4>
               {/* <img src={arrowWhite} alt="arrow" /> */}
               <svg
                 width="40"
@@ -790,12 +828,12 @@ export function HomePage() {
             </RoundButton>
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
-                <Grid xs={4}>
+                <Grid xs={0} md={4}>
                   <div className="super eng title">01.</div>
                 </Grid>
-                <Grid xs={8}>
+                <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box minWidth={'290px'} mr="40px">
+                    <Box className="lottie">
                       <Fade>
                         <Lottie animationData={lottie1} loop={false} />
                       </Fade>
@@ -819,12 +857,12 @@ export function HomePage() {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid xs={4}>
+                <Grid xs={0} md={4}>
                   <div className="super eng title">02.</div>
                 </Grid>
-                <Grid xs={8}>
+                <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box minWidth={'290px'} mr="40px">
+                    <Box className="lottie">
                       <Fade>
                         <Lottie animationData={lottie2} loop={false} />
                       </Fade>
@@ -848,12 +886,12 @@ export function HomePage() {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid xs={4}>
+                <Grid xs={0} md={4}>
                   <div className="super eng title">03.</div>
                 </Grid>
-                <Grid xs={8}>
+                <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box minWidth={'290px'} mr="40px">
+                    <Box className="lottie">
                       <Fade>
                         <Lottie animationData={lottie3} loop={false} />
                       </Fade>
@@ -884,8 +922,8 @@ export function HomePage() {
       </div>
       <SectionIdea>
         <Container maxWidth={'xl'}>
-          <Grid container>
-            <Grid xs={6}>
+          <Grid container className="container">
+            <Grid xs={12} md={6}>
               <div className="wrapper border">
                 {/* <img className="idea" src={Idea} alt="idea" /> */}
                 <Box width={'220px'} m="0 auto">
@@ -927,7 +965,7 @@ export function HomePage() {
                 </CTA>
               </div>
             </Grid>
-            <Grid xs={6}>
+            <Grid xs={12} md={6}>
               <div className="wrapper">
                 {/* <img className="idea" src={hiveFive} alt="idea" /> */}
                 <Box width={'220px'} m="0 auto">
@@ -1008,6 +1046,48 @@ const SliderWrapper = styled.div`
     white-space: normal;
   }
 `;
+const Horizon = styled.div<{
+  blackBg?: boolean;
+}>`
+  display: flex;
+  justify-content: space-between;
+  padding: 120px 0;
+  color: ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
+  &::after {
+    content: '';
+    width: 100%;
+    display: block;
+    border-top: 1px solid
+      ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
+    position: absolute;
+  }
+  h4 {
+    margin: 20px 0 0;
+    font-weight: 300;
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0 0;
+    .dot {
+      width: 16px;
+      height: 16px;
+      margin-bottom: 2px;
+      border-radius: 100%;
+      background-color: ${prop =>
+    prop.blackBg ? colors.BGGrey : colors.DarkBlue};
+      margin-right: 8px;
+    }
+    h4 {
+      margin: 0;
+    }
+  }
+  ${media.medium`
+    padding: 64px 0 72px;
+  `}
+`;
+
 const SectionIdea = styled.div`
   padding: 96px 0;
   display: flex;
@@ -1023,11 +1103,30 @@ const SectionIdea = styled.div`
     margin: 16px 0 0;
   }
   h2 {
+    font-size: 24px;
     margin: 8px 0 32px;
   }
   a {
     background-color: #fff;
   }
+  ${media.medium`
+    padding: 48px 0;
+    .container{
+      flex-direction: column;
+      border-right: 1px solid ${colors.DarkBlue};
+      border-left: 1px solid ${colors.DarkBlue};
+      gap: 48px;
+    }
+    .border {
+      border-right: 0;
+    }
+    h1{
+      margin-top: 24px;:
+    }
+    h2{
+      margin: 8px 0 24px;
+    }
+  `}
 `;
 
 const CaseList = styled.div`
@@ -1145,9 +1244,17 @@ const CaseList = styled.div`
   }
   ${media.medium`
     margin-top: 48px;
+    margin-bottom: 36px;
     .case{
-      padding: 0 0 48px;
+      padding: 0 0 32px;
       border-bottom: 1px solid rgba(162, 170, 164, 0.5);
+      margin-bottom: 32px;
+      h4{
+        margin: 16px 0 8px;
+      }
+      h2{
+        margin-bottom: 16px;
+      }
       &:nth-child(1){
         border-left: 0;
         border-right: 0;
@@ -1162,6 +1269,9 @@ const CaseList = styled.div`
       &:nth-child(4){
         border-right: 0;
       }
+    }
+    .pills{
+      margin-bottom: 0;
     }
   `}
 `;
@@ -1246,6 +1356,12 @@ const SlideItem = styled.div`
     font-size: 16px;
     font-weight: 500;
   }
+  ${media.medium`
+    p{
+      margin: 32px 0;
+      font-size: 16px;
+    }
+  `}
 `;
 
 const RoundButton = styled.a`
@@ -1382,6 +1498,13 @@ const Button = styled.a`
       animation: move-in 0.3s forwards;
     }
   }
+  ${media.medium`
+    .wrapper{
+      margin-right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+  `}
 `;
 const CTA = styled.a`
   width: 242px;
@@ -1450,6 +1573,10 @@ const CTA = styled.a`
       transform: translateX(200%);
     }
   }
+  ${media.medium`
+    width: 172px;
+    padding: 8px 16px;
+  `}
 `;
 
 const OurServices = styled.div<{
@@ -1501,6 +1628,10 @@ const OurServices = styled.div<{
       /* margin: 0 124px 234px; */
     }
   }
+  ${Horizon}{
+    z-index: 2;
+    position: relative;
+  }
   .img-wall {
     position: absolute;
     top: 280px;
@@ -1549,6 +1680,10 @@ const OurServices = styled.div<{
     img {
       width: 100%;
     }
+  }
+  .impact-subtitle{
+    display: flex;
+    margin-bottom: 120px;
   }
   .slick-track {
     /* display: flex; */
@@ -1612,6 +1747,72 @@ const OurServices = styled.div<{
     /* width: 24px; */
     height: 5px;
   }
+  ${media.medium`
+    padding-bottom: 73px;
+    overflow: hidden;
+    .content{
+      margin-top: 42px;
+      min-height: 428px;
+      margin-bottom: 43px;
+      ${CTA}{
+        display: none;
+      }
+      .super.head-1{
+        margin-left: 0;
+      }
+      h2{
+        font-size: 24px;
+        line-height: 36px;
+        letter-spacing: .05em;
+        margin: 16px 0 0;
+      }
+      .sub-head{
+        max-width: 323px;
+        margin: 0 auto;
+      }
+      .super.head-3{
+        margin: 72px auto 4px;
+        text-align: center;
+        width: 100%;
+      }
+      .super.head-4{
+        margin: 0;
+      }
+    }
+    .img-wall{
+      top: 80px;
+      .wall1{
+        margin-top: 100px;
+        margin-left: -40px;
+      }
+      .wall4{
+        margin-top: 65px
+      }
+      .wall5{
+        margin-top: 100px;
+      }
+      .wall6{
+        margin-top: 114px;
+      }
+    }
+    .impact-title{
+      br{
+        display: none;
+      }
+    }
+    .impact-subtitle{
+      display: inline-block;
+      margin: 8px 0 48px;
+    }
+    .slick-slider{
+      .slick-arrow{
+        pointer-events: none;
+      }
+    }
+    .slick-dots.slick-thumb{
+      margin-top: 48px;
+    }
+  `}
 `;
 
 const VideoWrapper = styled.div`
@@ -1623,47 +1824,6 @@ const VideoWrapper = styled.div`
   `}
 `;
 
-const Horizon = styled.div<{
-  blackBg?: boolean;
-}>`
-  display: flex;
-  justify-content: space-between;
-  padding: 120px 0;
-  color: ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
-  &::after {
-    content: '';
-    width: 100%;
-    display: block;
-    border-top: 1px solid
-      ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
-    position: absolute;
-  }
-  h4 {
-    margin: 20px 0 0;
-    font-weight: 300;
-  }
-  .title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 20px 0 0;
-    .dot {
-      width: 16px;
-      height: 16px;
-      margin-bottom: 2px;
-      border-radius: 100%;
-      background-color: ${prop =>
-    prop.blackBg ? colors.BGGrey : colors.DarkBlue};
-      margin-right: 8px;
-    }
-    h4 {
-      margin: 0;
-    }
-  }
-  ${media.medium`
-    padding: 64px 0 72px;
-  `}
-`;
 
 const Dedication = styled.div`
   /* background-image: url(${dedicationBg}); */
@@ -1688,18 +1848,35 @@ const Dedication = styled.div`
     color: ${colors.White};
     margin: 0;
   }
+  ${media.medium`
+    overflow: hidden;
+    padding: 0 20px;
+    text-align: center;
+    height: 372px;
+    .marquee{
+      height: 50px;
+    }
+  `}
+  @media screen and (max-width:400px) {
+    .bg{
+      img{
+        height: 440px;
+        width: auto;
+      }
+    }
+  }
 `;
 
 const ServiceList = styled.div`
   padding: 120px 0 200px;
   .title {
     padding: 0 40px;
-    border-left: 1px solid ${colors.White};
-    border-right: 1px solid ${colors.White};
+    border-left: 1px solid #5A6869;
+    border-right: 1px solid #5A6869;
     height: 100%;
   }
   .right {
-    border-right: 1px solid ${colors.White};
+    border-right: 1px solid #5A6869;
     height: 100%;
     padding: 0 70px 50px 70px;
     svg {
@@ -1733,6 +1910,45 @@ const ServiceList = styled.div`
       }
     }
   }
+  .lottie{
+    min-width: 290px;
+    margin-right: 40px;
+  }
+  ${media.medium`
+    padding: 72px 0;
+    .title{
+      display: none;
+    }
+    .right{
+      flex-direction: column;
+      border-right: 0;
+      text-align: center;
+      border-right: 1px solid ${colors.White};
+      border-left: 1px solid ${colors.White};
+      .lottie{
+        margin-right: 0;
+        min-width: auto;
+      }
+      ul{
+        display: flex;
+        flex-direction: column;
+        li{
+          justify-content: center;
+          display: inline-block;
+          &::before{
+            display: inline-block;
+          }
+        }
+      }
+      h4{
+        margin: 0;
+        padding-top: 16px;
+      }
+      h1{
+        margin: 32px 0 8px;
+      }
+    }
+  `}
 `;
 
 const FeatureHead = styled.h1`
@@ -1740,6 +1956,26 @@ const FeatureHead = styled.h1`
   .draw::after{
     content: '';
     border-bottom: 15px solid ${colors.ElectricBlue};
+  }
+  ${media.medium`
+    display: block;
+    margin-bottom: 24px;
+    span{
+      display: inline-block;
+      height: 35px;
+    }
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 21px #0c1c24, inset 0px 54px #0931e1;
+    }
+  `}
+`
+const FeatureHeadYellow = styled.h2`
+  display: flex;
+  .draw::after{
+    content: '';
+    border-bottom: 15px solid ${colors.Yellow};
   }
   ${media.medium`
     display: block;

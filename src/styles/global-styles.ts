@@ -55,10 +55,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 150px;
     line-height: 188px;
     font-weight: 500;
-    font-family: 'Poppins'
+    font-family: 'Poppins';
     ${media.medium`
-        font-size: 48px;
-        line-height: 60px;
+      font-size: 48px;
+      line-height: 60px;
     `};
   }
   .huge{
@@ -248,4 +248,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 80px!important;
     max-width: 1920px!important;
   }
+  ${media.medium`
+    .MuiContainer-root{
+      padding: 0 20px!important;
+    }
+  `}
 `;

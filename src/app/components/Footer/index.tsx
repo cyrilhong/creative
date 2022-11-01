@@ -321,6 +321,7 @@ const Info = styled.div`
     gap: 8px;
     h5 {
       margin: 0 0 14px;
+      font-weight: 300;
     }
     ul {
       padding: 0;
