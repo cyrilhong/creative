@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef, createRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
+import WrappedButton from 'app/components/WrappedButton'
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
+import RoundButton from 'app/components/RoundButton'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,6 +17,7 @@ import Fade from 'react-reveal/Fade';
 import CaseStudy from './CaseStudy';
 import Idea from './assets/idea.svg';
 import { media } from 'styles/media';
+import { Box } from '@mui/system';
 
 const CaseSlider = [
   {
@@ -106,10 +109,11 @@ export function CasePage() {
                 <h4 className="subtitle">{CaseSlider[activeSlide].type}</h4>
                 <h2 className="title">{CaseSlider[activeSlide].title}</h2>
                 <h4 className="content">{CaseSlider[activeSlide].content}</h4>
-                <Button href={CaseSlider[activeSlide].link}>
-                  <img src={arrow} alt="arrow" />
-                  <h4 className="eng">CASE STUDY</h4>
-                </Button>
+                <RoundButton
+                  link={CaseSlider[activeSlide].link}
+                  isWhite={true}
+                  text="CASE STUDY"
+                />
                 <div className="dots">
                   {CaseSlider.map((item, index) => {
                     return (
@@ -124,17 +128,15 @@ export function CasePage() {
               </div>
             </div>
             <div className="right">
-              <Fade bottom>
-                <Slider {...settings} ref={carouselRef}>
-                  {CaseSlider.map(item => {
-                    return (
-                      <SlideItem key={item.title}>
-                        <img src={item.img.src} alt={item.img.alt} />
-                      </SlideItem>
-                    );
-                  })}
-                </Slider>
-              </Fade>
+              <Slider {...settings} ref={carouselRef}>
+                {CaseSlider.map(item => {
+                  return (
+                    <SlideItem key={item.title}>
+                      <img src={item.img.src} alt={item.img.alt} />
+                    </SlideItem>
+                  );
+                })}
+              </Slider>
             </div>
           </Cases>
           <CaseStudy />
@@ -148,10 +150,13 @@ export function CasePage() {
               Serving 100+ top companies with diverse cross-field experience
             </h1>
             <h2>我們用心協助客戶創造價值，進而形塑共好的長期夥伴關係</h2>
-            <CTA href={CaseSlider[activeSlide].link}>
-              <h4 className="eng">OUR CLIENTS</h4>
-              <img src={arrowBlack} alt="arrow" />
-            </CTA>
+            <Box display={"flex"} justifyContent="center">
+              <WrappedButton
+                text="OUR CLIENTS"
+                link="#"
+                isWhite={true}
+              />
+            </Box>
           </div>
         </div>
       </SectionIdea>
@@ -166,6 +171,17 @@ const Cases = styled.div`
   flex-direction: row;
   gap: 40px;
   padding-bottom: 44px;
+  position: relative;
+  z-index: 1;
+  &::before{
+    content: '';
+    height: 100%;
+    background-color: ${colors.DarkBlue};
+    width: 500px;
+    right: -10%;
+    position: absolute;
+    z-index: 0;
+  }
   .left {
     flex: 1 1 100%;
     padding: 48px 0 100px 60px;
@@ -177,7 +193,7 @@ const Cases = styled.div`
         background-color: #2e3c42;
         color: ${colors.White};
         display: inline-block;
-        padding: 4px 16px;
+        padding: 7px 16px;
         font-size: 12px;
         font-weight: 300;
         color: #979ea0;
@@ -192,6 +208,7 @@ const Cases = styled.div`
     }
     .content {
       margin-bottom: 32px;
+      max-width: 450px;
     }
     .dots {
       display: flex;
@@ -215,8 +232,36 @@ const Cases = styled.div`
     flex: 1 1 100%;
     max-width: 620px;
     margin-top: -60px;
-    margin-right: 80px;
+    margin-right: 0;
+    max-width: 50%;
   }
+  ${media.medium`
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 40px;
+    &::before{
+      width: 100vw;
+      left: -20px;
+    }
+    .left{
+     order: 2;
+     padding: 0;
+     z-index: 1;
+     .title{
+        margin: 8px 0;
+      }
+      .dots{
+        margin-top: 40px
+      }
+    }
+    .right{
+      margin-top: -56px;
+      max-width: 100%;
+    }
+    .pills {
+      margin-bottom: 24px;
+    }
+  `}
 `;
 
 const SlideItem = styled.div`
@@ -270,6 +315,9 @@ const SectionIdea = styled.div`
     margin: 0 auto;
     width: 100%;
     padding: 0 80px;
+    a{
+      background-color: ${colors.White};
+    }
     .content {
       margin: 0 auto;
       max-width: 1760px;
@@ -280,12 +328,29 @@ const SectionIdea = styled.div`
       h1 {
         margin-top: 40px;
       }
-      ${media.large`
-        padding: 0 60px
-      `}
-      ${media.medium`
-        padding: 0 20px;
-      `};
     }
   }
+  ${media.large`
+    .content {
+      padding: 0 60px
+    }
+  `}
+  ${media.medium`
+    padding: 48px 0;
+    .wrapper{
+      padding: 0 20px;
+      .content {
+        padding: 0 20px;
+        .idea{
+          width: 160px;
+        }
+        h1{
+          margin: 24px 0 8px;
+        }
+        h2{
+          margin: 0;
+        }
+      }
+    }
+  `};
 `;

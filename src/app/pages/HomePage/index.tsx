@@ -9,6 +9,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components/macro';
 import Grid from '@mui/material/Unstable_Grid2';
+import RoundButton from 'app/components/RoundButton'
+import WrappedButton from 'app/components/WrappedButton'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Container } from '@mui/material';
@@ -282,32 +284,36 @@ export function HomePage() {
             </div>
             <h4 className="eng">01</h4>
           </Horizon>
-          {windowWidth > 960 ? <div className="huge eng">
-            <Fade bottom cascade duration={1000} delay={100}>
-              We meet each business critical
-            </Fade>
-            <Fade bottom cascade duration={1000} delay={100}>
-              situation with a tailored
-            </Fade>
-            <Fade bottom cascade duration={1000} delay={100}>
-              solution.
-            </Fade>
-          </div> :
+          {windowWidth > 1300 &&
             <div className="huge eng">
-              <Fade bottom duration={1000} delay={100}>
-                We meet each
+              <Fade bottom cascade duration={1000} delay={100}>
+                We meet each business critical
               </Fade>
               <Fade bottom cascade duration={1000} delay={100}>
-                business critical
+                situation with a tailored
               </Fade>
               <Fade bottom cascade duration={1000} delay={100}>
-                situation with a
-              </Fade>
-              <Fade bottom cascade duration={1000} delay={100}>
-                tailored solution.
+                solution.
               </Fade>
             </div>
           }
+          {windowWidth > 960 && windowWidth < 1300 && <div className="huge eng">
+            <Fade bottom cascade duration={1000} delay={100}>
+              We meet each business
+            </Fade>
+            <Fade bottom cascade duration={1000} delay={100}>
+              critical situation with
+            </Fade>
+            <Fade bottom cascade duration={1000} delay={100}>
+              a tailored solution.
+            </Fade>
+          </div>
+          }
+          {windowWidth < 960 && <div className="huge eng">
+            <Fade bottom duration={1000} delay={100}>
+              We meet each business critical situation with a tailored solution.
+            </Fade>
+          </div>}
           <FeatureHead>
             {windowWidth < 960 ?
               <>
@@ -321,36 +327,11 @@ export function HomePage() {
               </>
             }
           </FeatureHead>
-          <RoundButton href={'#'}>
-            <h4 className="eng">OUR WORKS</h4>
-            {/* <img src={arrowWhite} alt="arrow" /> */}
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                stroke="#fff"
-                strokeWidth="3"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                stroke="#fff"
-                strokeWidth="3"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M9.30701 20.0303H30.6952"
-                stroke="#fff"
-                strokeWidth="3"
-                strokeMiterlimit="10"
-              />
-            </svg>
-          </RoundButton>
+          <WrappedButton
+            text="OUR WORKS"
+            link="#"
+            isWhite={false}
+          />
           <CaseList>
             <Grid container>
               <Grid xs={12} md={7} className="case">
@@ -364,37 +345,11 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                     <div className="pill eng">EXPERIENCE</div>
                   </div>
-                  <Button href={'#'}>
-                    <div className="wrapper">
-                      <svg
-                        width="40"
-                        height="40"
-                        viewBox="0 0 40 40"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M9.30701 20.0303H30.6952"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="eng">CASE STUDY</h4>
-                  </Button>
+                  <RoundButton
+                    link="#"
+                    isWhite={true}
+                    text="CASE STUDY"
+                  />
                 </Fade>
               </Grid>
               <Grid xs={12} md={4} className="case">
@@ -408,37 +363,11 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                     <div className="pill eng">EXPERIENCE</div>
                   </div>
-                  <Button href={'#'}>
-                    <div className="wrapper">
-                      <svg
-                        width="40"
-                        height="40"
-                        viewBox="0 0 40 40"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M9.30701 20.0303H30.6952"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="eng">CASE STUDY</h4>
-                  </Button>
+                  <RoundButton
+                    link="#"
+                    isWhite={true}
+                    text="CASE STUDY"
+                  />
                 </Fade>
               </Grid>
               <Grid xs={12} md={5} mdOffset={2} className="case">
@@ -452,37 +381,11 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                     <div className="pill eng">EXPERIENCE</div>
                   </div>
-                  <Button href={'#'}>
-                    <div className="wrapper">
-                      <svg
-                        width="40"
-                        height="40"
-                        viewBox="0 0 40 40"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M9.30701 20.0303H30.6952"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="eng">CASE STUDY</h4>
-                  </Button>
+                  <RoundButton
+                    link="#"
+                    isWhite={true}
+                    text="CASE STUDY"
+                  />
                 </Fade>
               </Grid>
               <Grid xs={12} md={5} className="case">
@@ -496,37 +399,11 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                     <div className="pill eng">EXPERIENCE</div>
                   </div>
-                  <Button href={'#'}>
-                    <div className="wrapper">
-                      <svg
-                        width="40"
-                        height="40"
-                        viewBox="0 0 40 40"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M9.30701 20.0303H30.6952"
-                          stroke="#fff"
-                          strokeWidth="3"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="eng">CASE STUDY</h4>
-                  </Button>
+                  <RoundButton
+                    link="#"
+                    isWhite={true}
+                    text="CASE STUDY"
+                  />
                 </Fade>
               </Grid>
             </Grid>
@@ -587,38 +464,12 @@ export function HomePage() {
                         </>
                       }
                     </FeatureHeadYellow>
-                    {/* <h2>我們不斷累積跨領域經驗，將創新能量轉化為客戶價值</h2> */}
                     <div style={{ display: 'inline-flex' }}>
-                      <CTA href={'#'}>
-                        <h4 className="eng">OUR CLIENTS</h4>
-                        {/* <img src={arrowBlack} alt="arrow" /> */}
-                        <svg
-                          width="40"
-                          height="40"
-                          viewBox="0 0 40 40"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                            stroke="#0C1C24"
-                            strokeWidth="3"
-                            strokeMiterlimit="10"
-                          />
-                          <path
-                            d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                            stroke="#0C1C24"
-                            strokeWidth="3"
-                            strokeMiterlimit="10"
-                          />
-                          <path
-                            d="M9.30701 20.0303H30.6952"
-                            stroke="#0C1C24"
-                            strokeWidth="3"
-                            strokeMiterlimit="10"
-                          />
-                        </svg>
-                      </CTA>
+                      <WrappedButton
+                        text="OUR CLIENTS"
+                        link="#"
+                        isWhite={true}
+                      />
                     </div>
                   </Grid>
                   {!blackBg &&
@@ -796,36 +647,11 @@ export function HomePage() {
               }
 
             </FeatureHead>
-            <RoundButton href={'#'}>
-              <h4 className="eng">OUR SERVICES</h4>
-              {/* <img src={arrowWhite} alt="arrow" /> */}
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                  stroke="#fff"
-                  strokeWidth="3"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                  stroke="#fff"
-                  strokeWidth="3"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M9.30701 20.0303H30.6952"
-                  stroke="#fff"
-                  strokeWidth="3"
-                  strokeMiterlimit="10"
-                />
-              </svg>
-            </RoundButton>
+            <WrappedButton
+              text="OUR SERVICES"
+              link="#"
+              isWhite={!blackBg}
+            />
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
                 <Grid xs={0} md={4}>
@@ -933,36 +759,11 @@ export function HomePage() {
                 </Box>
                 <h1 className="eng">Happy teams create change.</h1>
                 <h2>我們用心生活，賦予多變創意能量</h2>
-                <CTA href={'#'}>
-                  <h4 className="eng">ABOUT US</h4>
-                  {/* <img src={arrowBlack} alt="arrow" /> */}
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M9.30701 20.0303H30.6952"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </CTA>
+                <WrappedButton
+                  text="ABOUT US"
+                  link="#"
+                  isWhite={true}
+                />
               </div>
             </Grid>
             <Grid xs={12} md={6}>
@@ -975,36 +776,11 @@ export function HomePage() {
                 </Box>
                 <h1 className="eng">Let’s makes work a real joy.</h1>
                 <h2>與我們一起加入改變的行列！</h2>
-                <CTA href={'#'}>
-                  <h4 className="eng">JOIN US</h4>
-                  {/* <img src={arrowBlack} alt="arrow" /> */}
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M9.30701 20.0303H30.6952"
-                      stroke="#0C1C24"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </CTA>
+                <WrappedButton
+                  text="JOIN US"
+                  link="#"
+                  isWhite={true}
+                />
               </div>
             </Grid>
           </Grid>
@@ -1107,7 +883,9 @@ const SectionIdea = styled.div`
     margin: 8px 0 32px;
   }
   a {
+    margin: 32px auto 0;
     background-color: #fff;
+    min-width: 215px;
   }
   ${media.medium`
     padding: 48px 0;
@@ -1125,6 +903,9 @@ const SectionIdea = styled.div`
     }
     h2{
       margin: 8px 0 24px;
+    }
+    a{
+      min-width: 172px;
     }
   `}
 `;
@@ -1364,148 +1145,8 @@ const SlideItem = styled.div`
   `}
 `;
 
-const RoundButton = styled.a`
-  background: initial;
-  border: 0;
-  padding: 0;
-  display: flex;
-  color: #fff;
-  display: inline-flex;
-  padding: 16px 48px;
-  align-items: center;
-  text-decoration: none;
-  border-radius: 100px;
-  border: 2px solid ${colors.White};
-  position: relative;
-  overflow: hidden;
-  svg{
-    transition: all .5s ease-in-out;
-  }
-  h4 {
-    margin: 0 0 0 12px;
-    z-index: 1;
-    letter-spacing: 1px;
-  }
-  svg {
-    z-index: 1;
-  }
-  path {
-    transition: all 0.5s;
-  }
-  &:hover {
-    color: ${colors.DarkBlue};
-    svg{
-      transform: translateX(20px);
-    }
-    path {
-      stroke: ${colors.DarkBlue};
-    }
-  }
-  &::before {
-    -webkit-animation: move-out 0.3s;
-    animation: move-out 0.3s;
-    background: ${colors.White};
-    color: ${colors.DarkBlue};
-    content: '';
-    height: 100%;
-    left: -100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    will-change: transform;
-  }
-  &:hover:before {
-    -webkit-animation: move-in 0.3s forwards;
-    animation: move-in 0.3s forwards;
-  }
-  svg {
-    margin-left: 4px;
-    z-index: 1;
-  }
-  @keyframes move-in {
-    0% {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-  @keyframes move-out {
-    0% {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(200%);
-    }
-  }
-  ${media.medium`
-    padding: 8px 16px;
-  `}
-`;
 
-const Button = styled.a`
-  background: initial;
-  border: 0;
-  padding: 0;
-  display: flex;
-  color: #fff;
-  margin-top: 32px;
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  svg {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  .wrapper {
-    border: 2px solid ${colors.White};
-    margin-right: 24px;
-    display: flex;
-    border-radius: 100%;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease-in;
-    path {
-      transition: all 0.5s;
-    }
-    &:hover {
-      color: ${colors.DarkBlue};
-      path {
-        stroke: ${colors.DarkBlue};
-      }
-    }
-    &::before {
-      -webkit-animation: move-out 0.3s;
-      animation: move-out 0.3s;
-      background: ${colors.White};
-      color: ${colors.DarkBlue};
-      content: '';
-      height: 100%;
-      left: -100%;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      will-change: transform;
-    }
-    &:hover:before {
-      -webkit-animation: move-in 0.3s forwards;
-      animation: move-in 0.3s forwards;
-    }
-  }
-  ${media.medium`
-    .wrapper{
-      margin-right: 12px;
-      width: 40px;
-      height: 40px;
-    }
-  `}
-`;
+
 const CTA = styled.a`
   width: 242px;
   background: ${colors.BGGreen};
@@ -1622,7 +1263,7 @@ const OurServices = styled.div<{
       text-align: right;
     }
     h2 {
-      margin: 28px 0 12px;
+      margin: 28px 0 -12px;
     }
     ${CTA} {
       /* margin: 0 124px 234px; */
@@ -1777,6 +1418,8 @@ const OurServices = styled.div<{
       }
       .super.head-4{
         margin: 0;
+        text-align: center;
+        width: 100%;
       }
     }
     .img-wall{
@@ -1839,6 +1482,7 @@ const Dedication = styled.div`
   .bg{
     position: absolute;
     left: 0;
+    width: 100%;
     img{
       width: 100%;
       margin-top: -20px;
@@ -1960,6 +1604,7 @@ const FeatureHead = styled.h1`
   ${media.medium`
     display: block;
     margin-bottom: 24px;
+    max-width: 320px;
     span{
       display: inline-block;
       height: 35px;
@@ -1973,6 +1618,7 @@ const FeatureHead = styled.h1`
 `
 const FeatureHeadYellow = styled.h2`
   display: flex;
+  justify-content: end;
   .draw::after{
     content: '';
     border-bottom: 15px solid ${colors.Yellow};
@@ -1987,7 +1633,7 @@ const FeatureHeadYellow = styled.h2`
     .draw{
       display: inline;
       background-size: 1px 16px;
-      box-shadow: inset 0 21px #0c1c24, inset 0px 54px #0931e1;
+      box-shadow: inset 0 21px ${colors.BGGreen}, inset 0px 54px ${colors.Yellow};
     }
   `}
 `
