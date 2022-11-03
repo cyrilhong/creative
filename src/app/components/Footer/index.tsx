@@ -33,7 +33,7 @@ export default function footer() {
         <PageWrapper overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
           <ParallaxProvider>
             <Wrapper>
-              <Parallax speed={-20}>
+              <Parallax speed={-10}>
                 <Main>
                   <div className="left">
                     <div className="huge eng">
@@ -74,20 +74,17 @@ export default function footer() {
                         <h4 className="eng">GET IN TOUCH</h4>
                       </Button>
                       <div className="lottie">
-                        <Fade>
-                          <Lottie animationData={touch} loop={2} />
-                        </Fade>
+                        <Lottie animationData={touch} loop={false} />
+
                       </div>
                     </div>
                   </div>
                   <div className="right">
-                    <Fade>
-                      <Lottie animationData={touch} loop={false} />
-                    </Fade>
+                    <Lottie animationData={touch} loop={false} />
                   </div>
                 </Main>
                 <Info>
-                  <Grid className="container" container spacing={windowWidth>960?8:0}>
+                  <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
                     <Grid xs={0} md={3}>
                       <div className="main-link link">
                         <a>
@@ -155,7 +152,7 @@ export default function footer() {
 const Footer = styled.div`
   position: relative;
   padding: 0;
-  z-index: -1;
+  z-index: 0;
   .lines {
     .line {
       border-right: 1px solid #f3f3eb0d;

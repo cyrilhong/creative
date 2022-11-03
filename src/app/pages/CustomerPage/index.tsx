@@ -5,6 +5,7 @@ import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
+import { useWindowSize } from '../../hooks'
 import styled from 'styled-components/macro';
 import { useForm, ValidationError } from '@formspree/react';
 import Box from '@mui/material/Box';
@@ -18,6 +19,8 @@ import clients1Hover from './assets/client-01-hover.png';
 import arrowBtn from './assets/arrow-btn.svg';
 import Idea from './assets/idea.svg';
 import { media } from 'styles/media';
+import Lottie from 'lottie-react';
+import lottieClient from './assets/client.json';
 import moreClient01 from './assets/moreClient/01.png';
 import moreClient02 from './assets/moreClient/02.png';
 import moreClient03 from './assets/moreClient/03.png';
@@ -41,6 +44,7 @@ import moreClient20 from './assets/moreClient/20.png';
 import moreClient21 from './assets/moreClient/21.png';
 import moreClient22 from './assets/moreClient/22.png';
 import moreClient23 from './assets/moreClient/23.png';
+import heroImgMb from './assets/hero-img-mb.png';
 const moreClient = [
   moreClient01,
   moreClient02,
@@ -82,6 +86,7 @@ export function CustomerPage() {
     });
     return <span ref={ref} />;
   }
+  const windowWidth = useWindowSize().width
 
   return (
     <ParallaxProvider>
@@ -96,39 +101,77 @@ export function CustomerPage() {
       <div className="bg-customer">
         <PageWrapper>
           <HeroWrapper>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                We don’t change
-              </Fade>
+            {windowWidth > 960 ?
+              <>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    We don’t change
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    the world. But our
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    clients do.
+                  </Fade>
+                </div>
+                <div className="content">
+                  <Fade bottom duration={500} delay={100}>
+                    <h1>
+                      我們
+                      <Mark />
+                      幫助客戶打破框架，進而形塑共好的
+                    </h1>
+                    <h1>
+                      長期夥伴關係
+                    </h1>
+                  </Fade>
+                </div>
+              </> :
+              <>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    We don’t change
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    the world. But our
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    clients do.
+                  </Fade>
+                </div>
+                <div className="content">
+                  <Fade bottom duration={500} delay={100}>
+                    <h1>
+                      <Box>我們</Box>
+                      <Mark />
+                      幫助客戶打破框架，進而
+                    </h1>
+                    <h1>
+                      形塑共好的長期夥伴關係
+                    </h1>
+                  </Fade>
+                </div>
+              </>
+            }
+            <div className="hero-img-mb">
+              <img src={heroImgMb} alt="heroImgMb" />
             </div>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                the world. But our
-              </Fade>
-            </div>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                clients do.
-              </Fade>
-            </div>
-            <div className="content">
-              <h1>
-                <Fade bottom duration={2000} delay={100}>
-                  我們
-                  <Mark />
-                  幫助客戶打破框架，進而形塑共好的
-                  <br />
-                  長期夥伴關係
-                </Fade>
-              </h1>
-            </div>
+
             <ParallaxWrapper01>
-              <Parallax scale={[1, 2]}>
+              <Parallax scale={[1, 1.2]}>
                 <img src={hero1} alt="Yoxi" />
               </Parallax>
             </ParallaxWrapper01>
             <ParallaxWrapper02>
-              <Parallax scale={[1, 1.5]}>
+              <Parallax scale={[1, 1.3]}>
                 <img src={hero2} alt="Yoxi" />
               </Parallax>
             </ParallaxWrapper02>
@@ -145,16 +188,16 @@ export function CustomerPage() {
                   </div>
                 </Horizon>
               </Grid>
-              <Grid item xs={4}>
-                <div className="huge eng">Selected</div>
-                <div className="huge eng">Clients</div>
+              <Grid className='left' item xs={12} md={4}>
+                <div className="huge eng">Selected <br />Clients</div>
+                {/* <div className="huge eng">Clients</div> */}
                 <h1>
                   我們在創新之路 <br /> 一起共伴
                 </h1>
               </Grid>
-              <Grid className="clients" item xs={8}>
+              <Grid className="clients" item xs={12} md={8}>
                 <Grid container spacing={0} rowSpacing={0}>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -178,7 +221,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -202,7 +245,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -226,7 +269,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -250,7 +293,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -274,7 +317,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -298,7 +341,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -322,7 +365,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -346,7 +389,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -370,7 +413,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={4}>
+                  <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -400,20 +443,28 @@ export function CustomerPage() {
           </Container>
         </OurClients>
         <SectionIdea>
-          <div className="wrapper">
-            <div className="content">
-              <img className="idea" src={Idea} alt="idea" />
-              <h1 className="eng">
-                We serve clients across diverse industries
-              </h1>
-              <h2>我們累積了豐富的服務經驗，在多元產業中跨領域延伸</h2>
-              <div className="more-client">
-                {moreClient.map((item,index) => {
-                  return <img key={index} src={item} alt={"client"+index} />;
-                })}
-              </div>
-            </div>
-          </div>
+          <Container maxWidth={'xl'}>
+            <Grid container className="container">
+              <Grid xs={12} md={12}>
+                <div className="wrapper border">
+                  <Box width={'220px'} m="0 auto">
+                    <Fade>
+                      <Lottie animationData={lottieClient} loop={2} />
+                    </Fade>
+                  </Box>
+                  <h1 className="eng">
+                    We serve clients across diverse industries
+                  </h1>
+                  <h2>我們累積了豐富的服務經驗，在多元產業中跨領域延伸</h2>
+                  <div className="more-client">
+                    {moreClient.map((item, index) => {
+                      return <img key={index} src={item} alt={"client" + index} />;
+                    })}
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
+          </Container>
         </SectionIdea>
       </div>
     </ParallaxProvider>
@@ -425,40 +476,69 @@ const SectionIdea = styled.div`
   display: flex;
   text-align: center;
   background-color: ${colors.White};
-  .more-client{
-    display: grid;
+  .wrapper {
+    padding: 16px 40px;
+  }
+  .border {
+    border-right: 1px solid ${colors.DarkBlue};
+    border-left: 1px solid ${colors.DarkBlue};
+  }
+  h1 {
+    margin: 16px 0 0;
+  }
+  h2 {
+    font-size: 24px;
+    margin: 8px 0 32px;
+  }
+  a {
+    margin: 32px auto 0;
+    background-color: #fff;
+    min-width: 215px;
+  }
+  .more-client {
+    display: inline-grid;
     grid-gap: 44px;
     grid-template-columns: repeat(6, 1fr);
-    img{
+    justify-items: center;
+    img {
       height: 46px;
     }
   }
-  .wrapper {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 80px;
-    .content {
-      margin: 0 auto;
-      max-width: 1760px;
-      padding: 0 80px 30px;
-      box-sizing: content-box;
-      border-left: 1px solid ${colors.DarkBlue};
-      border-right: 1px solid ${colors.DarkBlue};
-      h1 {
-        margin-top: 40px;
-        margin-bottom: 16px;
-      }
-      h2 {
-        margin: 16px 0 48px;
-      }
-      ${media.large`
-        padding: 0 60px
-      `}
-      ${media.medium`
-        padding: 0 20px;
-      `};
+  ${media.large`
+    .more-client {
+      grid-template-columns: repeat(4, 1fr);
     }
-  }
+  `}
+  ${media.medium`
+    padding: 48px 0;
+    .wrapper {
+      padding: 32px;
+    }
+    .container{
+      flex-direction: column;
+      border-right: 1px solid ${colors.DarkBlue};
+      border-left: 1px solid ${colors.DarkBlue};
+      gap: 48px;
+    }
+    .border {
+      border-right: 0;
+    }
+    h1{
+      margin-top: 24px;:
+    }
+    h2{
+      margin: 8px 0 24px;
+    }
+    a{
+      min-width: 172px;
+    }
+    .more-client {
+      grid-template-columns: repeat(3, 1fr);
+      img{
+        height: 24px;
+      }
+    }
+  `}
 `;
 
 const OurClients = styled.div`
@@ -542,6 +622,13 @@ const OurClients = styled.div`
       }
     }
   }
+  ${media.medium`
+    .left{
+      br{
+        display: none;
+      }
+    }
+  `}
 `;
 
 const ParallaxWrapper01 = styled.div`
@@ -560,7 +647,7 @@ const ParallaxWrapper02 = styled.div`
   width: 398px;
   position: absolute;
   right: 220px;
-  bottom: 0;
+  top: 436px;
   img {
     object-fit: cover;
     width: 100%;
@@ -569,10 +656,16 @@ const ParallaxWrapper02 = styled.div`
 
 const HeroWrapper = styled.main`
   text-align: left;
-  padding: 200px 0 120px;
+  padding: 200px 0 180px;
   position: relative;
+  .huge, h1{
+    position: relative;
+    z-index: 2;
+  }
   .content {
     margin-top: 24px;
+    z-index: 2;
+    position: relative;
     h1 {
       margin: 0;
       display: flex;
@@ -592,6 +685,9 @@ const HeroWrapper = styled.main`
       }
     }
   }
+  .hero-img-mb{
+    display: none;
+  }
   @keyframes marker {
     from {
       width: 0;
@@ -600,6 +696,34 @@ const HeroWrapper = styled.main`
       width: 296px;
     }
   }
+  @media screen and (max-width:1330px) {
+    ${ParallaxWrapper01}{
+      display: none;
+    }
+    ${ParallaxWrapper02}{
+      display: none;
+    }
+  }
+  ${media.medium`
+    padding: 72px 0;
+    .content{
+      margin: 8px 0 32px;
+      h1{
+        span {
+          left: 48px;
+          max-width: 192px;
+          height: 16px;
+          top: 14px;
+        }
+      }
+    }
+    .hero-img-mb{
+      display: block;
+      img{
+        width: 100%;
+      }
+    }
+  `}
 `;
 
 const Horizon = styled.div`
@@ -637,4 +761,7 @@ const Horizon = styled.div`
       margin: 0;
     }
   }
+  ${media.medium`
+    padding: 32px 0 72px;
+  `}
 `;

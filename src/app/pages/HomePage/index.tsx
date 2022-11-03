@@ -158,7 +158,7 @@ export function HomePage() {
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
     // console.log(helpColorRef.current!.getBoundingClientRect().y);
 
-    if (themeColorRef.current!.getBoundingClientRect().top < 100) {
+    if (themeColorRef.current!.getBoundingClientRect().top < 130) {
       // debugger
       setBlackBg(false);
     } else {
@@ -182,7 +182,7 @@ export function HomePage() {
 
   const videoJsOptions = {
     autoplay: true,
-    controls: false,
+    controls: true,
     responsive: true,
     fluid: true,
     muted: true,
@@ -200,15 +200,15 @@ export function HomePage() {
 
     // You can handle player events here, for example:
     player.on('waiting', () => {
-      // videojs.log('player is waiting');
+      videojs.log('player is waiting');
     });
 
     player.on('dispose', () => {
-      // videojs.log('player will dispose');
+      videojs.log('player will dispose');
     });
 
     player.on('click', () => {
-      // console.log('click');
+      console.log('click');
       player.requestFullscreen();
       player.muted(false);
     });
@@ -260,7 +260,7 @@ export function HomePage() {
         <PageWrapper>
           <Masthead />
           <VideoWrapper>
-            <Parallax scale={[1, 1.5]} speed={-10}>
+            <Parallax scale={[1, 1.2]} speed={-10}>
               {!isMobile ? (
                 <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
               ) : (
@@ -751,7 +751,6 @@ export function HomePage() {
           <Grid container className="container">
             <Grid xs={12} md={6}>
               <div className="wrapper border">
-                {/* <img className="idea" src={Idea} alt="idea" /> */}
                 <Box width={'220px'} m="0 auto">
                   <Fade>
                     <Lottie animationData={lottieClient} loop={2} />
@@ -947,7 +946,7 @@ const CaseList = styled.div`
     }
     &:hover{
       img{
-        transform: scale(1.2);
+        transform: scale(1.05);
       }
     }
     h4{

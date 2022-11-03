@@ -3,7 +3,11 @@ import styled from 'styled-components/macro';
 import Fade from 'react-reveal/Fade';
 import * as colors from '../../../styles/colors';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import Fetnet from './assets/fetnet.jpg';
+import img01 from './assets/01.jpg';
+import img02 from './assets/02.jpg';
+import img03 from './assets/03.jpg';
+import img04 from './assets/04.jpg';
+import img05 from './assets/05.jpg';
 import * as color from '../../../styles/colors';
 import arrow from './assets/button-black.svg';
 import { Grid, Container } from '@mui/material';
@@ -16,8 +20,8 @@ export default function CaseStudy() {
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img01} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -38,8 +42,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img02} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -60,8 +64,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img03} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -82,8 +86,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img04} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -104,8 +108,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img05} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -126,8 +130,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img01} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -148,8 +152,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img02} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -170,8 +174,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img03} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -192,8 +196,8 @@ export default function CaseStudy() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Case>
-              <Fade bottom cascade>
-                <img src={Fetnet} alt="" />
+              <Fade bottom delay={-500}>
+                <img src={img04} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案

@@ -24,23 +24,23 @@ export function Masthead() {
         {windowWidth > 1178 &&
           <>
             <Title className="eng huge">
-              <Fade bottom cascade duration={1000} delay={100}>
+              <Fade bottom cascade duration={500} delay={100}>
                 We put insight and
               </Fade>
             </Title>
             <Title className="eng huge">
-              <Fade bottom cascade duration={1000} delay={100}>
+              <Fade bottom cascade duration={500} delay={100}>
                 imagination at the center of
               </Fade>
             </Title>
             <Title className="eng huge">
-              <Fade bottom cascade duration={1000} delay={100}>
+              <Fade bottom cascade duration={500} delay={100}>
                 everything we do.
               </Fade>
             </Title>
             <div className="content">
               <h1>
-                <Fade bottom duration={1000} delay={100}>
+                <Fade bottom duration={500} delay={100}>
                   體驗創新就是巧妙地
                   <Mark />
                   連結商業目標和用戶需求，淬鍊價值
