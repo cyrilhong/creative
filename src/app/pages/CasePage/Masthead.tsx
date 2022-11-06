@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import styled from 'styled-components/macro';
 import Fade from 'react-reveal/Fade';
 import * as colors from 'styles/colors';
-import { useWindowSize } from '../../hooks'
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
+import { useWindowSize } from '../../hooks'
 import { media } from 'styles/media';
 export function Masthead() {
   const target = useRef(null);
@@ -24,14 +24,14 @@ export function Masthead() {
         {windowWidth > 1245 &&
           <>
             <Title className="eng huge">
-              <Fade bottom cascade duration={1000} delay={100}>
+              <Fade bottom cascade duration={500} delay={100}>
                 We combine strategic design <br />
                 and product experience.
               </Fade>
             </Title>
             <div className="content">
               <h1>
-                <Fade bottom duration={1000} delay={100}>
+                <Fade bottom duration={500} delay={100}>
                   每個案例都是獨一無二的，我們
                   <Mark />
                   運用策略與設計的跨領域經驗，
@@ -43,14 +43,14 @@ export function Masthead() {
         {windowWidth > 960 && windowWidth < 1245 &&
           <>
             <Title className="eng huge">
-              <Fade bottom cascade duration={1000} delay={100}>
+              <Fade bottom cascade duration={500} delay={100}>
                 We combine strategic <br />
                 design and product <br />experience.
               </Fade>
             </Title>
             <div className="content">
               <h1>
-                <Fade bottom duration={1000} delay={100}>
+                <Fade bottom duration={500} delay={100}>
                   每個案例都是獨一無二的，我們
                   <Mark />
                   運用策略與設計的跨領域經驗，

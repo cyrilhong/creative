@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Container, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Fade from 'react-reveal/Fade';
+import WrappedButton from 'app/components/WrappedButton'
 import { NavBar } from 'app/components/NavBar';
 import { Helmet } from 'react-helmet-async';
 import { StyleConstants } from 'styles/StyleConstants';
@@ -22,8 +23,10 @@ import arrowButton from './assets/arrow-btn-round.svg';
 import arrowBlack from './assets/arrow-black.svg';
 import telescope from './assets/telescope.svg';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import { useWindowSize, isDesktop } from '../../hooks'
 import { media } from 'styles/media';
-
+import Lottie from 'lottie-react';
+import aboutUsAnim from './assets/about-us.json'
 export function AboutUsPage() {
   const [blackBg, setBlackBg] = useState(true);
   const colorRef = useRef<HTMLDivElement>(null);
@@ -36,6 +39,7 @@ export function AboutUsPage() {
       setBlackBg(true);
     }
   });
+  const windowWidth = useWindowSize().width
   return (
     <ParallaxProvider>
       <Helmet>
@@ -47,26 +51,66 @@ export function AboutUsPage() {
         <PageWrapper>
           <Masthead />
           <ParallaxImg>
-            <Parallax speed={-20}>
+            <Parallax speed={-8}>
               <img src={mainBanner} alt="main" />
             </Parallax>
           </ParallaxImg>
           <HappyTeam>
             <Grid className="text" container spacing={5} rowSpacing={9}>
-              <Grid xs={10} xsOffset={1}>
-                <Fade bottom cascade duration={2000} delay={100}>
-                  <div className="super eng">Happy Teams</div>
-                </Fade>
-                <Fade bottom cascade duration={2000} delay={100}>
-                  <div className="super eng">Create</div>
-                </Fade>
-                <Fade bottom cascade duration={2000} delay={100}>
-                  <div className="super eng">Change.</div>
-                </Fade>
+              {isDesktop() ?
+                <Grid xs={12} xsOffset={0} md={10} mdOffset={1}>
+                  <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
+                    <div className="super eng">Happy Teams</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="super eng">Create</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="super eng">Change.</div>
+                  </Fade>
+                </Grid> :
+                <Grid xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="2">
+                  <Grid container spacing={0} rowSpacing={0}>
+                    <Grid xs={12}>
+                      <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
+                        <div className="super eng">Happy</div>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} xsOffset={3}>
+                      <Fade bottom cascade duration={500} delay={100}>
+                        <div className="super eng">Teams</div>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12}>
+                      <Fade bottom cascade duration={500} delay={100}>
+                        <div className="super eng">Create</div>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} xsOffset={3}>
+                      <Fade bottom cascade duration={500} delay={100}>
+                        <div className="super eng change">Change.</div>
+                      </Fade>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              }
+              <Grid xs={6} className="mb-img">
+                <ParallaxImg>
+                  <Parallax speed={15}>
+                    <img src={team1} alt="team1" />
+                  </Parallax>
+                </ParallaxImg>
+              </Grid>
+              <Grid xs={6} className="mb-img">
+                <ParallaxImg>
+                  <Parallax speed={5}>
+                    <img src={team2} alt="team2" />
+                  </Parallax>
+                </ParallaxImg>
               </Grid>
             </Grid>
             <Grid className="teams-img" container spacing={5} rowSpacing={9}>
-              <Grid xs={5} className="left">
+              <Grid xs={12} md={6} className="left">
                 <ParallaxImg>
                   <Parallax speed={5}>
                     <img src={team1} alt="team1" />
@@ -76,9 +120,9 @@ export function AboutUsPage() {
                   <img src={hotBaloon} alt="hotBaloon" />
                 </div>
               </Grid>
-              <Grid xs={5} xsOffset={1} className="right">
+              <Grid xs={12} md={6} className="right">
                 <ParallaxImg>
-                  <Parallax speed={20}>
+                  <Parallax speed={10}>
                     <img src={team2} alt="team2" />
                   </Parallax>
                 </ParallaxImg>
@@ -98,6 +142,9 @@ export function AboutUsPage() {
                     我們做設計很認真，玩樂也很盡興。每年的員工旅遊，已經走訪世界各地。每季的聚餐，則吃遍台灣大街小巷。能夠熱切開心地過生活，才懂得欣賞與啟發，擁有源源不絕的創造力。
                   </h4>
                 </div>
+                <div className="mb-hotBaloon">
+                  <img src={hotBaloon} alt="hotBaloon" />
+                </div>
               </Grid>
             </Grid>
           </HappyTeam>
@@ -106,7 +153,7 @@ export function AboutUsPage() {
       <div
         ref={colorRef}
         className="leadership-team"
-        // style={{ paddingBottom: '120px' }}
+      // style={{ paddingBottom: '120px' }}
       >
         <div className={blackBg ? 'bg-about-us' : 'black'}>
           <PageWrapper
@@ -122,14 +169,14 @@ export function AboutUsPage() {
               </div>
             </Horizon>
             <Leadership>
-              <Grid container spacing={5} rowSpacing={9}>
-                <Grid xs={4}>
+              <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
+                <Grid xs={12} md={4}>
                   <div className="huge eng">Our leadership team</div>
                   <h1>專家團隊</h1>
                 </Grid>
-                <Grid xs={8} padding={0}>
+                <Grid xs={12} md={8} padding={0}>
                   <Grid container spacing={5} rowSpacing={8}>
-                    <Grid xs={6}>
+                    <Grid xs={12} md={6}>
                       <img src={james} alt="james" />
                       <div className="info">
                         <Box>
@@ -139,7 +186,7 @@ export function AboutUsPage() {
                         <img src={arrowButton} alt="button" />
                       </div>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid xs={12} md={6}>
                       <img src={alan} alt="alan" />
                       <div className="info">
                         <Box>
@@ -149,7 +196,7 @@ export function AboutUsPage() {
                         <img src={arrowButton} alt="button" />
                       </div>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid xs={12} md={6}>
                       <img src={david} alt="david" />
                       <div className="info">
                         <Box>
@@ -159,7 +206,7 @@ export function AboutUsPage() {
                         <img src={arrowButton} alt="button" />
                       </div>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid xs={12} md={6}>
                       <img src={charles} alt="charles" />
                       <div className="info">
                         <Box>
@@ -174,8 +221,8 @@ export function AboutUsPage() {
               </Grid>
             </Leadership>
             <Performance>
-              <Grid container spacing={5} rowSpacing={9}>
-                <Grid xs={4} className="item">
+              <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
+                <Grid xs={12} md={4} className="item">
                   <div className="super eng">13</div>
                   <h2 className="eng">YEARS</h2>
                   <h2>體驗設計顧問經驗</h2>
@@ -183,7 +230,7 @@ export function AboutUsPage() {
                     體驗設計是一段連續的過程，從探索研究、創新概念到設計落實，都應該有對應的專業能力，我們相信結合用戶需求和客戶商業價值，才能為企業落實服務創新
                   </h4>
                 </Grid>
-                <Grid xs={4} className="item">
+                <Grid xs={12} md={4} className="item">
                   <div className="super eng">300+</div>
                   <h2 className="eng">PROJECTS</h2>
                   <h2>多樣性專案案例</h2>
@@ -191,7 +238,7 @@ export function AboutUsPage() {
                     我們重視每一位提攜與信任我們的客戶，一起攜手在金融、航空、交通、生活應用與專業領域中積累了超過300件以上饒富創意與影響力的產品
                   </h4>
                 </Grid>
-                <Grid xs={4} className="item">
+                <Grid xs={12} md={4} className="item">
                   <div className="super eng">45+</div>
                   <h2 className="eng">People</h2>
                   <h2>跨職能團隊成員</h2>
@@ -205,15 +252,22 @@ export function AboutUsPage() {
           <SectionIdea>
             <div className="wrapper">
               <div className="content">
-                <img className="idea" src={telescope} alt="telescope" />
+                <Box width={'220px'} m="0 auto">
+                  <Fade>
+                    <Lottie animationData={aboutUsAnim} loop={1} />
+                  </Fade>
+                </Box>
                 <h1 className="eng">
-                Surround yourself with highly ambitious, friendly & humble people !
+                  Surround yourself with highly ambitious, friendly & humble people !
                 </h1>
                 <h2>我們深知人才是最重要的資產，一起加入改變！</h2>
-                <CTA href={"#"}>
-                  <h4 className="eng">JOIN US</h4>
-                  <img src={arrowBlack} alt="arrow" />
-                </CTA>
+                <Box display={"flex"} justifyContent="center">
+                  <WrappedButton
+                    text="JOIN US"
+                    link="#"
+                    isWhite={true}
+                  />
+                </Box>
               </div>
             </div>
           </SectionIdea>
@@ -269,13 +323,14 @@ const HappyTeam = styled.div`
     z-index: 0;
     .left {
       padding-left: 60px;
+      padding-right: 70px;
     }
     img {
       width: 100%;
     }
     .right {
       margin-top: -250px;
-      padding: 0 40px 0 0;
+      padding: 0 150px 0 0;
     }
     .hotBaloon {
       display: flex;
@@ -302,6 +357,77 @@ const HappyTeam = styled.div`
     margin: 0;
     overflow: visible;
   }
+  .mb-img{
+    display: none;
+  }
+  .mb-hotBaloon{
+    display: none;
+  }
+  @media screen and (max-width: 1432px) {
+    .text{
+      .super{
+        font-size: 100px;
+        line-height: 114px;
+      }
+    }
+  }
+  ${media.medium`
+    padding: 12px 0 48px;
+    .text{
+      .super{
+        font-size: 48px;
+        line-height: 60px;
+      }
+    }
+    .change {
+      margin-left: 25px;
+    }
+    .left{
+      display: none;
+    }
+    .teams-img{
+      z-index: 2;
+      .MuiGrid2-root{
+        width: 100%;
+      }
+      .right{
+        margin-top: 0;
+        padding: 0;
+        ${ParallaxImg}{
+          display: none;
+        }
+        .context{
+          margin: 130px 20px 0 20px;
+          padding: 24px 20px;
+          h2,h4{
+            text-align: center;
+          }
+          h2{
+            margin-bottom: 8px;
+          }
+          h4{
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+    .mb-img{
+      display: block;
+      z-index: 0;
+      :nth-child(2) {
+        padding-right: 10px;
+        margin-top: -242px;
+      }
+      :nth-child(3) {
+        padding-left: 10px;
+        margin-top: -336px;
+      }
+    }
+    .mb-hotBaloon{
+      display: block;
+      margin-left: 36px;
+    }
+  `}
 `;
 
 const Horizon = styled.div<{
@@ -334,13 +460,16 @@ const Horizon = styled.div<{
       margin-bottom: 2px;
       border-radius: 100%;
       background-color: ${prop =>
-        !prop.blackBg ? color.BGGrey : color.DarkBlue};
+    !prop.blackBg ? color.BGGrey : color.DarkBlue};
       margin-right: 8px;
     }
     h4 {
       margin: 0;
     }
   }
+  ${media.medium`
+    padding: 64px 0 72px;
+  `}
 `;
 
 const Leadership = styled.div`
@@ -366,6 +495,15 @@ const Leadership = styled.div`
       margin: 0;
     }
   }
+  ${media.medium`
+    h1{
+      margin: 8px 0 48px;
+    }
+    .info{
+      margin: 16px 0 -32px;
+      padding-bottom: 16px;
+    }
+  `}
 `;
 
 const Performance = styled.div`
@@ -386,6 +524,24 @@ const Performance = styled.div`
       max-width: 320px;
     }
   }
+  ${media.medium`
+    padding: 54px 0 72px;
+    .item{
+      .super{
+        font-size: 96px;
+        line-height: 96px;
+        margin-top: 48px;
+      }
+      h2.eng{
+        font-size: 32px;
+        line-height: 40px;
+        margin-top: 0;
+      }
+      h2{
+        margin-top: 24px;
+      }
+    }
+  `}
 `;
 
 const SectionIdea = styled.div`
@@ -397,6 +553,9 @@ const SectionIdea = styled.div`
     margin: 0 auto;
     width: 100%;
     padding: 0 80px;
+    a{
+      background-color: ${color.White};
+    }
     .content {
       margin: 0 auto;
       max-width: 1760px;
@@ -404,41 +563,33 @@ const SectionIdea = styled.div`
       box-sizing: content-box;
       border-left: 1px solid ${color.DarkBlue};
       border-right: 1px solid ${color.DarkBlue};
+      color: ${color.DarkBlue};
       h1 {
         margin-top: 40px;
-        color: ${color.DarkBlue};
       }
-      h2{
-        color: ${color.DarkBlue};
-      }
-      ${media.large`
-        padding: 0 60px
-      `}
-      ${media.medium`
-        padding: 0 20px;
-      `};
     }
   }
-`;
-
-const CTA = styled.a`
-  width: 242px;
-  background: initial;
-  border: 1px solid ${color.DarkBlue};
-  border-radius: 100px;
-  padding: 16px 32px;
-  display: flex;
-  color: ${color.DarkBlue};
-  margin: 32px auto 0;
-  justify-content: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  h4 {
-    margin: 0;
-  }
-  img {
-    margin-left: 4px;
-  }
+  ${media.large`
+    .content {
+      padding: 0 60px
+    }
+  `}
+  ${media.medium`
+    padding: 48px 0;
+    .wrapper{
+      padding: 0 20px;
+      .content {
+        padding: 0 20px;
+        .idea{
+          width: 160px;
+        }
+        h1{
+          margin: 24px 0 8px;
+        }
+        h2{
+          margin: 0;
+        }
+      }
+    }
+  `};
 `;

@@ -3,6 +3,8 @@ import styled from 'styled-components/macro';
 import Fade from 'react-reveal/Fade';
 import * as colors from 'styles/colors';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
+import { useWindowSize } from '../../hooks'
+import { media } from 'styles/media';
 export function Masthead() {
   const target = useRef(null);
   function Mark() {
@@ -15,27 +17,72 @@ export function Masthead() {
     });
     return <span ref={ref} />;
   }
+  const windowWidth = useWindowSize().width
   return (
     <Wrapper>
       <ParallaxProvider>
-        <Title className="eng huge">
-          <Fade bottom cascade duration={2000} delay={100}>
-            We believe a great team comes
-          </Fade>
-        </Title>
-        <Title className="eng huge">
-          <Fade bottom cascade duration={2000} delay={100}>
-            with diversity&growth mindsets.
-          </Fade>
-        </Title>
+        {windowWidth > 1320 &&
+          <>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                We believe a great team comes
+              </Fade>
+            </Title>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                with diversity&growth mindsets.
+              </Fade>
+            </Title>
+          </>
+        }
+        {windowWidth > 960 && windowWidth < 1320 &&
+          <>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                We believe a great
+              </Fade>
+            </Title>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                team comes with
+              </Fade>
+            </Title>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                diversity&growth
+              </Fade>
+            </Title>
+            <Title className="eng huge">
+              <Fade bottom cascade duration={500} delay={100}>
+                mindsets.
+              </Fade>
+            </Title>
+          </>
+        }
+        {windowWidth < 960 &&
+          <>
+            <Title className="eng huge">
+              <Fade bottom duration={500} delay={100}>
+                We believe a great team comes with diversity&growth mindsets.
+              </Fade>
+            </Title>
+          </>
+        }
         <div className="content">
-          <h1>
-            <Fade bottom duration={2000} delay={100}>
-              我們來自不同領域，
-              <Mark />
-              形塑合拍有默契的跨職能團隊
-            </Fade>
-          </h1>
+          {windowWidth > 960 ?
+            <h1>
+              <Fade bottom duration={500} delay={100}>
+                我們來自不同領域，
+                <Mark />
+                形塑合拍有默契的跨職能團隊
+              </Fade>
+            </h1> :
+            <h1>
+              <Fade bottom duration={500} delay={100}>
+                我們來自不同領域，形塑合拍有默契的跨職能團隊
+              </Fade>
+            </h1>
+          }
         </div>
       </ParallaxProvider>
     </Wrapper>
@@ -74,6 +121,9 @@ const Wrapper = styled.main`
       width: 484px;
     }
   }
+  ${media.medium`
+    padding: 72px 0 48px;
+  `}
 `;
 
 const Title = styled.div``;

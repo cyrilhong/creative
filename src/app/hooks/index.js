@@ -24,3 +24,9 @@ export const useWindowSize = () => {
   }, [])
   return windowSize
 }
+
+
+export const isDesktop = () => {
+  const windowWidth = useWindowSize().width
+  return windowWidth > 960
+}

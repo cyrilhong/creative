@@ -8,7 +8,7 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components/macro';
 import { useForm, ValidationError } from '@formspree/react';
 import Box from '@mui/material/Box';
-// import { Grid, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import * as color from 'styles/colors';
@@ -22,7 +22,11 @@ import roundArrowBtn from './assets/round-arrow-btn.svg';
 import bgSecond from './assets/bg-second.jpg';
 import arrowBlack from './assets/arrow-black.svg';
 import { media } from 'styles/media';
-
+import { isDesktop, useWindowSize } from '../../hooks'
+import WrappedButton from 'app/components/WrappedButton'
+import heroImgMb from './assets/heroImgMb.png'
+import Lottie from 'lottie-react';
+import ourWorks from './assets/our-works.json'
 export function ServicePage() {
   const target = useRef(null);
   function Mark() {
@@ -35,6 +39,7 @@ export function ServicePage() {
     });
     return <span ref={ref} />;
   }
+  const windowWidth = useWindowSize().width
 
   return (
     <ParallaxProvider>
@@ -49,44 +54,75 @@ export function ServicePage() {
       <div className="bg-service">
         <PageWrapper>
           <HeroWrapper>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                Experience Design
-              </Fade>
+            {isDesktop() ?
+              <>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    Experience Design
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    driven by prototyping
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    & process.
+                  </Fade>
+                </div>
+                <div className="content">
+                  <Fade bottom duration={500} delay={100}>
+                    <h1><Mark />
+                      我們透過完善的設計流程與反覆驗證，
+                    </h1>
+                    <h1>
+                      幫助客戶實現願景
+                    </h1>
+                  </Fade>
+                </div>
+              </> :
+              <>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    Experience Design
+                  </Fade>
+                </div>
+                <div className="eng huge">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    Driven By Process.
+                  </Fade>
+                </div>
+                <div className="content">
+                  <Fade bottom duration={500} delay={100}>
+                    <h1>
+                      <Mark />
+                      我們透過完善的設計流程與反
+                    </h1>
+                    <h1>
+                      覆驗證，幫助客戶實現願景
+                    </h1>
+                  </Fade>
+                </div>
+              </>
+            }
+            <div className="hero-img-mb">
+              <img src={heroImgMb} alt="heroImgMb" />
             </div>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                driven by prototyping
-              </Fade>
-            </div>
-            <div className="eng huge">
-              <Fade bottom cascade duration={2000} delay={100}>
-                & process.
-              </Fade>
-            </div>
-            <div className="content">
-              <h1 style={{ display: 'block' }}>
-                <Fade bottom duration={2000} delay={100}>
-                  <Mark />
-                  我們透過完善的設計流程與反覆驗證，
-                </Fade>
-                <Fade bottom duration={2000} delay={100}>
-                  幫助客戶實現願景
-                </Fade>
-              </h1>
-            </div>
+
             <ParallaxWrapper01>
-              <Parallax scale={[1, 2]}>
-                <img src={hero2} alt="hero2" />
+              <Parallax scale={[1, 1.2]}>
+                <img src={hero1} alt="Yoxi" />
               </Parallax>
             </ParallaxWrapper01>
             <ParallaxWrapper02>
-              <Parallax scale={[1, 1.5]}>
-                <img src={hero1} alt="hero1" />
+              <Parallax scale={[1, 1.3]}>
+                <img src={hero2} alt="Yoxi" />
               </Parallax>
             </ParallaxWrapper02>
           </HeroWrapper>
-          <Horizon>
+
+          <Horizon pt="40px">
             <div className="title">
               <div className="dot" />
               <h4 className="eng">PROCESS</h4>
@@ -96,19 +132,25 @@ export function ServicePage() {
 
           <ProcessSection>
             <Grid container>
-              <Grid xs={4}>
-                <Fade bottom cascade duration={2000} delay={100}>
+              <Grid xs={12} md={4}>
+                {isDesktop() ? <Fade bottom cascade duration={500} delay={100}>
                   <div className="huge eng">Tailored</div>
                   <div className="huge eng">Design</div>
                   <div className="huge eng">Process</div>
                   <h1 style={{ margin: 0 }}>客製化設計流程</h1>
-                </Fade>
+                </Fade> :
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">Tailored Design</div>
+                    <div className="huge eng">Process</div>
+                    <h1 style={{ margin: 0 }}>客製化設計流程</h1>
+                  </Fade>
+                }
               </Grid>
-              <Grid xs={8} padding={0}>
-                <h4 style={{ margin: '0 0 48px' }}>
+              <Grid xs={12} md={8} padding={0}>
+                <h4>
                   假字假字假字假字探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。
                 </h4>
-                <Fade bottom cascade duration={2000} delay={100}>
+                <Fade bottom cascade duration={500} delay={100}>
                   <img src={designProcess} alt="design-process" />
                 </Fade>
               </Grid>
@@ -127,7 +169,7 @@ export function ServicePage() {
                 </ParallaxImg>
               </Grid>
             </Grid>
-            <Horizon style={{ paddingTop: '72px' }}>
+            <Horizon>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">SERVICES</h4>
@@ -135,17 +177,17 @@ export function ServicePage() {
               <h4 className="eng">02</h4>
             </Horizon>
             <Grid container spacing={0}>
-              <Grid xs={6}>
-                <div className="huge eng" style={{ paddingRight: '40px' }}>
+              <Grid xs={12} md={6}>
+                <div className="huge eng title">
                   Service and Product Strategy
                 </div>
                 <h1>服務與產品策略</h1>
-                <Box maxWidth={'400px'}>
-                  <h4>
-                    分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品制定體驗策略方針
-                  </h4>
-                </Box>
-                <Grid xs={10}>
+                <Grid xs={12} md={10}>
+                  <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
+                    <h4 className='subtitle'>
+                      分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品制定體驗策略方針
+                    </h4>
+                  </Box>
                   <ItemList>
                     <ul>
                       <li>
@@ -170,16 +212,16 @@ export function ServicePage() {
                   </ItemList>
                 </Grid>
               </Grid>
-              <Grid xs={6}>
+              <Grid xs={12} md={6}>
                 <div className="huge eng">Core Experience Planning</div>
                 <h1>核心體驗規劃</h1>
-                <Box maxWidth={'400px'}>
-                  <h4>
-                    從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
-                  </h4>
-                </Box>
-                <Grid xs={10}>
+                <Grid xs={12} md={10}>
                   <ItemList>
+                    <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
+                      <h4 className='subtitle'>
+                        從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
+                      </h4>
+                    </Box>
                     <ul>
                       <li>
                         <Head>
@@ -209,27 +251,27 @@ export function ServicePage() {
               <Grid container>
                 <Grid xs={12}>
                   <ParallaxImg>
-                    <Parallax scale={[1, 1.5]}>
+                    <Parallax scale={[1, 1.05]}>
                       <img src={bgSecond} alt="bgSecond" />
                     </Parallax>
                   </ParallaxImg>
                 </Grid>
               </Grid>
 
-              <Grid container spacing={0} marginTop="72px">
-                <Grid xs={5}>
+              <Grid container spacing={0} marginTop={isDesktop() ? '72px' : '58px'}>
+                <Grid xs={12} md={5}>
                   <div className="huge eng" style={{ paddingRight: '40px' }}>
                     Digial Product Design
                   </div>
-                  <h1 style={{ margin: 0 }}>數位產品設計</h1>
+                  <h1 style={{ margin: '8px 0' }}>數位產品設計</h1>
                   <Box maxWidth={'400px'}>
                     <h4>
                       探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。
                     </h4>
                   </Box>
                 </Grid>
-                <Grid xs={6} xsOffset={1}>
-                  <Grid xs={10}>
+                <Grid xs={12} md={6} xsOffset={0} mdOffset={1}>
+                  <Grid xs={12} md={10}>
                     <ItemList>
                       <ul>
                         <li>
@@ -262,19 +304,28 @@ export function ServicePage() {
           </PageWrapper>
         </SecondSection>
         <SectionIdea>
-          <div className="wrapper">
-            <div className="content">
-              <img className="magnifier" src={Magnifier} alt="Magnifier" />
-              <h1 className="eng">
-                We believe success comes with responsibility.
-              </h1>
-              <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
-              <CTA href={'#'}>
-                <h4 className="eng">OUR WORKS</h4>
-                <img src={arrowBlack} alt="arrow" />
-              </CTA>
-            </div>
-          </div>
+          <Container maxWidth={'xl'}>
+            <Grid container className="container">
+              <Grid xs={12} md={12}>
+                <div className="wrapper border">
+                  <Box width={'220px'} m="0 auto">
+                    <Fade>
+                      <Lottie animationData={ourWorks} loop={2} />
+                    </Fade>
+                  </Box>
+                  <h1 className="eng">
+                    We believe success comes with responsibility.
+                  </h1>
+                  <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
+                  <WrappedButton
+                    text="OUR WORKS"
+                    link="#"
+                    isWhite={true}
+                  />
+                </div>
+              </Grid>
+            </Grid>
+          </Container>
         </SectionIdea>
       </div>
     </ParallaxProvider>
@@ -286,41 +337,71 @@ const SectionIdea = styled.div`
   display: flex;
   text-align: center;
   background-color: ${colors.White};
+  .wrapper {
+    padding: 16px 40px;
+  }
+  .border {
+    border-right: 1px solid ${colors.DarkBlue};
+    border-left: 1px solid ${colors.DarkBlue};
+  }
+  h1 {
+    margin: 16px 0 0;
+  }
+  h2 {
+    font-size: 24px;
+    margin: 8px 0 32px;
+  }
+  a {
+    margin: 32px auto 0;
+    background-color: #fff;
+    min-width: 215px;
+  }
   .more-client {
-    display: grid;
+    display: inline-grid;
     grid-gap: 44px;
     grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
     img {
       height: 46px;
     }
   }
-  .wrapper {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 80px;
-    .content {
-      margin: 0 auto;
-      max-width: 1760px;
-      padding: 0 80px 30px;
-      box-sizing: content-box;
-      border-left: 1px solid ${colors.DarkBlue};
-      border-right: 1px solid ${colors.DarkBlue};
-      h1 {
-        margin-top: 40px;
-        margin-bottom: 16px;
-      }
-      h2 {
-        margin: 16px 0 48px;
-      }
-      ${media.large`
-        padding: 0 60px
-      `}
-      ${media.medium`
-        padding: 0 20px;
-      `};
+  ${media.large`
+    .more-client {
+      grid-template-columns: repeat(4, 1fr);
     }
-  }
+  `}
+  ${media.medium`
+    padding: 48px 0;
+    .wrapper {
+      padding: 32px;
+    }
+    .container{
+      flex-direction: column;
+      border-right: 1px solid ${colors.DarkBlue};
+      border-left: 1px solid ${colors.DarkBlue};
+      gap: 48px;
+    }
+    .border {
+      border-right: 0;
+    }
+    h1{
+      margin-top: 24px;:
+    }
+    h2{
+      margin: 8px 0 24px;
+    }
+    a{
+      min-width: 172px;
+    }
+    .more-client {
+      grid-template-columns: repeat(3, 1fr);
+      img{
+        height: 24px;
+      }
+    }
+  `}
 `;
+
 
 const OurClients = styled.div`
   margin-top: 40px;
@@ -430,10 +511,16 @@ const ParallaxWrapper02 = styled.div`
 
 const HeroWrapper = styled.main`
   text-align: left;
-  padding: 200px 0 174px;
+  padding: 200px 0 180px;
   position: relative;
+  .huge, h1{
+    position: relative;
+    z-index: 2;
+  }
   .content {
     margin-top: 24px;
+    z-index: 2;
+    position: relative;
     h1 {
       margin: 0;
       display: flex;
@@ -453,21 +540,55 @@ const HeroWrapper = styled.main`
       }
     }
   }
+  .hero-img-mb{
+    display: none;
+  }
   @keyframes marker {
     from {
       width: 0;
     }
     to {
-      width: 414px;
+      width: 296px;
     }
   }
+  @media screen and (max-width:1330px) {
+    ${ParallaxWrapper01}{
+      display: none;
+    }
+    ${ParallaxWrapper02}{
+      display: none;
+    }
+  }
+  ${media.medium`
+    padding: 72px 0;
+    .content{
+      margin: 8px 0 32px;
+      h1{
+        span {
+          left: 0;
+          max-width: 263px;
+          height: 16px;
+          top: 14px;
+        }
+      }
+    }
+    .hero-img-mb{
+      display: block;
+      img{
+        width: 100%;
+      }
+    }
+  `}
 `;
 
-const Horizon = styled.div`
+const Horizon = styled.div<{
+  pt?: string;
+}>`
   /* border-top: 1px solid ${colors.White}; */
   display: flex;
   justify-content: space-between;
-  padding: 120px 0;
+  padding-bottom: 120px;
+  padding-top: ${prop => prop.pt ? prop.pt : '120px'};
   color: ${colors.DarkBlue};
   position: relative;
   &::after {
@@ -498,7 +619,11 @@ const Horizon = styled.div`
       margin: 0;
     }
   }
+  ${media.medium`
+    padding: 32px 0 72px;
+  `}
 `;
+
 
 const ProcessSection = styled.div`
   padding-bottom: 120px;
@@ -517,13 +642,19 @@ const ProcessSection = styled.div`
       width: 48px;
     }
     h4 {
-      margin: 0 0 4px;
+      margin: 0 0 48px;
       font-weight: 100;
     }
     h2 {
       margin: 0;
     }
   }
+  ${media.medium`
+    padding-bottom: 32px;
+    h4{
+      margin: 48px 0 32px;
+    }
+  `}
 `;
 
 const ParallaxImg = styled.div`
@@ -537,6 +668,24 @@ const ParallaxImg = styled.div`
 const SecondSection = styled.div`
   padding: 76px 0 0;
   background-color: ${color.BGBeige};
+  .title{
+    padding-right: 40px;
+  }
+  ${media.medium`
+    padding: 24px 0 0;
+    .huge{
+      margin-top: 32px;
+    }
+    h1{
+      margin: 8px 0;
+    }
+    h4{
+      margin: 0 0 32px;
+    }
+    .title{
+      padding-right: 0;
+    }
+  `}
 `;
 
 const ItemList = styled.div`
@@ -571,6 +720,13 @@ const Head = styled.div`
 const DigitalProduct = styled.div`
   margin-top: 120px;
   padding-bottom: 200px;
+  h4{
+    margin: 0;
+  }
+  ${media.medium`
+    padding-bottom: 56px;
+    margin-top: 32px;
+  `}
 `;
 
 const CTA = styled.a`
