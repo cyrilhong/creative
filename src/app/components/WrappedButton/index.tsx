@@ -1,16 +1,22 @@
 import * as colors from 'styles/colors';
 import styled from 'styled-components/macro';
 import { media } from 'styles/media';
+interface Props {
+  link?: string,
+  isWhite?: boolean,
+  text?: string,
+  iconRotate?: number
+}
 
-export default function WrappedButton({ link, isWhite, text }) {
-const CTA = styled.a`
+export default function WrappedButton<Props>({ link="#", isWhite=true, text="", iconRotate=0 }) {
+  const CTA = styled.a`
   width: auto;
   display: inline-flex;
   background: ${isWhite ? colors.BGGreen : colors.DarkBlue};
-  border: 2px solid ${isWhite?colors.DarkBlue:colors.White};
+  border: 2px solid ${isWhite ? colors.DarkBlue : colors.White};
   border-radius: 100px;
-  padding: 16px ${isWhite?'32px':'48px'} 16px ${isWhite?'48px':'60px'};
-  color: ${isWhite?colors.DarkBlue:colors.White};
+  padding: 16px ${isWhite ? '32px' : '48px'} 16px ${isWhite ? '48px' : '60px'};
+  color: ${isWhite ? colors.DarkBlue : colors.White};
   margin: 32px 0 0;
   justify-content: center;
   cursor: pointer;
@@ -21,19 +27,19 @@ const CTA = styled.a`
   transition: all 0.5s ease-in;
   path {
     transition: all 0.5s;
-    stroke: ${isWhite?colors.DarkBlue:colors.White};
+    stroke: ${isWhite ? colors.DarkBlue : colors.White};
   }
   &:hover {
-    color: ${isWhite?colors.White:colors.DarkBlue};
+    color: ${isWhite ? colors.White : colors.DarkBlue};
     path {
-      stroke: ${isWhite?colors.White:colors.DarkBlue};
+      stroke: ${isWhite ? colors.White : colors.DarkBlue};
     }
   }
   &::before {
     -webkit-animation: move-out 0.3s;
     animation: move-out 0.3s;
-    background: ${isWhite?colors.DarkBlue:colors.White};
-    color: ${isWhite?colors.White:colors.DarkBlue};
+    background: ${isWhite ? colors.DarkBlue : colors.White};
+    color: ${isWhite ? colors.White : colors.DarkBlue};
     content: '';
     height: 100%;
     left: -100%;
@@ -53,6 +59,7 @@ const CTA = styled.a`
   svg {
     margin-left: 4px;
     z-index: 1;
+    transform: rotate(${iconRotate}deg);
   }
   @keyframes move-in {
     0% {
