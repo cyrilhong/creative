@@ -38,6 +38,7 @@ export function NavBar(blackBg) {
     }
     ${media.medium`
       height: ${StyleConstants.NAV_BAR_MOBILE_HEIGHT};
+      width: 100vw;
       .logo{
         width: 100%;
         display: block;

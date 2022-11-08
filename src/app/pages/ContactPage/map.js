@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { useWindowSize, isDesktop } from '../../hooks'
 import * as colors from 'styles/colors';
 import GoogleMapReact from 'google-map-react';
 import pin from './assets/pin.png'
@@ -27,7 +28,8 @@ export default function Map() {
           lat={25.08067881152031}
           lng={121.55802049834605}
         >
-          <img style={{ display: 'block', width: '60px', height: '76px', marginTop: '-30px', marginLeft: '-38px' }} className='pin' src={pin} alt="pin" />
+          {isDesktop() ? <img style={{ display: 'block', width: '60px', height: '76px', marginTop: '-30px', marginLeft: '-38px' }} className='pin' src={pin} alt="pin" /> :
+            <img style={{ display: 'block', width: '28px', height: '35px', marginTop: '-14px', marginLeft: '-17px' }} className='pin' src={pin} alt="pin" />}
         </div>
       </GoogleMapReact>
 

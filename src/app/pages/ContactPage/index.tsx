@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useWindowSize, isDesktop } from '../../hooks'
 import * as colors from 'styles/colors';
 import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
@@ -20,6 +21,7 @@ import roundArrowBtn from './assets/round-arrow-btn.svg';
 import location from './assets/location.jpg';
 import pin from './assets/pin.jpg';
 import Map from './map'
+import { media } from 'styles/media';
 
 export function ContactPage() {
   const [state, handleSubmit] = useForm('mdojganb');
@@ -41,7 +43,7 @@ export function ContactPage() {
   const [bottomSticky, setBottomSticky] = useState(false);
   const positionRef = useRef<HTMLDivElement>(null);
   const FaqPositionRef = useRef<HTMLDivElement>(null);
-
+  const windowWidth = useWindowSize().width
   useScrollPosition(({ prevPos, currPos }) => {
     if (
       positionRef.current!.getBoundingClientRect().top < 0 &&
@@ -72,27 +74,71 @@ export function ContactPage() {
           <PageWrapper>
             <Intro>
               <Grid container>
-                <Grid item xs={9}>
-                  <Fade bottom cascade duration={2000} delay={100}>
+                {windowWidth > 1054 && <Grid item xs={12}>
+                  <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">Let’s talk about what we </div>
                   </Fade>
-                  <Fade bottom cascade duration={2000} delay={100}>
+                  <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">can make, build, design</div>
                   </Fade>
-                  <Fade bottom cascade duration={2000} delay={100}>
+                  <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">together.</div>
                   </Fade>
                   <div className="content">
                     <h1 style={{ display: 'flex' }}>
-                      <Fade bottom duration={2000} delay={100}>
+                      <Fade bottom duration={500} delay={100}>
                         有所
                         <Mark />
                         行動才能創造改變，就從與我們聊聊開始！
                       </Fade>
                     </h1>
                   </div>
-                </Grid>
-                <Grid item xs={3}>
+                </Grid>}
+                {windowWidth < 1055 && windowWidth > 959 && <Grid item xs={12}>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">Let’s talk about what</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">we can make, build,</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">design together.</div>
+                  </Fade>
+                  <div className="content">
+                    <h1 style={{ display: 'flex' }}>
+                      <Fade bottom duration={500} delay={100}>
+                        有所
+                        <Mark />
+                        行動才能創造改變，就從與我們聊聊開始！
+                      </Fade>
+                    </h1>
+                  </div>
+                </Grid>}
+                {windowWidth < 960 && <Grid item xs={12}>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">Let’s talk about what</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">we can make, build,</div>
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    <div className="huge eng">design together.</div>
+                  </Fade>
+                  <div className="content">
+                    <FeatureHead>
+                    有所
+                      <div className='draw'>行動才能創造改變</div>，就從與我們聊聊開始！
+                    </FeatureHead>
+                  </div>
+                </Grid>}
+                <GetInTouch>
+                  <Box>
+                    <h2>專案詢問</h2>
+                    <h5 className="eng">GET IN TOUCH</h5>
+                  </Box>
+                  <img src={arrowBtn} alt="arrow" />
+                </GetInTouch>
+                {/* <Grid item xs={3}>
                   <GetInTouch>
                     <Box>
                       <h2>專案詢問</h2>
@@ -100,7 +146,7 @@ export function ContactPage() {
                     </Box>
                     <img src={arrowBtn} alt="arrow" />
                   </GetInTouch>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12}>
                   <Divider>
                     <div className="title">
@@ -112,7 +158,7 @@ export function ContactPage() {
               </Grid>
               <StepList>
                 <Grid container spacing={0}>
-                  <Grid item className="step-1" xs={3}>
+                  <Grid item className="step-1" xs={12} md={6} lg={3}>
                     <Step>
                       <div className="head">
                         <div className="huge eng">01</div>
@@ -124,7 +170,7 @@ export function ContactPage() {
                       </h4>
                     </Step>
                   </Grid>
-                  <Grid item className="step-2" xs={3}>
+                  <Grid item className="step-2" xs={12} md={6} lg={3}>
                     <Step>
                       <div className="head">
                         <div className="huge eng">02</div>
@@ -137,7 +183,7 @@ export function ContactPage() {
                       </h4>
                     </Step>
                   </Grid>
-                  <Grid item className="step-3" xs={3}>
+                  <Grid item className="step-3" xs={12} md={6} lg={3}>
                     <Step>
                       <div className="head">
                         <div className="huge eng">03</div>
@@ -149,7 +195,7 @@ export function ContactPage() {
                       </h4>
                     </Step>
                   </Grid>
-                  <Grid item className="step-4" xs={3}>
+                  <Grid item className="step-4" xs={12} md={6} lg={3}>
                     <Step>
                       <div className="head">
                         <div className="huge eng">04</div>
@@ -170,6 +216,7 @@ export function ContactPage() {
         <FormSection className="service-second-section">
           <PageWrapper
             overflow={false}
+            className="form-section"
             style={{
               display: 'flex',
               alignItems: 'flex-start',
@@ -519,13 +566,13 @@ export function ContactPage() {
                 <h4 className="eng">03</h4>
               </Horizon>
               <Grid container spacing={8}>
-                <Grid item xs={5}>
+                <Grid item xs={12} md={5}>
                   <Box>
                     <div className="huge eng">FAQ</div>
                     <h1>常見問題</h1>
                   </Box>
                 </Grid>
-                <Grid item xs={7}>
+                <Grid item xs={12} md={7}>
                   <FaqGroup>
                     <h3 className="title">服務項目</h3>
                     <ul>
@@ -610,14 +657,14 @@ export function ContactPage() {
                 <h4 className="eng">04</h4>
               </Horizon>
               <Contact>
-                <Grid container spacing={8}>
-                  <Grid item xs={5}>
+                <Grid container spacing={isDesktop()?8:0}>
+                  <Grid item xs={12} md={5}>
                     <Box>
                       <div className="title eng">Where we are</div>
                       <h1>聯繫我們</h1>
                     </Box>
                   </Grid>
-                  <Grid item xs={3} className="eng">
+                  <Grid item xs={12} md={3} className="eng">
                     <h4 className="eng">Contact Us.</h4>
                     <h5>
                       TEL . +886-2-85029135 <br />
@@ -625,18 +672,18 @@ export function ContactPage() {
                       MOBILE. +886-922-083-876
                     </h5>
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} md={4}>
                     <h4 className="eng">Find Us.</h4>
-                    <h5>台北市中山區樂群二路 187 號 6 樓之 2 (大直豐匯）</h5>
+                    <h5 className='addr'>台北市中山區樂群二路 187 號 6 樓之 2 <br /> (大直豐匯）</h5>
                   </Grid>
                 </Grid>
                 <Grid className="map" container>
-                  <Grid item xs={5}>
+                  <Grid item xs={12} md={5}>
                     <img src={location} alt="" />
                   </Grid>
-                  <Grid item xs={7}>
+                  <Grid item xs={12} md={7}>
                     {/* <img src={pin} alt="" /> */}
-                    <div style={{ height: '400px', width: '100%' }}>
+                    <div style={{ height: isDesktop()?'400px':'240px'}}>
                       {/* <iframe style={{width: '100%', height: '100%'}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.630963869905!2d121.55583181577032!3d25.080494183950655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa33e89a7453%3A0x49bc12e190a1a6fd!2z5aSn5LqI5Ym15oSP6Kit6KiI6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1666725553062!5m2!1szh-TW!2stw" /> */}
                       <Map />
                     </div>
@@ -705,10 +752,19 @@ const Intro = styled.div`
       width: 300px;
     }
   }
+  ${media.medium`
+    padding: 72px 0 20px;
+    .content{
+      margin-top: 8px;
+    }
+  `}
 `;
 
 const GetInTouch = styled.div`
-  position: relative;
+  /* position: relative; */
+  position: absolute;
+  margin-top: 40px;
+  right: 0;
   color: ${colors.White};
   width: 310px;
   height: 186px;
@@ -724,7 +780,7 @@ const GetInTouch = styled.div`
     height: 186px;
     background: ${colors.DarkBlue};
     border: 1px solid rgba(162, 170, 164, 0.5);
-    box-shadow: 4px 4px 15px rgba(162, 170, 164, 0.5);
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 50%);
     border-radius: 100%;
     transform: rotate(-15deg);
     position: absolute;
@@ -738,6 +794,26 @@ const GetInTouch = styled.div`
   }
   h5 {
     letter-spacing: 0.05em;
+  }
+  @media screen and (max-width: 1360px) {
+    position: fixed;
+    right: 8px;
+    bottom: -20px;
+    z-index: 3;
+    width: 168px;
+    gap: 8px;
+    &::after {
+      width: 168px;
+      height: 100px;
+      top: 40px;
+    }
+    h5{
+      font-size: 10px;
+    }
+    img{
+      width: 24px;
+      transform: rotate(-90deg);
+    }
   }
 `;
 
@@ -767,6 +843,18 @@ const Divider = styled.div`
       margin: 0;
     }
   }
+  ${media.medium`
+    margin: 72px 0 20px;
+    padding: 32px 0 0;
+    border-top: 1px solid ${colors.DarkBlue};
+    .title{
+      .dot{
+        width: 12px;
+        height: 12px;
+        margin-right: 12px;
+      }
+    }
+  `}
 `;
 
 const FormDivider = styled.div`
@@ -810,11 +898,34 @@ const FormTitle = styled.div`
 `;
 
 const StepList = styled.div`
+  position: relative;
   .MuiGrid-container {
     border-left: 1px solid ${colors.DarkBlue};
     border-right: 1px solid ${colors.DarkBlue};
     padding-right: 40px;
   }
+  @media screen and (max-width: 900px) {
+    .MuiGrid-container {
+      border-left: 0;
+      border-right: 0;
+      padding-right: 0;
+      .MuiGrid-item{
+        padding-bottom: 24px;
+      }
+    }
+    &::after{
+      content: '';
+      width: 1px;
+      height: 56px;
+      border-right: 1px dashed ${colors.DarkBlue};
+      position: absolute;
+      left: 36px;
+      top: 0;
+      height: 432px;
+      z-index: -1;
+    }
+  }
+
 `;
 
 const Step = styled.div`
@@ -854,9 +965,34 @@ const Step = styled.div`
       background-color: ${colors.BGMidGrey};
     }
   }
+  ${media.medium`
+    padding: 0;
+    min-height: 114px;
+    .head{
+      align-items: flex-start;
+      .huge{
+        width: 62px;
+        font-size: 48px;
+        text-align: center;
+        background-color: ${colors.BGMidGrey};
+        padding: 12px 0;
+      }
+      h3{
+        margin: 12px 0 0 24px;
+      }
+    }
+    .horizon{
+      display: none;
+    }
+    h4{
+      margin: -16px 0 0 86px;
+    }
+  `}
 `;
 
 const FormSection = styled.div`
+  position: relative;
+  z-index: 0;
   .scrollmagic-pin-spacer {
     height: 100% !important;
     /* overflow: hidden; */
@@ -895,6 +1031,11 @@ const FormSection = styled.div`
     /* flex: 1 1 100%; */
     padding: 128px 0 160px 40px;
   }
+  ${media.medium`
+    .form-section{
+      display: none;
+    }
+  `}
 `;
 
 const RadioGroup = styled.div`
@@ -1053,6 +1194,9 @@ const Horizon = styled.div<{
       margin: 0;
     }
   }
+  ${media.medium`
+    padding: 64px 0 72px;
+  `}
 `;
 
 const FAQ = styled.div`
@@ -1103,8 +1247,64 @@ const Contact = styled.div`
   .map {
     margin: 48px 0 78px;
     img {
-      width: 100%;
+      object-fit: cover;
       height: 400px;
+      display: flex;
+      width: 100%;
+      object-position: left;
     }
   }
+  .addr{
+    br{
+      display: none;
+    }
+  }
+  ${media.medium`
+    .title{
+      font-size: 32px;
+      margin: 0 0 8px;
+    }
+    h1{
+      margin-bottom: 24px;
+    }
+    h4{
+      margin: 24px 0 0;
+    }
+    h5{
+      margin: 0;
+    }
+    .map{
+      img{
+        height: 240px;
+      }
+    }
+    .addr{
+      br{
+        display: block;
+      }
+    }
+  `}
 `;
+
+const FeatureHead = styled.h2`
+  display: flex;
+  justify-content: end;
+  .draw::after{
+    content: '';
+    border-bottom: 15px solid ${colors.Yellow};
+  }
+  ${media.medium`
+    display: block;
+    margin-bottom: 0;
+    margin-top: 8px;
+    span{
+      display: inline-block;
+      height: 35px;
+    }
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 4px ${colors.BGGreen}, inset 0px 54px ${colors.Yellow};
+    }
+  `}
+`

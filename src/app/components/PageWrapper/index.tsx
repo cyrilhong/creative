@@ -17,7 +17,7 @@ export function PageWrapper(props) {
     max-width: 1920px;
     height: 100%;
     position: relative;
-    overflow: ${prop=>prop.overflow==='true'?'hidden':'initial'};
+    overflow: ${prop => prop.overflow === 'true' ? 'hidden' : 'initial'};
     .lines{
       max-width: 1920px;
       padding: 0 80px;
@@ -48,7 +48,7 @@ export function PageWrapper(props) {
   `;
 
   return (
-    <Wrapper overflow={props.overflow}>
+    <Wrapper overflow={props.overflow} className={props.className}>
       <Box position={'relative'} zIndex="1">
         {props.children}
       </Box>
