@@ -27,6 +27,7 @@ import WrappedButton from 'app/components/WrappedButton'
 import heroImgMb from './assets/heroImgMb.png'
 import Lottie from 'lottie-react';
 import ourWorks from './assets/our-works.json'
+import Collapse from 'app/components/Collapse'
 export function ServicePage() {
   const target = useRef(null);
   function Mark() {
@@ -189,26 +190,23 @@ export function ServicePage() {
                     </h4>
                   </Box>
                   <ItemList>
-                    <ul>
-                      <li>
-                        <Head>
-                          <h3>市場研究與競爭分析</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                      <li>
-                        <Head>
-                          <h3>產品定位與價值主張</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                      <li>
-                        <Head>
-                          <h3>使用者研究</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                    </ul>
+                    <Collapse list={[
+                      {
+                        title: "市場研究與競爭分析",
+                        answer: `市場研究與競爭分析`,
+                        expanded: false
+                      },
+                      {
+                        title: "產品定位與價值主張",
+                        answer: `產品定位與價值主張`,
+                        expanded: false
+                      },
+                      {
+                        title: "使用者研究",
+                        answer: `使用者研究`,
+                        expanded: false
+                      },
+                    ]} />
                   </ItemList>
                 </Grid>
               </Grid>
@@ -222,26 +220,23 @@ export function ServicePage() {
                         從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
                       </h4>
                     </Box>
-                    <ul>
-                      <li>
-                        <Head>
-                          <h3>體驗流程規劃</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                      <li>
-                        <Head>
-                          <h3>設計概念驗證</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                      <li>
-                        <Head>
-                          <h3>概念測試與需求驗證</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </Head>
-                      </li>
-                    </ul>
+                    <Collapse list={[
+                      {
+                        title: "體驗流程規劃",
+                        answer: `體驗流程規劃`,
+                        expanded: false
+                      },
+                      {
+                        title: "網站規劃與設計",
+                        answer: `網站規劃與設計`,
+                        expanded: false
+                      },
+                      {
+                        title: "概念測試與需求驗證",
+                        answer: `使用者研究`,
+                        expanded: false
+                      },
+                    ]} />
                   </ItemList>
                 </Grid>
               </Grid>
@@ -273,29 +268,23 @@ export function ServicePage() {
                 <Grid xs={12} md={6} xsOffset={0} mdOffset={1}>
                   <Grid xs={12} md={10}>
                     <ItemList>
-                      <ul>
-                        <li>
-                          <Head>
-                            <h3>App 規劃與設計</h3>
-                            <img src={roundArrowBtn} alt="button" />
-                          </Head>
-                        </li>
-                        <li>
-                          <Head>
-                            <h3>網站規劃與設計</h3>
-                            <img src={roundArrowBtn} alt="button" />
-                          </Head>
-                        </li>
-                        <li>
-                          <Head>
-                            <h3>跨平台介面設計</h3>
-                            <img src={roundArrowBtn} alt="button" />
-                          </Head>
-                          <h4>
-                            從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
-                          </h4>
-                        </li>
-                      </ul>
+                      <Collapse list={[
+                        {
+                          title: "App 規劃與設計",
+                          answer: `App 規劃與設計`,
+                          expanded: false
+                        },
+                        {
+                          title: "設計概念驗證",
+                          answer: `產品定位與價值主張`,
+                          expanded: false
+                        },
+                        {
+                          title: "跨平台介面設計",
+                          answer: `從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。`,
+                          expanded: false
+                        },
+                      ]} />
                     </ItemList>
                   </Grid>
                 </Grid>

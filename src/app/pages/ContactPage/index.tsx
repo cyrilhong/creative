@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useWindowSize, isDesktop } from '../../hooks'
 import * as colors from 'styles/colors';
@@ -7,8 +7,8 @@ import { PageWrapper } from 'app/components/PageWrapper';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components/macro';
-import { useForm, ValidationError } from '@formspree/react';
-import Box from '@mui/material/Box';
+import { useForm as formspreeUseForm, ValidationError } from '@formspree/react';
+import { Box, Checkbox, TextField } from '@mui/material';
 import { Grid, Container } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import arrowBtn from './assets/arrowBtn.svg';
@@ -22,19 +22,51 @@ import location from './assets/location.jpg';
 import pin from './assets/pin.jpg';
 import Map from './map'
 import { media } from 'styles/media';
+import Dialog from '@mui/material/Dialog';
+import { Element, scroller } from 'react-scroll';
+import DialogTitle from '@mui/material/DialogTitle';
+import { TransitionProps } from '@mui/material/transitions';
+import Slide from '@mui/material/Slide';
+import IconButton from '@mui/material/IconButton';
+import closeIcon from './assets/close-icon.svg';
+import { useForm, Controller as FormController, FormProvider } from 'react-hook-form';
+import Collapse from 'app/components/Collapse'
 
+const Services = [
+  {
+    "title": "創新服務設計",
+    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+  },
+  {
+    "title": "網站規劃與設計",
+    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+  },
+  {
+    "title": "App軟體規劃設計",
+    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+  },
+  {
+    "title": "使用者研究 / 體驗策略",
+    "content": "透過量化或質化的使用者研究，找出使用者的需求、痛點、爽點，訂定產品與服務的體驗策略。"
+  },
+  {
+    "title": "APP 規劃與設計",
+    "content": "手機或平板APP的建置或改版，包含概念設計、、資訊架構規劃、互動設計、視覺設計。"
+  },
+  {
+    "title": "教育訓練",
+    "content": "使用者體驗或介面設計專業諮詢、內部創新設計團隊顧問服務、體驗設計工作坊。"
+  },
+  {
+    "title": "體驗優化健檢",
+    "content": "檢視現有的產品服務流程與顧客旅程地圖，以專家評估或易用性測試等方法，找出服務的斷點與優化的機會點，並提出優化方向建議。"
+  },
+  {
+    "title": "其他服務",
+    "content": "若有項目以外的其他需求，請於下方欄位留下需求。"
+  },
+]
 export function ContactPage() {
-  const [state, handleSubmit] = useForm('mdojganb');
-  const [serviceType, setServiceType] = useState(0);
-  const [time, setTime] = useState(0);
-  const [coopTime, setCoopTime] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-  if (state.succeeded) {
-    // setSubmitted(true);
-    return <p>Thanks for joining!</p>;
-  } else {
-    // console.log('error');
-  }
   function Mark() {
     const { ref } = useParallax<HTMLDivElement>({});
     return <span ref={ref} />;
@@ -59,6 +91,47 @@ export function ContactPage() {
       setBottomSticky(false);
     }
   });
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const Transition = React.forwardRef(function Transition(
+    props: TransitionProps & {
+      children: React.ReactElement<any, any>;
+    },
+    ref: React.Ref<unknown>,
+  ) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+
+  const methods = useForm()
+  const {
+    handleSubmit,
+    control,
+    formState: { errors, isSubmitted },
+    getValues,
+    setValue,
+    trigger,
+    register,
+    watch
+  } = methods
+
+  const _onSubmit = async (data) => {
+    console.log(data);
+
+  }
+
+  const _onError = (error) => {
+    console.log(error);
+  }
+  useEffect(() => {
+    setValue(Services[0].title, true);
+    setValue('time', 0);
+  }, [])
+
+  const getTime = watch('time')
+  const getCoopTime = watch('CoopTime')
   return (
     <ParallaxProvider>
       <Controller>
@@ -69,6 +142,305 @@ export function ContactPage() {
             content="Let’s talk about what we can make, build, design together."
           />
         </Helmet>
+        <Dialog
+          open={open}
+          // TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            <IconButton onClick={() => setOpen(false)}
+            >
+              <img src={closeIcon} alt="close" />
+            </IconButton>
+          </DialogTitle>
+          <MbForm>
+            <div className="huge eng">Want to do good thing?</div>
+            <h1>專案諮詢</h1>
+            <h5>您可以透過此份表單讓我們理解您的需求，也同時釐清您所需要的協助！<br />
+              也歡迎您隨時來電洽詢：886-2-85029135
+            </h5>
+            <div className="horizon" />
+            <form onSubmit={handleSubmit(_onSubmit, _onError)}>
+              <FormTitle>
+                <div className="title">
+                  <div className="dot" />
+                  <h2>您需要的服務類型是？</h2>
+                </div>
+              </FormTitle>
+              <RadioGroup>
+                {Services.map((item, index) => {
+                  return (
+                    <FormController
+                      name={item.title}
+                      control={control}
+                      render={({ field, fieldState: { invalid } }) => (
+                        <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
+                          {/* <img src={item.icon} alt="careVisit" /> */}
+                          <label>
+                            <Checkbox
+                              name={field.name}
+                              color="primary"
+                              checked={field.value === true}
+                              style={{
+                                padding: '0 8px 0 0',
+                                ...(invalid ? { color: '#FF0000' } : {}),
+                              }}
+                            />
+                            <h3>{item.title}</h3>
+                            <hr />
+                            <p>
+                              {item.content}
+                            </p>
+                          </label>
+                          {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
+                        </CustomCheckbox>
+                      )}
+                    />
+                  )
+                })}
+              </RadioGroup>
+              <FormTitle>
+                <div className="title">
+                  <div className="dot" />
+                  <h2>您預計的開案時間？</h2>
+                </div>
+              </FormTitle>
+              <FormController
+                name="time"
+                control={control}
+                render={({ field, fieldState: { invalid } }) => (
+
+                  <SmallRadioGroup>
+                    <div className={`radio ${getTime === 0 ? 'active' : ''}`}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={0}
+                          checked={getTime === 0}
+                          onChange={() => setValue('time', 0)}
+                        />
+                        <h3>三周內</h3>
+                      </label>
+                    </div>
+                    <div className={`radio ${getTime === 1 ? 'active' : ''}`}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={1}
+                          checked={getTime === 1}
+                          onChange={() => setValue('time', 1)}
+                        />
+                        <h3>一個月內</h3>
+                      </label>
+                    </div>
+                    <div className={`radio ${getTime === 2 ? 'active' : ''}`}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={2}
+                          checked={getTime === 2}
+                          onChange={() => setValue('time', 2)}
+                        />
+                        <h3>二個月內</h3>
+                      </label>
+                    </div>
+                    <div className={`radio ${getTime === 3 ? 'active' : ''}`}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={3}
+                          checked={getTime === 3}
+                          onChange={() => setValue('time', 3)}
+                        />
+                        <h3>沒有或不確定</h3>
+                      </label>
+                    </div>
+                  </SmallRadioGroup>
+                )}
+              />
+              <FormTitle>
+                <div className="title">
+                  <div className="dot" />
+                  <h2>您預計的合作時程？</h2>
+                </div>
+              </FormTitle>
+              <FormController
+                name="CoopTime"
+                control={control}
+                render={({ field, fieldState: { invalid } }) => (
+                  <SmallRadioGroup>
+                    <div
+                      className={`radio ${getCoopTime === 0 ? 'active' : ''}`}
+                    >
+                      <label>
+                        <input
+                          type="radio"
+                          value={0}
+                          checked={getCoopTime === 0}
+                          onChange={() => {
+                            setValue('CoopTime', 0);
+                          }}
+                        />
+                        <h3>三個月內</h3>
+                      </label>
+                    </div>
+                    <div
+                      className={`radio ${getCoopTime === 1 ? 'active' : ''}`}
+                    >
+                      <label>
+                        <input
+                          type="radio"
+                          value={1}
+                          checked={getCoopTime === 1}
+                          onChange={() => setValue('CoopTime', 1)}
+                        />
+                        <h3>半年內</h3>
+                      </label>
+                    </div>
+                    <div
+                      className={`radio ${getCoopTime === 2 ? 'active' : ''}`}
+                    >
+                      <label>
+                        <input
+                          type="radio"
+                          value={2}
+                          checked={getCoopTime === 2}
+                          onChange={() => setValue('CoopTime', 2)}
+                        />
+                        <h3>一年</h3>
+                      </label>
+                    </div>
+                  </SmallRadioGroup>
+                )}
+              />
+
+              <FormTitle>
+                <div className="title">
+                  <div className="dot" />
+                  <h2>聯絡方式</h2>
+                </div>
+              </FormTitle>
+              <InputForm>
+                <label htmlFor="email">聯絡人</label>
+                <div className="input-group">
+
+                  {/* {watch('name')} */}
+                  <FormController
+                    name="name"
+                    control={control}
+                    rules={{
+                      required: true
+                    }}
+                    render={({ field, fieldState: { error, invalid } }) => (
+                      <TextField
+                        {...field}
+                        type="text"
+                        variant="filled"
+                        placeholder="名字 *"
+                        fullWidth
+                        error={invalid}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                  <FormController
+                    name="company"
+                    control={control}
+                    rules={{
+                      required: true
+                    }}
+                    render={({ field, fieldState: { error, invalid } }) => (
+                      <TextField
+                        {...field}
+                        type="text"
+                        variant="filled"
+                        placeholder="公司名稱 *"
+                        fullWidth
+                        error={invalid}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <div className="input-group">
+                  <FormController
+                    name="phone"
+                    control={control}
+                    // rules={{
+                    //   required: true
+                    // }}
+                    render={({ field, fieldState: { error, invalid } }) => (
+                      <TextField
+                        {...field}
+                        type="text"
+                        variant="filled"
+                        placeholder="聯絡電話"
+                        fullWidth
+                        error={invalid}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                  <FormController
+                    name="email"
+                    control={control}
+                    rules={{
+                      required: true
+                    }}
+                    render={({ field, fieldState: { error, invalid } }) => (
+                      <TextField
+                        {...field}
+                        type="text"
+                        variant="filled"
+                        placeholder="電子郵件 *"
+                        fullWidth
+                        error={invalid}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <FormTitle>
+                  <div className="title">
+                    <div className="dot" />
+                    <h2>其他想法</h2>
+                  </div>
+                </FormTitle>
+                <div className="input-group">
+                  <FormController
+                    name="comment"
+                    control={control}
+                    rules={{
+                      required: true
+                    }}
+                    render={({ field, fieldState: { error, invalid } }) => (
+                      <TextField
+                        {...field}
+                        type="text"
+                        variant="filled"
+                        multiline
+                        rows={5}
+                        placeholder=""
+                        fullWidth
+                        error={invalid}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                </div>
+              </InputForm>
+              <Box width={'100%'} textAlign="center">
+                <RoundButton type="submit" disabled={false}>
+                  <h4 className="">送出表單</h4>
+                  <img src={arrowWhite} alt="arrow" />
+                </RoundButton>
+              </Box>
+            </form>
+          </MbForm>
+        </Dialog>
         <NavBar />
         <div className="bg-contact-us">
           <PageWrapper>
@@ -126,12 +498,19 @@ export function ContactPage() {
                   </Fade>
                   <div className="content">
                     <FeatureHead>
-                    有所
+                      有所
                       <div className='draw'>行動才能創造改變</div>，就從與我們聊聊開始！
                     </FeatureHead>
                   </div>
                 </Grid>}
-                <GetInTouch>
+                <GetInTouch onClick={() => {
+                  windowWidth > 960 ? scroller.scrollTo('form', {
+                    duration: 1500,
+                    delay: 100,
+                    smooth: true,
+                    offset: -208
+                  }) : setOpen(true)
+                }}>
                   <Box>
                     <h2>專案詢問</h2>
                     <h5 className="eng">GET IN TOUCH</h5>
@@ -241,317 +620,284 @@ export function ContactPage() {
               <Grid item xs={7}>
                 <div className="right">
                   <FormDivider />
-                  <form onSubmit={handleSubmit}>
-                    <FormTitle>
-                      <div className="title">
-                        <div className="dot" />
-                        <h2>您需要的服務類型是？</h2>
-                      </div>
-                    </FormTitle>
-                    <RadioGroup>
-                      <div
-                        className={`radio ${serviceType === 0 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={0}
-                            checked={serviceType === 0}
-                            onChange={() => setServiceType(0)}
-                          />
-                          <h3>創新服務設計</h3>
-                          <hr />
-                          <p>
-                            從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 1 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={1}
-                            checked={serviceType === 1}
-                            onChange={() => setServiceType(1)}
-                          />
-                          <h3>網站規劃與設計</h3>
-                          <hr />
-                          <p>
-                            從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 2 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={2}
-                            checked={serviceType === 2}
-                            onChange={() => setServiceType(2)}
-                          />
-                          <h3>App軟體規劃設計</h3>
-                          <hr />
-                          <p>
-                            從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 3 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={3}
-                            checked={serviceType === 3}
-                            onChange={() => setServiceType(3)}
-                          />
-                          <h3>使用者研究 / 體驗策略</h3>
-                          <hr />
-                          <p>
-                            透過量化或質化的使用者研究，找出使用者的需求、痛點、爽點，訂定產品與服務的體驗策略。
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 4 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={4}
-                            checked={serviceType === 4}
-                            onChange={() => setServiceType(4)}
-                          />
-                          <h3>APP 規劃與設計</h3>
-                          <hr />
-                          <p>
-                            手機或平板APP的建置或改版，包含概念設計、、資訊架構規劃、互動設計、視覺設計。
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 5 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={5}
-                            checked={serviceType === 5}
-                            onChange={() => setServiceType(5)}
-                          />
-                          <h3>教育訓練</h3>
-                          <hr />
-                          <p>
-                            使用者體驗或介面設計專業諮詢、內部創新設計團隊顧問服務、體驗設計工作坊。
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 6 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={6}
-                            checked={serviceType === 6}
-                            onChange={() => setServiceType(6)}
-                          />
-                          <h3>體驗優化健檢</h3>
-                          <hr />
-                          <p>
-                            檢視現有的產品服務流程與顧客旅程地圖，以專家評估或易用性測試等方法，找出服務的斷點與優化的機會點，並提出優化方向建議。
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${serviceType === 7 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={7}
-                            checked={serviceType === 7}
-                            onChange={() => setServiceType(7)}
-                          />
-                          <h3>其他服務</h3>
-                          <hr />
-                          <p>若有項目以外的其他需求，請於下方欄位留下需求。</p>
-                        </label>
-                      </div>
-                    </RadioGroup>
-                    <FormTitle>
-                      <div className="title">
-                        <div className="dot" />
-                        <h2>您預計的開案時間？</h2>
-                      </div>
-                    </FormTitle>
-                    <SmallRadioGroup>
-                      <div className={`radio ${time === 0 ? 'active' : ''}`}>
-                        <label>
-                          <input
-                            type="radio"
-                            value={0}
-                            checked={time === 0}
-                            onChange={() => setTime(0)}
-                          />
-                          <h3>三周內</h3>
-                        </label>
-                      </div>
-                      <div className={`radio ${time === 1 ? 'active' : ''}`}>
-                        <label>
-                          <input
-                            type="radio"
-                            value={1}
-                            checked={time === 1}
-                            onChange={() => setTime(1)}
-                          />
-                          <h3>一個月內</h3>
-                        </label>
-                      </div>
-                      <div className={`radio ${time === 2 ? 'active' : ''}`}>
-                        <label>
-                          <input
-                            type="radio"
-                            value={2}
-                            checked={time === 2}
-                            onChange={() => setTime(2)}
-                          />
-                          <h3>二個月內</h3>
-                        </label>
-                      </div>
-                      <div className={`radio ${time === 3 ? 'active' : ''}`}>
-                        <label>
-                          <input
-                            type="radio"
-                            value={3}
-                            checked={time === 3}
-                            onChange={() => setTime(3)}
-                          />
-                          <h3>沒有或不確定</h3>
-                        </label>
-                      </div>
-                    </SmallRadioGroup>
-                    <FormTitle>
-                      <div className="title">
-                        <div className="dot" />
-                        <h2>您預計的合作時程？</h2>
-                      </div>
-                    </FormTitle>
-                    <SmallRadioGroup>
-                      <div
-                        className={`radio ${coopTime === 0 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={0}
-                            checked={coopTime === 0}
-                            onChange={() => setCoopTime(0)}
-                          />
-                          <h3>三個月內</h3>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${coopTime === 1 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={1}
-                            checked={coopTime === 1}
-                            onChange={() => setCoopTime(1)}
-                          />
-                          <h3>半年內</h3>
-                        </label>
-                      </div>
-                      <div
-                        className={`radio ${coopTime === 2 ? 'active' : ''}`}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            value={2}
-                            checked={coopTime === 2}
-                            onChange={() => setCoopTime(2)}
-                          />
-                          <h3>一年</h3>
-                        </label>
-                      </div>
-                    </SmallRadioGroup>
-                    <FormTitle>
-                      <div className="title">
-                        <div className="dot" />
-                        <h2>聯絡方式</h2>
-                      </div>
-                    </FormTitle>
-                    <InputForm>
-                      <label htmlFor="email">聯絡人</label>
-                      <div className="input-group">
-                        <input
-                          id="name"
-                          required
-                          name="name"
-                          placeholder="名字 *"
-                        />
-                        <input
-                          id="company"
-                          required
-                          name="company"
-                          placeholder="公司名稱 *"
-                        />
-                      </div>
-                      <div className="input-group">
-                        <input
-                          id="phone"
-                          required
-                          name="phone"
-                          placeholder="聯絡電話"
-                        />
-                        <input
-                          id="email"
-                          required
-                          type="email"
-                          name="email"
-                          placeholder="電子郵件 *"
-                        />
-                      </div>
+                  <Element name='form' >
+                    <form onSubmit={handleSubmit(_onSubmit, _onError)}>
                       <FormTitle>
                         <div className="title">
                           <div className="dot" />
-                          <h2>其他想法</h2>
+                          <h2>您需要的服務類型是？</h2>
                         </div>
                       </FormTitle>
-                      <div className="input-group">
-                        <textarea
-                          id="comment"
-                          name="comment"
-                          placeholder=""
-                          rows={5}
-                        />
-                      </div>
-                      <ValidationError
-                        prefix="Email"
-                        field="email"
-                        errors={state.errors}
+                      <RadioGroup>
+                        {Services.map((item, index) => {
+                          return (
+                            <FormController
+                              name={item.title}
+                              control={control}
+                              render={({ field, fieldState: { invalid } }) => (
+                                <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
+                                  {/* <img src={item.icon} alt="careVisit" /> */}
+                                  <label>
+                                    <Checkbox
+                                      name={field.name}
+                                      color="primary"
+                                      checked={field.value === true}
+                                      style={{
+                                        padding: '0 8px 0 0',
+                                        ...(invalid ? { color: '#FF0000' } : {}),
+                                      }}
+                                    />
+                                    <h3>{item.title}</h3>
+                                    <hr />
+                                    <p>
+                                      {item.content}
+                                    </p>
+                                  </label>
+                                  {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
+                                </CustomCheckbox>
+                              )}
+                            />
+                          )
+                        })}
+                      </RadioGroup>
+                      <FormTitle>
+                        <div className="title">
+                          <div className="dot" />
+                          <h2>您預計的開案時間？</h2>
+                        </div>
+                      </FormTitle>
+                      <FormController
+                        name="time"
+                        control={control}
+                        render={({ field, fieldState: { invalid } }) => (
+
+                          <SmallRadioGroup>
+                            <div className={`radio ${getTime === 0 ? 'active' : ''}`}>
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={0}
+                                  checked={getTime === 0}
+                                  onChange={() => setValue('time', 0)}
+                                />
+                                <h3>三周內</h3>
+                              </label>
+                            </div>
+                            <div className={`radio ${getTime === 1 ? 'active' : ''}`}>
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={1}
+                                  checked={getTime === 1}
+                                  onChange={() => setValue('time', 1)}
+                                />
+                                <h3>一個月內</h3>
+                              </label>
+                            </div>
+                            <div className={`radio ${getTime === 2 ? 'active' : ''}`}>
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={2}
+                                  checked={getTime === 2}
+                                  onChange={() => setValue('time', 2)}
+                                />
+                                <h3>二個月內</h3>
+                              </label>
+                            </div>
+                            <div className={`radio ${getTime === 3 ? 'active' : ''}`}>
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={3}
+                                  checked={getTime === 3}
+                                  onChange={() => setValue('time', 3)}
+                                />
+                                <h3>沒有或不確定</h3>
+                              </label>
+                            </div>
+                          </SmallRadioGroup>
+                        )}
                       />
-                      <ValidationError
-                        prefix="Message"
-                        field="message"
-                        errors={state.errors}
+                      <FormTitle>
+                        <div className="title">
+                          <div className="dot" />
+                          <h2>您預計的合作時程？</h2>
+                        </div>
+                      </FormTitle>
+                      <FormController
+                        name="CoopTime"
+                        control={control}
+                        render={({ field, fieldState: { invalid } }) => (
+                          <SmallRadioGroup>
+                            <div
+                              className={`radio ${getCoopTime === 0 ? 'active' : ''}`}
+                            >
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={0}
+                                  checked={getCoopTime === 0}
+                                  onChange={() => {
+                                    setValue('CoopTime', 0);
+                                  }}
+                                />
+                                <h3>三個月內</h3>
+                              </label>
+                            </div>
+                            <div
+                              className={`radio ${getCoopTime === 1 ? 'active' : ''}`}
+                            >
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={1}
+                                  checked={getCoopTime === 1}
+                                  onChange={() => setValue('CoopTime', 1)}
+                                />
+                                <h3>半年內</h3>
+                              </label>
+                            </div>
+                            <div
+                              className={`radio ${getCoopTime === 2 ? 'active' : ''}`}
+                            >
+                              <label>
+                                <input
+                                  type="radio"
+                                  value={2}
+                                  checked={getCoopTime === 2}
+                                  onChange={() => setValue('CoopTime', 2)}
+                                />
+                                <h3>一年</h3>
+                              </label>
+                            </div>
+                          </SmallRadioGroup>
+                        )}
                       />
-                    </InputForm>
-                    <Box width={'100%'} textAlign="center">
-                      <RoundButton type="submit" disabled={state.submitting}>
-                        <h4 className="">送出表單</h4>
-                        <img src={arrowWhite} alt="arrow" />
-                      </RoundButton>
-                    </Box>
-                  </form>
+
+                      <FormTitle>
+                        <div className="title">
+                          <div className="dot" />
+                          <h2>聯絡方式</h2>
+                        </div>
+                      </FormTitle>
+                      <InputForm>
+                        <label htmlFor="email">聯絡人</label>
+                        <div className="input-group">
+
+                          {/* {watch('name')} */}
+                          <FormController
+                            name="name"
+                            control={control}
+                            rules={{
+                              required: true
+                            }}
+                            render={({ field, fieldState: { error, invalid } }) => (
+                              <TextField
+                                {...field}
+                                type="text"
+                                variant="filled"
+                                placeholder="名字 *"
+                                fullWidth
+                                error={invalid}
+                                helperText={error?.message}
+                              />
+                            )}
+                          />
+                          <FormController
+                            name="company"
+                            control={control}
+                            rules={{
+                              required: true
+                            }}
+                            render={({ field, fieldState: { error, invalid } }) => (
+                              <TextField
+                                {...field}
+                                type="text"
+                                variant="filled"
+                                placeholder="公司名稱 *"
+                                fullWidth
+                                error={invalid}
+                                helperText={error?.message}
+                              />
+                            )}
+                          />
+                        </div>
+                        <div className="input-group">
+                          <FormController
+                            name="phone"
+                            control={control}
+                            // rules={{
+                            //   required: true
+                            // }}
+                            render={({ field, fieldState: { error, invalid } }) => (
+                              <TextField
+                                {...field}
+                                type="text"
+                                variant="filled"
+                                placeholder="聯絡電話"
+                                fullWidth
+                                error={invalid}
+                                helperText={error?.message}
+                              />
+                            )}
+                          />
+                          <FormController
+                            name="email"
+                            control={control}
+                            rules={{
+                              required: true
+                            }}
+                            render={({ field, fieldState: { error, invalid } }) => (
+                              <TextField
+                                {...field}
+                                type="text"
+                                variant="filled"
+                                placeholder="電子郵件 *"
+                                fullWidth
+                                error={invalid}
+                                helperText={error?.message}
+                              />
+                            )}
+                          />
+                        </div>
+                        <FormTitle>
+                          <div className="title">
+                            <div className="dot" />
+                            <h2>其他想法</h2>
+                          </div>
+                        </FormTitle>
+                        <div className="input-group">
+                          <FormController
+                            name="comment"
+                            control={control}
+                            rules={{
+                              required: true
+                            }}
+                            render={({ field, fieldState: { error, invalid } }) => (
+                              <TextField
+                                {...field}
+                                type="text"
+                                variant="filled"
+                                multiline
+                                rows={5}
+                                placeholder=""
+                                fullWidth
+                                error={invalid}
+                                helperText={error?.message}
+                              />
+                            )}
+                          />
+                        </div>
+                      </InputForm>
+                      <Box width={'100%'} textAlign="center">
+                        <RoundButton type="submit" disabled={false}>
+                          <h4 className="">送出表單</h4>
+                          <img src={arrowWhite} alt="arrow" />
+                        </RoundButton>
+                      </Box>
+                    </form>
+                  </Element>
                 </div>
               </Grid>
             </Grid>
@@ -575,77 +921,64 @@ export function ContactPage() {
                 <Grid item xs={12} md={7}>
                   <FaqGroup>
                     <h3 className="title">服務項目</h3>
-                    <ul>
-                      <li>
-                        <div className="collapse">
-                          <h3>什麼專案找大予做最適合？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>大予有包含程式開發嗎？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                    </ul>
+                    <Collapse list={[
+                      {
+                        title: "什麼專案找大予做最適合？",
+                        answer: `什麼專案找大予做最適合？`,
+                        expanded: true
+                      },
+                      {
+                        title: "大予有包含程式開發嗎？",
+                        answer: `大予有包含程式開發嗎？`,
+                        expanded: false
+                      },
+                    ]} />
                   </FaqGroup>
                   <FaqGroup>
                     <h3 className="title">合作方式</h3>
-                    <ul>
-                      <li>
-                        <div className="collapse">
-                          <h3>在產品/服務開發的哪個階段找大予比較合適？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>
-                            是否可以請大予先提案比稿，再決定是否外包給你們？
-                          </h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>專案進行時，客戶要如何和大予配合？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>專案結束後，後續的改版或更新怎麼辦？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                    </ul>
+                    <Collapse list={[
+                      {
+                        title: "在產品/服務開發的哪個階段找大予比較合適？",
+                        answer: `什麼專案找大予做最適合？`,
+                        expanded: false
+                      },
+                      {
+                        title: "是否可以請大予先提案比稿，再決定是否外包給你們？",
+                        answer: `大予有包含程式開發嗎？`,
+                        expanded: false
+                      },
+                      {
+                        title: "專案進行時，客戶要如何和大予配合？",
+                        answer: `什麼專案找大予做最適合？`,
+                        expanded: false
+                      },
+                      {
+                        title: "專案結束後，後續的改版或更新怎麼辦？",
+                        answer: `大予有包含程式開發嗎？`,
+                        expanded: false
+                      },
+                    ]} />
+
                   </FaqGroup>
                   <FaqGroup>
                     <h3 className="title">報價相關</h3>
-                    <ul>
-                      <li>
-                        <div className="collapse">
-                          <h3>價格怎麼算？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>如果預算有限，要如何合作？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="collapse">
-                          <h3>通常一個案子會做多久？</h3>
-                          <img src={roundArrowBtn} alt="button" />
-                        </div>
-                        <p>
-                          從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗，從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
-                        </p>
-                      </li>
-                    </ul>
+                    <Collapse list={[
+                      {
+                        title: "價格怎麼算？",
+                        answer: `價格怎麼算？`,
+                        expanded: false
+                      },
+                      {
+                        title: "如果預算有限，要如何合作？",
+                        answer: `如果預算有限，要如何合作？`,
+                        expanded: false
+                      },
+                      {
+                        title: "通常一個案子會做多久？",
+                        answer: `從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗，從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。`,
+                        expanded: false
+                      }
+                    ]} />
                   </FaqGroup>
                 </Grid>
               </Grid>
@@ -657,7 +990,7 @@ export function ContactPage() {
                 <h4 className="eng">04</h4>
               </Horizon>
               <Contact>
-                <Grid container spacing={isDesktop()?8:0}>
+                <Grid container spacing={isDesktop() ? 8 : 0}>
                   <Grid item xs={12} md={5}>
                     <Box>
                       <div className="title eng">Where we are</div>
@@ -683,7 +1016,7 @@ export function ContactPage() {
                   </Grid>
                   <Grid item xs={12} md={7}>
                     {/* <img src={pin} alt="" /> */}
-                    <div style={{ height: isDesktop()?'400px':'240px'}}>
+                    <div style={{ height: isDesktop() ? '400px' : '240px' }}>
                       {/* <iframe style={{width: '100%', height: '100%'}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.630963869905!2d121.55583181577032!3d25.080494183950655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa33e89a7453%3A0x49bc12e190a1a6fd!2z5aSn5LqI5Ym15oSP6Kit6KiI6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1666725553062!5m2!1szh-TW!2stw" /> */}
                       <Map />
                     </div>
@@ -716,6 +1049,7 @@ const RoundButton = styled.button`
   border-radius: 100px;
   width: 230px;
   margin-top: 54px;
+  cursor: pointer;
   h4 {
     margin: 0 0 0 12px;
   }
@@ -809,6 +1143,10 @@ const GetInTouch = styled.div`
     }
     h5{
       font-size: 10px;
+    }
+    h2{
+      font-size: 20px;
+      line-height: 30px;
     }
     img{
       width: 24px;
@@ -1053,6 +1391,7 @@ const RadioGroup = styled.div`
     min-height: 210px;
     position: relative;
     transition: all 0.5s ease-in;
+    cursor: pointer;
     h3 {
       margin: 0;
     }
@@ -1062,6 +1401,7 @@ const RadioGroup = styled.div`
     }
     p {
       margin: 0;
+      font-weight: 300;
     }
     input {
       position: absolute;
@@ -1070,6 +1410,7 @@ const RadioGroup = styled.div`
       width: 100%;
       height: 100%;
       opacity: 0;
+      cursor: pointer;
     }
   }
   .active {
@@ -1077,6 +1418,9 @@ const RadioGroup = styled.div`
     color: ${colors.White};
     box-shadow: 4px 4px 10px rgba(162, 170, 164, 0.5);
   }
+  ${media.large`
+    grid-template-columns: repeat(2, 1fr);
+  `}
 `;
 const SmallRadioGroup = styled.div`
   display: grid;
@@ -1093,6 +1437,7 @@ const SmallRadioGroup = styled.div`
     padding: 20px;
     position: relative;
     transition: all 0.5s ease-in;
+    cursor: pointer;
     h3 {
       margin: 0;
     }
@@ -1110,6 +1455,7 @@ const SmallRadioGroup = styled.div`
       width: 100%;
       height: 100%;
       opacity: 0;
+      cursor: pointer;
     }
   }
   .active {
@@ -1117,6 +1463,9 @@ const SmallRadioGroup = styled.div`
     color: ${colors.White};
     box-shadow: 4px 4px 10px rgba(162, 170, 164, 0.5);
   }
+  ${media.large`
+    grid-template-columns: repeat(2, 1fr);
+  `}
 `;
 
 const InputForm = styled.div`
@@ -1131,18 +1480,34 @@ const InputForm = styled.div`
     gap: 24px;
     margin-bottom: 40px;
   }
-  input {
+  .MuiInputBase-root {
     flex: 1 1 50%;
     height: 62px;
     padding: 16px 12px;
+    /* padding: 0; */
+    max-height: 62px;
     background-color: initial;
     border: 0;
-    border-bottom: 1px solid ${colors.DarkBlue};
+    /* border-bottom: 1px solid ${colors.DarkBlue}; */
     font-size: 20px;
+    input{
+      padding: 0;
+    }
+    &::after{
+      display: none;
+    }
     &:focus-visible {
       /* border: 0; */
       outline: 0;
       background-color: #f8f2ec;
+    }
+  }
+  .MuiInputBase-multiline{
+    max-height: initial;
+    padding: 0;
+    border-bottom: 0;
+    &::before{
+      display: none;
     }
   }
   textarea {
@@ -1208,35 +1573,7 @@ const FaqGroup = styled.div`
   margin-bottom: 72px;
   .title {
     font-weight: bold;
-  }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    /* display: flex; */
-    justify-content: space-between;
-    border-top: 1px solid ${colors.DarkBlue};
-    padding: 22px 0;
-    align-items: center;
-    flex-direction: column;
-    cursor: pointer;
-    .collapse {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    p {
-      margin: 0;
-      padding-right: 82px;
-    }
-    h3 {
-      margin: 0;
-    }
-    &:nth-last-child(1) {
-      border-bottom: 1px solid ${colors.DarkBlue};
-    }
+    margin-bottom: 32px;
   }
 `;
 
@@ -1307,4 +1644,85 @@ const FeatureHead = styled.h2`
       box-shadow: inset 0 4px ${colors.BGGreen}, inset 0px 54px ${colors.Yellow};
     }
   `}
+`
+const MbForm = styled.div`
+  padding: 24px 20px 105px;
+  .horizon{
+    border-bottom: 1px solid ${colors.DarkBlue};
+    border-top: 4px solid ${colors.DarkBlue};
+    height: 8px;
+  }
+  ${RadioGroup}{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4px;
+    margin-bottom: 0;
+  }
+  .input-group{
+    flex-direction: column;
+  }
+  .radio{
+    min-height: 160px;
+    &:nth-last-child(1){
+      margin-bottom: 0;
+    }
+  }
+  ${RoundButton}{
+    margin-top: 8px;
+    width: 153px;
+    padding: 8px 16px;
+  }
+  ${SmallRadioGroup}{
+    margin-bottom: 0;
+    .radio{
+      min-height: 56px;
+    }
+  }
+`
+
+const CustomCheckbox = styled.div`
+  display: flex;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid #EBEBEB;
+  margin-bottom: 20px;
+  transition: all .5s ease-in;
+  align-items: baseline;
+  label{
+    pointer-events: none;
+  }
+  .MuiCheckbox-root{
+    display: none;
+  }
+  p{
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+    transition: all .5s ease-in;
+    line-height: 120%;
+  }
+  small{
+    font-size: 12px;
+    color: #2C2C2C;
+    line-height: 120%;
+  }
+  img{
+    transition: all .5s ease-in;
+    filter: grayscale(1);
+  }
+  .uncheck{
+    min-width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #EBEBEB;
+  }
+  .info{
+    flex: 1 1 100%;
+  }
+  &.active{
+    p{
+    }
+    img{
+      filter: grayscale(0);
+    }
+  }
 `

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import * as colors from 'styles/colors';
 import Grid from '@mui/material/Unstable_Grid2';
 import styled from 'styled-components/macro';
@@ -12,145 +12,144 @@ import aja from './assets/aja-logo.svg';
 import touch from './assets/get-in-touch.json';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import { useWindowSize } from '../../hooks'
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 export default function footer() {
   const target = useRef(null);
-  function Component() {
-    const { ref } = useParallax<HTMLDivElement>({
-    });
-    return (
-      <div ref={ref}>
-        <div className="huge eng">
-          Let's make something
-          <br /> great together.
-        </div>
-      </div>
-    );
-  }
+  const ref = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
+  const [active, setActive] = useState(false)
+  useScrollPosition(({ prevPos, currPos }) => {
+    if (ref.current!.getBoundingClientRect().top < 1000) {
+      // debugger
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  });
   return (
-    <Footer>
-      <div style={{ backgroundColor: color.AJABlue }}>
-        <PageWrapper overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
-          <ParallaxProvider>
-            <Wrapper>
-              <Parallax speed={-10}>
-                <Main>
-                  <div className="left">
-                    <div className="huge eng">
-                      Let's make something
-                      <br /> great together.
-                    </div>
-                    <h2>有新的商業與產品體驗需求嗎？<br />與我們聊聊吧</h2>
-                    <div className='get-in-touch'>
-                      <Button href={'#'}>
-                        <div className="wrapper">
-                          <svg
-                            width="40"
-                            height="40"
-                            viewBox="0 0 40 40"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-                              stroke="#fff"
-                              strokeWidth="3"
-                              strokeMiterlimit="10"
-                            />
-                            <path
-                              d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-                              stroke="#fff"
-                              strokeWidth="3"
-                              strokeMiterlimit="10"
-                            />
-                            <path
-                              d="M9.30701 20.0303H30.6952"
-                              stroke="#fff"
-                              strokeWidth="3"
-                              strokeMiterlimit="10"
-                            />
-                          </svg>
-                        </div>
-                        <h4 className="eng">GET IN TOUCH</h4>
-                      </Button>
-                      <div className="lottie">
-                        <Lottie animationData={touch} loop={false} />
+    <Footer ref={ref}>
+      <PageWrapper overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
+        <ParallaxProvider>
+          <Wrapper>
+            <Parallax speed={active ? -25 : 0}>
+              <Main>
+                <div className="left">
+                  <div className="huge eng">
+                    Let's make something
+                    <br /> great together.
+                  </div>
+                  <h2>有新的商業與產品體驗需求嗎？<br />與我們聊聊吧</h2>
+                  <div className='get-in-touch'>
+                    <Button href={'#'}>
+                      <div className="wrapper">
+                        <svg
+                          width="40"
+                          height="40"
+                          viewBox="0 0 40 40"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
+                            stroke="#fff"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
+                            stroke="#fff"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M9.30701 20.0303H30.6952"
+                            stroke="#fff"
+                            strokeWidth="3"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                      <h4 className="eng">GET IN TOUCH</h4>
+                    </Button>
+                    <div className="lottie">
+                      <Lottie animationData={touch} loop={false} />
 
-                      </div>
                     </div>
                   </div>
-                  <div className="right">
-                    <Lottie animationData={touch} loop={false} />
-                  </div>
-                </Main>
-                <Info>
-                  <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
-                    <Grid xs={0} md={3}>
-                      <div className="main-link link">
-                        <a>
-                          <h3 className="eng">WORK</h3>
-                        </a>
-                        <a>
-                          <h3 className="eng">SERVICES</h3>
-                        </a>
-                        <a>
-                          <h3 className="eng">ABOUT</h3>
-                        </a>
-                        <a>
-                          <h3 className="eng">CONTACT</h3>
-                        </a>
-                      </div>
-                    </Grid>
-                    <Grid xs={0} md={3}>
-                      <div className="social-meoda link eng">
-                        <div>
-                          <h3>A Day In The Life . </h3>
-                        </div>
-                        <ul>
-                          <li><h5 className="eng">FACEBOOK</h5></li>
-                          <li><h5 className="eng">JOIN US</h5></li>
-                        </ul>
-                      </div>
-                    </Grid>
-                    <Grid xs={12} md={3}>
-                      <div className="link eng">
-                        <div>
-                          <h3>Let’s Chat . </h3>
-                        </div>
-                        <h5 className="eng">TEL . +886-2-85029135 <br />FAX. +886-2-85029151 <br />MOBILE. +886-922-083-876</h5>
-                      </div>
-                    </Grid>
-                    <Grid xs={12} md={3}>
-                      <div className="link">
-                        <div className="eng">
-                          <h3>Have A Meet . </h3>
-                        </div>
-                        <h5>台北市中山區樂群二路 187 號 6 樓之 2 (大直豐匯）</h5>
-                        <h5 className="eng">
-                          6F.-2, No.187, Lequn 2nd Rd., Zhongshan Dist., Taipei City
-                          104 (Da Zhi Feng Hui)
-                        </h5>
-                      </div>
-                    </Grid>
+                </div>
+                <div className="right">
+                  <Lottie animationData={touch} loop={false} />
+                </div>
+              </Main>
+              <Info>
+                <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
+                  <Grid xs={0} md={3}>
+                    <div className="main-link link">
+                      <a>
+                        <h3 className="eng">WORK</h3>
+                      </a>
+                      <a>
+                        <h3 className="eng">SERVICES</h3>
+                      </a>
+                      <a>
+                        <h3 className="eng">ABOUT</h3>
+                      </a>
+                      <a>
+                        <h3 className="eng">CONTACT</h3>
+                      </a>
+                    </div>
                   </Grid>
-                </Info>
-                <Bottom>
-                  <small className="eng">
-                    © Copyright 2020 AJA Creative Co., Ltd. All rights reserved.
-                  </small>
-                  <img src={aja} alt="aja" />
-                </Bottom>
-              </Parallax>
-            </Wrapper>
-          </ParallaxProvider>
-        </PageWrapper>
-      </div>
+                  <Grid xs={0} md={3}>
+                    <div className="social-meoda link eng">
+                      <div>
+                        <h3>A Day In The Life . </h3>
+                      </div>
+                      <ul>
+                        <li><h5 className="eng">FACEBOOK</h5></li>
+                        <li><h5 className="eng">JOIN US</h5></li>
+                      </ul>
+                    </div>
+                  </Grid>
+                  <Grid xs={12} md={3}>
+                    <div className="link eng">
+                      <div>
+                        <h3>Let’s Chat . </h3>
+                      </div>
+                      <h5 className="eng">TEL . +886-2-85029135 <br />FAX. +886-2-85029151 <br />MOBILE. +886-922-083-876</h5>
+                    </div>
+                  </Grid>
+                  <Grid xs={12} md={3}>
+                    <div className="link">
+                      <div className="eng">
+                        <h3>Have A Meet . </h3>
+                      </div>
+                      <h5>台北市中山區樂群二路 187 號 6 樓之 2 (大直豐匯）</h5>
+                      <h5 className="eng">
+                        6F.-2, No.187, Lequn 2nd Rd., Zhongshan Dist., Taipei City
+                        104 (Da Zhi Feng Hui)
+                      </h5>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Info>
+              <Bottom>
+                <small className="eng">
+                  © Copyright 2020 AJA Creative Co., Ltd. All rights reserved.
+                </small>
+                <img src={aja} alt="aja" />
+              </Bottom>
+            </Parallax>
+          </Wrapper>
+        </ParallaxProvider>
+      </PageWrapper>
     </Footer>
   );
 }
 
 const Footer = styled.div`
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  background-color: ${color.AJABlue};
   padding: 0;
   z-index: 0;
   .lines {
@@ -186,23 +185,12 @@ const Footer = styled.div`
   `}
 `;
 
-const Marker = styled.div`
-  position: relative;
-  width: 467px;
-  display: block;
-  position: absolute;
-  top: 20px;
-  height: 24px;
-  transition: all 0.5s ease-in-out;
-  background: #ff8262;
-  z-index: -1;
-`;
 
 
 const Wrapper = styled.div`
   color: #fff;
   padding-top: 106px;
-  height: 790px;
+  /* height: 790px; */
   /* overflow: hidden; */
   ${media.medium`
     padding-top: 48px;

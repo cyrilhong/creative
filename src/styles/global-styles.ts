@@ -249,9 +249,29 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 80px!important;
     max-width: 1920px!important;
   }
+  .MuiPaper-root{
+    width: 100%;
+    height: 100%;
+    margin: 75px 0 0;
+  }
   ${media.medium`
     .MuiContainer-root{
       padding: 0 20px!important;
     }
   `}
+  .MuiPaper-root .MuiDialogTitle-root{
+    height: 60px;
+    padding: 0;
+    width: 100%;
+    justify-content: end;
+    display: flex;
+    border-bottom: 1px solid #EDEFED;
+    button{
+    }
+  }
+  .MuiPaper-root.MuiDialog-paper{
+    margin: 75px 0 0;
+    border-radius: 16px 16px 0 0;
+  }
 `;
+

@@ -209,7 +209,9 @@ export function HomePage() {
 
     player.on('click', () => {
       console.log('click');
+      console.log(document.fullscreenEnabled);
       player.requestFullscreen();
+      player.play();
       player.muted(false);
     });
     player.on('fullscreenchange', function () {
@@ -259,24 +261,32 @@ export function HomePage() {
       <div className={blackBg ? 'black' : 'white'}>
         <PageWrapper>
           <Masthead />
-          <VideoWrapper>
-            <Parallax scale={[1, 1.2]} speed={-10}>
-              {!isMobile ? (
-                <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-              ) : (
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%' }}
-                >
-                  <source src={showreel} />
-                  <img src="image.gif" />
-                </video>
-              )}
-            </Parallax>
-          </VideoWrapper>
+        </PageWrapper>
+      </div>
+      <div className={blackBg ? 'black' : 'white'}>
+        <VideoWrapper>
+          <Parallax
+          // scale={[1, 1.2]} speed={-10}
+          >
+            {!isMobile ? (
+              <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+            ) : (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: '100%' }}
+              >
+                <source src={showreel} />
+                <img src="image.gif" />
+              </video>
+            )}
+          </Parallax>
+        </VideoWrapper>
+      </div>
+      <div className={blackBg ? 'black' : 'white'}>
+        <PageWrapper>
           <Horizon blackBg>
             <div className="title">
               <div className="dot" />
@@ -1461,8 +1471,12 @@ const VideoWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   height: 720px;
+  max-width: 1920px;
+  padding: 0 80px;
+  margin: 0 auto;
   ${media.medium`
     height: auto;
+    padding: 0 20px;
   `}
 `;
 
