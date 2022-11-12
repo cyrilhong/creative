@@ -22,12 +22,11 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img01} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">金融與保險</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
@@ -66,9 +65,9 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img03} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  星宇航空｜打造精品航空獨到的數位體驗
                 </h2>
                 <div className="pills eng">
                   <div className="pill">STRATEGY</div>
@@ -88,12 +87,11 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img04} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">金融與保險</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  中國信託親子銀行｜超前部署的親子金融體驗
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
@@ -110,12 +108,11 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img05} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">金融與保險</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  中國信託 SME｜專為中小企業設計的數位金融服務
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
@@ -132,12 +129,11 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img01} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">金融與保險</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
@@ -154,15 +150,13 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img02} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">醫療與健康</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  國泰醫院｜安心、暖心的醫病橋樑
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
                 </div>
                 <RoundButton
                   link={"#"}
@@ -176,15 +170,32 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <img src={img03} alt="" />
-                <h4 className="type">電信媒體與科技</h4>
+                <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  中華航空｜帶著走的旅遊行動助理
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
                   <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
+                </div>
+                <RoundButton
+                  link={"#"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Fade>
+            </Case>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Case>
+              <Fade bottom delay={-500}>
+                <img src={img04} alt="" />
+                <h4 className="type">教育與娛樂</h4>
+                <h2 className="title">
+                  雲門舞集｜後疫情時代，數位學習趨勢研究
+                </h2>
+                <div className="pills eng">
+                  <div className="pill">RESEARCH</div>
                 </div>
                 <RoundButton
                   link={"#"}
@@ -200,10 +211,29 @@ export default function CaseStudy() {
                 <img src={img04} alt="" />
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
+                  台達電｜建構跨領域的設計系統
                 </h2>
                 <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
+                  <div className="pill">EXPERIENCE</div>
+                  <div className="pill">BRANDING</div>
+                </div>
+                <RoundButton
+                  link={"#"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Fade>
+            </Case>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Case>
+              <Fade bottom delay={-500}>
+                <img src={img04} alt="" />
+                <h4 className="type">金融與保險</h4>
+                <h2 className="title">
+                  新光銀行｜數位品牌形象傳達，展現金控品牌厚實底蘊
+                </h2>
+                <div className="pills eng">
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
@@ -242,6 +272,12 @@ const Wrapper = styled.div`
     &:nth-child(7) {
       border-left: 0;
     }
+    &:nth-child(10) {
+      border-left: 0;
+    }
+    &:nth-child(11) {
+      border-right: 1px solid ${color.DarkBlue};
+    }
     &:nth-child(3n) {
       border-right: 0;
       /* padding-left: 40px; */
@@ -271,6 +307,7 @@ const Case = styled.div`
   position: relative;
   img {
     width: 100%;
+    filter: brightness(0.3);
   }
   a {
     position: absolute;

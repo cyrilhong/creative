@@ -37,6 +37,11 @@ export function Masthead() {
                   運用策略與設計的跨領域經驗，
                 </Fade>
               </h1>
+              <h1>
+                <Fade bottom duration={500} delay={100}>
+                  為企業量身打造獨特體驗
+                </Fade>
+              </h1>
             </div>
           </>
         }
@@ -54,6 +59,11 @@ export function Masthead() {
                   每個案例都是獨一無二的，我們
                   <Mark />
                   運用策略與設計的跨領域經驗，
+                </Fade>
+              </h1>
+              <h1>
+                <Fade bottom duration={500} delay={100}>
+                  為企業量身打造獨特體驗
                 </Fade>
               </h1>
             </div>

@@ -42,13 +42,20 @@ import wall6 from './assets/wall-6.jpg';
 import ctbaLogo from './assets/ctbc-logo.png';
 import dedicationWording from './assets/dedication.svg';
 import dedicationBg from './assets/dedication.jpg';
-import dedicationBgMb from './assets/dedicationBg-mb.jpg';
+import dedicationBgMb from './assets/dedication-mb.jpg';
 import work01 from './assets/work-01.svg';
 import work02 from './assets/work-02.svg';
 import work03 from './assets/work-03.svg';
 import hiveFive from './assets/hiveFive.svg';
 import InfuseAI from './assets/InfuseAI.svg';
 import FetnetLogo from './assets/fetnet-logo.svg';
+import NanShan from './assets/nan-shan.svg';
+import cmcLogo from './assets/cmc.svg';
+import fbLogo from './assets/fb-bank.svg';
+import kkboxLogo from './assets/kkbox.svg';
+import nanshanLogo from './assets/nan-shan.svg';
+import tdriLogo from './assets/TDRI.svg';
+import tsBankLogo from './assets/ts-bank.svg';
 import showreel from './assets/showreel.mp4';
 import Lottie from 'lottie-react';
 import lottie1 from './assets/lottie-01.json';
@@ -66,8 +73,8 @@ import {
 const CaseSlider = [
   {
     content:
-      '“ 金融業接觸較多是設計廠商，或是商管顧問；比較少遇到這種從研究出發又能考量業態情境的設計顧問公司，雖然與過去廠商互動習慣不同，但值得一試。“',
-    name: '中國信託銀行, Kage',
+      '“ AJA 具備創新思維的設計能力，能協助客戶推出市場創新的產品，深入探究細節的設計態度，搭配實事求是的精神，令人讚賞。”',
+    name: '<b>中國信託,</b> Karl',
     link: '#',
     img: {
       src: ctbaLogo,
@@ -76,42 +83,62 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 大予設計是一間品質很好穩定度又高的設計顧問公司，業界經驗豐富，是很好的合作夥伴。“',
-    name: '遠傳電信, Joart',
+      '“ 團隊分工清楚且合作接軌，學習力強能掌握客戶之作業細節。能接地氣聆聽使用者之心聲，回應快能接受客戶回饋及調整為適妥解決方案，是客戶喜歡的合作團隊。“',
+    name: '<b>南山人壽業務通路</b>,劉桂如 副總經理',
     link: '#',
     img: {
-      src: FetnetLogo,
-      alt: 'FetnetLogo',
+      src: NanShan,
+      alt: 'NanShan',
     },
   },
   {
     content:
-      '“ 跟 AJA 合作非常棒，他們把客戶的需求放在第一優先，提供我們無可挑剃的成果。“',
-    name: 'InfuseAI 共同創辦人兼營運長, 薛良斌',
+      '“ 在內部訪談時，平衡來自不同部門間的不同意見、甚至是矛盾與互相衝突的需求，不是一般設計公司做得到的。“',
+    name: '<b>KKBOX,</b> 薛良斌',
     link: '#',
     img: {
-      src: InfuseAI,
-      alt: 'InfuseAI',
+      src: kkboxLogo,
+      alt: 'kkboxLogo',
     },
   },
   {
     content:
-      '“ 金融業接觸較多是設計廠商，或是商管顧問；比較少遇到這種從研究出發又能考量業態情境的設計顧問公司，雖然與過去廠商互動習慣不同，但值得一試。“',
-    name: '中國信託銀行, Kage',
+      '“ 大予或許是你為了特定需求而找上的公司，然後在這過程中相信你也會感受到，你得到的是：「一間陪著你成長茁壯的公司、多個陪著你打怪破關的團隊夥伴。“',
+    name: '<b>台新銀行數位金融處生態圈發展部,</b> 林晟 副理 ',
     link: '#',
     img: {
-      src: Yoxi,
-      alt: 'Yoxi',
+      src: tsBankLogo,
+      alt: 'tsBankLogo',
     },
   },
   {
     content:
-      '“ 金融業接觸較多是設計廠商，或是商管顧問；比較少遇到這種從研究出發又能考量業態情境的設計顧問公司，雖然與過去廠商互動習慣不同，但值得一試。“',
-    name: '中國信託銀行, Kage',
+      '“ 專業度令人印象深刻，不只是前進 UX/UI 的最佳夥伴，從合作中更激發對使用者及設計的創新想像。“',
+    name: '<b>台灣設計研究院,</b> 王翊任',
     link: '#',
     img: {
-      src: Yoxi,
-      alt: 'Yoxi',
+      src: tdriLogo,
+      alt: 'tdriLogo',
+    },
+  },
+  {
+    content:
+      '“ 有人曾經跟我介紹大予是豪宅等級的顧問，合作以來覺得形容的真好！專案期間感受到大予的嚴謹及產出的專業性，過程中亦非常有收穫。“',
+    name: '<b>台北富邦銀行數位金融處,</b> 盧湞',
+    link: '#',
+    img: {
+      src: fbLogo,
+      alt: 'fbLogo',
+    },
+  },
+  {
+    content:
+      '“ 大予團隊可提供超乎顧客需求的服務，服務跟呈現都令人滿意。“',
+    name: '<b>中華汽車新創小組,</b> 郭怡欣',
+    link: '#',
+    img: {
+      src: cmcLogo,
+      alt: 'cmcLogo',
     },
   },
 ];
@@ -149,6 +176,9 @@ export function HomePage() {
 
   const themeColorRef = useRef<HTMLDivElement>(null);
   const helpColorRef = useRef<HTMLDivElement>(null);
+  const lottieRef1 = useRef<any>(null);;
+  const lottieRef2 = useRef<any>(null);;
+  const lottieRef3 = useRef<any>(null);;
 
   useScrollPosition(({ prevPos, currPos }) => {
     // console.log(currPos.x)
@@ -158,18 +188,23 @@ export function HomePage() {
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
     // console.log(helpColorRef.current!.getBoundingClientRect().y);
 
-    if (themeColorRef.current!.getBoundingClientRect().top < 130) {
+    if (themeColorRef.current!.getBoundingClientRect().top < 140) {
       // debugger
-      setBlackBg(false);
+      setTimeout(() => {
+        setBlackBg(false);
+      }, 300);
     } else {
-      setBlackBg(true);
+      setTimeout(() => {
+        setBlackBg(true);
+      }, 300);
+
     }
-    if (
-      helpColorRef.current!.getBoundingClientRect().y < 100
-    ) {
-      // debugger
-      setBlackBg(true);
-    }
+    // if (
+    //   helpColorRef.current!.getBoundingClientRect().y < 100
+    // ) {
+    //   // debugger
+    //   setBlackBg(true);
+    // }
     // if (Math.abs(currPos.y) > 7000) {
     //   // debugger
     //   setBlackBg(true);
@@ -248,6 +283,7 @@ export function HomePage() {
     );
   }
 
+
   return (
     <ParallaxProvider>
       <Helmet>
@@ -266,7 +302,7 @@ export function HomePage() {
       <div className={blackBg ? 'black' : 'white'}>
         <VideoWrapper>
           <Parallax
-          // scale={[1, 1.2]} speed={-10}
+            scale={[1, 1.2]} speed={-10}
           >
             {!isMobile ? (
               <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
@@ -352,8 +388,9 @@ export function HomePage() {
                   <h4>交通與運輸</h4>
                   <h2>和泰移動派遣服務｜yoxi 美好出行體驗</h2>
                   <div className="pills">
-                    <div className="pill eng">BRANDING</div>
+                    <div className="pill eng">STRATEGY</div>
                     <div className="pill eng">EXPERIENCE</div>
+                    <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
                     link="#"
@@ -368,10 +405,11 @@ export function HomePage() {
                 </div>
                 <Fade bottom>
                   <h4>金融與保險</h4>
-                  <h2>中國信託親子銀行｜玩轉青少年儲蓄觀念的社群產品</h2>
+                  <h2>台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行</h2>
                   <div className="pills">
-                    <div className="pill eng">BRANDING</div>
                     <div className="pill eng">EXPERIENCE</div>
+                    <div className="pill eng">RESEARCH</div>
+                    <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
                     link="#"
@@ -388,8 +426,10 @@ export function HomePage() {
                   <h4>電信媒體與科技</h4>
                   <h2>遠傳電信官網｜不只是電信，替未來生活提案</h2>
                   <div className="pills">
-                    <div className="pill eng">BRANDING</div>
+                    <div className="pill eng">STRATEGY</div>
                     <div className="pill eng">EXPERIENCE</div>
+                    <div className="pill eng">RESEARCH</div>
+                    <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
                     link="#"
@@ -406,8 +446,10 @@ export function HomePage() {
                   <h4>交通與運輸</h4>
                   <h2>星宇航空｜打造精品航空獨到的數位體驗</h2>
                   <div className="pills">
-                    <div className="pill eng">BRANDING</div>
+                    <div className="pill eng">STRATEGY</div>
                     <div className="pill eng">EXPERIENCE</div>
+                    <div className="pill eng">RESEARCH</div>
+                    <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
                     link="#"
@@ -582,7 +624,11 @@ export function HomePage() {
                   <SlideItem key={item.name}>
                     <img src={item.img.src} alt={item.img.alt} />
                     <p>{item.content}</p>
-                    <span>{item.name}</span>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: item.name
+                      }}
+                    />
                     {/* <Fade bottom>
                     </Fade> */}
                   </SlideItem>
@@ -608,7 +654,7 @@ export function HomePage() {
       <Dedication>
         <div className="bg">
           <Parallax
-            speed={windowWidth > 960 ? 8 : 3}
+            speed={windowWidth > 960 ? 15 : 7}
           >
             {windowWidth > 960 ? <img src={dedicationBg} alt="dedicationBg" /> : <img src={dedicationBgMb} alt="dedicationBg" />}
           </Parallax>
@@ -625,14 +671,15 @@ export function HomePage() {
         ref={helpColorRef}
       // style={{ paddingBottom: '120px' }}
       >
-        <div className={blackBg ? 'black' : 'white'}>
+        {/* <div className={blackBg ? 'black' : 'white'}> */}
+        <div className={'black'}>
           <PageWrapper
-            blackBg={blackBg}
-            bgc={blackBg ? colors.DarkBlue : colors.BGGreen}
-            color={blackBg ? colors.White : colors.DarkBlue}
-            className={blackBg ? 'black' : 'white'}
+            blackBg={true}
+            bgc={colors.DarkBlue}
+            color={colors.White}
+            className={'black'}
           >
-            <Horizon blackBg={blackBg}>
+            <Horizon blackBg={true}>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">HOW WE CAN HELP</h4>
@@ -669,13 +716,25 @@ export function HomePage() {
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box className="lottie">
+                    <Box
+                      className="lottie"
+                      onMouseEnter={() => {
+                        if (lottieRef1.current !== null) {
+                          lottieRef1.current.goToAndPlay(1);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (lottieRef1.current !== null) {
+                          lottieRef1.current.pause();
+                        }
+                      }}
+                    >
                       <Fade>
-                        <Lottie animationData={lottie1} loop={false} />
+                        <Lottie animationData={lottie1} loop={false} lottieRef={lottieRef1} />
                       </Fade>
                     </Box>
                     <Box>
-                      <h1>研究與策略方針</h1>
+                      <h1>研究與體驗策略</h1>
                       <h4>
                         分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品服務制定體驗策略方針
                       </h4>
@@ -698,9 +757,21 @@ export function HomePage() {
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box className="lottie">
+                    <Box
+                      className="lottie"
+                      onMouseEnter={() => {
+                        if (lottieRef2.current !== null) {
+                          lottieRef2.current.goToAndPlay(1);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (lottieRef2.current !== null) {
+                          lottieRef2.current.pause();
+                        }
+                      }}
+                    >
                       <Fade>
-                        <Lottie animationData={lottie2} loop={false} />
+                        <Lottie animationData={lottie2} loop={false} lottieRef={lottieRef2} />
                       </Fade>
                     </Box>
                     <Box>
@@ -727,9 +798,21 @@ export function HomePage() {
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
-                    <Box className="lottie">
+                    <Box
+                      className="lottie"
+                      onMouseEnter={() => {
+                        if (lottieRef3.current !== null) {
+                          lottieRef3.current.goToAndPlay(1);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (lottieRef3.current !== null) {
+                          lottieRef3.current.pause();
+                        }
+                      }}
+                    >
                       <Fade>
-                        <Lottie animationData={lottie3} loop={false} />
+                        <Lottie animationData={lottie3} loop={false} lottieRef={lottieRef3} />
                       </Fade>
                     </Box>
                     <Box>
@@ -1144,7 +1227,7 @@ const SlideItem = styled.div`
   }
   span {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
   }
   ${media.medium`
     p{
@@ -1348,6 +1431,7 @@ const OurServices = styled.div<{
   }
   .slick-list{
     overflow: visible;
+    width: 80%;
   }
   .slick-prev{
     display: block;
@@ -1464,6 +1548,9 @@ const OurServices = styled.div<{
     .slick-dots.slick-thumb{
       margin-top: 48px;
     }
+    .slick-list{
+      width: 100%;
+    }
   `}
 `;
 
@@ -1471,10 +1558,11 @@ const VideoWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   height: 720px;
-  max-width: 1920px;
-  padding: 0 80px;
+  max-width: calc( 100% - 160px );
+  /* padding: 0 80px; */
   margin: 0 auto;
   ${media.medium`
+    max-width: calc( 100% - 40px );
     height: auto;
     padding: 0 20px;
   `}
@@ -1514,14 +1602,14 @@ const Dedication = styled.div`
       height: 50px;
     }
   `}
-  @media screen and (max-width:400px) {
+  /* @media screen and (max-width:400px) {
     .bg{
       img{
         height: 440px;
         width: auto;
       }
     }
-  }
+  } */
 `;
 
 const ServiceList = styled.div`

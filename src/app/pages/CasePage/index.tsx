@@ -11,8 +11,9 @@ import Idea from './assets/idea.svg';
 import { media } from 'styles/media';
 import { Box } from '@mui/system';
 import Case from './Case'
-
-
+import Lottie from 'lottie-react';
+import lottieClient from './assets/client.json';
+import Fade from 'react-reveal/Fade';
 export function CasePage() {
   return (
     <>
@@ -34,7 +35,11 @@ export function CasePage() {
       <SectionIdea>
         <div className="wrapper">
           <div className="content">
-            <img className="idea" src={Idea} alt="idea" />
+            <Box width={'220px'} m="0 auto">
+              <Fade>
+                <Lottie animationData={lottieClient} loop={true} />
+              </Fade>
+            </Box>
             <h1 className="eng">
               Serving 100+ top companies with diverse cross-field experience
             </h1>

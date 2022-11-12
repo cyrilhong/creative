@@ -135,6 +135,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colors.DarkBlue};
     color: ${colors.White};
     transition: all .5s ease-in;
+    overflow: hidden;
     .lines {
       .line {
         border-right: 1px solid #f3f3eb0d;

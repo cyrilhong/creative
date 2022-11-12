@@ -27,12 +27,13 @@ import { useWindowSize, isDesktop } from '../../hooks'
 import { media } from 'styles/media';
 import Lottie from 'lottie-react';
 import aboutUsAnim from './assets/about-us.json'
+import Collapse from './collapse'
 export function AboutUsPage() {
   const [blackBg, setBlackBg] = useState(true);
   const colorRef = useRef<HTMLDivElement>(null);
   useScrollPosition(({ prevPos, currPos }) => {
-    // console.log(colorRef.current!.getBoundingClientRect().top);
-    if (colorRef.current!.getBoundingClientRect().top < 550) {
+    console.log(colorRef.current!.getBoundingClientRect().top);
+    if (colorRef.current!.getBoundingClientRect().top < 250) {
       // debugger
       setBlackBg(false);
     } else {
@@ -129,17 +130,15 @@ export function AboutUsPage() {
                 <div className="context">
                   <h2>專業團隊，跨領域設計經驗</h2>
                   <h4>
-                    AJA
-                    專注在呼應企業的商業目標，結合用戶洞見，轉化成為精采絕倫的設計方案。跨領域的設計經驗經累，讓AJA團隊有更多連結與創造的能力，能更好地協助各類型的產業與企業。
+                    AJA 聚焦因應企業的商業目標，結合用戶洞見，轉化為精采絕倫的設計方案。跨領域的設計經驗讓AJA有更多連結與創造的能力，能更好地協助各類型的產業與企業。
                   </h4>
                   <h2>夥伴關係、以終為始</h2>
                   <h4>
-                    AJA
-                    本身就是一個專業平台，在這個平台上，設計夥伴們的多元專業可以互相連結、彼此共鳴成長，而最終的設計成果將一舉超越客戶的期待。
+                    AJA 本身就是一個專業平台，在這個平台上，設計夥伴們的多元專業可以互相連結、彼此共鳴成長，而最終的設計成果將一舉超越客戶的期待。
                   </h4>
                   <h2>動靜分明，工作玩樂都專業</h2>
                   <h4>
-                    我們做設計很認真，玩樂也很盡興。每年的員工旅遊，已經走訪世界各地。每季的聚餐，則吃遍台灣大街小巷。能夠熱切開心地過生活，才懂得欣賞與啟發，擁有源源不絕的創造力。
+                    我們熱愛設計，也熱愛生活。每年員工旅遊走訪世界各地、每季聚餐則吃遍台灣大街小巷。能夠殷切經營生活，才懂得欣賞與啟發，擁有源源不絕的創造力。
                   </h4>
                 </div>
                 <div className="mb-hotBaloon">
@@ -155,12 +154,13 @@ export function AboutUsPage() {
         className="leadership-team"
       // style={{ paddingBottom: '120px' }}
       >
-        <div className={blackBg ? 'bg-about-us' : 'black'}>
+        <div className={'black'}>
+          {/* <div className={blackBg ? 'bg-about-us' : 'black'}> */}
           <PageWrapper
             blackBg={blackBg}
-            bgc={blackBg ? color.DarkBlue : color.BGGreen}
-            color={blackBg ? color.White : color.DarkBlue}
-            className={blackBg ? 'black' : 'white'}
+            bgc={color.BGGreen}
+            color={color.White}
+            className={'black'}
           >
             <Horizon blackBg={blackBg}>
               <div className="title">
@@ -176,37 +176,52 @@ export function AboutUsPage() {
                 </Grid>
                 <Grid xs={12} md={8} padding={0}>
                   <Grid container spacing={5} rowSpacing={8}>
-                    <Grid xs={12} md={6}>
-                      <img src={james} alt="james" />
+                    <Grid xs={12} md={6} className="leaders">
+                      <ParallaxImg style={{ margin: 0 }}>
+                        <img src={james} alt="james" />
+                      </ParallaxImg>
                       <div className="info">
-                        <Box>
-                          <h4 className="eng">Business Director</h4>
-                          <h2 className="eng">James Chou</h2>
-                        </Box>
-                        <img src={arrowButton} alt="button" />
+                        <Collapse list={[
+                          {
+                            title: "Business Director",
+                            name: "James Chou",
+                            answer: `善於解析企業客戶的需求並提供最適切的服務方案。`,
+                            expanded: false
+                          }
+                        ]} />
                       </div>
                     </Grid>
-                    <Grid xs={12} md={6}>
-                      <img src={alan} alt="alan" />
+                    <Grid xs={12} md={6} className="leaders">
+                      <ParallaxImg style={{ margin: 0 }}>
+                        <img src={alan} alt="alan" />
+                      </ParallaxImg>
                       <div className="info">
-                        <Box>
-                          <h4 className="eng">Creative Director</h4>
-                          <h2 className="eng">Alan Yang</h2>
-                        </Box>
-                        <img src={arrowButton} alt="button" />
+                        <Collapse list={[
+                          {
+                            title: "Creative Director",
+                            name: "Alan Yang",
+                            answer: `美感與創意兼具，擅長於跨平台的互動介面設計，以及企業品牌的數位形象營造。`,
+                            expanded: false
+                          }
+                        ]} />
                       </div>
                     </Grid>
-                    <Grid xs={12} md={6}>
-                      <img src={david} alt="david" />
+                    <Grid xs={12} md={6} className="leaders">
+                      <ParallaxImg style={{ margin: 0 }}>
+                        <img src={david} alt="david" />
+                      </ParallaxImg>
                       <div className="info">
-                        <Box>
-                          <h4 className="eng">UX Director</h4>
-                          <h2 className="eng">David Chen</h2>
-                        </Box>
-                        <img src={arrowButton} alt="button" />
+                        <Collapse list={[
+                          {
+                            title: "UX Director",
+                            name: "David Chen",
+                            answer: `善於理解科技與人性，並且習於創新轉化，用 UX 專業來解決客戶的商業需求。`,
+                            expanded: false
+                          }
+                        ]} />
                       </div>
                     </Grid>
-                    <Grid xs={12} md={6}>
+                    {/* <Grid xs={12} md={6}>
                       <img src={charles} alt="charles" />
                       <div className="info">
                         <Box>
@@ -215,7 +230,7 @@ export function AboutUsPage() {
                         </Box>
                         <img src={arrowButton} alt="button" />
                       </div>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 </Grid>
               </Grid>
@@ -475,6 +490,15 @@ const Horizon = styled.div<{
 const Leadership = styled.div`
   img {
     width: 100%;
+    filter: grayscale(1);
+    transform: scale(1);
+    transition: all .5s ease-in;
+  }
+  .leaders:hover{
+    img{
+      transform: scale(1.1);
+      filter: grayscale(0);
+    }
   }
   .info {
     display: flex;
@@ -489,10 +513,14 @@ const Leadership = styled.div`
     }
     h4 {
       margin: 0 0 4px;
-      font-weight: 100;
+      font-weight: 300;
     }
     h2 {
       margin: 0;
+    }
+    .accordion__button{
+      display: flex;
+      justify-content: space-between;
     }
   }
   ${media.medium`

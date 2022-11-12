@@ -74,10 +74,11 @@ export function ServicePage() {
                 </div>
                 <div className="content">
                   <Fade bottom duration={500} delay={100}>
-                    <h1><Mark />
+                    <h1>
                       我們透過完善的設計流程與反覆驗證，
                     </h1>
                     <h1>
+                      <Mark />
                       幫助客戶實現願景
                     </h1>
                   </Fade>
@@ -97,11 +98,10 @@ export function ServicePage() {
                 <div className="content">
                   <Fade bottom duration={500} delay={100}>
                     <h1>
-                      <Mark />
-                      我們透過完善的設計流程與反
+                      我們透過完善的設計流程與反覆驗證，
                     </h1>
                     <h1>
-                      覆驗證，幫助客戶實現願景
+                      <Mark />幫助客戶實現願景
                     </h1>
                   </Fade>
                 </div>
@@ -149,7 +149,7 @@ export function ServicePage() {
               </Grid>
               <Grid xs={12} md={8} padding={0}>
                 <h4>
-                  假字假字假字假字探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。
+                  我們相信每個服務與產品的誕生都是一段連續的過程，從探索研究、創新概念到設計落實，全程都應該對應商業目標，用戶需求與市場期待。我們善於傾聽、縝密而細心的爬梳情境，深化為每一個獨特而且鮮明的洞察，進而落實到每位用戶手上愉悅且讚嘆的產品體驗，我們對待每一個承接的項目都無比認真，不忘初心方得始終。
                 </h4>
                 <Fade bottom cascade duration={500} delay={100}>
                   <img src={designProcess} alt="design-process" />
@@ -182,28 +182,33 @@ export function ServicePage() {
                 <div className="huge eng title">
                   Service and Product Strategy
                 </div>
-                <h1>服務與產品策略</h1>
+                <h1>產品與體驗策略</h1>
                 <Grid xs={12} md={10}>
                   <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
                     <h4 className='subtitle'>
-                      分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品制定體驗策略方針
+                      分析脈絡趨勢、挖掘使用者需求，我們提供全方位體驗設計諮詢服務，為你的產品制定體驗策略方針。
                     </h4>
                   </Box>
                   <ItemList>
                     <Collapse list={[
                       {
                         title: "市場研究與競爭分析",
-                        answer: `市場研究與競爭分析`,
+                        answer: `透過系統的設計方法，從競品、產業、用戶等不同面向，評估現有產品，定義產品設計方向。`,
                         expanded: false
                       },
                       {
                         title: "產品定位與價值主張",
-                        answer: `產品定位與價值主張`,
+                        answer: `依循研究脈絡與洞見，規劃在競爭市場上的產品優勢，在市場上建構獨特價值的設計挑戰。`,
                         expanded: false
                       },
                       {
                         title: "使用者研究",
-                        answer: `使用者研究`,
+                        answer: `深入使用者生活領域，深度的觀察、訪談，從使用者身上汲取洞見建立觀點。`,
+                        expanded: false
+                      },
+                      {
+                        title: "設計思考工作坊",
+                        answer: `鼓勵參與、共創、凝聚共識找出解決對策的手法，藉以擬定策略與發展方向。`,
                         expanded: false
                       },
                     ]} />
@@ -217,23 +222,23 @@ export function ServicePage() {
                   <ItemList>
                     <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
                       <h4 className='subtitle'>
-                        從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。
+                        從用戶洞見出發，制定體驗策略並落實設計創新，建立以使用者中心的使用經驗。
                       </h4>
                     </Box>
                     <Collapse list={[
                       {
                         title: "體驗流程規劃",
-                        answer: `體驗流程規劃`,
+                        answer: `脈絡分析後轉化落實，規劃完整的產品主攻能框架與核心價值，串連為順暢易用的使用體驗設計。`,
                         expanded: false
                       },
                       {
                         title: "網站規劃與設計",
-                        answer: `網站規劃與設計`,
+                        answer: `將發展的雛形與設計概念，在設計過程中經歷探索與收斂，從真實用戶的測試驗證後作為修改與調整依據，進而交付與開發實作。`,
                         expanded: false
                       },
                       {
                         title: "概念測試與需求驗證",
-                        answer: `使用者研究`,
+                        answer: `原型測試快速測試產品概念，第一手使用回饋幫助產品更貼近市場需求。`,
                         expanded: false
                       },
                     ]} />
@@ -270,18 +275,23 @@ export function ServicePage() {
                     <ItemList>
                       <Collapse list={[
                         {
-                          title: "App 規劃與設計",
-                          answer: `App 規劃與設計`,
+                          title: "品牌定位與溝通策略",
+                          answer: `因索創新原點，量身打造關鍵場景情境，跨領域整合品牌、創意、互動，建構符合產品解決方案。`,
                           expanded: false
                         },
                         {
-                          title: "設計概念驗證",
-                          answer: `產品定位與價值主張`,
+                          title: "APP 使用者介面設計。",
+                          answer: `UI介面設計，展現操作流程上的功能、顧及使用的便利性與產品設計美學，落實介面元件與設計系統的完善`,
                           expanded: false
                         },
                         {
-                          title: "跨平台介面設計",
-                          answer: `從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。`,
+                          title: "網站規劃設計與前端工程",
+                          answer: `因應服務定位與需求建構網站，包含資訊架構、導覽動線，版面，互動行為與內容規劃。`,
+                          expanded: false
+                        },
+                        {
+                          title: "跨平台裝置介面設計",
+                          answer: `適應多樣的場景與使用行為，發展線上或線下的使用介面，諸如ATM,  Kiosk , 平板或各項終端設備介面設計。`,
                           expanded: false
                         },
                       ]} />
@@ -299,7 +309,7 @@ export function ServicePage() {
                 <div className="wrapper border">
                   <Box width={'220px'} m="0 auto">
                     <Fade>
-                      <Lottie animationData={ourWorks} loop={2} />
+                      <Lottie animationData={ourWorks} loop={true} />
                     </Fade>
                   </Box>
                   <h1 className="eng">
@@ -555,7 +565,7 @@ const HeroWrapper = styled.main`
       h1{
         span {
           left: 0;
-          max-width: 263px;
+          max-width: 192px;
           height: 16px;
           top: 14px;
         }

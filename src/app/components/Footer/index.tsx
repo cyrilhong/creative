@@ -151,7 +151,7 @@ const Footer = styled.div`
   display: flex;
   background-color: ${color.AJABlue};
   padding: 0;
-  z-index: 0;
+  z-index: -1;
   .lines {
     .line {
       border-right: 1px solid #f3f3eb0d;

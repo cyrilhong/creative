@@ -14,8 +14,26 @@ import Paper from '@mui/material/Paper';
 import * as color from 'styles/colors';
 import hero1 from './assets/customer-img-1.jpg';
 import hero2 from './assets/customer-img-2.jpg';
-import clients1 from './assets/client-01.png';
+import clients1 from './assets/selectedClient/client-01.png';
+import clients2 from './assets/selectedClient/client-02.png';
+import clients3 from './assets/selectedClient/client-03.png';
+import clients4 from './assets/selectedClient/client-04.png';
+import clients5 from './assets/selectedClient/client-05.png';
+import clients6 from './assets/selectedClient/client-06.png';
+import clients7 from './assets/selectedClient/client-07.png';
+import clients8 from './assets/selectedClient/client-08.png';
+import clients9 from './assets/selectedClient/client-09.png';
+import clients10 from './assets/selectedClient/client-10.png';
 import clients1Hover from './assets/client-01-hover.png';
+import clients2Hover from './assets/client-02-hover.png';
+import clients3Hover from './assets/client-03-hover.png';
+import clients4Hover from './assets/client-04-hover.png';
+import clients5Hover from './assets/client-05-hover.png';
+import clients6Hover from './assets/client-06-hover.png';
+import clients7Hover from './assets/client-07-hover.png';
+import clients8Hover from './assets/client-08-hover.png';
+import clients9Hover from './assets/client-09-hover.png';
+import clients10Hover from './assets/client-10-hover.png';
 import arrowBtn from './assets/arrow-btn.svg';
 import Idea from './assets/idea.svg';
 import { media } from 'styles/media';
@@ -221,13 +239,34 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
+
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients3Hover} alt="03" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients3} alt="03" />
+                      </Box>
+                      <hr />
+                      <h5>
+                        品牌創意發想到設計執行整合，從司機到乘客的應用情境，與和泰一起重新定義舒適用車體驗。
+                      </h5>
+                      <div className="link">
+                        <a href="#">
+                          <img src={arrowBtn} alt="arrowBtn" />
+                          和泰派遣服務 APP
+                        </a>
+                      </div>
+                    </div>
+                  </Grid>
+                  <Grid className="card" item xs={6} md={4}>
+                    <Box className="visible">
+                      <img src={clients2Hover} alt="02" />
+                    </Box>
+                    <div className="hover">
+                      <Box display={'flex'} justifyContent="center">
+                        <img src={clients2} alt="02" />
                       </Box>
                       <hr />
                       <h5>
@@ -235,9 +274,9 @@ export function CustomerPage() {
                         ATM、企金與親子金融跨接觸點數位服務。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        {/* <a href="#">
                           <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
+                        </a> */}
                         <a href="#">
                           <img src={arrowBtn} alt="arrowBtn" />
                           企業銀行重塑案
@@ -247,193 +286,136 @@ export function CustomerPage() {
                   </Grid>
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients4Hover} alt="04" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients4} alt="04" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        全新航空品牌的數位旅程體驗，橫跨手機、官網，貨運與免稅品等跨平台數位服務。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          <img src={arrowBtn} alt="arrowBtn" /> 星宇航空數位建置案
                         </a>
                       </div>
                     </div>
                   </Grid>
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients5Hover} alt="05" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients5} alt="05" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        不只是電信服務，以研究洞察為起點，為個人、商務、會員生活服務的官網設計顧問案。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
+                          <img src={arrowBtn} alt="arrowBtn" /> 遠傳數位生活平台
                         </a>
+
+                      </div>
+                    </div>
+                  </Grid>
+                  <Grid className="card" item xs={6} md={4}>
+                    <Box className="visible">
+                      <img src={clients6Hover} alt="06" />
+                    </Box>
+                    <div className="hover">
+                      <Box display={'flex'} justifyContent="center">
+                        <img src={clients6} alt="06" />
+                      </Box>
+                      <hr />
+                      <h5>
+                        為全球整體節能解決方案領導企業持續優化數位運用，打造電源、EV 充電與自動化服務。
+                      </h5>
+                      <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          <img src={arrowBtn} alt="arrowBtn" /> 品牌數位設計系統
                         </a>
                       </div>
                     </div>
                   </Grid>
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients7Hover} alt="07" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients7} alt="07" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 APP。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          <img src={arrowBtn} alt="arrowBtn" /> 華航行動飛航體驗
                         </a>
                       </div>
                     </div>
                   </Grid>
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients10Hover} alt="10" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients10} alt="10" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        與國泰醫院一起以病人為中心的思考出發，優化預約掛號與診療查詢的數位產品體驗。
+
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          <img src={arrowBtn} alt="arrowBtn" /> 國泰醫院 APP 服務
                         </a>
                       </div>
                     </div>
                   </Grid>
+
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients9Hover} alt="09" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients9} alt="09" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        與台新銀行團隊攜手合作，持續優化最懂年輕人，整合存錢、消費、理財的 Richart 數位帳戶。
                       </h5>
                       <div className="link">
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
+                        <a href="#">數位銀行金融服務
                           <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
                         </a>
                       </div>
                     </div>
                   </Grid>
+
                   <Grid className="card" item xs={6} md={4}>
                     <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
+                      <img src={clients8Hover} alt="08" />
                     </Box>
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
+                        <img src={clients8} alt="08" />
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                      與餐飲集團深度合作，輔助顧客善用數位平台，提升支付、回購強化會員加值服務。
                       </h5>
                       <div className="link">
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
-                        </a>
-                      </div>
-                    </div>
-                  </Grid>
-                  <Grid className="card" item xs={6} md={4}>
-                    <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
-                    </Box>
-                    <div className="hover">
-                      <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
-                      </Box>
-                      <hr />
-                      <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
-                      </h5>
-                      <div className="link">
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
-                        </a>
-                      </div>
-                    </div>
-                  </Grid>
-                  <Grid className="card" item xs={6} md={4}>
-                    <Box className="visible">
-                      <img src={clients1Hover} alt="01" />
-                    </Box>
-                    <div className="hover">
-                      <Box display={'flex'} justifyContent="center">
-                        <img src={clients1} alt="01" />
-                      </Box>
-                      <hr />
-                      <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
-                      </h5>
-                      <div className="link">
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a>
-                        <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
-                        </a>
+
                       </div>
                     </div>
                   </Grid>
@@ -572,12 +554,18 @@ const OurClients = styled.div`
       .link {
         display: flex;
         flex-direction: column;
+        min-height: 58px;
+        justify-content: flex-end;
         a {
           color: ${color.DarkBlue};
           display: flex;
           margin: 0 0 8px;
           align-items: center;
           font-size: 14px;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
           h5 {
             margin: 0;
           }
@@ -594,6 +582,7 @@ const OurClients = styled.div`
       }
       h5 {
         margin: 24px 0 28px;
+        min-height: 65px;
       }
       hr {
         border-bottom: 1px solid #d9d9d9;
@@ -603,6 +592,8 @@ const OurClients = styled.div`
         transition: all 0.5s ease-in;
         /* display: none; */
         opacity: 0;
+        z-index: 5;
+        position: relative;
         /* position: absolute; */
         /* width: 100%;
         height: 100%;

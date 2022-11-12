@@ -20,31 +20,7 @@ const CaseSlider = [
       src: yoxi,
       alt: 'Yoxi',
     },
-  },
-  {
-    title: '2和泰移動派遣服務｜yoxi 美好出行體驗',
-    content:
-      '和泰集團作為 TOYOTA 台灣區總代理，2020 年在全球戰略指導與支持下，宣布加入移動事業，企圖打造全新的叫車服務首選品牌。',
-    type: '交通與運輸',
-    tag: ['a', 'b', 'c'],
-    link: '#',
-    img: {
-      src: yoxi,
-      alt: 'Yoxi',
-    },
-  },
-  {
-    title: '3和泰移動派遣服務｜yoxi 美好出行體驗',
-    content:
-      '和泰集團作為 TOYOTA 台灣區總代理，2020 年在全球戰略指導與支持下，宣布加入移動事業，企圖打造全新的叫車服務首選品牌。',
-    type: '交通與運輸',
-    tag: ['UI / UX', 'WEBSITE', 'DESIGN SYSTEM'],
-    link: '#',
-    img: {
-      src: yoxi,
-      alt: 'Yoxi',
-    },
-  },
+  }
 ];
 
 export default function Case() {
@@ -167,7 +143,8 @@ const Cases = styled.div`
       max-width: 450px;
     }
     .dots {
-      display: flex;
+      /* display: flex; */
+      display: none;
       flex-direction: row;
       margin-top: 48px;
       cursor: pointer;

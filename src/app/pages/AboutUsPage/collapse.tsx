@@ -25,15 +25,17 @@ export default function Collapse({ list }) {
           FAQS.map((FAQ, index) => <AccordionItem onClick={setExpand(index)} dangerouslySetExpanded={FAQ.expanded} key={FAQ.title} >
             <AccordionItemHeading>
               <AccordionItemButton  >
-                <h3>{FAQ.title}</h3>
+                <div className='head'>
+                  <h4 className='eng'>{FAQ.title}</h4>
+                  <h2 className='eng'>{FAQ.name}</h2>
+                </div>
                 <img style={{ transform: `rotate(${FAQ.expanded ? '180deg' : '0'})` }} src={roundArrowBtn} alt="button" />
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <p dangerouslySetInnerHTML={{
-                __html: FAQ.answer
-              }}>
-              </p>
+              <h4>
+                {FAQ.answer}
+              </h4>
             </AccordionItemPanel>
           </AccordionItem>)
         }
@@ -43,11 +45,19 @@ export default function Collapse({ list }) {
 }
 
 const Wrapper = styled.div`
+  width: 100%;
+  .head{
+    display: flex;
+    flex-direction: column;
+  }
+  .accordion__panel{
+    margin-top: 16px;
+  }
   .accordion__item {
     /* display: flex; */
     justify-content: space-between;
     border-top: 1px solid ${colors.DarkBlue};
-    padding: 22px 0;
+    /* padding: 22px 0; */
     align-items: center;
     flex-direction: column;
     cursor: pointer;
@@ -75,8 +85,5 @@ const Wrapper = styled.div`
     &::before{
       display: none;
     }
-  }
-  ul{
-    padding-left: 20px;
   }
 `

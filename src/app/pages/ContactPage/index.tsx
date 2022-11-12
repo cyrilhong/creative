@@ -35,23 +35,23 @@ import Collapse from 'app/components/Collapse'
 const Services = [
   {
     "title": "創新服務設計",
-    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+    "content": "從企業以及用戶角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗。"
   },
   {
     "title": "網站規劃與設計",
-    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+    "content": "從大型官網、功能型網站、電商網站的建置或改版，包含概念設計、資訊架構規劃、互動設計、視覺設計與前端開發。"
   },
   {
-    "title": "App軟體規劃設計",
-    "content": "從企業以及使用者/消費者的角度，透過定義線上及線下的服務價值、規劃服務藍圖，打造創新且獨特的服務體驗"
+    "title": "APP 軟體規劃設計",
+    "content": "手機或平板APP的建置或改版，包含概念設計、資訊架構規劃、互動設計、視覺設計。"
   },
   {
     "title": "使用者研究 / 體驗策略",
     "content": "透過量化或質化的使用者研究，找出使用者的需求、痛點、爽點，訂定產品與服務的體驗策略。"
   },
   {
-    "title": "APP 規劃與設計",
-    "content": "手機或平板APP的建置或改版，包含概念設計、、資訊架構規劃、互動設計、視覺設計。"
+    "title": "體驗優化健檢",
+    "content": "檢視現有的產品服務流程與顧客旅程地圖，以專家評估或易用性測試等方法，找出服務的斷點與優化的機會點，並提出優化方向建議。"
   },
   {
     "title": "教育訓練",
@@ -434,7 +434,7 @@ export function ContactPage() {
               </InputForm>
               <Box width={'100%'} textAlign="center">
                 <RoundButton type="submit" disabled={false}>
-                  <h4 className="">送出表單</h4>
+                  <h4 className="">立即送出</h4>
                   <img src={arrowWhite} alt="arrow" />
                 </RoundButton>
               </Box>
@@ -557,8 +557,7 @@ export function ContactPage() {
                       </div>
                       <div className="horizon" />
                       <h4>
-                        大予向您做公司簡介並溝通專案需求，客戶可提供需求說明書
-                        (RFP) 或其他有助於專案範圍評估的資料。
+                        大予向您做公司簡介並溝通專案需求，客戶可提供需求說明書（RFP）或其他有助於專案範圍評估的資料。
                       </h4>
                     </Step>
                   </Grid>
@@ -570,7 +569,7 @@ export function ContactPage() {
                       </div>
                       <div className="horizon" />
                       <h4>
-                        依據客戶提供的資訊果，提出服務規劃、專案時程、報價等，讓您對內呈報並進行選商決策。
+                        依據客戶提供的資訊提出服務規劃、專案時程、報價等，讓您對內呈報並進行選商決策。
                       </h4>
                     </Step>
                   </Grid>
@@ -582,8 +581,7 @@ export function ContactPage() {
                       </div>
                       <div className="horizon" />
                       <h4>
-                        客戶確認專案報價與範圍 (SOW)
-                        之後，即可進行簽約，簽約完成後即可開案。
+                        客戶確認專案報價與範圍（SOW）之後，即可進行簽約，簽約完成後即可開案。
                       </h4>
                     </Step>
                   </Grid>
@@ -602,7 +600,7 @@ export function ContactPage() {
             }}
           >
             <Grid container spacing={8}>
-              <Grid item xs={5} ref={positionRef} position="relative">
+              <Grid item xs={4} ref={positionRef} position="relative">
                 <div
                   className={`left ${sticky ? 'sticky-top' : ''} ${bottomSticky ? 'sticky-bottom' : ''
                     }`}
@@ -611,21 +609,24 @@ export function ContactPage() {
                     Let's Do <br /> This.
                   </div>
                   <h1>專案諮詢</h1>
-                  <h3>
-                    您可以透過此份表單讓我們理解您的需求，也同時釐清您所需要的協助！{' '}
-                    <br /> 也歡迎您隨時來電洽詢：886-2-85029135
-                  </h3>
                 </div>
               </Grid>
-              <Grid item xs={7}>
+              <Grid item xs={8}>
                 <div className="right">
                   <FormDivider />
+                  <h3>
+                    已經有具體的設計需求嗎？您可以透過此份表單告訴我們您的專案細節，<br />
+                    或歡迎來電洽詢 +886-2-8502-9135 。
+                  </h3>
                   <Element name='form' >
                     <form onSubmit={handleSubmit(_onSubmit, _onError)}>
                       <FormTitle>
                         <div className="title">
                           <div className="dot" />
-                          <h2>您需要的服務類型是？</h2>
+                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                            <h2>您需要的服務類型是？</h2>
+                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（可複選）</h5>
+                          </Box>
                         </div>
                       </FormTitle>
                       <RadioGroup>
@@ -778,7 +779,19 @@ export function ContactPage() {
                       <FormTitle>
                         <div className="title">
                           <div className="dot" />
-                          <h2>聯絡方式</h2>
+                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                            <h2>您設想的預算大約是？</h2>
+                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
+                          </Box>
+                        </div>
+                      </FormTitle>
+                      <FormTitle>
+                        <div className="title">
+                          <div className="dot" />
+                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                            <h2>您的聯絡方式</h2>
+                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（可複選）</h5>
+                          </Box>
                         </div>
                       </FormTitle>
                       <InputForm>
@@ -864,7 +877,7 @@ export function ContactPage() {
                         <FormTitle>
                           <div className="title">
                             <div className="dot" />
-                            <h2>其他想法</h2>
+                            <h2>告訴我們更多關於您的專案細節吧！</h2>
                           </div>
                         </FormTitle>
                         <div className="input-group">
@@ -881,7 +894,7 @@ export function ContactPage() {
                                 variant="filled"
                                 multiline
                                 rows={5}
-                                placeholder=""
+                                placeholder="寫下更多關於產品或專案的想法，幫助我們更理解您的需求。"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
@@ -892,7 +905,7 @@ export function ContactPage() {
                       </InputForm>
                       <Box width={'100%'} textAlign="center">
                         <RoundButton type="submit" disabled={false}>
-                          <h4 className="">送出表單</h4>
+                          <h4 className="">立即送出</h4>
                           <img src={arrowWhite} alt="arrow" />
                         </RoundButton>
                       </Box>
@@ -924,12 +937,12 @@ export function ContactPage() {
                     <Collapse list={[
                       {
                         title: "什麼專案找大予做最適合？",
-                        answer: `什麼專案找大予做最適合？`,
+                        answer: `<ul><li>服務/功能型網站、大型官網、行動裝置 App、系統軟體等數位介面的規劃與設計。</li><li>想優化產品或服務的使用者體驗，積極尋求創新並提升競爭力。</li><li>貴公司想進行數位轉型，期待從使用者的角度出發訂定使用者體驗的策略。</li><li>常被客訴貴公司的數位服務或產品的介面不好看、不好用、流程卡關。</li><li>貴公司投資大筆預算提升資訊系統，但操作複雜、效率不彰。</li></ul>`,
                         expanded: true
                       },
                       {
                         title: "大予有包含程式開發嗎？",
-                        answer: `大予有包含程式開發嗎？`,
+                        answer: `<b>大予專注於 Web 前端開發，並不提供中、後台程式開發的服務。</b> <br/><br/>因為程式開發和 UX/UI 設計的職能屬性大不相同。UX 與 UI 設計著重在優化使用者體驗、規劃產品該提供的功能、協助流程操作順暢、設計令人喜愛的視覺表現等。我們希望把心力放在做對的事情，發揮最大的合作成效。大予的客戶大多都有自己的IT 或合作開發廠商，因此擁有許多與開發團隊配合的經驗。我們能提供完整規格文件，能與貴公司內外部的開發團隊合作無礙，讓設計與最終產品的結果一致。 <br/><br/>若是 Web-based 的 UI ，我們會負責前端的 HTML 頁面和 CSS 程式碼。RD 只要依據我們前面跟貴公司確認的規格文件與設計圖，聚焦在完成程式功能並提升效能即可。若貴公司沒有內部開發團隊，我們也可以跟您指定的開發廠商合作，或由我們為您介紹合適的程式開發商。`,
                         expanded: false
                       },
                     ]} />
@@ -938,23 +951,23 @@ export function ContactPage() {
                     <h3 className="title">合作方式</h3>
                     <Collapse list={[
                       {
-                        title: "在產品/服務開發的哪個階段找大予比較合適？",
-                        answer: `什麼專案找大予做最適合？`,
+                        title: "該在產品/服務開發的哪個階段，讓 AJA 開始參與？",
+                        answer: `<b>建議在產品的初期規劃階段或進行軟體改版計畫之前，就讓大予加入專案。</b><br/><br/>我們希望盡早理解貴公司的商業策略與目標，會針對公司內相關部門的需求進行訪談，研究終端使用者或消費者的潛在需求或痛點，找到產品或服務的改善點或機會點。這樣不但可節省內部人力資源，更可善用大予在各產業專案累積的經驗，提昇產品/服務的成功率與競爭力。<br/><br/>若貴公司產品都已經規劃完成，規格也已制定，我們的工作重點則會放在強化改善 UI 設計，並透過易用性測試或設計驗證，確保產品與服務的體驗。`,
                         expanded: false
                       },
                       {
                         title: "是否可以請大予先提案比稿，再決定是否外包給你們？",
-                        answer: `大予有包含程式開發嗎？`,
+                        answer: `<b>我們理解大型專案仍需經過必要的選商流程，但我們更相信，一個好設計，必須對要解決的問題有相當程度了解之後，才更有機會達成。</b><br/><br/>對於每個專案，大予會先投入相當的人力與時間，淬鍊出最好的設計。大予對於每個客戶的專案，是完全客製且獨特的，沒有模版也沒有捷徑，只有日積月累的專業能力和經驗。我們可先向您展示過去類似的案例作品，並協助您做內部溝通，說明我們會如何進行專案、預計交付的成果，及可能的設計方向。在一定的預算規模前提下，我們仍可依據客戶提供的邀稿/需求說明書 (RFP) 並與客戶充分溝通之後，提供服務建議書並參與選商。`,
                         expanded: false
                       },
                       {
-                        title: "專案進行時，客戶要如何和大予配合？",
-                        answer: `什麼專案找大予做最適合？`,
+                        title: "專案時程需花費多久？",
+                        answer: `<b>視專案的規模與內容，以及當時人力狀況而定。平均約為3~6 個月。</b><br/><br/>一般而言，一個中型規模以上的 APP或網站專案，需要 4~6 週進行研究規劃，4~6 週完成 UX/UI 設計，以及額外的 4~8 週完成給圖作業或前端開發。通常開發人員在設計專案進行到中、後半段時就可以開始同步進行程式開發作業。若狀況允許，我們建議保留多點時間在前期的研究與規劃階段，包含設計重點、規格訂定、設計風格等，這些項目確認越清楚，後續細部設計與開發效率也會相對提昇。`,
                         expanded: false
                       },
                       {
-                        title: "專案結束後，後續的改版或更新怎麼辦？",
-                        answer: `大予有包含程式開發嗎？`,
+                        title: "專案進行時，如何配合達到最好成效？",
+                        answer: `<b>以專案小組與您充分討論溝通，更歡迎您與我們共同參與相關活動。</b><br/><br/>專案正式開始時，大予通常會組成專案小組並配置一位專案經理 (PM)，PM 將與您討論開案時需要準備的事項，包含盤點現有資源、安排利益關係人內訪、使用者分群與研究方法、專案管理方式等，並舉行開案會議 (kick-off meeting)。專案過程中如果包含使用者研究、訪談、測試，也將邀請您一起參與相關活動。另外，也需要貴公司協助安排提案會議、設計說明會議、交付驗收會議等，讓專案能夠如期如質的完成。`,
                         expanded: false
                       },
                     ]} />
@@ -964,18 +977,18 @@ export function ContactPage() {
                     <h3 className="title">報價相關</h3>
                     <Collapse list={[
                       {
-                        title: "價格怎麼算？",
-                        answer: `價格怎麼算？`,
+                        title: "報價如何計算？",
+                        answer: `<b>UX/UI 設計的費用會根據專案特性、工作項目，以及使用到的職能種類來計價。</b><br/><br/>報價通常跟以下條件相關：<br/><ul><li><b>是否有明確的規格書？</b>如果沒有，在前期就需要花較多的時間協助客戶訂定產品策略與目標、規劃產品資訊架構、設計操作流程、繪製框架圖 (wireframe) 等。</li><li><b>產品/服務內容的多寡。</b>有些專案較著重在視覺表現，有些則注重使用流程，有些 icon 很多，或視覺layout 較複雜等。</li><li><b>專案的專業特性。</b>一些較特殊的產業或使用者對象，會花費較多的時間在研究和改善使用經驗，如果需要進行使用者訪談與測試等，則會產生額外費用。</li></ul><br/><br/>大予在一開始，會儘可能蒐集相關資訊並依據實際工作項目與投入人員的職能、工時進行報價。通常一個手機 APP 的 UX/UI 設計案，預算從 150 萬到 500 萬都有；一個網站規劃與設計案，則落於200 萬到上千萬不等。但每個專案特性和狀態都不同，建議先進行整體評估之後，再進行報價。 <br/><br/>我們也與許多公司採年約方式合作。如果專案規模和數量並不明確，但又需要長期配合的設計夥伴，我們可根據案量配置適當的設計師人力，以實際發生的工時來計價 (time-base)。年約方案讓大予的設計師就像貴公司內部專屬設計師一樣，但此種合作模式較適合有一定的信任基礎，以及需要大予協助設計創新性質的專案。想暸解更多報價方式，歡迎與我們聯絡。`,
                         expanded: false
                       },
                       {
-                        title: "如果預算有限，要如何合作？",
-                        answer: `如果預算有限，要如何合作？`,
+                        title: "報價如何計算？",
+                        answer: `<b>通常報價之前，需要有以下全部或部分的文件與參考資料：</b><ul><li>產品/服務的功能列表</li><li>專案預計啟動與完成的時間</li><li>若是改版專案，請提供現有網站/APP版本供試用或測試帳號</li><li>現有的規劃文件或規格文件</li><li>預計新增/移除的功能及相關說明</li><li>預期達成的專案成果與目標</li></ul>如果可以，建議由大予的業務代表當面說明或展示專案需求是最有效的方式。我們會先跟您電話溝通，確定大予提供的服務能符合貴公司的需求，再行安排業務拜訪。`,
                         expanded: false
                       },
                       {
-                        title: "通常一個案子會做多久？",
-                        answer: `從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗，從用戶洞見出發，制定體驗策略規劃落實設計創新，建立以使用者中心的使用經驗。`,
+                        title: "想與 AJA 合作，但預算有限？",
+                        answer: `<b>我們理解貴公司或有預算限制與考量，若初期無法一次性編列 UX/UI 設計的預算，建議可分階段進行或將工作拆分。</b><br/><br/>例如，一個網站設計案，可將研究規劃、視覺設計、前端開發視為三個工作分階段進行；或只外發研究規劃的部份，視覺設計或前端開發由內部製作。但並不建議只讓大予做視覺設計或前端開發的工作，因為大予的價值著重於前期對使用者的洞察與訂定體驗策略，更能為產品與服務的開發帶來更高價值。`,
                         expanded: false
                       }
                     ]} />
@@ -1340,12 +1353,14 @@ const FormSection = styled.div`
     /* left: 0; */
     /* height: calc( 100vh - 100px ); */
     /* margin-left: 0; */
+    /* width: 500px; */
     height: 100vh;
     background: url(${formBg});
     background-size: cover;
     /* width: 592px; */
     /* top: 0; */
     padding: 120px 110px 0 82px;
+    margin-right: 60px;
     color: ${colors.White};
     margin-left: -80px;
     height: 100vh;
@@ -1356,19 +1371,28 @@ const FormSection = styled.div`
   .sticky-top {
     position: sticky;
     top: 0;
-    left: 0;
+    left: 40;
+    width: calc( 33vw - 90px );
     /* margin-left: 0; */
     /* width: 776px; */
   }
   .sticky-bottom {
     top: initial;
     bottom: 0;
+    position: absolute;
+    /* max-width: calc( 100% + 20px ); */
   }
   .right {
     /* height: 1000px; */
     /* flex: 1 1 100%; */
-    padding: 128px 0 160px 40px;
+    padding: 128px 0 160px 0;
   }
+  ${media.large`
+  .left{
+      margin-right: 0;
+      padding-right: 0;
+    }
+  `}
   ${media.medium`
     .form-section{
       display: none;
@@ -1414,7 +1438,7 @@ const RadioGroup = styled.div`
     }
   }
   .active {
-    background-color: ${colors.DarkBlue};
+    background-color: ${colors.AJABlue};
     color: ${colors.White};
     box-shadow: 4px 4px 10px rgba(162, 170, 164, 0.5);
   }
@@ -1459,7 +1483,7 @@ const SmallRadioGroup = styled.div`
     }
   }
   .active {
-    background-color: ${colors.DarkBlue};
+    background-color: ${colors.AJABlue};
     color: ${colors.White};
     box-shadow: 4px 4px 10px rgba(162, 170, 164, 0.5);
   }
