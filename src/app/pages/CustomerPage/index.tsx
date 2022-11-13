@@ -225,8 +225,7 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        與金融領導品牌深度合作，含跨全省 ATM、企金與親子金融跨接觸點數位服務。
                       </h5>
                       <div className="link">
                         <a href="#">
@@ -270,16 +269,12 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省
-                        ATM、企金與親子金融跨接觸點數位服務。
+                        全新航空品牌的數位旅程體驗，橫跨手機、官網，貨運與免稅品等跨平台數位服務。
                       </h5>
                       <div className="link">
-                        {/* <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
-                        </a> */}
                         <a href="#">
                           <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          星宇航空數位建置案
                         </a>
                       </div>
                     </div>
@@ -294,11 +289,11 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        全新航空品牌的數位旅程體驗，橫跨手機、官網，貨運與免稅品等跨平台數位服務。
+                      不只是電信服務，以研究洞察為起點，為個人、商務、會員生活服務的官網設計顧問案。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 星宇航空數位建置案
+                          <img src={arrowBtn} alt="arrowBtn" /> 星遠傳數位生活平台
                         </a>
                       </div>
                     </div>
@@ -313,11 +308,11 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        不只是電信服務，以研究洞察為起點，為個人、商務、會員生活服務的官網設計顧問案。
+                      為全球整體節能解決方案領導企業持續優化數位運用，打造電源、EV 充電與自動化服務。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 遠傳數位生活平台
+                          <img src={arrowBtn} alt="arrowBtn" /> 品牌數位設計系統
                         </a>
 
                       </div>
@@ -333,11 +328,11 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        為全球整體節能解決方案領導企業持續優化數位運用，打造電源、EV 充電與自動化服務。
+                      以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 APP。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 品牌數位設計系統
+                          <img src={arrowBtn} alt="arrowBtn" /> 華航行動飛航體驗
                         </a>
                       </div>
                     </div>
@@ -352,11 +347,11 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 APP。
+                      數位多元學習管道，掌握顧客與消費型位，從學習趨勢研究著手。
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 華航行動飛航體驗
+                          <img src={arrowBtn} alt="arrowBtn" /> 線上學習互動平台
                         </a>
                       </div>
                     </div>
@@ -412,7 +407,7 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                      與餐飲集團深度合作，輔助顧客善用數位平台，提升支付、回購強化會員加值服務。
+                        與餐飲集團深度合作，輔助顧客善用數位平台，提升支付、回購強化會員加值服務。
                       </h5>
                       <div className="link">
 
@@ -529,6 +524,8 @@ const OurClients = styled.div`
   padding-bottom: 200px;
   background-color: ${color.DarkBlue};
   color: ${color.White};
+  position: relative;
+  z-index: 0;
   .clients {
     .card {
       position: relative;

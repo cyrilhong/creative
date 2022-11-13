@@ -14,7 +14,7 @@ const CaseSlider = [
     content:
       '和泰集團作為 TOYOTA 台灣區總代理，2020 年在全球戰略指導與支持下，宣布加入移動事業，企圖打造全新的叫車服務首選品牌。',
     type: '交通與運輸',
-    tag: ['UI / UX', 'WEBSITE', 'DESIGN SYSTEM'],
+    tag: ['STRATEGY', 'EXPERIENCE', 'BRANDING'],
     link: '#',
     img: {
       src: yoxi,

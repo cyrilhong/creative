@@ -128,27 +128,6 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img01} alt="" />
-                <h4 className="type">金融與保險</h4>
-                <h2 className="title">
-                  台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
-              </Fade>
-            </Case>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
                 <img src={img02} alt="" />
                 <h4 className="type">醫療與健康</h4>
                 <h2 className="title">

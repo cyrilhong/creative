@@ -64,19 +64,29 @@ const Wrapper = styled.div`
   p {
     margin: 0;
     padding-right: 82px;
+    b{
+      font-weight: 500;
+      color: ${colors.AJABlue};
+      display: block;
+      margin-bottom: 16px;
+    }
   }
   h3 {
     margin: 0;
+    font-size: 24px;
+    font-weight: 400;
   }
   .accordion__button{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     &::before{
       display: none;
     }
   }
   ul{
     padding-left: 20px;
+    margin: 10px 0;
   }
 `

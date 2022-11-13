@@ -185,7 +185,7 @@ export function AboutUsPage() {
                           {
                             title: "Business Director",
                             name: "James Chou",
-                            answer: `善於解析企業客戶的需求並提供最適切的服務方案。`,
+                            answer: `精通商業運作，善於解析企業客戶的需求並提供最適切的服務方案。`,
                             expanded: false
                           }
                         ]} />
