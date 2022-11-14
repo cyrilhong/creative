@@ -83,8 +83,8 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 團隊分工清楚且合作接軌，學習力強能掌握客戶之作業細節。能接地氣聆聽使用者之心聲，回應快能接受客戶回饋及調整為適妥解決方案，是客戶喜歡的合作團隊。“',
-    name: '<b>南山人壽業務通路</b>,劉桂如 副總經理',
+      '“ 團隊分工清楚且合作接軌，學習力強能掌握客戶之作業細節。能接地氣聆聽使用者之心聲，回應快能接受客戶回饋及調整為適妥解決方案，是客戶喜歡的合作團隊。”',
+    name: '<b>南山人壽業務通路</b>, 劉桂如 副總經理',
     link: '#',
     img: {
       src: NanShan,
@@ -93,8 +93,8 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 在內部訪談時，平衡來自不同部門間的不同意見、甚至是矛盾與互相衝突的需求，不是一般設計公司做得到的。“',
-    name: '<b>KKBOX,</b> 薛良斌',
+      '“ 在內部訪談時，平衡來自不同部門間的不同意見、甚至是矛盾與互相衝突的需求，不是一般設計公司做得到的。”',
+    name: '<b>KKBOX,</b> 桂國泰',
     link: '#',
     img: {
       src: kkboxLogo,
@@ -103,7 +103,7 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 大予或許是你為了特定需求而找上的公司，然後在這過程中相信你也會感受到，你得到的是：「一間陪著你成長茁壯的公司、多個陪著你打怪破關的團隊夥伴。“',
+      '“ 大予或許是你為了特定需求而找上的公司，然後在這過程中相信你也會感受到，你得到的是：「一間陪著你成長茁壯的公司、多個陪著你打怪破關的團隊夥伴。」共勉之。”',
     name: '<b>台新銀行數位金融處生態圈發展部,</b> 林晟 副理 ',
     link: '#',
     img: {
@@ -113,7 +113,7 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 專業度令人印象深刻，不只是前進 UX/UI 的最佳夥伴，從合作中更激發對使用者及設計的創新想像。“',
+      '“ 專業度令人印象深刻，不只是前進 UX/UI 的最佳夥伴，從合作中更激發對使用者及設計的創新想像。”',
     name: '<b>台灣設計研究院,</b> 王翊任',
     link: '#',
     img: {
@@ -123,7 +123,7 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 有人曾經跟我介紹大予是豪宅等級的顧問，合作以來覺得形容的真好！專案期間感受到大予的嚴謹及產出的專業性，過程中亦非常有收穫。“',
+      '“ 有人曾經跟我介紹大予是豪宅等級的顧問，合作以來覺得形容的真好！專案期間感受到大予的嚴謹及產出的專業性，過程中亦非常有收穫。”',
     name: '<b>台北富邦銀行數位金融處,</b> 盧湞',
     link: '#',
     img: {
@@ -133,7 +133,7 @@ const CaseSlider = [
   },
   {
     content:
-      '“ 大予團隊可提供超乎顧客需求的服務，服務跟呈現都令人滿意。“',
+      '“ 大予團隊可提供超乎顧客需求的服務，服務跟呈現都令人滿意。”',
     name: '<b>中華汽車新創小組,</b> 郭怡欣',
     link: '#',
     img: {
@@ -712,7 +712,11 @@ export function HomePage() {
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
                 <Grid xs={0} md={4}>
-                  <div className="super eng title">01.</div>
+                  <div className="super eng title">
+                    <Fade bottom>
+                      01.
+                    </Fade>
+                  </div>
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
@@ -753,7 +757,11 @@ export function HomePage() {
                   </Box>
                 </Grid>
                 <Grid xs={0} md={4}>
-                  <div className="super eng title">02.</div>
+                  <div className="super eng title">
+                    <Fade bottom>
+                      02.
+                    </Fade>
+                  </div>
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">
@@ -794,7 +802,11 @@ export function HomePage() {
                   </Box>
                 </Grid>
                 <Grid xs={0} md={4}>
-                  <div className="super eng title">03.</div>
+
+                  <div className="super eng title">
+                    <Fade bottom>03.
+                    </Fade>
+                  </div>
                 </Grid>
                 <Grid xs={12} md={8}>
                   <Box display={'flex'} className="right">

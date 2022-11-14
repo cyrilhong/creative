@@ -228,7 +228,7 @@ export function ServicePage() {
                     <Collapse list={[
                       {
                         title: "體驗流程規劃",
-                        answer: `脈絡分析後轉化落實，規劃完整的產品主攻能框架與核心價值，串連為順暢易用的使用體驗設計。`,
+                        answer: `脈絡分析後轉化落實，規劃完整的產品主功能框架與核心價值，串連為順暢易用的使用體驗設計。`,
                         expanded: false
                       },
                       {
@@ -280,18 +280,18 @@ export function ServicePage() {
                           expanded: false
                         },
                         {
-                          title: "APP 使用者介面設計。",
-                          answer: `UI介面設計，展現操作流程上的功能、顧及使用的便利性與產品設計美學，落實介面元件與設計系統的完善`,
+                          title: "APP 使用者介面設計",
+                          answer: `UI 介面設計，展現操作流程上的功能、顧及使用的便利性與產品設計美學，落實介面元件與設計系統的完善。`,
                           expanded: false
                         },
                         {
                           title: "網站規劃設計與前端工程",
-                          answer: `因應服務定位與需求建構網站，包含資訊架構、導覽動線，版面，互動行為與內容規劃。`,
+                          answer: `因應服務定位與需求建構網站，包含資訊架構、導覽動線、版面、互動行為與內容規劃。`,
                           expanded: false
                         },
                         {
                           title: "跨平台裝置介面設計",
-                          answer: `適應多樣的場景與使用行為，發展線上或線下的使用介面，諸如ATM,  Kiosk , 平板或各項終端設備介面設計。`,
+                          answer: `適應多樣的場景與使用行為，發展線上或線下的使用介面，諸如 ATM、Kiosk、平板或各項終端設備介面設計。`,
                           expanded: false
                         },
                       ]} />

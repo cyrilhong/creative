@@ -684,5 +684,8 @@ const TeamBuilding = styled.div`
 const SlideItem = styled.div`
   img {
     width: 100%;
+    &:hover{
+      filter: brightness(0.5);
+    }
   }
 `;
