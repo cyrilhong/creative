@@ -75,6 +75,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 36px;
     line-height: 54px;
     font-weight: 300;
+    letter-spacing: .02em;
     ${media.medium`
         font-size: 24px;
         line-height: 36px;
@@ -85,8 +86,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 35px;
     font-weight: 300;
     ${media.medium`
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 22px;
+        line-height: 33px;
     `};
   }
   h3{

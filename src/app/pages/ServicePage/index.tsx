@@ -51,7 +51,7 @@ export function ServicePage() {
           content="A React Boilerplate application ServicePage"
         />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={color.BGGreen} color={color.DarkBlue} />
       <div className="bg-service">
         <PageWrapper>
           <HeroWrapper>
@@ -110,15 +110,18 @@ export function ServicePage() {
             <div className="hero-img-mb">
               <img src={heroImgMb} alt="heroImgMb" />
             </div>
-
             <ParallaxWrapper01>
-              <Parallax scale={[1, 1.2]}>
-                <img src={hero1} alt="Yoxi" />
+              <Parallax speed={12}>
+                <Fade bottom duration={500} delay={500}>
+                  <img src={hero2} alt="Yoxi" />
+                </Fade>
               </Parallax>
             </ParallaxWrapper01>
             <ParallaxWrapper02>
-              <Parallax scale={[1, 1.3]}>
-                <img src={hero2} alt="Yoxi" />
+              <Parallax speed={8}>
+                <Fade bottom duration={500} delay={600}>
+                  <img src={hero1} alt="Yoxi" />
+                </Fade>
               </Parallax>
             </ParallaxWrapper02>
           </HeroWrapper>
@@ -164,7 +167,7 @@ export function ServicePage() {
             <Grid container>
               <Grid xs={12}>
                 <ParallaxImg>
-                  <Parallax scale={[1, 1.5]}>
+                  <Parallax speed={-15}>
                     <img src={posters} alt="posters" />
                   </Parallax>
                 </ParallaxImg>
@@ -216,7 +219,7 @@ export function ServicePage() {
                 </Grid>
               </Grid>
               <Grid xs={12} md={6}>
-                <div className="huge eng">Core Experience Planning</div>
+                <div className="huge eng title">Core Experience Planning</div>
                 <h1>核心體驗規劃</h1>
                 <Grid xs={12} md={10}>
                   <ItemList>
@@ -248,7 +251,7 @@ export function ServicePage() {
             </Grid>
 
             <DigitalProduct>
-              <Grid container>
+              {/* <Grid container>
                 <Grid xs={12}>
                   <ParallaxImg>
                     <Parallax scale={[1, 1.05]}>
@@ -256,7 +259,7 @@ export function ServicePage() {
                     </Parallax>
                   </ParallaxImg>
                 </Grid>
-              </Grid>
+              </Grid> */}
 
               <Grid container spacing={0} marginTop={isDesktop() ? '72px' : '58px'}>
                 <Grid xs={12} md={5}>
@@ -348,7 +351,7 @@ const SectionIdea = styled.div`
   }
   h2 {
     font-size: 24px;
-    margin: 8px 0 32px;
+    margin: 8px 0 0;
   }
   a {
     margin: 32px auto 0;
@@ -534,7 +537,7 @@ const HeroWrapper = styled.main`
         background: ${colors.Yellow};
         z-index: -1;
         animation: marker 1s forwards;
-        animation-delay: 2s;
+        animation-delay: 1.2s;
         animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
       }
     }
@@ -600,6 +603,7 @@ const Horizon = styled.div<{
   h4 {
     margin: 20px 0 0;
     font-weight: 300;
+    letter-spacing: 0.1rem;
   }
   .title {
     display: flex;
@@ -640,13 +644,14 @@ const ProcessSection = styled.div`
       cursor: pointer;
       width: 48px;
     }
-    h4 {
-      margin: 0 0 48px;
-      font-weight: 100;
-    }
+
     h2 {
       margin: 0;
     }
+  }
+  h4 {
+    margin: 0 0 72px;
+    /* font-weight: 100; */
   }
   ${media.medium`
     padding-bottom: 32px;
@@ -669,14 +674,19 @@ const SecondSection = styled.div`
   background-color: ${color.BGBeige};
   .title{
     padding-right: 40px;
+    font-size: 60px;
+    line-height: 75px;
+  }
+  h1{
+    margin: 8px 0;
+  }
+  h4{
+    margin: 0 0 48px;
   }
   ${media.medium`
     padding: 24px 0 0;
     .huge{
       margin-top: 32px;
-    }
-    h1{
-      margin: 8px 0;
     }
     h4{
       margin: 0 0 32px;

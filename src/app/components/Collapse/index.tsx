@@ -76,6 +76,9 @@ const Wrapper = styled.div`
     font-size: 24px;
     font-weight: 400;
   }
+  img{
+    transition: all .2s ease-in;
+  }
   .accordion__button{
     display: flex;
     flex-direction: row;

@@ -122,7 +122,7 @@ const Wrapper = styled.main`
       background: ${colors.ElectricBlue};
       z-index: -1;
       animation: marker 1s forwards;
-      animation-delay: 2s;
+      animation-delay: 1s;
       animation-timing-function: cubic-bezier(.17,.67,.83,.67);
     }
   }

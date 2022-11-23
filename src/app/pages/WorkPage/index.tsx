@@ -4,6 +4,7 @@ import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade'
+import * as color from 'styles/colors';
 export function WorkPage() {
   return (
     <>
@@ -14,7 +15,7 @@ export function WorkPage() {
           content="A React Boilerplate application WorkPage"
         />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={color.DarkBlue} color={color.White} />
       <PageWrapper>
         <h1>Feature</h1>
         <ParallaxProvider>

@@ -24,7 +24,7 @@ export function CasePage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={colors.White} color={colors.DarkBlue} />
       <div className="bg-case">
         <PageWrapper overflow={"true"}>
           <Masthead />
@@ -81,6 +81,9 @@ const SectionIdea = styled.div`
       border-right: 1px solid ${colors.DarkBlue};
       h1 {
         margin-top: 40px;
+      }
+      h2{
+        margin-bottom: 0;
       }
     }
   }

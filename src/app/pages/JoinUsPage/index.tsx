@@ -469,6 +469,7 @@ const Horizon = styled.div<{
   h4 {
     margin: 20px 0 0;
     font-weight: 300;
+    letter-spacing: 0.1rem;
   }
   .title {
     display: flex;

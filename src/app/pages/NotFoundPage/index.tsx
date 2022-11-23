@@ -6,6 +6,7 @@ import { NavBar } from 'app/components/NavBar';
 import { Helmet } from 'react-helmet-async';
 import { StyleConstants } from 'styles/StyleConstants';
 import { media } from 'styles/media';
+import * as color from 'styles/colors';
 export function NotFoundPage() {
   return (
     <>
@@ -13,7 +14,7 @@ export function NotFoundPage() {
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={color.DarkBlue} color={color.White} />
       <Wrapper>
         <Title>
           4

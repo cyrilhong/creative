@@ -2,14 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import * as colors from '../../../styles/colors';
 import { media } from 'styles/media';
-export function Nav({ isBlack }) {
+export function Nav({ color, bgColor }) {
   const Wrapper = styled.nav`
     display: flex;
     gap: 48px;
     padding: 28px 52px;
-    /* margin-right: -1rem; */
-    border-right: 1px solid ${isBlack ? colors.White : colors.AJABlue};
-    border-bottom: 1px solid ${isBlack ? colors.White : colors.AJABlue};
+    border-bottom: 1px solid ${color};
     flex: 1 1 auto;
 
     ${media.large`
@@ -20,7 +18,7 @@ export function Nav({ isBlack }) {
   `;
 
   const Item = styled.a`
-    color: ${isBlack ? colors.White : colors.AJABlue};
+    color: ${color};
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -44,7 +42,7 @@ export function Nav({ isBlack }) {
       -webkit-appearance: button;
       background-color: #000;
       background-image: none;
-      color: ${isBlack ?colors.White:colors.AJABlue};
+      color: ${color};
       cursor: pointer;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
@@ -52,7 +50,7 @@ export function Nav({ isBlack }) {
       /* font-size: 100%; */
       line-height: 1.5;
       margin: 0;
-      -webkit-mask-image: -webkit-radial-gradient(#000, ${colors.AJABlue});
+      -webkit-mask-image: -webkit-radial-gradient(#000, ${color});
       padding: 0;
     }
     &.hover:disabled {
@@ -92,7 +90,7 @@ export function Nav({ isBlack }) {
       text-transform: uppercase;
     }
     &.hover:before {
-      background: ${colors.AJABlue};
+      background: ${color};
       bottom: calc(var(--thickness) * -1);
       content: '';
       display: block;
@@ -109,30 +107,30 @@ export function Nav({ isBlack }) {
       opacity: 1;
     }
     @-webkit-keyframes slide {
-      0% {
+      /* 0% {
         transform: translateX(0);
       }
-      50% {
+      100% {
         transform: translateX(100%);
-      }
-      51% {
+      } */
+      0% {
         transform: translateX(-100%);
       }
-      to {
+      100% {
         transform: translateX(0);
       }
     }
     @keyframes slide {
-      0% {
+      /* 0% {
         transform: translateX(0);
       }
       50% {
         transform: translateX(100%);
-      }
-      51% {
+      } */
+      0% {
         transform: translateX(-100%);
       }
-      to {
+      100% {
         transform: translateX(0);
       }
     }

@@ -19,9 +19,28 @@ export default function CaseStudy() {
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
           <Grid item xs={12} md={4}>
+            {/* <Case>
+              <img src={img01} alt="" />
+              <h4 className="type">金融與保險</h4>
+              <h2 className="title">
+                台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
+              </h2>
+              <div className="pills eng">
+                <div className="pill">EXPERIENCE</div>
+                <div className="pill">RESEARCH</div>
+                <div className="pill">BRANDING</div>
+              </div>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
+            </Case> */}
             <Case>
-              <Fade bottom delay={-500}>
+              <div className="img-wrapper">
                 <img src={img01} alt="" />
+              </div>
+              <Fade bottom delay={-500} cascade>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
                   台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
@@ -42,7 +61,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img02} alt="" />
+                <div className="img-wrapper">
+                  <img src={img02} alt="" />
+                </div>
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   遠傳電信官網｜不只是電信，替未來生活提案
@@ -64,7 +85,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img03} alt="" />
+                <div className="img-wrapper">
+                  <img src={img03} alt="" />
+                </div>
                 <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
                   星宇航空｜打造精品航空獨到的數位體驗
@@ -86,7 +109,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img04} alt="" />
+                <div className="img-wrapper">
+                  <img src={img04} alt="" />
+                </div>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
                   中國信託親子銀行｜超前部署的親子金融體驗
@@ -107,7 +132,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img05} alt="" />
+                <div className="img-wrapper">
+                  <img src={img05} alt="" />
+                </div>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
                   中國信託 SME｜專為中小企業設計的數位金融服務
@@ -128,7 +155,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img02} alt="" />
+                <div className="img-wrapper">
+                  <img src={img02} alt="" />
+                </div>
                 <h4 className="type">醫療與健康</h4>
                 <h2 className="title">
                   國泰醫院｜安心、暖心的醫病橋樑
@@ -148,7 +177,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img03} alt="" />
+                <div className="img-wrapper">
+                  <img src={img03} alt="" />
+                </div>
                 <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
                   中華航空｜帶著走的旅遊行動助理
@@ -168,7 +199,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img04} alt="" />
+                <div className="img-wrapper">
+                  <img src={img04} alt="" />
+                </div>
                 <h4 className="type">教育與娛樂</h4>
                 <h2 className="title">
                   雲門舞集｜後疫情時代，數位學習趨勢研究
@@ -187,7 +220,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img04} alt="" />
+                <div className="img-wrapper">
+                  <img src={img04} alt="" />
+                </div>
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
                   台達電｜建構跨領域的設計系統
@@ -207,7 +242,9 @@ export default function CaseStudy() {
           <Grid item xs={12} md={4}>
             <Case>
               <Fade bottom delay={-500}>
-                <img src={img04} alt="" />
+                <div className="img-wrapper">
+                  <img src={img04} alt="" />
+                </div>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
                   新光銀行｜數位品牌形象傳達，展現金控品牌厚實底蘊
@@ -278,15 +315,18 @@ const Wrapper = styled.div`
   `}
 `;
 const Case = styled.div`
-  flex: 1 1 30%; /*grow | shrink | basis */
-  /* height: 100px; */
-  /* min-height: 628px; */
-  /* padding: 0 40px 0 0; */
+  flex: 1 1 30%;
   margin-bottom: 0;
   position: relative;
+  cursor: pointer;
+  .img-wrapper{
+    width: 100%;
+    overflow: hidden;
+  }
   img {
     width: 100%;
     filter: brightness(0.3);
+    transition: all .2s ease-in;
   }
   a {
     position: absolute;
@@ -302,6 +342,7 @@ const Case = styled.div`
       margin-right: 12px;
       margin-bottom: 12px;
       border-radius: 100px;
+      letter-spacing: 1px;
       background-color: ${colors.BGMidGrey};
       color: ${colors.ConcreteGrey};
       display: inline-block;
@@ -313,6 +354,38 @@ const Case = styled.div`
   }
   .type, .title{
     font-weight: 400;
+  }
+  h4{
+    margin: 24px 0 8px;
+  }
+  h2.title{
+    margin: 0 0 24px;
+    font-weight: 300;
+  }
+  &:hover{
+    img{
+      transform: scale(1.2);
+    }
+    a{
+      .wrapper{
+        color: ${colors.White};
+        path {
+          stroke: ${colors.White};
+        }
+        &:before {
+          -webkit-animation: move-in 0.3s forwards;
+          animation: move-in 0.3s forwards;
+        }
+      }
+      @keyframes move-in {
+        0% {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(100%);
+        }
+      }
+    }
   }
   ${media.medium`
     .pills{

@@ -56,6 +56,7 @@ import kkboxLogo from './assets/kkbox.svg';
 import nanshanLogo from './assets/nan-shan.svg';
 import tdriLogo from './assets/TDRI.svg';
 import tsBankLogo from './assets/ts-bank.svg';
+import playReel from './assets/playReel.svg';
 // import showreel from './assets/showreel.mp4';
 import Lottie from 'lottie-react';
 import lottie1 from './assets/lottie-01.json';
@@ -146,11 +147,11 @@ export function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = React.useRef<Slider>(null);
   const sliderRef = React.createRef();
-  const [blackBg, setBlackBg] = useState(true);
+  const [isBlackBg, setIsBlackBg] = useState(true);
   const windowWidth = useWindowSize().width
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: windowWidth > 960 ? 2 : 1,
     slidesToScroll: 1,
@@ -182,7 +183,7 @@ export function HomePage() {
 
   useScrollPosition(({ prevPos, currPos }) => {
     // console.log(currPos.x)
-    // console.log(Math.abs(currPos.y));
+    console.log(Math.abs(currPos.y));
     // console.log(themeColorRef.current!.getBoundingClientRect().top);
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
@@ -191,25 +192,25 @@ export function HomePage() {
     if (themeColorRef.current!.getBoundingClientRect().top < 140) {
       // debugger
       setTimeout(() => {
-        setBlackBg(false);
-      }, 300);
+        setIsBlackBg(false);
+      }, 500);
     } else {
       setTimeout(() => {
-        setBlackBg(true);
-      }, 300);
+        setIsBlackBg(true);
+      }, 500);
 
     }
     // if (
     //   helpColorRef.current!.getBoundingClientRect().y < 100
     // ) {
     //   // debugger
-    //   setBlackBg(true);
+    //   setIsBlackBg(true);
     // }
     // if (Math.abs(currPos.y) > 7000) {
     //   // debugger
-    //   setBlackBg(true);
+    //   setIsBlackBg(true);
     // } else {
-    //   setBlackBg(false);
+    //   setIsBlackBg(false);
     // }
   });
 
@@ -293,13 +294,13 @@ export function HomePage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar theme={blackBg} />
-      <div className={blackBg ? 'black' : 'white'}>
+      <NavBar bgColor={isBlackBg?colors.DarkBlue:colors.White} color={isBlackBg?colors.White:colors.DarkBlue} />
+      <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper>
           <Masthead />
         </PageWrapper>
       </div>
-      <div className={blackBg ? 'black' : 'white'}>
+      <div style={{ position: 'relative' }} className={isBlackBg ? 'black' : 'white'}>
         <VideoWrapper>
           <Parallax
             scale={[1, 1.2]} speed={-10}
@@ -319,11 +320,15 @@ export function HomePage() {
               </video>
             )}
           </Parallax>
+          <div className="hover-player">
+            <img src={playReel} alt="playReel" />
+            <h4 className="eng">PLAY REEL</h4>
+          </div>
         </VideoWrapper>
       </div>
-      <div className={blackBg ? 'black' : 'white'}>
+      <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper>
-          <Horizon blackBg>
+          <Horizon isBlackBg>
             <div className="title">
               <div className="dot" />
               <h4 className="eng">FEATURED WORKS</h4>
@@ -462,14 +467,14 @@ export function HomePage() {
           </CaseList>
         </PageWrapper>
       </div>
-      <div className={blackBg ? 'black' : 'white'}>
+      <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper
-          blackBg={blackBg}
-          bgc={blackBg ? colors.DarkBlue : colors.BGGreen}
-          color={blackBg ? colors.White : colors.DarkBlue}
+          isBlackBg={isBlackBg}
+          bgc={isBlackBg ? colors.DarkBlue : colors.BGGreen}
+          color={isBlackBg ? colors.White : colors.DarkBlue}
         >
-          <OurServices blackBg={blackBg} ref={themeColorRef}>
-            <Horizon blackBg={blackBg}>
+          <OurServices isBlackBg={isBlackBg} ref={themeColorRef}>
+            <Horizon isBlackBg={isBlackBg}>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">OUR SERVICES</h4>
@@ -477,7 +482,7 @@ export function HomePage() {
               <h4 className="eng">02</h4>
             </Horizon>
             <div className="content">
-              {!blackBg &&
+              {!isBlackBg &&
                 <Grid container spacing={0} rowSpacing={0}>
                   {windowWidth > 960 ?
                     <>
@@ -524,7 +529,7 @@ export function HomePage() {
                       />
                     </div>
                   </Grid>
-                  {!blackBg &&
+                  {!isBlackBg &&
                     <>
                       <Grid xs={12} md={8} mdOffset={1} xsOffset={0}>
                         <div className="super eng head-3">Experience</div>
@@ -550,17 +555,7 @@ export function HomePage() {
                     <img src={wall1} alt="wall1" />
                   </Parallax>
                 </Grid>
-                <Grid xs={3}>
-                  <Parallax
-                    className="wall2"
-                    speed={30}
-                    scale={[1.5, 0]}
-                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
-                  >
-                    <img src={wall2} alt="wall2" />
-                  </Parallax>
-                </Grid>
-                <Grid xs={4} xsOffset={2}>
+                <Grid xs={4} xsOffset={5}>
                   <Parallax
                     className="wall3"
                     speed={18}
@@ -600,9 +595,20 @@ export function HomePage() {
                     <img src={wall6} alt="wall6" />
                   </Parallax>
                 </Grid>
+                <Grid xs={2} xsOffset={3}>
+                  <Parallax
+                    className="wall2"
+                    speed={30}
+                    scale={[1.5, 0]}
+                    rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
+                  >
+                    <img src={wall2} alt="wall2" />
+                  </Parallax>
+                </Grid>
+
               </Grid>
             </div>
-            <Horizon blackBg={blackBg}>
+            <Horizon isBlackBg={isBlackBg}>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">OUR IMPACT</h4>
@@ -671,15 +677,15 @@ export function HomePage() {
         ref={helpColorRef}
       // style={{ paddingBottom: '120px' }}
       >
-        {/* <div className={blackBg ? 'black' : 'white'}> */}
+        {/* <div className={isBlackBg ? 'black' : 'white'}> */}
         <div className={'black'}>
           <PageWrapper
-            blackBg={true}
+            isBlackBg={true}
             bgc={colors.DarkBlue}
             color={colors.White}
             className={'black'}
           >
-            <Horizon blackBg={true}>
+            <Horizon isBlackBg={true}>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">HOW WE CAN HELP</h4>
@@ -707,7 +713,7 @@ export function HomePage() {
             <WrappedButton
               text="OUR SERVICES"
               link="#"
-              isWhite={!blackBg}
+              isWhite={!isBlackBg}
             />
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
@@ -853,41 +859,43 @@ export function HomePage() {
       </div>
       <SectionIdea>
         <Container maxWidth={'xl'}>
-          <Grid container className="container">
-            <Grid xs={12} md={6}>
-              <div className="wrapper border">
-                <Box width={'220px'} m="0 auto">
-                  <Fade>
-                    <Lottie animationData={lottieClient} loop={2} />
-                  </Fade>
-                </Box>
-                <h1 className="eng">Happy teams create change.</h1>
-                <h2>我們用心生活，賦予多變創意能量</h2>
-                <WrappedButton
-                  text="ABOUT US"
-                  link="#"
-                  isWhite={true}
-                />
-              </div>
+          <Fade bottom>
+            <Grid container className="container">
+              <Grid xs={12} md={6}>
+                <div className="wrapper border">
+                  <Box width={'220px'} m="0 auto">
+                    <Fade bottom>
+                      <Lottie animationData={lottieClient} loop={1} />
+                    </Fade>
+                  </Box>
+                  <h1 className="eng">Happy teams create change.</h1>
+                  <h2>我們用心生活，賦予多變創意能量</h2>
+                  <WrappedButton
+                    text="ABOUT US"
+                    link="#"
+                    isWhite={true}
+                  />
+                </div>
+              </Grid>
+              <Grid xs={12} md={6}>
+                <div className="wrapper">
+                  {/* <img className="idea" src={hiveFive} alt="idea" /> */}
+                  <Box width={'220px'} m="0 auto">
+                    <Fade bottom>
+                      <Lottie animationData={lottieJoinUs} loop={1} />
+                    </Fade>
+                  </Box>
+                  <h1 className="eng">Let’s makes work a real joy.</h1>
+                  <h2>與我們一起加入改變的行列！</h2>
+                  <WrappedButton
+                    text="JOIN US"
+                    link="#"
+                    isWhite={true}
+                  />
+                </div>
+              </Grid>
             </Grid>
-            <Grid xs={12} md={6}>
-              <div className="wrapper">
-                {/* <img className="idea" src={hiveFive} alt="idea" /> */}
-                <Box width={'220px'} m="0 auto">
-                  <Fade>
-                    <Lottie animationData={lottieJoinUs} loop={2} />
-                  </Fade>
-                </Box>
-                <h1 className="eng">Let’s makes work a real joy.</h1>
-                <h2>與我們一起加入改變的行列！</h2>
-                <WrappedButton
-                  text="JOIN US"
-                  link="#"
-                  isWhite={true}
-                />
-              </div>
-            </Grid>
-          </Grid>
+          </Fade>
         </Container>
       </SectionIdea>
     </ParallaxProvider>
@@ -927,23 +935,24 @@ const SliderWrapper = styled.div`
   }
 `;
 const Horizon = styled.div<{
-  blackBg?: boolean;
+  isBlackBg?: boolean;
 }>`
   display: flex;
   justify-content: space-between;
   padding: 120px 0;
-  color: ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
+  color: ${prop => (prop.isBlackBg ? colors.White : colors.DarkBlue)};
   &::after {
     content: '';
     width: 100%;
     display: block;
     border-top: 1px solid
-      ${prop => (prop.blackBg ? colors.White : colors.DarkBlue)};
+      ${prop => (prop.isBlackBg ? colors.White : colors.DarkBlue)};
     position: absolute;
   }
   h4 {
     margin: 20px 0 0;
     font-weight: 300;
+    letter-spacing: 0.1rem;
   }
   .title {
     display: flex;
@@ -956,7 +965,7 @@ const Horizon = styled.div<{
       margin-bottom: 2px;
       border-radius: 100%;
       background-color: ${prop =>
-    prop.blackBg ? colors.BGGrey : colors.DarkBlue};
+    prop.isBlackBg ? colors.BGGrey : colors.DarkBlue};
       margin-right: 8px;
     }
     h4 {
@@ -984,7 +993,7 @@ const SectionIdea = styled.div`
   }
   h2 {
     font-size: 24px;
-    margin: 8px 0 32px;
+    margin: 8px 0 0;
   }
   a {
     margin: 32px auto 0;
@@ -1022,6 +1031,7 @@ const CaseList = styled.div`
   .case {
     padding: 0 40px;
     margin-bottom: 48px;
+    cursor: pointer;
     &:nth-child(1) {
       border-left: 1px solid rgba(162, 170, 164, 0.5);
       border-right: 1px solid rgba(162, 170, 164, 0.5);
@@ -1042,6 +1052,44 @@ const CaseList = styled.div`
     }
     a {
       text-decoration: none;
+      .wrapper {
+        border: 2px solid ${colors.White};
+        margin-right: 24px;
+        display: flex;
+        border-radius: 100%;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease-in;
+        path {
+          transition: all 0.5s;
+          stroke: ${colors.White};
+        }
+        &:hover {
+
+        }
+        &::before {
+          -webkit-animation: move-out 0.3s;
+          animation: move-out 0.3s;
+          background: ${colors.White};
+          color: ${colors.DarkBlue};
+          content: '';
+          height: 100%;
+          left: -100%;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          will-change: transform;
+        }
+
+        h4{
+          font-weight: 500;
+        }
+      }
+
       h4{
         margin: 0;
       }
@@ -1049,9 +1097,37 @@ const CaseList = styled.div`
         width: 60px;
       }
     }
+    @keyframes move-in {
+      0% {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+    @keyframes move-out {
+      0% {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(200%);
+      }
+    }
+
     &:hover{
       img{
         transform: scale(1.05);
+      }
+      a{
+        .wrapper{
+          path {
+            stroke: ${colors.DarkBlue};
+          }
+          &:before {
+            -webkit-animation: move-in 0.3s forwards;
+            animation: move-in 0.3s forwards;
+          }
+        }
       }
     }
     h4{
@@ -1119,6 +1195,7 @@ const CaseList = styled.div`
       margin-right: 12px;
       border-radius: 100px;
       background-color: #2e3c42;
+      letter-spacing: 0.15em;
       color: ${colors.White};
       display: inline-block;
       padding: 4px 16px;
@@ -1325,18 +1402,18 @@ const CTA = styled.a`
 `;
 
 const OurServices = styled.div<{
-  blackBg: boolean;
+  isBlackBg: boolean;
 }>`
   padding: 0 0 96px;
   transition: all 1s ease-in;
   /* background-color: ${prop =>
-    prop.blackBg ? colors.DarkBlue : colors.BGGreen}; */
-  color: ${prop => (prop.blackBg ? colors.BGGreen : colors.DarkBlue)};
+    prop.isBlackBg ? colors.DarkBlue : colors.BGGreen}; */
+  color: ${prop => (prop.isBlackBg ? colors.BGGreen : colors.DarkBlue)};
   position: relative;
   .content {
     z-index: 1;
     position: relative;
-    color: ${prop => (prop.blackBg ? colors.BGGreen : colors.DarkBlue)};
+    color: ${prop => (prop.isBlackBg ? colors.BGGreen : colors.DarkBlue)};
     text-align: left;
     /* max-width: 1086px; */
     margin: 0 auto 210px;
@@ -1386,20 +1463,20 @@ const OurServices = styled.div<{
     .wall1 {
       /* width: 337px; */
       width: 100%;
-      margin-left: -80px;
+      margin-left: 0px;
     }
     .wall2 {
       /* width: 288px; */
       /* margin-left: 30%; */
       width: 100%;
-      margin-top: 17%;
-      padding-right: 40px;
+      margin-top: 58%;
+      padding-right: 0;
     }
     .wall3 {
       /* width: 398px; */
       width: 100%;
       /* margin-left: 70%; */
-      margin-top: 19%;
+      margin-top: 6%;
     }
     .wall4 {
       /* width: 400px; */
@@ -1573,6 +1650,27 @@ const VideoWrapper = styled.div`
   max-width: calc( 100% - 160px );
   /* padding: 0 80px; */
   margin: 0 auto;
+  .hover-player{
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in;
+    pointer-events: none;
+    top: 0;
+    img{
+      margin-right: 24px;
+    }
+  }
+  &:hover{
+    cursor: pointer;
+    .hover-player{
+      opacity: 1;
+    }
+  }
   ${media.medium`
     max-width: calc( 100% - 40px );
     height: auto;
@@ -1749,4 +1847,23 @@ const FeatureHeadYellow = styled.h2`
       box-shadow: inset 0 21px ${colors.BGGreen}, inset 0px 54px ${colors.Yellow};
     }
   `}
+`
+
+const Button = styled.a`
+  background: initial;
+  border: 0;
+  padding: 0;
+  display: flex;
+  color: ${colors.White};
+  margin-top: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  svg {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
 `

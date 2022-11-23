@@ -9,8 +9,8 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components/macro';
 import { useForm as formspreeUseForm, ValidationError } from '@formspree/react';
 import { Box, Checkbox, TextField } from '@mui/material';
+import SliderBar from './Slider';
 import { Grid, Container } from '@mui/material';
-import Paper from '@mui/material/Paper';
 import arrowBtn from './assets/arrowBtn.svg';
 import formBg from './assets/form-bg.jpg';
 import StickyBox from 'react-sticky-box';
@@ -26,7 +26,6 @@ import Dialog from '@mui/material/Dialog';
 import { Element, scroller } from 'react-scroll';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TransitionProps } from '@mui/material/transitions';
-import Slide from '@mui/material/Slide';
 import IconButton from '@mui/material/IconButton';
 import closeIcon from './assets/close-icon.svg';
 import { useForm, Controller as FormController, FormProvider } from 'react-hook-form';
@@ -88,15 +87,6 @@ export function ContactPage() {
     setOpen(false);
   };
 
-  const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
-      children: React.ReactElement<any, any>;
-    },
-    ref: React.Ref<unknown>,
-  ) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-
   const methods = useForm()
   const {
     handleSubmit,
@@ -124,6 +114,8 @@ export function ContactPage() {
 
   const getTime = watch('time')
   const getCoopTime = watch('CoopTime')
+
+
   return (
     <ParallaxProvider>
       <Controller>
@@ -309,6 +301,18 @@ export function ContactPage() {
                   </SmallRadioGroup>
                 )}
               />
+              <FormTitle>
+                <div className="title">
+                  <div className="dot" />
+                  <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                    <h2>您設想的預算大約是？</h2>
+                    <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
+                  </Box>
+                </div>
+              </FormTitle>
+              <Box width={"100%"} padding="0 40px 0 12px">
+                <SliderBar />
+              </Box>
 
               <FormTitle>
                 <div className="title">
@@ -437,7 +441,7 @@ export function ContactPage() {
             </form>
           </MbForm>
         </Dialog>
-        <NavBar />
+        <NavBar bgColor={colors.BGMidGrey} color={colors.DarkBlue} />
         <div className="bg-contact-us">
           <PageWrapper>
             <Intro>
@@ -781,6 +785,9 @@ export function ContactPage() {
                           </Box>
                         </div>
                       </FormTitle>
+                      <Box width={"100%"} padding="0 40px 0 12px">
+                        <SliderBar />
+                      </Box>
                       <FormTitle>
                         <div className="title">
                           <div className="dot" />
@@ -806,7 +813,7 @@ export function ContactPage() {
                                 {...field}
                                 type="text"
                                 variant="filled"
-                                placeholder="名字 *"
+                                label="名字 *"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
@@ -824,7 +831,7 @@ export function ContactPage() {
                                 {...field}
                                 type="text"
                                 variant="filled"
-                                placeholder="公司名稱 *"
+                                label="公司名稱 *"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
@@ -842,13 +849,14 @@ export function ContactPage() {
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
                                 {...field}
+                                label="聯絡電話 *"
                                 type="text"
                                 variant="filled"
-                                placeholder="聯絡電話"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
                               />
+                              // <TextField label="Filled" variant="filled" />
                             )}
                           />
                           <FormController
@@ -862,7 +870,7 @@ export function ContactPage() {
                                 {...field}
                                 type="text"
                                 variant="filled"
-                                placeholder="電子郵件 *"
+                                label="電子郵件 *"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
@@ -921,13 +929,13 @@ export function ContactPage() {
                 <h4 className="eng">03</h4>
               </Horizon>
               <Grid container spacing={8}>
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} md={4}>
                   <Box>
                     <div className="huge eng">FAQ</div>
                     <h1>常見問題</h1>
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} md={8}>
                   <FaqGroup>
                     <h3 className="title">服務項目</h3>
                     <Collapse list={[
@@ -1011,7 +1019,7 @@ export function ContactPage() {
                       <h1>聯繫我們</h1>
                     </Box>
                   </Grid>
-                  <Grid item xs={12} md={3} className="eng">
+                  <Grid item xs={12} md={3} className="contact-us">
                     <h4 className="eng">Contact Us.</h4>
                     <h5>
                       TEL . +886-2-85029135 <br />
@@ -1058,15 +1066,22 @@ const RoundButton = styled.button`
   border-radius: 100px;
   border: 2px solid ${colors.White};
   background-color: #fff;
-  background: #0c1c24;
-  border: 2px solid #0c1c24;
+  background: ${colors.AJABlue};
+  /* border: 2px solid #0c1c24; */
   border-radius: 100px;
-  width: 230px;
+  width: 272px;
   margin-top: 54px;
   cursor: pointer;
   h4 {
     margin: 0 0 0 12px;
+    font-size: 24px;
+    font-weight: 500;
   }
+  ${media.medium`
+    h4{
+      font-size: 14px;
+    }
+  `}
 `;
 
 const Intro = styled.div`
@@ -1121,6 +1136,26 @@ const GetInTouch = styled.div`
   justify-content: center;
   gap: 16px;
   cursor: pointer;
+  img{
+    animation: shake 3.5s infinite;
+  }
+  @keyframes shake {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    2% {
+      transform: translate3d(0, 2px, 2px);
+    }
+    4% {
+      transform: translate3d(0, -1px, -1px);
+    }
+    6% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
   &::after {
     content: '';
     display: block;
@@ -1128,14 +1163,48 @@ const GetInTouch = styled.div`
     height: 186px;
     background: ${colors.DarkBlue};
     border: 1px solid rgba(162, 170, 164, 0.5);
-    box-shadow: 4px 4px 15px rgb(0 0 0 / 50%);
+    /* box-shadow: 4px 4px 15px rgb(0 0 0 / 50%); */
+    box-shadow: 4px 4px 8px rgba(12, 28, 36, 0.05);
     border-radius: 100%;
     transform: rotate(-15deg);
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
+    outline: 0 solid rgba(255, 248, 142, .45);
   }
+  &::before {
+    content: '';
+    display: block;
+    width: 310px;
+    height: 186px;
+    background: ${colors.DarkBlue};
+    border: 1px solid rgba(162, 170, 164, 0.5);
+    /* box-shadow: 4px 4px 15px rgb(0 0 0 / 50%); */
+    box-shadow: 4px 4px 8px rgba(12, 28, 36, 0.05);
+    border-radius: 100%;
+    transform: rotate(-15deg);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    outline: 0 solid rgba(255, 248, 142, .45);
+  }
+  &:hover::before{
+    animation: pulse 2s infinite;
+    /* outline: 25px solid rgba(255, 248, 142, .45); */
+    /* box-shadow: 0 0 32px rgba(255, 248, 142, 1); */
+  }
+  @keyframes pulse {
+  0% {
+    outline: 0 solid rgba(255, 248, 142, 0);
+    opacity: 0;
+  }
+  100%{
+    outline: 25px solid rgba(255, 248, 142, .45);
+    opacity: 1;
+  }
+}
   h2,
   h5 {
     margin: 0;
@@ -1167,6 +1236,11 @@ const GetInTouch = styled.div`
       transform: rotate(-90deg);
     }
   }
+  ${media.medium`
+    &::before {
+      display: none;
+    }
+  `}
 `;
 
 const Divider = styled.div`
@@ -1309,12 +1383,13 @@ const Step = styled.div`
       content: '';
       position: absolute;
       right: 0;
-      width: 12px;
-      height: 12px;
-      border-radius: 100%;
-      border: 1px solid ${colors.DarkBlue};
+      width: 10px;
+      height: 10px;
+      /* border-radius: 100%; */
+      /* border: 1px solid ${colors.DarkBlue}; */
+      transform: rotate(45deg);
       top: -5px;
-      background-color: ${colors.BGMidGrey};
+      background-color: ${colors.DarkBlue};
     }
   }
   ${media.medium`
@@ -1416,7 +1491,7 @@ const RadioGroup = styled.div`
     padding: 20px;
     min-height: 210px;
     position: relative;
-    transition: background-color 0.5s ease-in;
+    transition: background-color 0.2s ease-in;
     cursor: pointer;
     &:hover{
       outline: 2px solid ${colors.AJABlue};
@@ -1482,6 +1557,7 @@ const SmallRadioGroup = styled.div`
     }
     h3 {
       margin: 0;
+      font-weight: 500;
     }
     hr {
       border-top: 1px solid rgba(162, 170, 164, 0.5);
@@ -1521,6 +1597,9 @@ const InputForm = styled.div`
     display: flex;
     gap: 24px;
     margin-bottom: 40px;
+  }
+  .MuiFormLabel-root.Mui-focused{
+    color:${colors.AJABlue};
   }
   .MuiInputBase-root {
     flex: 1 1 50%;
@@ -1582,6 +1661,7 @@ const Horizon = styled.div<{
   h4 {
     margin: 20px 0 0;
     font-weight: 300;
+    letter-spacing: 0.1rem;
   }
   .title {
     display: flex;
@@ -1620,6 +1700,9 @@ const FaqGroup = styled.div`
 `;
 
 const Contact = styled.div`
+  .contact-us{
+    margin-left: -26px;
+  }
   .title {
     font-size: 60px;
   }
@@ -1637,6 +1720,14 @@ const Contact = styled.div`
     br{
       display: none;
     }
+  }
+  h4{
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  h5{
+    font-size: 16px;
+    margin: 0;
   }
   ${media.medium`
     .title{
@@ -1738,7 +1829,7 @@ const CustomCheckbox = styled.div`
   padding: 20px 0;
   border-bottom: 1px solid #EBEBEB;
   margin-bottom: 20px;
-  transition: all .5s ease-in;
+  transition: all .2s ease-in;
   align-items: baseline;
   label{
     pointer-events: none;
@@ -1750,7 +1841,7 @@ const CustomCheckbox = styled.div`
     font-size: 14px;
     margin: 0;
     font-weight: bold;
-    transition: all .5s ease-in;
+    transition: all .2s ease-in;
     line-height: 120%;
   }
   small{
@@ -1759,7 +1850,7 @@ const CustomCheckbox = styled.div`
     line-height: 120%;
   }
   img{
-    transition: all .5s ease-in;
+    transition: all .2s ease-in;
     filter: grayscale(1);
   }
   .uncheck{

@@ -18,20 +18,64 @@ export default function footer() {
   const ref = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
   const [active, setActive] = useState(false)
+  const [zIndex, setZIndex] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
-    if (ref.current!.getBoundingClientRect().top < 1000) {
-      // debugger
+    if (ref.current!.getBoundingClientRect().top < 900) {
       setActive(true);
     } else {
       setActive(false);
     }
   });
+  const Footer = styled.div`
+  /* position: relative; */
+  display: flex;
+  background-color: ${color.AJABlue};
+  padding: 0;
+  z-index: ${active ? '0' : '-1'};
+  .lines {
+    .line {
+      border-right: 1px solid #f3f3eb0d;
+    }
+  }
+  .get-in-touch{
+    .lottie{
+      display: none;
+    }
+  }
+  ${media.large`
+    .right{
+      display: none;
+    }
+    .get-in-touch{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      .lottie{
+          display: block;
+          width: 240px;
+        }
+    }
+    button{
+      display: inline-flex;
+      flex-direction: row;
+    }
+  `}
+  ${media.small`
+    .get-in-touch{
+      .lottie{
+        display: block;
+        width: 132px;
+      }
+    }
+  `}
+`;
+
   return (
     <Footer ref={ref}>
       <PageWrapper overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
         <ParallaxProvider>
           <Wrapper>
-            <Parallax speed={active ? -25 : 0}>
+            <Parallax speed={active ? -25 : 25}>
               <Main>
                 <div className="left">
                   <div className="huge eng">
@@ -71,9 +115,9 @@ export default function footer() {
                       </div>
                       <h4 className="eng">GET IN TOUCH</h4>
                     </Button>
+
                     <div className="lottie">
                       <Lottie animationData={touch} loop={false} />
-
                     </div>
                   </div>
                 </div>
@@ -134,7 +178,7 @@ export default function footer() {
               </Info>
               <Bottom>
                 <small className="eng">
-                  © Copyright 2020 AJA Creative Co., Ltd. All rights reserved.
+                  © Copyright 2022 AJA Creative Co., Ltd. All rights reserved.
                 </small>
                 <img src={aja} alt="aja" />
               </Bottom>
@@ -146,44 +190,6 @@ export default function footer() {
   );
 }
 
-const Footer = styled.div`
-  /* position: relative; */
-  display: flex;
-  background-color: ${color.AJABlue};
-  padding: 0;
-  z-index: -1;
-  .lines {
-    .line {
-      border-right: 1px solid #f3f3eb0d;
-    }
-  }
-  .get-in-touch{
-    .lottie{
-      display: none;
-    }
-  }
-  ${media.large`
-    .right{
-      display: none;
-    }
-    .get-in-touch{
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      .lottie{
-          display: block;
-          width: 132px;
-        }
-    }
-    button{
-      display: inline-flex;
-      flex-direction: row;
-    }
-  `}
-  ${media.small`
-
-  `}
-`;
 
 
 
@@ -213,6 +219,7 @@ const Main = styled.div`
   }
   .right {
     flex-basis: 400px;
+    min-width: 400px;
     margin-top: 20px;
   }
   ${media.medium`
@@ -298,7 +305,7 @@ const Button = styled.a`
 const Info = styled.div`
   display: block;
   margin-top: 74px;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   .link {
     flex: 1 1 100%;
     display: flex;

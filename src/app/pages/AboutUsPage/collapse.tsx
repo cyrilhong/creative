@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Grid from '@mui/material/Unstable_Grid2';
 import styled from 'styled-components/macro';
 import roundArrowBtn from './assets/round-arrow-btn.svg';
 import * as colors from 'styles/colors';
@@ -10,7 +11,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
-export default function Collapse({ list }) {
+export default function Collapse({ list, img }) {
   const [FAQS, setFAQS] = useState(list)
 
   const setExpand = (index) => e => {
@@ -19,28 +20,36 @@ export default function Collapse({ list }) {
     setFAQS(temp)
   }
   return (
-    <Wrapper>
-      <Accordion allowZeroExpanded={true}  >
-        {
-          FAQS.map((FAQ, index) => <AccordionItem onClick={setExpand(index)} dangerouslySetExpanded={FAQ.expanded} key={FAQ.title} >
-            <AccordionItemHeading>
-              <AccordionItemButton  >
-                <div className='head'>
-                  <h4 className='eng'>{FAQ.title}</h4>
-                  <h2 className='eng'>{FAQ.name}</h2>
-                </div>
-                <img style={{ transform: `rotate(${FAQ.expanded ? '180deg' : '0'})` }} src={roundArrowBtn} alt="button" />
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel>
-              <h4>
-                {FAQ.answer}
-              </h4>
-            </AccordionItemPanel>
-          </AccordionItem>)
-        }
-      </Accordion>
-    </Wrapper>
+    <Grid xs={12} md={6} className="leaders" onClick={setExpand(0)} >
+      <ParallaxImg style={{ margin: 0 }}>
+        <img src={img} alt={FAQS.name} />
+      </ParallaxImg>
+      <div className="info">
+        <Wrapper>
+          <Accordion allowZeroExpanded={true}  >
+            {
+              FAQS.map((FAQ) => <AccordionItem dangerouslySetExpanded={FAQ.expanded} key={FAQ.title} >
+                <AccordionItemHeading>
+                  <AccordionItemButton  >
+                    <div className='head'>
+                      <h4 className='eng'>{FAQ.title}</h4>
+                      <h2 className='eng'>{FAQ.name}</h2>
+                    </div>
+                    <img style={{ transform: `rotate(${FAQ.expanded ? '180deg' : '0'})` }} src={roundArrowBtn} alt="button" />
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <h4>
+                    {FAQ.answer}
+                  </h4>
+                </AccordionItemPanel>
+              </AccordionItem>)
+            }
+          </Accordion>
+        </Wrapper>
+      </div>
+    </Grid>
+
   );
 }
 
@@ -87,3 +96,11 @@ const Wrapper = styled.div`
     }
   }
 `
+
+const ParallaxImg = styled.div`
+  overflow: hidden;
+  margin: 0 -80px;
+  img {
+    width: 100%;
+  }
+`;

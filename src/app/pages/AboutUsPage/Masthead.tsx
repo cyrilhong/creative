@@ -108,7 +108,7 @@ const Wrapper = styled.main`
         background: ${colors.Orange};
         z-index: -1;
         animation: marker 1s forwards;
-        animation-delay: 2s;
+        animation-delay: .6s;
         animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
       }
     }

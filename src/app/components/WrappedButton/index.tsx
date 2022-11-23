@@ -34,6 +34,10 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
     path {
       stroke: ${isWhite ? colors.White : colors.DarkBlue};
     }
+    svg{
+      transform: ${iconRotate?'':'translateX(10px)'};
+      transition: all .2s ease-in;
+    }
   }
   &::before {
     -webkit-animation: move-out 0.3s;
@@ -46,7 +50,6 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
     position: absolute;
     top: 0;
     width: 100%;
-    will-change: transform;
   }
   &:hover:before {
     -webkit-animation: move-in 0.3s forwards;
@@ -55,6 +58,7 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
   h4 {
     margin: 0;
     z-index: 1;
+    letter-spacing: 0.15em;
   }
   svg {
     margin-left: 4px;

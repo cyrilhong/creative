@@ -12,7 +12,7 @@ import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import { Masthead } from './Masthead';
 import * as color from 'styles/colors';
 import mainBanner from './assets/about-us-main.jpg';
-import hotBaloon from './assets/img lg_happy teams.svg';
+import hotBaloon from './assets/hot-baloom.json';
 import team1 from './assets/team-1.jpg';
 import team2 from './assets/team-2.jpg';
 import james from './assets/james.jpg';
@@ -28,11 +28,12 @@ import { media } from 'styles/media';
 import Lottie from 'lottie-react';
 import aboutUsAnim from './assets/about-us.json'
 import Collapse from './collapse'
+import CountUp from 'react-countup';
 export function AboutUsPage() {
   const [blackBg, setBlackBg] = useState(true);
   const colorRef = useRef<HTMLDivElement>(null);
   useScrollPosition(({ prevPos, currPos }) => {
-    console.log(colorRef.current!.getBoundingClientRect().top);
+    // console.log(colorRef.current!.getBoundingClientRect().top);
     if (colorRef.current!.getBoundingClientRect().top < 250) {
       // debugger
       setBlackBg(false);
@@ -47,7 +48,7 @@ export function AboutUsPage() {
         <title>About Us</title>
         <meta name="description" content="About Us" />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={color.BGIvory} color={color.DarkBlue} />
       <div className="bg-about-us">
         <PageWrapper>
           <Masthead />
@@ -98,14 +99,18 @@ export function AboutUsPage() {
               <Grid xs={6} className="mb-img">
                 <ParallaxImg>
                   <Parallax speed={15}>
-                    <img src={team1} alt="team1" />
+                    <Fade bottom duration={1000} delay={100}>
+                      <img src={team1} alt="team1" />
+                    </Fade>
                   </Parallax>
                 </ParallaxImg>
               </Grid>
               <Grid xs={6} className="mb-img">
                 <ParallaxImg>
                   <Parallax speed={5}>
-                    <img src={team2} alt="team2" />
+                    <Fade bottom duration={1000} delay={100}>
+                      <img src={team2} alt="team2" />
+                    </Fade>
                   </Parallax>
                 </ParallaxImg>
               </Grid>
@@ -113,36 +118,42 @@ export function AboutUsPage() {
             <Grid className="teams-img" container spacing={5} rowSpacing={9}>
               <Grid xs={12} md={6} className="left">
                 <ParallaxImg>
-                  <Parallax speed={5}>
-                    <img src={team1} alt="team1" />
+                  <Parallax speed={15}>
+                    <Fade bottom duration={1000} delay={100}>
+                      <img src={team1} alt="team1" />
+                    </Fade>
                   </Parallax>
                 </ParallaxImg>
                 <div className="hotBaloon">
-                  <img src={hotBaloon} alt="hotBaloon" />
+                  <Lottie animationData={hotBaloon} loop={false} />
                 </div>
               </Grid>
               <Grid xs={12} md={6} className="right">
                 <ParallaxImg>
                   <Parallax speed={10}>
-                    <img src={team2} alt="team2" />
+                    <Fade bottom duration={1000} delay={100}>
+                      <img src={team2} alt="team2" />
+                    </Fade>
                   </Parallax>
                 </ParallaxImg>
                 <div className="context">
-                  <h2>專業團隊，跨領域設計經驗</h2>
-                  <h4>
-                    AJA 聚焦因應企業的商業目標，結合用戶洞見，轉化為精采絕倫的設計方案。跨領域的設計經驗讓 AJA 有更多連結與創造的能力，能更好地協助各類型的產業與企業。
-                  </h4>
-                  <h2>夥伴關係、以終為始</h2>
-                  <h4>
-                    AJA 本身就是一個專業平台，在這個平台上，設計夥伴們的多元專業可以互相連結、彼此共鳴成長，而最終的設計成果將一舉超越客戶的期待。
-                  </h4>
-                  <h2>動靜分明，工作玩樂都專業</h2>
-                  <h4>
-                    我們熱愛設計，也熱愛生活。每年員工旅遊走訪世界各地、每季聚餐則吃遍台灣大街小巷。能夠殷切經營生活，才懂得欣賞與啟發，擁有源源不絕的創造力。
-                  </h4>
+                  <Fade >
+                    <h2>專業團隊，跨領域設計經驗</h2>
+                    <h4>
+                      AJA 聚焦因應企業的商業目標，結合用戶洞見，轉化為精采絕倫的設計方案。跨領域的設計經驗讓 AJA 有更多連結與創造的能力，能更好地協助各類型的產業與企業。
+                    </h4>
+                    <h2>夥伴關係、以終為始</h2>
+                    <h4>
+                      AJA 本身就是一個專業平台，在這個平台上，設計夥伴們的多元專業可以互相連結、彼此共鳴成長，而最終的設計成果將一舉超越客戶的期待。
+                    </h4>
+                    <h2>動靜分明，工作玩樂都專業</h2>
+                    <h4>
+                      我們熱愛設計，也熱愛生活。每年員工旅遊走訪世界各地、每季聚餐則吃遍台灣大街小巷。能夠殷切經營生活，才懂得欣賞與啟發，擁有源源不絕的創造力。
+                    </h4>
+                  </Fade>
                 </div>
                 <div className="mb-hotBaloon">
-                  <img src={hotBaloon} alt="hotBaloon" />
+                  <Lottie animationData={hotBaloon} loop={false} />
                 </div>
               </Grid>
             </Grid>
@@ -162,7 +173,7 @@ export function AboutUsPage() {
             color={color.White}
             className={'black'}
           >
-            <Horizon blackBg={blackBg}>
+            <Horizon>
               <div className="title">
                 <div className="dot" />
                 <h4 className="eng">LEADERSHIP TEAM</h4>
@@ -171,27 +182,43 @@ export function AboutUsPage() {
             <Leadership>
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4}>
-                  <div className="huge eng">Our leadership team</div>
+                  <div className="huge eng">
+                    <Fade bottom cascade duration={1000} delay={100}>
+                      Our
+                    </Fade>
+                    <Fade bottom cascade duration={1000} delay={100}>
+                      leadership
+                    </Fade>
+                    <Fade bottom cascade duration={1000} delay={100}>
+                      team
+                    </Fade>
+                  </div>
                   <h1>專家團隊</h1>
                 </Grid>
                 <Grid xs={12} md={8} padding={0}>
                   <Grid container spacing={5} rowSpacing={8}>
-                    <Grid xs={12} md={6} className="leaders">
-                      <ParallaxImg style={{ margin: 0 }}>
-                        <img src={james} alt="james" />
-                      </ParallaxImg>
-                      <div className="info">
-                        <Collapse list={[
-                          {
-                            title: "Business Director",
-                            name: "James Chou",
-                            answer: `精通商業運作，善於解析企業客戶的需求並提供最適切的服務方案。`,
-                            expanded: false
-                          }
-                        ]} />
-                      </div>
-                    </Grid>
-                    <Grid xs={12} md={6} className="leaders">
+                    <Collapse img={james} list={
+                      [{
+                        title: "Business Director",
+                        name: "James Chou",
+                        answer: `精通商業運作，善於解析企業客戶的需求並提供最適切的服務方案。`,
+                        expanded: false
+                      }]} />
+                    <Collapse img={alan} list={
+                      [{
+                        title: "Creative Director",
+                        name: "Alan Yang",
+                        answer: `美感與創意兼具，擅長於跨平台的互動介面設計，以及企業品牌的數位形象營造。`,
+                        expanded: false
+                      }]} />
+                    <Collapse img={david} list={
+                      [{
+                        title: "UX Director",
+                        name: "David Chen",
+                        answer: `善於理解科技與人性，並且習於創新轉化，用 UX 專業來解決客戶的商業需求。`,
+                        expanded: false
+                      }]} />
+                    {/* <Grid xs={12} md={6} className="leaders">
                       <ParallaxImg style={{ margin: 0 }}>
                         <img src={alan} alt="alan" />
                       </ParallaxImg>
@@ -220,7 +247,7 @@ export function AboutUsPage() {
                           }
                         ]} />
                       </div>
-                    </Grid>
+                    </Grid> */}
                     {/* <Grid xs={12} md={6}>
                       <img src={charles} alt="charles" />
                       <div className="info">
@@ -238,7 +265,9 @@ export function AboutUsPage() {
             <Performance>
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4} className="item">
-                  <div className="super eng">13</div>
+                  <div className="super eng">
+                    <CountUp end={13} />
+                  </div>
                   <h2 className="eng">YEARS</h2>
                   <h2>體驗設計顧問經驗</h2>
                   <h4>
@@ -246,7 +275,9 @@ export function AboutUsPage() {
                   </h4>
                 </Grid>
                 <Grid xs={12} md={4} className="item">
-                  <div className="super eng">300+</div>
+                  <div className="super eng">
+                    <CountUp end={300} />
+                    +</div>
                   <h2 className="eng">PROJECTS</h2>
                   <h2>多樣性專案案例</h2>
                   <h4>
@@ -254,7 +285,8 @@ export function AboutUsPage() {
                   </h4>
                 </Grid>
                 <Grid xs={12} md={4} className="item">
-                  <div className="super eng">45+</div>
+                  <div className="super eng">
+                    <CountUp end={45} />+</div>
                   <h2 className="eng">People</h2>
                   <h2>跨職能團隊成員</h2>
                   <h4>
@@ -288,7 +320,7 @@ export function AboutUsPage() {
           </SectionIdea>
         </div>
       </div>
-    </ParallaxProvider>
+    </ParallaxProvider >
   );
 }
 
@@ -351,7 +383,7 @@ const HappyTeam = styled.div`
       display: flex;
       justify-content: flex-end;
       margin-top: 6px;
-      img {
+      div {
         width: 350px;
       }
     }
@@ -480,6 +512,7 @@ const Horizon = styled.div<{
     }
     h4 {
       margin: 0;
+      letter-spacing: 0.1rem;
     }
   }
   ${media.medium`
@@ -493,6 +526,12 @@ const Leadership = styled.div`
     filter: grayscale(1);
     transform: scale(1);
     transition: all .5s ease-in;
+  }
+  h1{
+    margin: 16px 0 0;
+  }
+  .leaders{
+    cursor: pointer;
   }
   .leaders:hover{
     img{
@@ -536,6 +575,7 @@ const Leadership = styled.div`
 
 const Performance = styled.div`
   padding-bottom: 200px;
+  margin-top: 154px;
   .item {
     text-align: center;
     .super {
@@ -581,6 +621,9 @@ const SectionIdea = styled.div`
     margin: 0 auto;
     width: 100%;
     padding: 0 80px;
+    h2{
+      margin: 16px 0 0;
+    }
     a{
       background-color: ${color.White};
     }
@@ -593,7 +636,7 @@ const SectionIdea = styled.div`
       border-right: 1px solid ${color.DarkBlue};
       color: ${color.DarkBlue};
       h1 {
-        margin-top: 40px;
+        margin: 40px 0 0;
       }
     }
   }

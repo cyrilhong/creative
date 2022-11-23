@@ -115,7 +115,7 @@ export function CustomerPage() {
           content="A React Boilerplate application CustomerPage"
         />
       </Helmet>
-      <NavBar />
+      <NavBar bgColor={color.BGPink} color={color.DarkBlue} />
       <div className="bg-customer">
         <PageWrapper>
           <HeroWrapper>
@@ -184,13 +184,17 @@ export function CustomerPage() {
             </div>
 
             <ParallaxWrapper01>
-              <Parallax scale={[1, 1.2]}>
-                <img src={hero1} alt="Yoxi" />
+              <Parallax speed={15}>
+                <Fade bottom duration={500} delay={500}>
+                  <img src={hero1} alt="Yoxi" />
+                </Fade>
               </Parallax>
             </ParallaxWrapper01>
             <ParallaxWrapper02>
-              <Parallax scale={[1, 1.3]}>
-                <img src={hero2} alt="Yoxi" />
+              <Parallax speed={5}>
+                <Fade bottom duration={500} delay={500}>
+                  <img src={hero2} alt="Yoxi" />
+                </Fade>
               </Parallax>
             </ParallaxWrapper02>
           </HeroWrapper>
@@ -207,7 +211,14 @@ export function CustomerPage() {
                 </Horizon>
               </Grid>
               <Grid className='left' item xs={12} md={4}>
-                <div className="huge eng">Selected <br />Clients</div>
+                <div className="huge eng">
+                  <Fade bottom cascade duration={500} delay={100}>
+                    Selected
+                  </Fade>
+                  <Fade bottom cascade duration={500} delay={100}>
+                    Clients
+                  </Fade>
+                </div>
                 {/* <div className="huge eng">Clients</div> */}
                 <h1>
                   我們在創新之路 <br /> 一起共伴
@@ -474,7 +485,7 @@ const SectionIdea = styled.div`
   }
   .more-client {
     display: inline-grid;
-    grid-gap: 44px;
+    grid-gap: 56px;
     grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     img {
@@ -526,6 +537,9 @@ const OurClients = styled.div`
   color: ${color.White};
   position: relative;
   z-index: 0;
+  h1{
+    margin: 16px 0 0;
+  }
   .clients {
     .card {
       position: relative;
@@ -747,6 +761,7 @@ const Horizon = styled.div`
     }
     h4 {
       margin: 0;
+      letter-spacing: 0.1rem;
     }
   }
   ${media.medium`

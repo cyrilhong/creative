@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import yoxi from './assets/yoxi.jpg';
-
+import Fade from 'react-reveal/Fade';
 const CaseSlider = [
   {
     title: '和泰移動派遣服務｜yoxi 美好出行體驗',
@@ -61,7 +61,7 @@ export default function Case() {
             })}
           </div>
           <h4 className="subtitle">{CaseSlider[activeSlide].type}</h4>
-          <h2 className="title">{CaseSlider[activeSlide].title}</h2>
+          <h1 className="title">{CaseSlider[activeSlide].title}</h1>
           <h4 className="content">{CaseSlider[activeSlide].content}</h4>
           <RoundButton
             link={CaseSlider[activeSlide].link}
@@ -86,7 +86,9 @@ export default function Case() {
           {CaseSlider.map(item => {
             return (
               <SlideItem key={item.title}>
-                <img src={item.img.src} alt={item.img.alt} />
+                <Fade right>
+                  <img src={item.img.src} alt={item.img.alt} />
+                </Fade>
               </SlideItem>
             );
           })}
@@ -102,7 +104,7 @@ const Cases = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
-  padding-bottom: 44px;
+  padding-bottom: 64px;
   position: relative;
   z-index: 1;
   &::before{
@@ -116,7 +118,7 @@ const Cases = styled.div`
   }
   .left {
     flex: 1 1 100%;
-    padding: 48px 0 100px 60px;
+    padding: 48px 0 0 60px;
     .pills {
       margin-bottom: 32px;
       .pill {
@@ -135,8 +137,8 @@ const Cases = styled.div`
       margin-bottom: 8px;
       margin-top: 0;
     }
-    h2 {
-      margin-bottom: 16px;
+    h1 {
+      margin: 8px 0;
     }
     .content {
       margin-bottom: 32px;
@@ -164,7 +166,7 @@ const Cases = styled.div`
   .right {
     flex: 1 1 100%;
     max-width: 620px;
-    margin-top: -60px;
+    margin-top: -48px;
     margin-right: 0;
     max-width: 50%;
   }

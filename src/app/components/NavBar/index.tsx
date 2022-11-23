@@ -5,14 +5,12 @@ import { StyleConstants } from 'styles/StyleConstants';
 import { Nav } from './Nav';
 import { PageWrapper } from '../PageWrapper';
 import * as colors from '../../../styles/colors';
-import { useNavigate } from 'react-router-dom';
 import { media } from 'styles/media';
-export function NavBar(blackBg) {
-  const navigate = useNavigate();
+export function NavBar({ blackBg = '', bgColor, color }) {
   const Language = styled.div`
     font-size: 14px;
-    color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
-    border-bottom: 1px solid ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
+    color: ${color};
+    border-bottom: 1px solid ${color};
     flex: 0 1 120px;
     padding: 28px 24px;
     display: flex;
@@ -27,9 +25,9 @@ export function NavBar(blackBg) {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
+    background-color: ${bgColor};
     z-index: 2;
-    color: ${blackBg.theme ? colors.DarkBlue : colors.BGGreen};
+    color: ${color};
     .logo{
       margin: 0;
       padding: 0;
@@ -54,9 +52,9 @@ export function NavBar(blackBg) {
 
   const Item = styled.div`
     cursor: pointer;
-    color: ${blackBg.theme ? colors.ConcreteGrey : colors.ConcreteGrey};
+    color: ${color};
     &.active {
-      color: ${blackBg.theme ? colors.BGGreen : colors.AJABlue};
+      color: ${bgColor};
     }
   `;
 
@@ -65,12 +63,12 @@ export function NavBar(blackBg) {
   return (
     <Wrapper>
       <div className='logo'>
-        <Logo isBlack={blackBg.theme} />
+        <Logo color={color} bgColor={bgColor} />
       </div>
-      <Nav isBlack={blackBg.theme} />
-      <Language className="eng">
+      <Nav color={color} bgColor={bgColor} />
+      {/* <Language className="eng">
         <Item>EN</Item>・<Item className="active">CN</Item>
-      </Language>
+      </Language> */}
     </Wrapper>
   );
 }
