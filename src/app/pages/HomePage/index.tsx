@@ -56,7 +56,7 @@ import kkboxLogo from './assets/kkbox.svg';
 import nanshanLogo from './assets/nan-shan.svg';
 import tdriLogo from './assets/TDRI.svg';
 import tsBankLogo from './assets/ts-bank.svg';
-import showreel from './assets/showreel.mp4';
+// import showreel from './assets/showreel.mp4';
 import Lottie from 'lottie-react';
 import lottie1 from './assets/lottie-01.json';
 import lottie2 from './assets/lottie-02.json';
@@ -217,14 +217,14 @@ export function HomePage() {
 
   const videoJsOptions = {
     autoplay: true,
-    controls: true,
+    controls: false,
     responsive: true,
     fluid: true,
     muted: true,
     loop: true,
     sources: [
       {
-        src: showreel,
+        src: 'https://aja-creative.com/video/showreel.mp4',
         type: 'video/mp4',
       },
     ],
@@ -314,7 +314,7 @@ export function HomePage() {
                 playsInline
                 style={{ width: '100%' }}
               >
-                <source src={showreel} />
+                <source src='https://aja-creative.com/video/showreel.mp4' />
                 <img src="image.gif" />
               </video>
             )}
