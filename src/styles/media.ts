@@ -18,9 +18,9 @@ import {
 
 // Update your breakpoints if you want
 export const sizes = {
-  small: 640,
-  medium: 960,
-  large: 1440,
+  small: 639,
+  medium: 959,
+  large: 1439,
   xlarge: 1920,
 };
 

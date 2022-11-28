@@ -32,6 +32,9 @@ export default function footer() {
   background-color: ${color.AJABlue};
   padding: 0;
   z-index: ${active ? '0' : '-1'};
+  .page-wrapper{
+    width: 100%;
+  }
   .lines {
     .line {
       border-right: 1px solid #f3f3eb0d;
@@ -72,7 +75,7 @@ export default function footer() {
 
   return (
     <Footer ref={ref}>
-      <PageWrapper overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
+      <PageWrapper className="page-wrapper" overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
         <ParallaxProvider>
           <Wrapper>
             <Parallax speed={active ? -25 : 25}>
@@ -351,7 +354,7 @@ const Info = styled.div`
 `;
 
 const Bottom = styled.div`
-  padding: 0 0 26px;
+  padding: 0 16px 26px;
   margin-right: -40px;
   align-items: end;
   display: flex;

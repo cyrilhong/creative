@@ -37,7 +37,7 @@ export function PageWrapper(props) {
     }
     /* color: ${props.color ? props.color : colors.AJABlue}; */
     ${media.large`
-      padding: 0 80px
+      padding: 0 40px
     `}
     ${media.medium`
       padding: 0 20px;

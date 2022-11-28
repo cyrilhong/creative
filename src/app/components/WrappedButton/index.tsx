@@ -87,7 +87,7 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
   `}
 `;
   return (
-    <CTA href={link}>
+    <CTA href={link} target="_blank">
       <h4 className="eng">{text}</h4>
       <svg
         width="40"

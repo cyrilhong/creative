@@ -20,6 +20,8 @@ import arrow from './assets/button.svg';
 import arrowBlack from './assets/arrow-black.svg';
 import arrowWhite from './assets/arrow.svg';
 import arrowHollow from './assets/arrow-hollow-left.svg';
+import stopVideo from './assets/stop-video.svg';
+import playVideo from './assets/play-video.svg';
 import arrowHollowRight from './assets/arrow-hollow-right.svg';
 import Fade from 'react-reveal/Fade';
 import CaseStudy from './CaseStudy';
@@ -145,7 +147,7 @@ const CaseSlider = [
 ];
 export function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const carouselRef = React.useRef<Slider>(null);
+  const carouselRef = React.useRef < Slider > (null);
   const sliderRef = React.createRef();
   const [isBlackBg, setIsBlackBg] = useState(true);
   const windowWidth = useWindowSize().width
@@ -175,15 +177,15 @@ export function HomePage() {
     carouselRef.current?.slickGoTo(index);
   };
 
-  const themeColorRef = useRef<HTMLDivElement>(null);
-  const helpColorRef = useRef<HTMLDivElement>(null);
-  const lottieRef1 = useRef<any>(null);;
-  const lottieRef2 = useRef<any>(null);;
-  const lottieRef3 = useRef<any>(null);;
+  const themeColorRef = useRef < HTMLDivElement > (null);
+  const helpColorRef = useRef < HTMLDivElement > (null);
+  const lottieRef1 = useRef < any > (null);;
+  const lottieRef2 = useRef < any > (null);;
+  const lottieRef3 = useRef < any > (null);;
 
   useScrollPosition(({ prevPos, currPos }) => {
     // console.log(currPos.x)
-    console.log(Math.abs(currPos.y));
+    // console.log(Math.abs(currPos.y));
     // console.log(themeColorRef.current!.getBoundingClientRect().top);
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
@@ -215,6 +217,7 @@ export function HomePage() {
   });
 
   const playerRef = React.useRef(null);
+  const [videoOpen, setVideoOpen] = useState(false)
 
   const videoJsOptions = {
     autoplay: true,
@@ -225,7 +228,7 @@ export function HomePage() {
     loop: true,
     sources: [
       {
-        src: 'https://aja-creative.com/video/showreel.mp4',
+        src: 'https://aja-creative.com/video/showreel-short.mp4',
         type: 'video/mp4',
       },
     ],
@@ -244,23 +247,36 @@ export function HomePage() {
     });
 
     player.on('click', () => {
-      console.log('click');
-      console.log(document.fullscreenEnabled);
-      player.requestFullscreen();
-      player.play();
-      player.muted(false);
-    });
-    player.on('fullscreenchange', function () {
       if (player.isFullscreen()) {
-      } else {
+        setVideoOpen(false);
+        player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
+        // console.log('click');
+        player.exitFullscreen();
+        // player.play();
         player.muted(true);
+      } else {
+        setVideoOpen(true);
+        player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel.mp4' });
+        console.log('click');
+        player.requestFullscreen();
+        player.play();
+        player.muted(false);
       }
     });
+    // player.on('fullscreenchange', function () {
+    //   if (player.isFullscreen()) {
+
+    //   } else {
+    //     player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
+    //     player.muted(true);
+    //     setVideoOpen(false);
+    //   }
+    // });
   };
 
   const target = useRef(null);
   function Mark(props) {
-    const { ref } = useParallax<HTMLDivElement>({
+    const { ref } = useParallax < HTMLDivElement > ({
       scaleX: [0, 1],
       rootMargin: { top: 0, right: 0, bottom: -600, left: 0 },
     });
@@ -294,14 +310,14 @@ export function HomePage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar bgColor={isBlackBg?colors.DarkBlue:colors.White} color={isBlackBg?colors.White:colors.DarkBlue} />
+      <NavBar bgColor={isBlackBg ? colors.DarkBlue : colors.White} color={isBlackBg ? colors.White : colors.DarkBlue} />
       <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper>
           <Masthead />
         </PageWrapper>
       </div>
       <div style={{ position: 'relative' }} className={isBlackBg ? 'black' : 'white'}>
-        <VideoWrapper>
+        <VideoWrapper className={`${videoOpen ? 'open' : ''}`}>
           <Parallax
             scale={[1, 1.2]} speed={-10}
           >
@@ -321,8 +337,7 @@ export function HomePage() {
             )}
           </Parallax>
           <div className="hover-player">
-            <img src={playReel} alt="playReel" />
-            <h4 className="eng">PLAY REEL</h4>
+            <img src={playVideo} alt="playReel" />
           </div>
         </VideoWrapper>
       </div>
@@ -366,10 +381,9 @@ export function HomePage() {
             </Fade>
           </div>}
           <FeatureHead>
-            {windowWidth < 960 ?
+            {windowWidth < 1114 ?
               <>
-                我們透過
-                <div className='draw'>量身定制的解決方案</div>，來應對不同商業需求的關鍵情境
+                我們透過量身定制的解決方案來應對不同商業需求的關鍵情境
               </>
               :
               <>
@@ -404,7 +418,7 @@ export function HomePage() {
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={4} className="case">
+              <Grid xs={12} md={5} lg={4} className="case">
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={CTBC} alt="ctbc" />
                 </div>
@@ -509,10 +523,9 @@ export function HomePage() {
                   }
                   <Grid className="sub-head" xs={12} md={9} mdOffset={2} xsOffset={0}>
                     <FeatureHeadYellow>
-                      {windowWidth < 960 ?
+                      {windowWidth < 976 ?
                         <>
-                          我們不斷累積跨領域經驗，將
-                          <div className='draw'>創新能量轉化為客戶價值</div>
+                          我們不斷累積跨領域經驗創新能量轉化為客戶價值
                         </>
                         :
                         <>
@@ -619,11 +632,15 @@ export function HomePage() {
               We partner with our clients <br />
               to create value
             </div>
-            <h1 className="impact-subtitle">
+            {windowWidth > 961 ? <h1 className="impact-subtitle">
               我們協助
               <Mark color={colors.Yellow}>客戶創造價值</Mark>
               ，進而形塑共好的長期夥伴關係
-            </h1>
+            </h1> :
+              <h1 className="impact-subtitle">
+                我們協助客戶創造價值，進而形塑共好的長期夥伴關係
+              </h1>
+            }
             <Slider {...settings} ref={carouselRef}>
               {CaseSlider.map(item => {
                 return (
@@ -692,10 +709,14 @@ export function HomePage() {
               </div>
               <h4 className="eng">04</h4>
             </Horizon>
-            <div className="huge eng">
+            {windowWidth > 960 ? <div className="huge eng">
               What you can <br />
               expect from us
-            </div>
+            </div> :
+              <div className="huge eng">
+                What you can expect from us
+              </div>
+            }
             <FeatureHead>
               {windowWidth < 960 ?
                 <Fade>
@@ -703,8 +724,7 @@ export function HomePage() {
                   多元的觀點碰撞出好的體驗
                 </Fade> :
                 <>
-                  我們來自不同的專業領域，用
-                  <Mark>多元的觀點碰撞出好的體驗</Mark>
+                  我們來自不同的專業領域，用多元的觀點碰撞出好的體驗
                 </>
 
               }
@@ -717,14 +737,14 @@ export function HomePage() {
             />
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
-                <Grid xs={0} md={4}>
+                <Grid xs={0} lg={4}>
                   <div className="super eng title">
                     <Fade bottom>
                       01.
                     </Fade>
                   </div>
                 </Grid>
-                <Grid xs={12} md={8}>
+                <Grid xs={12} lg={8}>
                   <Box display={'flex'} className="right">
                     <Box
                       className="lottie"
@@ -762,14 +782,14 @@ export function HomePage() {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid xs={0} md={4}>
+                <Grid xs={0} lg={4}>
                   <div className="super eng title">
                     <Fade bottom>
                       02.
                     </Fade>
                   </div>
                 </Grid>
-                <Grid xs={12} md={8}>
+                <Grid xs={12} lg={8}>
                   <Box display={'flex'} className="right">
                     <Box
                       className="lottie"
@@ -807,14 +827,14 @@ export function HomePage() {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid xs={0} md={4}>
+                <Grid xs={0} lg={4}>
 
                   <div className="super eng title">
                     <Fade bottom>03.
                     </Fade>
                   </div>
                 </Grid>
-                <Grid xs={12} md={8}>
+                <Grid xs={12} lg={8}>
                   <Box display={'flex'} className="right">
                     <Box
                       className="lottie"
@@ -934,9 +954,9 @@ const SliderWrapper = styled.div`
     white-space: normal;
   }
 `;
-const Horizon = styled.div<{
+const Horizon = styled.div < {
   isBlackBg?: boolean;
-}>`
+} > `
   display: flex;
   justify-content: space-between;
   padding: 120px 0;
@@ -1000,6 +1020,11 @@ const SectionIdea = styled.div`
     background-color: #fff;
     min-width: 215px;
   }
+  ${media.large`
+    a{
+      margin-top: 16px;
+    }
+  `}
   ${media.medium`
     padding: 48px 0;
     .container{
@@ -1190,9 +1215,10 @@ const CaseList = styled.div`
     }
   }
   .pills {
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     .pill {
       margin-right: 12px;
+      margin-bottom: 12px;
       border-radius: 100px;
       background-color: #2e3c42;
       letter-spacing: 0.15em;
@@ -1318,6 +1344,11 @@ const SlideItem = styled.div`
     font-size: 16px;
     font-weight: 400;
   }
+  ${media.large`
+    p{
+      height: auto;
+    }
+  `}
   ${media.medium`
     p{
       margin: 32px 0;
@@ -1401,9 +1432,9 @@ const CTA = styled.a`
   `}
 `;
 
-const OurServices = styled.div<{
+const OurServices = styled.div < {
   isBlackBg: boolean;
-}>`
+} > `
   padding: 0 0 96px;
   transition: all 1s ease-in;
   /* background-color: ${prop =>
@@ -1570,15 +1601,33 @@ const OurServices = styled.div<{
     /* width: 24px; */
     height: 5px;
   }
+  ${media.large`
+    .content {
+      margin-bottom: 0;
+      .super{
+        font-size: 100px;
+        line-height: 132px;
+      }
+    }
+    .impact-title{
+      br{
+        display: none;
+      }
+    }
+  `}
   ${media.medium`
     padding-bottom: 73px;
-    overflow: hidden;
+    // overflow: hidden;
     .content{
       margin-top: 42px;
       min-height: 428px;
       margin-bottom: 43px;
       ${CTA}{
         display: none;
+      }
+      .super{
+        font-size: 48px;
+        line-height: 60px;
       }
       .super.head-1{
         margin-left: 0;
@@ -1617,7 +1666,10 @@ const OurServices = styled.div<{
         margin-top: 100px;
       }
       .wall6{
-        margin-top: 114px;
+        margin-top: 0;
+      }
+      .wall2 {
+        margin-top: 0;
       }
     }
     .impact-title{
@@ -1638,7 +1690,7 @@ const OurServices = styled.div<{
       margin-top: 48px;
     }
     .slick-list{
-      width: 100%;
+      width: 70%;
     }
   `}
 `;
@@ -1650,6 +1702,9 @@ const VideoWrapper = styled.div`
   max-width: calc( 100% - 160px );
   /* padding: 0 80px; */
   margin: 0 auto;
+  &.open:hover{
+    cursor: url(${stopVideo}) 45 45,auto;
+  }
   .hover-player{
     display: flex;
     opacity: 0;
@@ -1769,7 +1824,7 @@ const ServiceList = styled.div`
     min-width: 290px;
     margin-right: 40px;
   }
-  ${media.medium`
+  ${media.large`
     padding: 72px 0;
     .title{
       display: none;
@@ -1780,6 +1835,7 @@ const ServiceList = styled.div`
       text-align: center;
       border-right: 1px solid ${colors.White};
       border-left: 1px solid ${colors.White};
+      padding: 0 20px 50px;
       .lottie{
         margin-right: 0;
         min-width: auto;
@@ -1790,6 +1846,9 @@ const ServiceList = styled.div`
         li{
           justify-content: center;
           display: inline-block;
+          h4{
+            margin: 0;
+          }
           &::before{
             display: inline-block;
           }
@@ -1798,6 +1857,7 @@ const ServiceList = styled.div`
       h4{
         margin: 0;
         padding-top: 16px;
+        font-size: 16px;
       }
       h1{
         margin: 32px 0 8px;
@@ -1812,10 +1872,13 @@ const FeatureHead = styled.h1`
     content: '';
     border-bottom: 15px solid ${colors.ElectricBlue};
   }
+  ${media.large`
+    margin-bottom: -8px;
+  `}
   ${media.medium`
     display: block;
-    margin-bottom: 24px;
-    max-width: 320px;
+    margin-bottom: -8px;
+    /* max-width: 320px; */
     span{
       display: inline-block;
       height: 35px;

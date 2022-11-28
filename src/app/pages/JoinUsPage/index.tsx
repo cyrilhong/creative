@@ -29,6 +29,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useWindowSize, isDesktop } from '../../hooks'
+import arrowHollow from './assets/arrow-hollow-left.svg';
+import arrowHollowRight from './assets/arrow-hollow-right.svg';
+import Collapse from './collapse'
 const teamSlider = [
   team1, team2, team3, team1, team2, team3
 ]
@@ -51,23 +54,24 @@ export function JoinUsPage() {
     autoplay: true,
     speed: 5000,
     autoplaySpeed: 0,
-    slidesToShow: isDesktop()?3:1,
+    slidesToShow: isDesktop() ? 3 : 1,
     cssEase: 'linear',
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
   };
+  const windowWidth = useWindowSize().width
   return (
     <ParallaxProvider>
       <Helmet>
         <title>Join Us</title>
         <meta name="description" content="Join Us" />
       </Helmet>
-      <NavBar bgColor={color.BGPeach} color={color.AJABlue}/>
+      <NavBar bgColor={color.BGPeach} color={color.AJABlue} />
       <div className="bg-join-us">
         <PageWrapper overflow="true">
           <HeroSection>
             <Grid className="text" container spacing={5} rowSpacing={9}>
-              {isDesktop() ?
+              {windowWidth > 1440 &&
                 <Grid xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="sentence-1 super eng">Makes work</div>
@@ -76,39 +80,39 @@ export function JoinUsPage() {
                     <div className="sentence-2 super eng">a real joy </div>
                   </Fade>
                   <Fade bottom cascade duration={500} delay={100}>
-                    <Box
-                      display={'flex'}
-                      flexDirection="row"
-                      alignItems={'baseline'}
+                    <Box className="sentence-3-wrapper"
                     >
                       <div className="sentence-3 super eng">with us!</div>
                       <h1 className="sentence-4">與我們一同面向挑戰帶來改變</h1>
                     </Box>
                   </Fade>
-                </Grid> :
-                <Grid xs={12}>
-                  <Fade bottom cascade duration={500} delay={100}>
-                    <div className="sentence-1 super eng">Makes</div>
-                  </Fade>
-                  <Fade bottom cascade duration={500} delay={100}>
-                    <div className="sentence-2 super eng">work</div>
-                  </Fade>
-                  <Fade bottom cascade duration={500} delay={100}>
-                    <div className="sentence-3 super eng">a real joy</div>
-                  </Fade>
-                  <Fade bottom cascade duration={500} delay={100}>
-                    <Box
-                      display={'flex'}
-                      flexDirection="column"
-                      alignItems={'baseline'}
-                    >
-                      <div className="sentence-4 super eng">with us!</div>
-                      <h1 className="sentence-5">與我們一同面向挑戰帶來改變</h1>
-                    </Box>
-                  </Fade>
-                </Grid>
+                </Grid>}
+
+              {windowWidth > 959 && windowWidth < 1441 && <Grid xs={12}>
+                <Fade bottom cascade duration={500} delay={100}>
+                  <div className="sentence-1 super eng">Makes work</div>
+                </Fade>
+                <Fade bottom cascade duration={500} delay={100}>
+                  <div className="sentence-3 super eng">a real joy</div>
+                </Fade>
+                <Fade bottom cascade duration={500} delay={100}>
+                  <Box
+                    display={'flex'}
+                    flexDirection="column"
+                    alignItems={'baseline'}
+                  >
+                    <div className="sentence-4 super eng">with us!</div>
+                    <h1 className="sentence-5">與我們一同面向挑戰帶來改變</h1>
+                  </Box>
+                </Fade>
+              </Grid>
               }
-              <Grid xs={12} padding={'0'} marginTop={'-14px'}>
+              {windowWidth < 960 && <Grid xs={12}>
+                <div className="sentence-1 super eng">Makes work with us!</div>
+                <h1 className="sentence-5">與我們一同面向挑戰帶來改變</h1>
+              </Grid>
+              }
+              {windowWidth > 960 && <Grid xs={12} padding={'0'} marginTop={'-14px'}>
                 <CTA
                   color={color.White}
                   bgc={color.DarkBlue}
@@ -123,24 +127,24 @@ export function JoinUsPage() {
                   <h4 className="eng">OPEN POSITIONS</h4>
                   <img style={{ transform: "rotate(90deg)" }} src={arrowWhite} alt="arrow" />
                 </CTA>
-              </Grid>
+              </Grid>}
             </Grid>
             <Grid className="teams-img" container spacing={5} rowSpacing={9}>
-              <Grid xs={6} md={5} className="left-1">
+              <Grid xs={12} md={4} className="left-1">
                 <ParallaxImg>
                   <Parallax speed={5}>
                     <img src={hero1} alt="hero1" />
                   </Parallax>
                 </ParallaxImg>
               </Grid>
-              <Grid xs={6} xsOffset={6} md={5} mdOffset={2} className="right">
+              <Grid xs={6} xsOffset={5} md={5} mdOffset={3} className="right">
                 <ParallaxImg>
                   <Parallax speed={20}>
                     <img src={hero2} alt="hero2" />
                   </Parallax>
                 </ParallaxImg>
               </Grid>
-              <Grid xs={6} className="left-2">
+              <Grid xs={8} md={7} className="left-2">
                 <ParallaxImg>
                   <Parallax speed={25}>
                     <img src={hero3} alt="hero3" />
@@ -148,14 +152,32 @@ export function JoinUsPage() {
                 </ParallaxImg>
               </Grid>
             </Grid>
-            <Grid xs={8} xsOffset={2}>
-              <Box className="amazing-teams">
-                <h1 className="eng">Great people make amazing teams</h1>
-                <h1>我們重視工作，也享受生活</h1>
-                <h4>
-                  信任團隊成員，尊重彼此差異，透過合作共創能量。願意發揮角色職責，透過向心力與凝聚力，激盪出更精彩的創意火花！打破思維框架，擴大生活經驗，接納多面向的視野觀點，與不同產業、族群、立場的人們對話，醞釀更強大的創新動能！
-                </h4>
-              </Box>
+            {windowWidth < 960 && <Grid xs={12}>
+              <CTA
+                color={color.White}
+                bgc={color.DarkBlue}
+                onClick={() => {
+                  scroller.scrollTo('job-list', {
+                    duration: 1500,
+                    delay: 100,
+                    smooth: true
+                  })
+                }}
+              >
+                <h4 className="eng">OPEN POSITIONS</h4>
+                <img style={{ transform: "rotate(90deg)" }} src={arrowWhite} alt="arrow" />
+              </CTA>
+            </Grid>}
+            <Grid container>
+              <Grid xs={12} xsOffset={0} mdOffset={1} md={10}>
+                <Box className="amazing-teams">
+                  <h1 className="eng">Great people make amazing teams</h1>
+                  <h1>我們重視工作，也享受生活</h1>
+                  <h4>
+                    信任團隊成員，尊重彼此差異，透過合作共創能量。願意發揮角色職責，透過向心力與凝聚力，激盪出更精彩的創意火花！打破思維框架，擴大生活經驗，接納多面向的視野觀點，與不同產業、族群、立場的人們對話，醞釀更強大的創新動能！
+                  </h4>
+                </Box>
+              </Grid>
             </Grid>
           </HeroSection>
         </PageWrapper>
@@ -182,7 +204,7 @@ export function JoinUsPage() {
               blackBg={blackBg}
               bgc={blackBg ? color.DarkBlue : color.BGGreen}
               color={blackBg ? color.White : color.DarkBlue}
-              className={blackBg ? 'black' : 'white'}
+              className={blackBg ? 'white' : 'black'}
             >
               <Horizon blackBg={blackBg}>
                 <div className="title">
@@ -203,67 +225,61 @@ export function JoinUsPage() {
                       team
                     </div>
                     <h2>成為我們的一員！</h2>
+                    <WrappedButton
+                      text="APPLY"
+                      link="https://www.104.com.tw/company/b88c8k8"
+                      isWhite={false}
+                      iconRotate={-45}
+                    />
                   </Grid>
                   <Grid xs={12} md={7} className="job-list">
                     <ul>
                       <li>
-                        <div className="info">
-                          <h1 className="eng">UX Designer</h1>
-                          <h4>使用體驗設計師</h4>
-                        </div>
-                        <WrappedButton
-                          text="APPLY"
-                          link="#"
-                          isWhite={false}
-                          iconRotate={-45}
-                        />
+                        <Collapse list={
+                          [{
+                            title: "User Researcher",
+                            name: "使用者研究員",
+                            answer: `擁有扎實的研究方法與科學認識論基礎，能夠整合實踐與理論，且勇於面對多元的體驗設計挑戰，了解問題背後並非一蹴可幾，願意透過反覆試做來回應複雜社會與技術改變所形成的體驗問題。`,
+                            expanded: false
+                          }]} />
                       </li>
                       <li>
-                        <div className="info">
-                          <h1 className="eng">UI Designer</h1>
-                          <h4>使用介面設計師</h4>
-                        </div>
-                        <WrappedButton
-                          text="APPLY"
-                          link="#"
-                          isWhite={false}
-                          iconRotate={-45}
-                        />
+                        <Collapse list={
+                          [{
+                            title: "UX Designer",
+                            name: "使用者經驗設計師",
+                            answer: `對於周圍變化具有敏銳的觀察力，能夠洞悉問題跟脈絡；有清楚的邏輯思維與創意，來設計具架構性與延展性的解決方案；並且具有開放的心胸，來聆聽、溝通、與內外部成員團隊合作。`,
+                            expanded: false
+                          }]} />
                       </li>
                       <li>
-                        <div className="info">
-                          <h1 className="eng">Researcher</h1>
-                          <h4>研究員</h4>
-                        </div>
-                        <WrappedButton
-                          text="APPLY"
-                          link="#"
-                          isWhite={false}
-                          iconRotate={-45}
-                        />
+                        <Collapse list={
+                          [{
+                            title: "UI Desinger",
+                            name: "介面設計師",
+                            answer: `對於視覺設計有獨到的見解，及對各種人事物充滿好奇心，能夠將心中感性與美學素養，藉由自身對於事物的觀察與體悟，巧妙地轉化成理性的介面呈現，並和夥伴一同參與使用者研究、腦力激盪、規劃產品畫面與流程。`,
+                            expanded: false
+                          }]} />
                       </li>
                       <li>
-                        <div className="info">
-                          <h1 className="eng">Front-End Dev</h1>
-                          <h4>前端工程師</h4>
-                        </div>
-                        <WrappedButton
-                          text="APPLY"
-                          link="#"
-                          isWhite={false}
-                          iconRotate={-45}
-                        />
+                        <Collapse list={
+                          [{
+                            title: "Project Manager",
+                            name: "專案經理",
+                            answer: `能夠獨立掌控與執行設計專案規劃，並與 UX/UI 學習專業知識及累積各產業的 know-how。對內，需能協助團隊有效率地管理專案執行並產出成果；對外，則需要對應客戶業務窗口多樣態的商業問題及設計需求，綜合客戶多元考量，並有能力做出適當且正確的回應。`,
+                            expanded: false
+                          }]} />
                       </li>
                       <li>
-                        <div className="info">
-                          <h1 className="eng">Project Manager</h1>
-                          <h4>專案經理</h4>
-                        </div>
-                        <CTA bgc="transparent" color={color.White}>
-                          <h4 className="eng">APPLY</h4>
-                          <img src={arrowWhite} alt="arrow" />
-                        </CTA>
+                        <Collapse list={
+                          [{
+                            title: "Front-End Dev",
+                            name: "前端工程師",
+                            answer: `能具備豐富的前端工程知識與能力，並能夠探索、啟發與指導設計師關於技術的可能性，成為團隊中的技術專家 ; 同時具備良好的思考表達能力，協助專案經理評估可行性、工作時程等規劃，共同為專案完成絕佳的使用者經驗與介面設計。`,
+                            expanded: false
+                          }]} />
                       </li>
+
                     </ul>
                   </Grid>
                 </Grid>
@@ -283,6 +299,7 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 320px;
+  db
   ${media.medium`
     height: ${StyleConstants.NAV_BAR_MOBILE_HEIGHT};
   `}
@@ -308,7 +325,7 @@ const ParallaxImg = styled.div`
 `;
 
 const HeroSection = styled.div`
-  padding: 196px 0 124px;
+  padding: 196px 0 109px;
   .text {
     position: relative;
     z-index: 2;
@@ -328,10 +345,15 @@ const HeroSection = styled.div`
   .sentence-4 {
     margin-left: 50px;
   }
+  .sentence-3-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
   .amazing-teams {
     border-left: 1px solid ${color.DarkBlue};
     border-right: 1px solid ${color.DarkBlue};
-    margin: 689px -7px 0;
+    margin: 44vw -7px 0;
     padding: 24px 40px;
     text-align: center;
     h1 {
@@ -348,8 +370,9 @@ const HeroSection = styled.div`
     top: 295px;
     z-index: 0;
     .left-1 {
-      margin-top: 16px;
+      margin-top: 8px;
       padding-right: 0;
+      margin-left: 0;
     }
     .left-2 {
       margin-left: -80px;
@@ -359,7 +382,7 @@ const HeroSection = styled.div`
       width: 100%;
     }
     .right {
-      margin-top: 366px;
+      margin-top: 410px;
       padding: 0 20px 0 0;
     }
     .hotBaloon {
@@ -387,12 +410,12 @@ const HeroSection = styled.div`
     margin: 0;
     overflow: visible;
   }
-  @media screen and (max-width: 1400px) {
+  /* @media screen and (max-width: 1400px) {
     .sentence-3{
       margin-left: 0;
     }
-  }
-  @media screen and (max-width: 1260px) {
+  } */
+  /* @media screen and (max-width: 1260px) {
     .super{
       font-size: 106px;
       line-height: 120px;
@@ -403,7 +426,48 @@ const HeroSection = styled.div`
     .amazing-teams{
       margin-top: 489px;
     }
-  }
+  } */
+  ${media.large`
+    padding-top: 90px;
+    .super{
+      font-size: 100px;
+      line-height: 136px;
+    }
+    .sentence-3-wrapper{
+      flex-direction: column;
+    }
+    .sentence-4{
+      max-width: 100%;
+      margin: 24px auto 6px;
+      text-align: center;
+    }
+    .sentence-1,.sentence-2,.sentence-3{
+      margin: 0 auto;
+      text-align: center;
+    }
+    .teams-img{
+      top: 160px;
+      .left-1{
+        /* padding-left: 0; */
+      }
+      .left-2{
+        margin-top: -544px;
+        margin-left: -40px;
+        padding-right: 40px;
+      }
+      .right{
+        margin-top: 458px;
+        padding-right: 40px;
+      }
+    }
+    .amazing-teams{
+      margin-top: 42vw;
+    }
+
+    .sentence-5{
+      margin: 0 auto;
+    }
+  `}
   ${media.medium`
     padding: 72px 0;
     .super{
@@ -411,7 +475,7 @@ const HeroSection = styled.div`
       line-height: 60px;
     }
     .sentence-1{
-      text-align: center;
+      text-align: left;
       margin: 0;
     }
     .sentence-2{
@@ -429,9 +493,10 @@ const HeroSection = styled.div`
       margin: 0 58px 0 0;
     }
     .teams-img{
-      top: 116px;
+      top: 0;
+      position: relative;
       .left-1{
-        padding-right: 10px;
+        padding: 0 20px 0 80px;
       }
       .right{
         margin-top: 14px;
@@ -440,13 +505,28 @@ const HeroSection = styled.div`
         padding-left: 10px;
       }
       .left-2{
-        margin-top: -58px;
-        margin-left: -20px;
+        margin: 0 0 0 20px;
         padding: 0;
+        position: absolute;
+        bottom: -40px;
       }
     }
     .amazing-teams{
-      margin-top: 108px;
+      margin: 72px 0 0 0;
+    }
+    .right{
+      display: none;
+    }
+    .sentence-5{
+     margin-bottom: 30px; 
+    }
+    .right{
+      display: none;
+    }
+  `}
+  ${media.small`
+    .right{
+      display: none;
     }
   `}
 `;
@@ -648,13 +728,41 @@ const CTA = styled.a<{
     margin-left: 4px;
   }
   ${media.medium`
-    margin-top: 116px;
+    margin-top: 165px;
+  `}
+  ${media.small`
+    margin-top: 105px;
   `}
 `;
 
 const TeamBuilding = styled.div`
   max-width: 1920px;
   margin: 0 auto 120px;
+
+  .slick-slider{
+    .slick-arrow{
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+    }
+  }
+  .slick-prev{
+    /* pointer-events: none; */
+    display: block;
+    position: absolute;
+    width: 50vw;
+    height: 100%;
+    left: 0;
+    cursor: url(${arrowHollow}), auto;
+  }
+  .slick-next{
+    display: block;
+    position: absolute;
+    width: 50vw;
+    height: 100%;
+    right: 0;
+    cursor: url(${arrowHollowRight}), auto;
+  }
   .slick-track{
     display: flex;
     align-items: baseline;
@@ -683,10 +791,14 @@ const TeamBuilding = styled.div`
 `;
 
 const SlideItem = styled.div`
+  border: 0!important;
+  outline: 0!important;
   img {
     width: 100%;
+    filter: grayscale(1);
+    transition: all .2s ease-in;
     &:hover{
-      filter: brightness(0.5);
+      filter: grayscale(0);
     }
   }
 `;

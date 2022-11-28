@@ -97,6 +97,7 @@
     "@mui/material": "5.10.8",
     "@n8tb1t/use-scroll-position": "2.0.3",
     "@reduxjs/toolkit": "1.8.5",
+    "axios": "1.2.0",
     "fontfaceobserver": "2.3.0",
     "google-map-react": "^2.1.10",
     "i18next": "21.9.1",

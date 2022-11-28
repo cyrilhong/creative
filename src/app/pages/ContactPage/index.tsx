@@ -30,6 +30,7 @@ import IconButton from '@mui/material/IconButton';
 import closeIcon from './assets/close-icon.svg';
 import { useForm, Controller as FormController, FormProvider } from 'react-hook-form';
 import Collapse from 'app/components/Collapse'
+import axios from 'axios';
 
 const Services = [
   {
@@ -101,6 +102,25 @@ export function ContactPage() {
 
   const _onSubmit = async (data) => {
     console.log(data);
+    axios.post('https://script.googleapis.com/v1/scripts/AKfycbxOdwORwkPEfbxulZ7r8o_VlAnN_5xoWQazRYvKK1H9Y729GkabUuOskoSg95xgJsZh:run', {
+      name: "測試先生",
+      phone: "0912345678",
+      time: "2018/02/10 22:46:00",
+      order: "鹹酥雞 * 1",
+      price: "40"
+    },
+      {
+        headers: {
+          Authorization: 'AIzaSyCBFintH7Cv6A7HEL1N7u5ATmwUbGo9D4c'
+        }
+      }
+    )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }
 

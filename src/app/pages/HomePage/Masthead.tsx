@@ -146,6 +146,9 @@ const Wrapper = styled.main`
 
   ${media.medium`
     padding: 72px 0 24px;
+    .content {
+      margin-top: 8px; 
+    }
     h1{
       display: block;
     }

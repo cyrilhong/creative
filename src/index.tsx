@@ -12,6 +12,7 @@ import * as React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
+import { createTheme, ThemeProvider as MUIProvider } from '@mui/material/styles';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
@@ -41,12 +42,29 @@ openSansObserver.load().then(() => {
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
+const defaultTheme = createTheme();
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      ...defaultTheme.breakpoints.values,
+      xs: 0,
+      sm: 639,
+      md: 959,
+      lg: 1439,
+      xl: 1919,
+    },
+  },
+});
+
+
 ReactDOMClient.createRoot(MOUNT_NODE!).render(
   <Provider store={store}>
     <ThemeProvider>
       <HelmetProvider>
         {/* <React.StrictMode> */}
+        <MUIProvider theme={theme}>
           <App />
+        </MUIProvider>
         {/* </React.StrictMode> */}
       </HelmetProvider>
     </ThemeProvider>
