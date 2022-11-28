@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, createRef, Children } from 'react';
+import React, { useState, useMemo, useEffect, useRef, createRef, Children } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
-import { useWindowSize } from '../../hooks'
+import { useWindowSize, useWindowPosition } from '../../hooks'
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
 import Slider from 'react-slick';
@@ -66,6 +66,7 @@ import lottie2 from './assets/lottie-02.json';
 import lottie3 from './assets/lottie-03.json';
 import lottieJoinUs from './assets/join-us.json';
 import lottieClient from './assets/client.json';
+import SectionIdea from './SectionIdea'
 import {
   BrowserView,
   MobileView,
@@ -179,19 +180,20 @@ export function HomePage() {
 
   const themeColorRef = useRef < HTMLDivElement > (null);
   const helpColorRef = useRef < HTMLDivElement > (null);
-  const lottieRef1 = useRef < any > (null);;
-  const lottieRef2 = useRef < any > (null);;
-  const lottieRef3 = useRef < any > (null);;
+  const lottieRef1 = useRef < any > (null);
+  const lottieRef2 = useRef < any > (null);
+  const lottieRef3 = useRef < any > (null);
+  const ideaRef = useRef < any > (null);
 
   useScrollPosition(({ prevPos, currPos }) => {
     // console.log(currPos.x)
     // console.log(Math.abs(currPos.y));
-    // console.log(themeColorRef.current!.getBoundingClientRect().top);
+    console.log(themeColorRef.current!.getBoundingClientRect().top);
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
     // console.log(helpColorRef.current!.getBoundingClientRect().y);
 
-    if (themeColorRef.current!.getBoundingClientRect().top < 140) {
+    if (themeColorRef.current!.getBoundingClientRect().top < 440) {
       // debugger
       setTimeout(() => {
         setIsBlackBg(false);
@@ -202,18 +204,6 @@ export function HomePage() {
       }, 500);
 
     }
-    // if (
-    //   helpColorRef.current!.getBoundingClientRect().y < 100
-    // ) {
-    //   // debugger
-    //   setIsBlackBg(true);
-    // }
-    // if (Math.abs(currPos.y) > 7000) {
-    //   // debugger
-    //   setIsBlackBg(true);
-    // } else {
-    //   setIsBlackBg(false);
-    // }
   });
 
   const playerRef = React.useRef(null);
@@ -298,6 +288,17 @@ export function HomePage() {
         ></span>
       </span>
     );
+  }
+
+  const interactivity = {
+    mode: "scroll",
+    actions: [
+      {
+        visibility: [0, 1],
+        type: "play",
+        frames: [0, 45]
+      }
+    ]
   }
 
 
@@ -558,7 +559,7 @@ export function HomePage() {
             </div>
             <div className="img-wall">
               <Grid container spacing={0} rowSpacing={0}>
-                <Grid xs={3}>
+                <Grid xs={4} md={3}>
                   <Parallax
                     className="wall1"
                     speed={20}
@@ -568,7 +569,7 @@ export function HomePage() {
                     <img src={wall1} alt="wall1" />
                   </Parallax>
                 </Grid>
-                <Grid xs={4} xsOffset={5}>
+                <Grid xs={6} xsOffset={6} md={4} mdOffset={5}>
                   <Parallax
                     className="wall3"
                     speed={18}
@@ -578,7 +579,7 @@ export function HomePage() {
                     <img src={wall3} alt="wall3" />
                   </Parallax>
                 </Grid>
-                <Grid xs={4}>
+                <Grid xs={6} md={3}>
                   <Parallax
                     className="wall4"
                     speed={16}
@@ -588,7 +589,7 @@ export function HomePage() {
                     <img src={wall4} alt="wall4" />
                   </Parallax>
                 </Grid>
-                <Grid xs={3} xsOffset={3}>
+                <Grid xs={4} xsOffset={2} md={3} mdOffset={3}>
                   <Parallax
                     className="wall5"
                     speed={23}
@@ -598,7 +599,7 @@ export function HomePage() {
                     <img src={wall5} alt="wall5" />
                   </Parallax>
                 </Grid>
-                <Grid xs={3} xsOffset={2}>
+                <Grid xs={4} md={3} mdOffset={2}>
                   <Parallax
                     className="wall6"
                     speed={20}
@@ -608,10 +609,10 @@ export function HomePage() {
                     <img src={wall6} alt="wall6" />
                   </Parallax>
                 </Grid>
-                <Grid xs={2} xsOffset={3}>
+                <Grid xs={4} xsOffset={2} md={2} mdOffset={3}>
                   <Parallax
                     className="wall2"
-                    speed={30}
+                    speed={40}
                     scale={[1.5, 0]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
@@ -732,8 +733,8 @@ export function HomePage() {
             </FeatureHead>
             <WrappedButton
               text="OUR SERVICES"
-              link="#"
-              isWhite={!isBlackBg}
+              link="/case"
+              isWhite={false}
             />
             <ServiceList>
               <Grid container spacing={0} rowSpacing={9}>
@@ -755,7 +756,7 @@ export function HomePage() {
                       }}
                       onMouseLeave={() => {
                         if (lottieRef1.current !== null) {
-                          lottieRef1.current.pause();
+                          // lottieRef1.current.pause();
                         }
                       }}
                     >
@@ -800,7 +801,7 @@ export function HomePage() {
                       }}
                       onMouseLeave={() => {
                         if (lottieRef2.current !== null) {
-                          lottieRef2.current.pause();
+                          // lottieRef2.current.pause();
                         }
                       }}
                     >
@@ -845,7 +846,7 @@ export function HomePage() {
                       }}
                       onMouseLeave={() => {
                         if (lottieRef3.current !== null) {
-                          lottieRef3.current.pause();
+                          // lottieRef3.current.pause();
                         }
                       }}
                     >
@@ -877,47 +878,7 @@ export function HomePage() {
           </PageWrapper>
         </div>
       </div>
-      <SectionIdea>
-        <Container maxWidth={'xl'}>
-          <Fade bottom>
-            <Grid container className="container">
-              <Grid xs={12} md={6}>
-                <div className="wrapper border">
-                  <Box width={'220px'} m="0 auto">
-                    <Fade bottom>
-                      <Lottie animationData={lottieClient} loop={1} />
-                    </Fade>
-                  </Box>
-                  <h1 className="eng">Happy teams create change.</h1>
-                  <h2>我們用心生活，賦予多變創意能量</h2>
-                  <WrappedButton
-                    text="ABOUT US"
-                    link="#"
-                    isWhite={true}
-                  />
-                </div>
-              </Grid>
-              <Grid xs={12} md={6}>
-                <div className="wrapper">
-                  {/* <img className="idea" src={hiveFive} alt="idea" /> */}
-                  <Box width={'220px'} m="0 auto">
-                    <Fade bottom>
-                      <Lottie animationData={lottieJoinUs} loop={1} />
-                    </Fade>
-                  </Box>
-                  <h1 className="eng">Let’s makes work a real joy.</h1>
-                  <h2>與我們一起加入改變的行列！</h2>
-                  <WrappedButton
-                    text="JOIN US"
-                    link="#"
-                    isWhite={true}
-                  />
-                </div>
-              </Grid>
-            </Grid>
-          </Fade>
-        </Container>
-      </SectionIdea>
+      <SectionIdea />
     </ParallaxProvider>
   );
 }
@@ -997,56 +958,6 @@ const Horizon = styled.div < {
   `}
 `;
 
-const SectionIdea = styled.div`
-  padding: 96px 0;
-  display: flex;
-  text-align: center;
-  background-color: ${colors.White};
-  .wrapper {
-    padding: 16px 40px;
-  }
-  .border {
-    border-right: 1px solid ${colors.DarkBlue};
-  }
-  h1 {
-    margin: 16px 0 0;
-  }
-  h2 {
-    font-size: 24px;
-    margin: 8px 0 0;
-  }
-  a {
-    margin: 32px auto 0;
-    background-color: #fff;
-    min-width: 215px;
-  }
-  ${media.large`
-    a{
-      margin-top: 16px;
-    }
-  `}
-  ${media.medium`
-    padding: 48px 0;
-    .container{
-      flex-direction: column;
-      border-right: 1px solid ${colors.DarkBlue};
-      border-left: 1px solid ${colors.DarkBlue};
-      gap: 48px;
-    }
-    .border {
-      border-right: 0;
-    }
-    h1{
-      margin-top: 24px;:
-    }
-    h2{
-      margin: 8px 0 24px;
-    }
-    a{
-      min-width: 172px;
-    }
-  `}
-`;
 
 const CaseList = styled.div`
   display: flex;
@@ -1664,6 +1575,7 @@ const OurServices = styled.div < {
       }
       .wall5{
         margin-top: 100px;
+        padding: 0;
       }
       .wall6{
         margin-top: 0;

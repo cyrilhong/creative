@@ -28,6 +28,7 @@ import heroImgMb from './assets/heroImgMb.png'
 import Lottie from 'lottie-react';
 import ourWorks from './assets/our-works.json'
 import Collapse from 'app/components/Collapse'
+import SectionIdea from './SectionIdea'
 export function ServicePage() {
   const target = useRef(null);
   function Mark() {
@@ -305,104 +306,13 @@ export function ServicePage() {
             </DigitalProduct>
           </PageWrapper>
         </SecondSection>
-        <SectionIdea>
-          <Container maxWidth={'xl'}>
-            <Grid container className="container">
-              <Grid xs={12} md={12}>
-                <div className="wrapper border">
-                  <Box width={'220px'} m="0 auto">
-                    <Fade>
-                      <Lottie animationData={ourWorks} loop={true} />
-                    </Fade>
-                  </Box>
-                  <h1 className="eng">
-                    We believe success comes with responsibility.
-                  </h1>
-                  <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
-                  <WrappedButton
-                    text="OUR WORKS"
-                    link="#"
-                    isWhite={true}
-                  />
-                </div>
-              </Grid>
-            </Grid>
-          </Container>
-        </SectionIdea>
+        <SectionIdea />
       </div>
     </ParallaxProvider>
   );
 }
 
-const SectionIdea = styled.div`
-  padding: 96px 0;
-  display: flex;
-  text-align: center;
-  background-color: ${colors.White};
-  .wrapper {
-    padding: 16px 40px;
-  }
-  .border {
-    border-right: 1px solid ${colors.DarkBlue};
-    border-left: 1px solid ${colors.DarkBlue};
-  }
-  h1 {
-    margin: 16px 0 0;
-  }
-  h2 {
-    font-size: 24px;
-    margin: 8px 0 0;
-  }
-  a {
-    margin: 32px auto 0;
-    background-color: #fff;
-    min-width: 215px;
-  }
-  .more-client {
-    display: inline-grid;
-    grid-gap: 44px;
-    grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
-    img {
-      height: 46px;
-    }
-  }
-  ${media.large`
-    .more-client {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  `}
-  ${media.medium`
-    padding: 48px 0;
-    .wrapper {
-      padding: 32px;
-    }
-    .container{
-      flex-direction: column;
-      border-right: 1px solid ${colors.DarkBlue};
-      border-left: 1px solid ${colors.DarkBlue};
-      gap: 48px;
-    }
-    .border {
-      border-right: 0;
-    }
-    h1{
-      margin-top: 24px;:
-    }
-    h2{
-      margin: 8px 0 24px;
-    }
-    a{
-      min-width: 172px;
-    }
-    .more-client {
-      grid-template-columns: repeat(3, 1fr);
-      img{
-        height: 24px;
-      }
-    }
-  `}
-`;
+
 
 
 const OurClients = styled.div`

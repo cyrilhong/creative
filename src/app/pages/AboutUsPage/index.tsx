@@ -29,18 +29,19 @@ import Lottie from 'lottie-react';
 import aboutUsAnim from './assets/about-us.json'
 import Collapse from './collapse'
 import CountUp from 'react-countup';
+import SectionIdea from './SectionIdea'
 export function AboutUsPage() {
   const [blackBg, setBlackBg] = useState(true);
   const colorRef = useRef<HTMLDivElement>(null);
-  useScrollPosition(({ prevPos, currPos }) => {
-    // console.log(colorRef.current!.getBoundingClientRect().top);
-    if (colorRef.current!.getBoundingClientRect().top < 250) {
-      // debugger
-      setBlackBg(false);
-    } else {
-      setBlackBg(true);
-    }
-  });
+  // useScrollPosition(({ prevPos, currPos }) => {
+  //   // console.log(colorRef.current!.getBoundingClientRect().top);
+  //   if (colorRef.current!.getBoundingClientRect().top < 250) {
+  //     // debugger
+  //     setBlackBg(false);
+  //   } else {
+  //     setBlackBg(true);
+  //   }
+  // });
   const windowWidth = useWindowSize().width
   return (
     <ParallaxProvider>
@@ -125,7 +126,7 @@ export function AboutUsPage() {
                   </Parallax>
                 </ParallaxImg>
                 <div className="hotBaloon">
-                  <Lottie animationData={hotBaloon} loop={false} />
+                  <Lottie animationData={hotBaloon} loop={true} />
                 </div>
               </Grid>
               <Grid xs={12} md={6} className="right">
@@ -168,7 +169,7 @@ export function AboutUsPage() {
         <div className={'black'}>
           {/* <div className={blackBg ? 'bg-about-us' : 'black'}> */}
           <PageWrapper
-            blackBg={blackBg}
+            // blackBg={blackBg}
             bgc={color.BGGreen}
             color={color.White}
             className={'black'}
@@ -296,28 +297,8 @@ export function AboutUsPage() {
               </Grid>
             </Performance>
           </PageWrapper>
-          <SectionIdea>
-            <div className="wrapper">
-              <div className="content">
-                <Box width={'220px'} m="0 auto">
-                  <Fade>
-                    <Lottie animationData={aboutUsAnim} loop={1} />
-                  </Fade>
-                </Box>
-                <h1 className="eng">
-                  Surround yourself with highly ambitious, friendly & humble people !
-                </h1>
-                <h2>我們深知人才是最重要的資產，一起加入改變！</h2>
-                <Box display={"flex"} justifyContent="center">
-                  <WrappedButton
-                    text="JOIN US"
-                    link="#"
-                    isWhite={true}
-                  />
-                </Box>
-              </div>
-            </div>
-          </SectionIdea>
+          <SectionIdea/>
+            
         </div>
       </div>
     </ParallaxProvider >
@@ -612,55 +593,3 @@ const Performance = styled.div`
   `}
 `;
 
-const SectionIdea = styled.div`
-  padding: 96px 0;
-  display: flex;
-  text-align: center;
-  background-color: ${color.White};
-  .wrapper {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 80px;
-    h2{
-      margin: 16px 0 0;
-    }
-    a{
-      background-color: ${color.White};
-    }
-    .content {
-      margin: 0 auto;
-      max-width: 1760px;
-      padding: 0 80px 30px;
-      box-sizing: content-box;
-      border-left: 1px solid ${color.DarkBlue};
-      border-right: 1px solid ${color.DarkBlue};
-      color: ${color.DarkBlue};
-      h1 {
-        margin: 40px 0 0;
-      }
-    }
-  }
-  ${media.large`
-    .content {
-      padding: 0 60px
-    }
-  `}
-  ${media.medium`
-    padding: 48px 0;
-    .wrapper{
-      padding: 0 20px;
-      .content {
-        padding: 0 20px;
-        .idea{
-          width: 160px;
-        }
-        h1{
-          margin: 24px 0 8px;
-        }
-        h2{
-          margin: 0;
-        }
-      }
-    }
-  `};
-`;

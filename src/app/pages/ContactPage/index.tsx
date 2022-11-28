@@ -68,9 +68,9 @@ export function ContactPage() {
   const positionRef = useRef<HTMLDivElement>(null);
   const FaqPositionRef = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
-  useScrollPosition(({ prevPos, currPos }) => {
+  useScrollPosition(({ prevPos, currPos }) => {    
     if (
-      positionRef.current!.getBoundingClientRect().top < 0 &&
+      positionRef.current!.getBoundingClientRect().top < 16 &&
       FaqPositionRef.current!.getBoundingClientRect().top > 1100
     ) {
       setSticky(true);
@@ -181,6 +181,7 @@ export function ContactPage() {
                     <FormController
                       name={item.title}
                       control={control}
+                      key={index}
                       render={({ field, fieldState: { invalid } }) => (
                         <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
                           {/* <img src={item.icon} alt="careVisit" /> */}
@@ -612,7 +613,7 @@ export function ContactPage() {
         </div>
         <FormSection className="service-second-section">
           <PageWrapper
-            overflow={false}
+            overflow={'false'}
             className="form-section"
             style={{
               display: 'flex',
@@ -655,6 +656,7 @@ export function ContactPage() {
                             <FormController
                               name={item.title}
                               control={control}
+                              key={index}
                               render={({ field, fieldState: { invalid } }) => (
                                 <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
                                   {/* <img src={item.icon} alt="careVisit" /> */}
@@ -1256,7 +1258,7 @@ const GetInTouch = styled.div`
       transform: rotate(-90deg);
     }
   }
-  ${media.medium`
+  ${media.large`
     &::before {
       display: none;
     }
@@ -1455,7 +1457,7 @@ const FormSection = styled.div`
     background-size: cover;
     /* width: 592px; */
     /* top: 0; */
-    padding: 120px 110px 0 82px;
+    padding: 120px 16px 0 80px;
     margin-right: 60px;
     color: ${colors.White};
     margin-left: -80px;
@@ -1463,13 +1465,16 @@ const FormSection = styled.div`
     /* width: 776px; */
     position: absolute;
     top: 64px;
-    width: calc( 33vw - 90px );
+    width: calc( 33vw );
+    h1{
+      margin: 16px 0;
+    }
   }
   .sticky-top {
     position: sticky;
-    top: 0;
+    top: 80px;
     left: 40;
-    width: calc( 33vw - 90px );
+    width: calc( 33vw );
     /* margin-left: 0; */
     /* width: 776px; */
   }
@@ -1482,12 +1487,12 @@ const FormSection = styled.div`
   .right {
     /* height: 1000px; */
     /* flex: 1 1 100%; */
-    padding: 128px 0 160px 0;
+    padding: 128px 0 160px 26px;
   }
   ${media.large`
   .left{
       margin-right: 0;
-      padding-right: 0;
+      padding-right: 16px;
     }
   `}
   ${media.medium`

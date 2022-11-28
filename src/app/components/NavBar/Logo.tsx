@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
+import { StyleConstants } from 'styles/StyleConstants';
 import aja from './assets/aja-logo.svg';
 import ajaWhite from './assets/aja-logo-white.svg';
 import { media } from 'styles/media';
@@ -44,6 +45,18 @@ export function Logo({ color, bgColor }) {
       padding: 0;
       min-height: 60px;
       border-bottom: 0;
+      &::after{
+        content: '';
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top: ${StyleConstants.NAV_BAR_HEIGHT};
+        background: rgba(12, 28, 36, 0.5);
+        z-index: -1;
+        display: ${open?'block':'none'};
+        pointer-events: none;
+      }
       .burger{
         display: block;
         line{
@@ -74,10 +87,6 @@ export function Logo({ color, bgColor }) {
     margin-left: 16px;
     width: 240px;
     letter-spacing: 1px;
-    /* ${media.large`
-      font-size: 10px;
-      width: 206px;
-    `} */
     ${media.medium`
       font-size: 10px;
       width: 100%;
@@ -134,11 +143,20 @@ export function Logo({ color, bgColor }) {
           <br /> practitioners in Experience design.{' '}
         </Title>
         <div className="burger" onClick={() => setOpen(!open)}>
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="7" y1="11.5" x2="33" y2="11.5" stroke="white" stroke-width="3" />
-            <line x1="7" y1="19.5" x2="33" y2="19.5" stroke="white" stroke-width="3" />
-            <line x1="13" y1="27.5" x2="33" y2="27.5" stroke="white" stroke-width="3" />
-          </svg>
+          {open ?
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="11.161" y1="28.1317" x2="28.1316" y2="11.1612" stroke="#fff" strokeWidth="3" />
+              <line x1="11.8683" y1="11.161" x2="28.8388" y2="28.1316" stroke="#fff" strokeWidth="3" />
+            </svg>
+            :
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="7" y1="11.5" x2="33" y2="11.5" stroke="white" strokeWidth="3" />
+              <line x1="7" y1="19.5" x2="33" y2="19.5" stroke="white" strokeWidth="3" />
+              <line x1="13" y1="27.5" x2="33" y2="27.5" stroke="white" strokeWidth="3" />
+            </svg>
+            
+
+          }
         </div>
       </div>
       <Content open={open}>

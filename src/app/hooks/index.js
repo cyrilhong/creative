@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef,useLayoutEffect, useState } from 'react'
 
 export const useWindowSize = () => {
   const isBrowser = typeof window !== 'undefined'
@@ -29,4 +29,17 @@ export const useWindowSize = () => {
 export const isDesktop = () => {
   const windowWidth = useWindowSize().width
   return windowWidth > 960
+}
+
+export const useWindowPosition = () => {
+  const [scrollPosition, setPosition] = useState(0);
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
+    }
+    window.addEventListener('scroll', updatePosition);
+    updatePosition();
+    return () => window.removeEventListener('scroll', updatePosition);
+  }, []);
+  return scrollPosition;
 }

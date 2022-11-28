@@ -5,10 +5,11 @@ interface Props {
   link?: string,
   isWhite?: boolean,
   text?: string,
-  iconRotate?: number
+  iconRotate?: number,
+  blank?: boolean
 }
 
-export default function WrappedButton<Props>({ link="#", isWhite=true, text="", iconRotate=0 }) {
+export default function WrappedButton<Props>({ link = "#", isWhite = true, text = "", iconRotate = 0, blank = false }) {
   const CTA = styled.a`
   width: auto;
   display: inline-flex;
@@ -35,7 +36,7 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
       stroke: ${isWhite ? colors.White : colors.DarkBlue};
     }
     svg{
-      transform: ${iconRotate?'':'translateX(10px)'};
+      transform: ${iconRotate ? '' : 'translateX(10px)'};
       transition: all .2s ease-in;
     }
   }
@@ -82,12 +83,14 @@ export default function WrappedButton<Props>({ link="#", isWhite=true, text="", 
     }
   }
   ${media.medium`
-    /* width: 172px; */
     padding: 8px 16px 8px 32px;
   `}
 `;
   return (
-    <CTA href={link} target="_blank">
+    <CTA
+      href={link}
+      target={blank ? "_blank" : "_self"}
+    >
       <h4 className="eng">{text}</h4>
       <svg
         width="40"
