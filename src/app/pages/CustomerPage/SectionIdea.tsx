@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 import { useWindowSize } from '../../hooks'
 import { media } from 'styles/media';
 import { Container } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Unstable_Grid2';
 import Lottie from 'lottie-react';
 import lottieClient from './assets/client.json';
 import WrappedButton from 'app/components/WrappedButton'
@@ -74,24 +74,24 @@ export default function Idea() {
     <SectionIdea ref={ideaRef}>
       <Container maxWidth={'xl'}>
         <Grid container className="container">
-          <Grid xs={12} item md={12}>
-            <div className="wrapper border">
-              <Box width={'220px'} m="0 auto">
+          <div className="wrapper border">
+            <Grid xs={6} xsOffset={3}>
+              <Box maxWidth={'220px'} m="0 auto">
                 <Fade>
                   {ideaActive && <Lottie animationData={lottieClient} loop={false} />}
                 </Fade>
               </Box>
-              <h1 className="eng">
-                We serve clients across diverse industries
-              </h1>
-              <h2>我們累積了豐富的服務經驗，在多元產業中跨領域延伸</h2>
-              <div className="more-client">
-                {moreClient.map((item, index) => {
-                  return <img key={index} src={item} alt={"client" + index} />;
-                })}
-              </div>
+            </Grid>
+            <h1 className="eng">
+              We serve clients across diverse industries
+            </h1>
+            <h2>我們累積了豐富的服務經驗，在多元產業中跨領域延伸</h2>
+            <div className="more-client">
+              {moreClient.map((item, index) => {
+                return <img key={index} src={item} alt={"client" + index} />;
+              })}
             </div>
-          </Grid>
+          </div>
         </Grid>
       </Container>
     </SectionIdea>
@@ -105,6 +105,7 @@ const SectionIdea = styled.div`
   background-color: ${colors.White};
   .wrapper {
     padding: 16px 40px;
+    width: 100%;
   }
   .border {
     border-right: 1px solid ${colors.DarkBlue};
@@ -133,6 +134,7 @@ const SectionIdea = styled.div`
   }
   ${media.large`
     .more-client {
+      /* width: 100%; */
       grid-template-columns: repeat(4, 1fr);
     }
   `}
@@ -148,7 +150,7 @@ const SectionIdea = styled.div`
       gap: 48px;
     }
     .border {
-      border-right: 0;
+      border: 0;
     }
     h1{
       margin-top: 24px;:
@@ -164,6 +166,11 @@ const SectionIdea = styled.div`
       img{
         height: 24px;
       }
+    }
+  `}
+  ${media.small`
+    .more-client {
+      grid-gap: 24px;
     }
   `}
 `;

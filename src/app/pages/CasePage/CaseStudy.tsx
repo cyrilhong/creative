@@ -50,12 +50,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -74,12 +74,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -98,12 +98,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -121,12 +121,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -144,12 +144,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -166,12 +166,12 @@ export default function CaseStudy() {
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">RESEARCH</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -188,12 +188,12 @@ export default function CaseStudy() {
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -209,12 +209,12 @@ export default function CaseStudy() {
                 <div className="pills eng">
                   <div className="pill">RESEARCH</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -231,12 +231,12 @@ export default function CaseStudy() {
                   <div className="pill">EXPERIENCE</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -254,12 +254,12 @@ export default function CaseStudy() {
                   <div className="pill">RESEARCH</div>
                   <div className="pill">BRANDING</div>
                 </div>
-                <RoundButton
-                  link={"#"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
               </Fade>
+              <RoundButton
+                link={"#"}
+                isWhite={false}
+                text="CASE STUDY"
+              />
             </Case>
           </Grid>
         </Grid>
@@ -317,6 +317,7 @@ const Wrapper = styled.div`
 const Case = styled.div`
   flex: 1 1 30%;
   margin-bottom: 0;
+  min-height: 560px;
   position: relative;
   cursor: pointer;
   .img-wrapper{
@@ -354,8 +355,6 @@ const Case = styled.div`
   }
   .type, .title{
     font-weight: 400;
-  }
-  h4{
     margin: 24px 0 8px;
   }
   h2.title{
@@ -388,6 +387,13 @@ const Case = styled.div`
     }
   }
   ${media.medium`
+    min-height: 560px;
+    .type{
+      margin: 16px 0 8px;
+    }
+    h2.title{
+      margin-bottom:16px;
+    }
     .pills{
       min-height: auto;
       padding-bottom: 0;

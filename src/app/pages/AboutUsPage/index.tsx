@@ -51,7 +51,7 @@ export function AboutUsPage() {
       </Helmet>
       <NavBar bgColor={color.BGIvory} color={color.DarkBlue} />
       <div className="bg-about-us">
-        <PageWrapper>
+        <PageWrapper overflow="true">
           <Masthead />
           <ParallaxImg>
             <Parallax speed={-8}>
@@ -79,7 +79,7 @@ export function AboutUsPage() {
                         <div className="super eng">Happy</div>
                       </Fade>
                     </Grid>
-                    <Grid xs={12} xsOffset={3}>
+                    <Grid xs={9} xsOffset={3}>
                       <Fade bottom cascade duration={500} delay={100}>
                         <div className="super eng">Teams</div>
                       </Fade>
@@ -89,7 +89,7 @@ export function AboutUsPage() {
                         <div className="super eng">Create</div>
                       </Fade>
                     </Grid>
-                    <Grid xs={12} xsOffset={3}>
+                    <Grid xs={9} xsOffset={3}>
                       <Fade bottom cascade duration={500} delay={100}>
                         <div className="super eng change">Change.</div>
                       </Fade>
@@ -183,7 +183,7 @@ export function AboutUsPage() {
             <Leadership>
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4}>
-                  <div className="huge eng">
+                  {isDesktop() ? <div className="huge eng">
                     <Fade bottom cascade duration={1000} delay={100}>
                       Our
                     </Fade>
@@ -193,7 +193,13 @@ export function AboutUsPage() {
                     <Fade bottom cascade duration={1000} delay={100}>
                       team
                     </Fade>
-                  </div>
+                  </div> :
+                    <div className="huge eng">
+                      <Fade bottom cascade duration={1000} delay={100}>
+                        Our leadership team
+                      </Fade>
+                    </div>
+                  }
                   <h1>專家團隊</h1>
                 </Grid>
                 <Grid xs={12} md={8} padding={0}>
@@ -297,8 +303,8 @@ export function AboutUsPage() {
               </Grid>
             </Performance>
           </PageWrapper>
-          <SectionIdea/>
-            
+          <SectionIdea />
+
         </div>
       </div>
     </ParallaxProvider >
@@ -399,6 +405,16 @@ const HappyTeam = styled.div`
       }
     }
   }
+  ${media.large`
+    .teams-img{
+      .left{
+        padding-left: 0;
+      }
+      .right{
+        padding-right: 0;
+      }
+    }
+  `}
   ${media.medium`
     padding: 12px 0 48px;
     .text{
@@ -573,6 +589,12 @@ const Performance = styled.div`
       max-width: 320px;
     }
   }
+  ${media.large`
+    .super{
+      font-size: 100px;
+      line-height: 120px;
+    }
+  `}
   ${media.medium`
     padding: 54px 0 72px;
     .item{

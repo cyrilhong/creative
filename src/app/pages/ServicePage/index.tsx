@@ -111,20 +111,26 @@ export function ServicePage() {
             <div className="hero-img-mb">
               <img src={heroImgMb} alt="heroImgMb" />
             </div>
-            <ParallaxWrapper01>
-              <Parallax speed={12}>
-                <Fade bottom duration={500} delay={500}>
-                  <img src={hero2} alt="Yoxi" />
-                </Fade>
-              </Parallax>
-            </ParallaxWrapper01>
-            <ParallaxWrapper02>
-              <Parallax speed={8}>
-                <Fade bottom duration={500} delay={600}>
-                  <img src={hero1} alt="Yoxi" />
-                </Fade>
-              </Parallax>
-            </ParallaxWrapper02>
+            <Grid style={{ position: 'absolute', width: '100%', top: '200px' }} container spacing={0} rowSpacing={0}>
+              <Grid xs={5} xsOffset={7}>
+                <ParallaxWrapper01>
+                  <Parallax speed={12}>
+                    <Fade bottom duration={500} delay={500}>
+                      <img src={hero2} alt="hero2" />
+                    </Fade>
+                  </Parallax>
+                </ParallaxWrapper01>
+              </Grid>
+              <Grid xs={4} xsOffset={6} position="relative">
+                <ParallaxWrapper02>
+                  <Parallax speed={8}>
+                    <Fade bottom duration={500} delay={600}>
+                      <img src={hero1} alt="hero1" />
+                    </Fade>
+                  </Parallax>
+                </ParallaxWrapper02>
+              </Grid>
+            </Grid>
           </HeroWrapper>
 
           <Horizon pt="40px">
@@ -144,7 +150,7 @@ export function ServicePage() {
                   <div className="huge eng">Process</div>
                   <h1 style={{ margin: 0 }}>客製化設計流程</h1>
                 </Fade> :
-                  <Fade bottom cascade duration={500} delay={100}>
+                  <Fade bottom duration={500} delay={100}>
                     <div className="huge eng">Tailored Design</div>
                     <div className="huge eng">Process</div>
                     <h1 style={{ margin: 0 }}>客製化設計流程</h1>
@@ -219,7 +225,7 @@ export function ServicePage() {
                   </ItemList>
                 </Grid>
               </Grid>
-              <Grid xs={12} md={6}>
+              <Grid xs={12} md={6} className="core">
                 <div className="huge eng title">Core Experience Planning</div>
                 <h1>核心體驗規劃</h1>
                 <Grid xs={12} md={10}>
@@ -400,21 +406,28 @@ const OurClients = styled.div`
 
 const ParallaxWrapper01 = styled.div`
   overflow: hidden;
-  width: 510px;
-  position: absolute;
-  right: 0;
-  top: 200px;
+  width: 100%;
+  /* position: absolute; */
+  /* right: 0;
+  top: 200px; */
+  max-width: 510px;
   img {
     object-fit: cover;
     width: 100%;
   }
+  ${media.medium`
+    display: none;
+  `}
 `;
 const ParallaxWrapper02 = styled.div`
-  overflow: hidden;
-  width: 398px;
-  position: absolute;
-  right: 220px;
-  bottom: 80px;
+  /* overflow: hidden; */
+  width: 100%;
+  /* position: absolute; */
+  /* right: 220px; */
+  /* bottom: 80px; */
+  max-width: 398px;
+  margin-top: -174px;
+  /* bottom: -80px; */
   img {
     object-fit: cover;
     width: 100%;
@@ -423,7 +436,7 @@ const ParallaxWrapper02 = styled.div`
 
 const HeroWrapper = styled.main`
   text-align: left;
-  padding: 200px 0 180px;
+  padding: 200px 0 134px;
   position: relative;
   .huge, h1{
     position: relative;
@@ -463,14 +476,17 @@ const HeroWrapper = styled.main`
       width: 296px;
     }
   }
-  @media screen and (max-width:1330px) {
-    ${ParallaxWrapper01}{
+  @media screen and (max-width:1440px) {
+    /* ${ParallaxWrapper01}{
       display: none;
-    }
+    } */
     ${ParallaxWrapper02}{
       display: none;
     }
   }
+  ${media.large`
+    padding: 200px 0 4px;
+  `}
   ${media.medium`
     padding: 72px 0;
     .content{
@@ -563,10 +579,21 @@ const ProcessSection = styled.div`
     margin: 0 0 72px;
     /* font-weight: 100; */
   }
+  ${media.large`
+    .huge{
+      font-size: 64px;
+      line-height: 80px;
+    }
+  `}
   ${media.medium`
     padding-bottom: 32px;
+    .huge{
+      font-size: 32px;
+      line-height: 40px;
+    }
     h4{
       margin: 48px 0 32px;
+      font-size: 16px;
     }
   `}
 `;
@@ -593,8 +620,14 @@ const SecondSection = styled.div`
   h4{
     margin: 0 0 48px;
   }
+  ${Horizon}{
+    padding: 72px 0 40px;
+  }
   ${media.medium`
     padding: 24px 0 0;
+    ${Horizon}{
+      padding: 32px 0 36px;
+    }
     .huge{
       margin-top: 32px;
     }
@@ -603,6 +636,19 @@ const SecondSection = styled.div`
     }
     .title{
       padding-right: 0;
+      font-size: 32px;
+      line-height: 40px;
+      margin-top: 0;
+    }
+    .subtitle{
+      font-size: 16px;
+    }
+    h3{
+      font-size: 18px;
+      line-height: 27px;
+    }
+    .core{
+      margin-top: 48px;
     }
   `}
 `;

@@ -5,11 +5,12 @@ import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
-import { useWindowSize } from '../../hooks'
+import { useWindowSize, isDesktop } from '../../hooks'
 import styled from 'styled-components/macro';
 import { useForm, ValidationError } from '@formspree/react';
 import Box from '@mui/material/Box';
-import { Grid, Container } from '@mui/material';
+import { Container } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import * as color from 'styles/colors';
 import hero1 from './assets/customer-img-1.jpg';
@@ -71,7 +72,7 @@ export function CustomerPage() {
       <div className="bg-customer">
         <PageWrapper>
           <HeroWrapper>
-            {windowWidth > 960 ?
+            {windowWidth > 959 ?
               <>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
@@ -104,17 +105,7 @@ export function CustomerPage() {
               <>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    We don’t change
-                  </Fade>
-                </div>
-                <div className="eng huge">
-                  <Fade bottom cascade duration={500} delay={100}>
-                    the world. But our
-                  </Fade>
-                </div>
-                <div className="eng huge">
-                  <Fade bottom cascade duration={500} delay={100}>
-                    clients do.
+                    We don’t change the world. But our clients do.
                   </Fade>
                 </div>
                 <div className="content">
@@ -122,10 +113,7 @@ export function CustomerPage() {
                     <h1>
                       <Box>我們</Box>
                       <Mark />
-                      幫助客戶打破框架，進而
-                    </h1>
-                    <h1>
-                      形塑共好的長期夥伴關係
+                      幫助客戶打破框架，進而形塑共好的長期夥伴關係
                     </h1>
                   </Fade>
                 </div>
@@ -135,26 +123,32 @@ export function CustomerPage() {
               <img src={heroImgMb} alt="heroImgMb" />
             </div>
 
-            <ParallaxWrapper01>
-              <Parallax speed={15}>
-                <Fade bottom duration={500} delay={500}>
-                  <img src={hero1} alt="Yoxi" />
-                </Fade>
-              </Parallax>
-            </ParallaxWrapper01>
-            <ParallaxWrapper02>
-              <Parallax speed={5}>
-                <Fade bottom duration={500} delay={500}>
-                  <img src={hero2} alt="Yoxi" />
-                </Fade>
-              </Parallax>
-            </ParallaxWrapper02>
+            <Grid style={{ position: 'absolute', width: '100%', top: '200px' }} container spacing={0} rowSpacing={0}>
+              <Grid xs={5} xsOffset={7}>
+                <ParallaxWrapper01>
+                  <Parallax speed={12}>
+                    <Fade bottom duration={500} delay={500}>
+                      <img src={hero1} alt="hero1" />
+                    </Fade>
+                  </Parallax>
+                </ParallaxWrapper01>
+              </Grid>
+              <Grid xs={4} xsOffset={6} position="relative">
+                <ParallaxWrapper02>
+                  <Parallax speed={8}>
+                    <Fade bottom duration={500} delay={600}>
+                      <img src={hero2} alt="hero2" />
+                    </Fade>
+                  </Parallax>
+                </ParallaxWrapper02>
+              </Grid>
+            </Grid>
           </HeroWrapper>
         </PageWrapper>
         <OurClients>
           <Container maxWidth={'xl'}>
             <Grid container spacing={5} rowSpacing={5}>
-              <Grid item xs={12}>
+              <Grid xs={12}>
                 <Horizon>
                   <div className="title">
                     <div className="dot" />
@@ -162,23 +156,30 @@ export function CustomerPage() {
                   </div>
                 </Horizon>
               </Grid>
-              <Grid className='left' item xs={12} md={4}>
-                <div className="huge eng">
-                  <Fade bottom cascade duration={500} delay={100}>
-                    Selected
-                  </Fade>
-                  <Fade bottom cascade duration={500} delay={100}>
-                    Clients
-                  </Fade>
-                </div>
-                {/* <div className="huge eng">Clients</div> */}
+              <Grid className='left' xs={12} md={4} lg={4}>
+
+                {isDesktop() ?
+                  <div className="huge eng">
+                    <Fade bottom cascade duration={500} delay={100}>
+                      Selected
+                    </Fade>
+                    <Fade bottom cascade duration={500} delay={100}>
+                      Clients
+                    </Fade>
+                  </div> :
+                  <div className="huge eng">
+                    <Fade bottom cascade duration={500} delay={100}>
+                      Selected Clients
+                    </Fade>
+                  </div>
+                }
                 <h1>
                   我們在創新之路 <br /> 一起共伴
                 </h1>
               </Grid>
-              <Grid className="clients" item xs={12} md={8}>
+              <Grid className="clients" xs={12} md={8} lg={8}>
                 <Grid container spacing={0} rowSpacing={0}>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients1Hover} alt="01" />
                     </Box>
@@ -202,7 +203,7 @@ export function CustomerPage() {
                     </div>
                   </Grid>
 
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients3Hover} alt="03" />
                     </Box>
@@ -222,7 +223,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients2Hover} alt="02" />
                     </Box>
@@ -242,7 +243,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients4Hover} alt="04" />
                     </Box>
@@ -261,7 +262,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients5Hover} alt="05" />
                     </Box>
@@ -281,7 +282,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients6Hover} alt="06" />
                     </Box>
@@ -300,7 +301,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients7Hover} alt="07" />
                     </Box>
@@ -319,7 +320,7 @@ export function CustomerPage() {
                       </div>
                     </div>
                   </Grid>
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients10Hover} alt="10" />
                     </Box>
@@ -340,7 +341,7 @@ export function CustomerPage() {
                     </div>
                   </Grid>
 
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients9Hover} alt="09" />
                     </Box>
@@ -360,7 +361,7 @@ export function CustomerPage() {
                     </div>
                   </Grid>
 
-                  <Grid className="card" item xs={6} md={4}>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
                     <Box className="visible">
                       <img src={clients8Hover} alt="08" />
                     </Box>
@@ -387,207 +388,6 @@ export function CustomerPage() {
     </ParallaxProvider>
   );
 }
-
-
-
-const OurClients = styled.div`
-  margin-top: 40px;
-  /* height: 500px; */
-  padding-bottom: 200px;
-  background-color: ${color.DarkBlue};
-  color: ${color.White};
-  position: relative;
-  z-index: 0;
-  h1{
-    margin: 16px 0 0;
-  }
-  .clients {
-    .card {
-      position: relative;
-      cursor: pointer;
-      /* border: 1px solid rgba(162, 170, 164, 0.5); */
-      outline: 1px solid rgba(162, 170, 164, 0.5);
-      outline-offset: -1px;
-      padding: 24px;
-      color: ${color.DarkBlue};
-      transition: all 0.5s ease-in;
-      .visible {
-        transition: all 0.5s ease-in;
-        opacity: 1;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        left: 0;
-        top: 0;
-      }
-      .link {
-        display: flex;
-        flex-direction: column;
-        min-height: 58px;
-        justify-content: flex-end;
-        a {
-          color: ${color.DarkBlue};
-          display: flex;
-          margin: 0 0 8px;
-          align-items: center;
-          font-size: 14px;
-          text-decoration: none;
-          &:hover{
-            text-decoration: underline;
-          }
-          h5 {
-            margin: 0;
-          }
-          img {
-            width: 20px;
-            height: 20px;
-            margin: 0 8px 0 0;
-          }
-        }
-      }
-      img {
-        height: 48px;
-        margin-bottom: 10px;
-      }
-      h5 {
-        margin: 24px 0 28px;
-        min-height: 65px;
-      }
-      hr {
-        border-bottom: 1px solid #d9d9d9;
-        border-top: 0;
-      }
-      .hover {
-        transition: all 0.5s ease-in;
-        /* display: none; */
-        opacity: 0;
-        z-index: 5;
-        position: relative;
-        /* position: absolute; */
-        /* width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        align-items: center;
-        justify-content: center; */
-      }
-      &:hover {
-        background-color: #fff;
-        .visible {
-          opacity: 0;
-        }
-        .hover {
-          opacity: 1;
-        }
-      }
-    }
-  }
-  ${media.medium`
-    .left{
-      br{
-        display: none;
-      }
-    }
-  `}
-`;
-
-const ParallaxWrapper01 = styled.div`
-  overflow: hidden;
-  width: 510px;
-  position: absolute;
-  right: 0;
-  top: 200px;
-  img {
-    object-fit: cover;
-    width: 100%;
-  }
-`;
-const ParallaxWrapper02 = styled.div`
-  overflow: hidden;
-  width: 398px;
-  position: absolute;
-  right: 220px;
-  top: 436px;
-  img {
-    object-fit: cover;
-    width: 100%;
-  }
-`;
-
-const HeroWrapper = styled.main`
-  text-align: left;
-  padding: 200px 0 180px;
-  position: relative;
-  .huge, h1{
-    position: relative;
-    z-index: 2;
-  }
-  .content {
-    margin-top: 24px;
-    z-index: 2;
-    position: relative;
-    h1 {
-      margin: 0;
-      display: flex;
-      span {
-        position: relative;
-        /* width: 467px; */
-        display: block;
-        position: absolute;
-        top: 20px;
-        height: 24px;
-        /* transition: all 0.5s ease-in-out; */
-        background: ${colors.Orange};
-        z-index: -1;
-        animation: marker 1s forwards;
-        animation-delay: 2s;
-        animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-      }
-    }
-  }
-  .hero-img-mb{
-    display: none;
-  }
-  @keyframes marker {
-    from {
-      width: 0;
-    }
-    to {
-      width: 296px;
-    }
-  }
-  @media screen and (max-width:1330px) {
-    ${ParallaxWrapper01}{
-      /* display: none; */
-    }
-    ${ParallaxWrapper02}{
-      display: none;
-    }
-  }
-  ${media.medium`
-    padding: 72px 0;
-    .content{
-      margin: 8px 0 32px;
-      h1{
-        span {
-          left: 48px;
-          max-width: 192px;
-          height: 16px;
-          top: 14px;
-        }
-      }
-    }
-    .hero-img-mb{
-      display: block;
-      img{
-        width: 100%;
-      }
-    }
-  `}
-`;
 
 const Horizon = styled.div`
   /* border-top: 1px solid ${colors.White}; */
@@ -629,3 +429,234 @@ const Horizon = styled.div`
     padding: 32px 0 72px;
   `}
 `;
+
+
+const OurClients = styled.div`
+  margin-top: 40px;
+  /* height: 500px; */
+  padding-bottom: 200px;
+  background-color: ${color.DarkBlue};
+  color: ${color.White};
+  position: relative;
+  z-index: 0;
+  h1{
+    margin: 16px 0 0;
+  }
+  .clients {
+    .card {
+      position: relative;
+      cursor: pointer;
+      /* border: 1px solid rgba(162, 170, 164, 0.5); */
+      outline: 1px solid rgba(162, 170, 164, 0.5);
+      outline-offset: -1px;
+      padding: 24px;
+      color: ${color.DarkBlue};
+      transition: all 0.5s ease-in;
+      .visible {
+        transition: all 0.5s ease-in;
+        padding: 0 10px;
+        opacity: 1;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        left: 0;
+        top: 0;
+      }
+      .link {
+        display: flex;
+        flex-direction: column;
+        min-height: 58px;
+        justify-content: flex-end;
+        a {
+          color: ${color.DarkBlue};
+          display: flex;
+          margin: 0 0 8px;
+          align-items: center;
+          font-size: 14px;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+          h5 {
+            margin: 0;
+          }
+          img {
+            width: 20px;
+            height: 20px;
+            margin: 0 8px 0 0;
+          }
+        }
+      }
+      img {
+        max-height: 48px;
+        margin-bottom: 10px;
+      }
+      h5 {
+        margin: 24px 0 28px;
+        min-height: 65px;
+      }
+      hr {
+        border-bottom: 1px solid #d9d9d9;
+        border-top: 0;
+      }
+      .hover {
+        transition: all 0.5s ease-in;
+        /* display: none; */
+        opacity: 0;
+        z-index: 5;
+        position: relative;
+        /* position: absolute; */
+        /* width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        align-items: center;
+        justify-content: center; */
+      }
+      &:hover {
+        background-color: #fff;
+        .visible {
+          opacity: 0;
+        }
+        .hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  ${media.large`
+    .huge{
+      font-size: 54px;
+      line-height: 64px;
+    }
+    br{
+      display: none;
+    }
+  `}
+  ${media.medium`
+    .clients{
+      padding: 0;
+    }
+    h1{
+      margin-top: 8px;
+    }
+    .huge{
+      font-size: 32px;
+      line-height: 40px;
+    }
+    .left{
+      br{
+        display: none;
+      }
+    }
+    ${Horizon}{
+      padding: 32px 0 32px;
+    }
+  `}
+`;
+
+const ParallaxWrapper01 = styled.div`
+  overflow: hidden;
+  width: 100%;
+  /* position: absolute; */
+  /* right: 0;
+  top: 200px; */
+  max-width: 510px;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+  ${media.medium`
+    display: none;
+  `}
+`;
+const ParallaxWrapper02 = styled.div`
+  /* overflow: hidden; */
+  width: 100%;
+  /* position: absolute; */
+  /* right: 220px; */
+  /* bottom: 80px; */
+  max-width: 398px;
+  margin-top: -174px;
+  /* bottom: -80px; */
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+`;
+
+const HeroWrapper = styled.main`
+  text-align: left;
+  padding: 200px 0 180px;
+  position: relative;
+  .huge, h1{
+    position: relative;
+    z-index: 2;
+  }
+  .content {
+    margin-top: 24px;
+    z-index: 2;
+    position: relative;
+    h1 {
+      margin: 0;
+      display: flex;
+      span {
+        position: relative;
+        /* width: 467px; */
+        display: block;
+        position: absolute;
+        top: 20px;
+        height: 24px;
+        /* transition: all 0.5s ease-in-out; */
+        background: ${colors.Orange};
+        z-index: -1;
+        animation: marker 1s forwards;
+        animation-delay: 1s;
+        animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      }
+    }
+  }
+  .hero-img-mb{
+    display: none;
+  }
+  @keyframes marker {
+    from {
+      width: 0;
+    }
+    to {
+      width: 296px;
+    }
+  }
+  @media screen and (max-width:1330px) {
+    ${ParallaxWrapper01}{
+      /* display: none; */
+    }
+    ${ParallaxWrapper02}{
+      display: none;
+    }
+  }
+  ${media.medium`
+    padding: 52px 0;
+    .content{
+      margin: 8px 0 32px;
+      h1{
+        span {
+          left: 48px;
+          max-width: 192px;
+          height: 16px;
+          top: 14px;
+        }
+      }
+    }
+    .hero-img-mb{
+      display: block;
+      img{
+        width: 100%;
+      }
+    }
+  `}
+`;
+

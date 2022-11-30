@@ -26,11 +26,15 @@ export default function Idea() {
     <SectionIdea ref={ideaRef}>
       <div className="wrapper">
         <div className="content">
-          <Box width={'220px'} m="0 auto">
-            <Fade>
-              {ideaActive &&<Lottie animationData={aboutUsAnim} loop={false} />}
-            </Fade>
-          </Box>
+          <Grid container className="container">
+            <Grid xs={6} xsOffset={3}>
+              <Box maxWidth={'220px'} m="0 auto">
+                <Fade>
+                  {ideaActive && <Lottie animationData={aboutUsAnim} loop={false} />}
+                </Fade>
+              </Box>
+            </Grid>
+          </Grid>
           <h1 className="eng">
             Surround yourself with highly ambitious, friendly & humble people !
           </h1>

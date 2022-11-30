@@ -68,7 +68,19 @@ export function ContactPage() {
   const positionRef = useRef<HTMLDivElement>(null);
   const FaqPositionRef = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
-  useScrollPosition(({ prevPos, currPos }) => {    
+  const [enterForm, setEnterForm] = useState(false)
+  useScrollPosition(({ prevPos, currPos }) => {
+    if(windowWidth > 960){
+      console.log(positionRef.current!.getBoundingClientRect().top);
+      if (
+        positionRef.current!.getBoundingClientRect().top < 680 &&
+        positionRef.current!.getBoundingClientRect().top > -2012
+      ) {
+        setEnterForm(true)
+      } else {
+        setEnterForm(false)
+      }
+    }
     if (
       positionRef.current!.getBoundingClientRect().top < 16 &&
       FaqPositionRef.current!.getBoundingClientRect().top > 1100
@@ -524,7 +536,7 @@ export function ContactPage() {
                     </FeatureHead>
                   </div>
                 </Grid>}
-                <GetInTouch onClick={() => {
+                <GetInTouch show={!enterForm} onClick={() => {
                   windowWidth > 960 ? scroller.scrollTo('form', {
                     duration: 1500,
                     delay: 100,
@@ -1055,8 +1067,8 @@ export function ContactPage() {
                   </Grid>
                 </Grid>
                 <Grid className="map" container>
-                  <Grid item xs={12} md={5}>
-                    <img src={location} alt="" />
+                  <Grid className='location' item xs={12} md={5}>
+                    <img src={location} alt="location" />
                   </Grid>
                   <Grid item xs={12} md={7}>
                     {/* <img src={pin} alt="" /> */}
@@ -1145,7 +1157,9 @@ const Intro = styled.div`
   `}
 `;
 
-const GetInTouch = styled.div`
+const GetInTouch = styled.div<{
+  show: boolean
+}>`
   /* position: relative; */
   position: absolute;
   margin-top: 40px;
@@ -1153,7 +1167,7 @@ const GetInTouch = styled.div`
   color: ${colors.White};
   width: 310px;
   height: 186px;
-  display: flex;
+  display: ${prop => prop.show ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   gap: 16px;
@@ -1236,7 +1250,7 @@ const GetInTouch = styled.div`
   }
   @media screen and (max-width: 1360px) {
     position: fixed;
-    right: 8px;
+    right: 21px;
     bottom: -20px;
     z-index: 3;
     width: 168px;
@@ -1428,6 +1442,8 @@ const Step = styled.div`
       }
       h3{
         margin: 12px 0 0 24px;
+        font-size: 22px;
+        font-weight: 500;
       }
     }
     .horizon{
@@ -1435,6 +1451,7 @@ const Step = styled.div`
     }
     h4{
       margin: -16px 0 0 86px;
+      font-size: 16px;
     }
   `}
 `;
@@ -1490,9 +1507,12 @@ const FormSection = styled.div`
     padding: 128px 0 160px 26px;
   }
   ${media.large`
-  .left{
+    .left{
       margin-right: 0;
       padding-right: 16px;
+    }
+    .right {
+      /* padding-left:0; */
     }
   `}
   ${media.medium`
@@ -1718,10 +1738,19 @@ const FAQ = styled.div`
 `;
 const FaqGroup = styled.div`
   margin-bottom: 72px;
+  padding-left: 26px;
   .title {
     font-weight: bold;
     margin-bottom: 32px;
   }
+  ${media.medium`
+    padding-left: 0;
+    .accordion__item{
+      h3{
+        font-size: 18px;
+      }
+    }
+  `}
 `;
 
 const Contact = styled.div`
@@ -1751,10 +1780,13 @@ const Contact = styled.div`
     margin-bottom: 12px;
   }
   h5{
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
   }
   ${media.medium`
+    .contact-us{
+      margin-left: 0;
+    }
     .title{
       font-size: 32px;
       margin: 0 0 8px;
@@ -1767,8 +1799,13 @@ const Contact = styled.div`
     }
     h5{
       margin: 0;
+      line-height: 24px;
+      font-size: 16px;
     }
     .map{
+      .location{
+        display: none;
+      }
       img{
         height: 240px;
       }
@@ -1814,9 +1851,16 @@ const MbForm = styled.div`
     grid-template-columns: repeat(1, 1fr);
     gap: 4px;
     margin-bottom: 0;
+    p{
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
   .input-group{
     flex-direction: column;
+  }
+  h1{
+    margin: 8px 0 26px;
   }
   .radio{
     min-height: 160px;
@@ -1828,6 +1872,8 @@ const MbForm = styled.div`
     }
   }
   .title{
+    display: flex;
+    align-items: baseline;
     .dot{
       margin-right: 12px;
     }
@@ -1837,14 +1883,22 @@ const MbForm = styled.div`
   }
   ${RoundButton}{
     margin-top: 8px;
-    width: 153px;
+    width: 164px;
     padding: 8px 16px;
+    background-color: #0C1C24;
+    h4{
+      font-size: 18px;
+    }
   }
   ${SmallRadioGroup}{
     margin-bottom: 0;
     .radio{
       min-height: 56px;
     }
+  }
+  .MuiInputBase-root{
+    font-size: 16px;
+    line-height: 24px;
   }
 `
 

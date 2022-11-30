@@ -26,23 +26,21 @@ export default function Idea() {
     <SectionIdea ref={ideaRef}>
       <Container maxWidth={'xl'}>
         <Grid container className="container">
-          <Grid xs={12} md={12}>
-            <div className="wrapper border">
-              <Box width={'220px'} m="0 auto">
-                <Fade>
-                  {ideaActive && <Lottie animationData={ourWorks} loop={false} />}
-                </Fade>
-              </Box>
-              <h1 className="eng">
-                We believe success comes with responsibility.
-              </h1>
-              <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
-              <WrappedButton
-                text="OUR WORKS"
-                link="#"
-                isWhite={true}
-              />
-            </div>
+          <Grid xs={6} xsOffset={3}>
+            <Box maxWidth={'220px'} m="0 auto">
+              <Fade>
+                {ideaActive && <Lottie animationData={ourWorks} loop={false} />}
+              </Fade>
+            </Box>
+            <h1 className="eng">
+              We believe success comes with responsibility.
+            </h1>
+            <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
+            <WrappedButton
+              text="OUR WORKS"
+              link="#"
+              isWhite={true}
+            />
           </Grid>
         </Grid>
       </Container>

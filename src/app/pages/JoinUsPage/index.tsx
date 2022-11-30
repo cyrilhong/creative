@@ -771,7 +771,7 @@ const TeamBuilding = styled.div`
       margin: 0 20px;
   }
   .slick-list {
-      margin: 0 -20px;
+    margin: 0 -20px;
   }
   .grid {
     align-items: end;
@@ -779,6 +779,13 @@ const TeamBuilding = styled.div`
   img {
     width: 100%;
   }
+  ${media.large`
+    .slick-list {
+      margin: 0 -10px;
+      max-width: 80vw;
+      overflow: visible;
+    }
+  `}
   ${media.medium`
     margin-bottom: 72px;
     .slick-slide {

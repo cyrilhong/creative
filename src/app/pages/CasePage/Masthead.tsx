@@ -21,7 +21,7 @@ export function Masthead() {
   return (
     <Wrapper>
       <ParallaxProvider>
-        {windowWidth > 1245 &&
+        {windowWidth > 1439 &&
           <>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
@@ -45,7 +45,7 @@ export function Masthead() {
             </div>
           </>
         }
-        {windowWidth > 960 && windowWidth < 1245 &&
+        {windowWidth > 959 && windowWidth < 1440 &&
           <>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
@@ -55,16 +55,7 @@ export function Masthead() {
             </Title>
             <div className="content">
               <h1>
-                <Fade bottom duration={500} delay={100}>
-                  每個案例都是獨一無二的，我們
-                  <Mark />
-                  運用策略與設計的跨領域經驗，
-                </Fade>
-              </h1>
-              <h1>
-                <Fade bottom duration={500} delay={100}>
-                  為企業量身打造獨特體驗
-                </Fade>
+              每個案例都是獨一無二的，我們<div className='draw'>運用策略與設計的跨領域經驗</div>，為企業量身打造獨特體驗
               </h1>
             </div>
           </>
@@ -93,13 +84,18 @@ const Wrapper = styled.main`
   padding: 200px 0 102px;
   .content {
     margin-top: 24px;
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 20px ${colors.BGGrey}, inset 0px 54px #FF977C;
+    }
+    .draw::after{
+      content: '';
+      border-bottom: 15px solid ${colors.ElectricBlue};
+    }
     h1 {
-      margin: 0;
       display: flex;
-      .draw::after{
-        content: '';
-        border-bottom: 15px solid ${colors.ElectricBlue};
-      }
+      margin: 0;
       span {
         position: relative;
         /* width: 467px; */
@@ -111,7 +107,7 @@ const Wrapper = styled.main`
         background: #ff8262;
         z-index: -1;
         animation: marker 1s forwards;
-        animation-delay: 2s;
+        animation-delay: .5s;
         animation-timing-function: cubic-bezier(.17,.67,.83,.67);
       }
     }
@@ -134,18 +130,25 @@ const Wrapper = styled.main`
       }
     }
   }
+  ${media.large`
+    .content{
+      h1{
+        display: inline;
+      }
+    }
+  `}
   ${media.medium`
     padding: 72px 0 110px;
     .content{
+      margin-top: 8px;
+      .draw{
+        box-shadow: inset 0 14px ${colors.BGGrey}, inset 0px 54px #FF977C;
+      }
       h1{
-        display: inline-block;
+        display: inline;
       }
     }
-    .draw{
-      display: inline;
-      background-size: 1px 16px;
-      box-shadow: inset 0 21px ${colors.BGGrey}, inset 0px 54px #FF977C;
-    }
+    
   `}
 `;
 

@@ -49,7 +49,7 @@ export function Masthead() {
             </div>
           </>
         }
-        {windowWidth > 960 && windowWidth < 1178 &&
+        {windowWidth > 959 && windowWidth < 1178 &&
           <>
             <Title className="eng huge">
               <Fade bottom cascade duration={1000} delay={100}>

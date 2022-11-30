@@ -35,7 +35,7 @@ export function Masthead() {
             </Title>
           </>
         }
-        {windowWidth > 960 && windowWidth < 1320 &&
+        {windowWidth > 959 && windowWidth < 1320 &&
           <>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
@@ -69,7 +69,7 @@ export function Masthead() {
           </>
         }
         <div className="content">
-          {windowWidth > 960 ?
+          {windowWidth > 959 ?
             <h1>
               <Fade bottom duration={500} delay={100}>
                 我們來自不同領域，
@@ -121,7 +121,7 @@ const Wrapper = styled.main`
       width: 484px;
     }
   }
-  ${media.medium`
+  ${media.large`
     padding: 72px 0 48px;
   `}
 `;
