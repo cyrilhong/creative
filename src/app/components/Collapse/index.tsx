@@ -64,6 +64,7 @@ const Wrapper = styled.div`
   p {
     margin: 0;
     padding-right: 82px;
+    font-size: 20px;
     b{
       font-weight: 500;
       color: ${colors.AJABlue};
@@ -90,6 +91,6 @@ const Wrapper = styled.div`
   }
   ul{
     padding-left: 20px;
-    margin: 10px 0;
+    margin: 16px 0 0;
   }
 `

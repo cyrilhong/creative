@@ -68,6 +68,9 @@ const CustomSlider = styled(Slider)({
   '& .MuiSlider-rail': {
     backgroundColor: colors.AJABlue,
   },
+  '& .MuiSlider-markLabel': {
+    top: '46px'
+  },
   '& .MuiSlider-thumb': {
     height: 27,
     width: 27,

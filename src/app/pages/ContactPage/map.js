@@ -12,7 +12,7 @@ export default function Map() {
     <Wrapper>
       <GoogleMapReact
         // bootstrapURLKeys={'AIzaSyA16d9FJFh__vK04jU1P64vnEpPc3jenec'}
-        bootstrapURLKeys={{ key: 'AIzaSyDB_z6YYnPrZe43X_kfjBTjarxqY-kinWk' }}
+        bootstrapURLKeys={{ key: 'AIzaSyA_ZpXc5EtfRG23sHpYDM7LfbV0CBdYHr0' }}
         defaultCenter={{
           lat: 25.08067881152031,
           lng: 121.55802049834605,

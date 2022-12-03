@@ -71,7 +71,7 @@ export function ContactPage() {
   const [enterForm, setEnterForm] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
     if(windowWidth > 960){
-      console.log(positionRef.current!.getBoundingClientRect().top);
+      // console.log(positionRef.current!.getBoundingClientRect().top);
       if (
         positionRef.current!.getBoundingClientRect().top < 680 &&
         positionRef.current!.getBoundingClientRect().top > -2012
@@ -357,7 +357,7 @@ export function ContactPage() {
                 </div>
               </FormTitle>
               <InputForm>
-                <label htmlFor="email">聯絡人</label>
+                {/* <label htmlFor="email">聯絡人</label> */}
                 <div className="input-group">
 
                   {/* {watch('name')} */}
@@ -832,7 +832,7 @@ export function ContactPage() {
                         </div>
                       </FormTitle>
                       <InputForm>
-                        <label htmlFor="email">聯絡人</label>
+                        {/* <label htmlFor="email">聯絡人</label> */}
                         <div className="input-group">
 
                           {/* {watch('name')} */}
@@ -883,7 +883,7 @@ export function ContactPage() {
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
                                 {...field}
-                                label="聯絡電話 *"
+                                label="聯絡電話"
                                 type="text"
                                 variant="filled"
                                 fullWidth
@@ -1106,6 +1106,7 @@ const RoundButton = styled.button`
   width: 272px;
   margin-top: 54px;
   cursor: pointer;
+  justify-content: center;
   h4 {
     margin: 0 0 0 12px;
     font-size: 24px;
@@ -1173,20 +1174,14 @@ const GetInTouch = styled.div<{
   gap: 16px;
   cursor: pointer;
   img{
-    animation: shake 3.5s infinite;
+    animation: shake 2s infinite;
   }
   @keyframes shake {
     0% {
       transform: translate3d(0, 0, 0);
     }
-    2% {
-      transform: translate3d(0, 2px, 2px);
-    }
-    4% {
-      transform: translate3d(0, -1px, -1px);
-    }
-    6% {
-      transform: translate3d(0, 0, 0);
+    50% {
+      transform: translate3d(0, 4px, 2px);
     }
     100% {
       transform: translate3d(0, 0, 0);
@@ -1217,7 +1212,6 @@ const GetInTouch = styled.div<{
     background: ${colors.DarkBlue};
     border: 1px solid rgba(162, 170, 164, 0.5);
     /* box-shadow: 4px 4px 15px rgb(0 0 0 / 50%); */
-    box-shadow: 4px 4px 8px rgba(12, 28, 36, 0.05);
     border-radius: 100%;
     transform: rotate(-15deg);
     position: absolute;
@@ -1225,9 +1219,13 @@ const GetInTouch = styled.div<{
     top: 0;
     z-index: -1;
     outline: 0 solid rgba(255, 248, 142, .45);
+    transition: all .2s ease-in;
   }
   &:hover::before{
-    animation: pulse 2s infinite;
+    /* animation: pulse .5s infinite; */
+    /* outline: 50px solid rgba(255, 248, 142, .45); */
+    box-shadow: 0px 0px 88px #fff88e;
+    opacity: 1;
     /* outline: 25px solid rgba(255, 248, 142, .45); */
     /* box-shadow: 0 0 32px rgba(255, 248, 142, 1); */
   }
@@ -1643,6 +1641,9 @@ const InputForm = styled.div`
     gap: 24px;
     margin-bottom: 40px;
   }
+  .MuiFormLabel-root{
+    top: -3px;
+  }
   .MuiFormLabel-root.Mui-focused{
     color:${colors.AJABlue};
   }
@@ -1677,12 +1678,13 @@ const InputForm = styled.div`
     }
   }
   textarea {
-    padding: 16px 12px;
+    padding: 18px;
     font-size: 20px;
     resize: none;
     width: 100%;
     background-color: #f8f2ec;
     border: 0;
+    height: 214px!important;
     /* border-bottom: 1px solid ${colors.DarkBlue}; */
     font-size: 20px;
   }
@@ -1921,7 +1923,7 @@ const CustomCheckbox = styled.div`
     margin: 0;
     font-weight: bold;
     transition: all .2s ease-in;
-    line-height: 120%;
+    line-height: 150%;
   }
   small{
     font-size: 12px;
