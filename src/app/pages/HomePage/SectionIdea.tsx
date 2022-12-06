@@ -71,6 +71,9 @@ const SectionIdea = styled.div`
   display: flex;
   text-align: center;
   background-color: ${colors.White};
+  .MuiContainer-root{
+    padding: 0 16px!important;
+  }
   .wrapper {
     padding: 16px 40px;
   }

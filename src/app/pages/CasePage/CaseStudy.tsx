@@ -363,7 +363,7 @@ const Case = styled.div`
   }
   &:hover{
     img{
-      transform: scale(1.2);
+      transform: scale(1.05);
     }
     a{
       .wrapper{

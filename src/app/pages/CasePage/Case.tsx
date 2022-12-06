@@ -98,6 +98,13 @@ export default function Case() {
   );
 }
 
+const SlideItem = styled.div`
+  transition: all .3s ease-in;
+  img {
+    width: 100%;
+  }
+`;
+
 const Cases = styled.div`
   background-color: ${colors.DarkBlue};
   color: ${colors.White};
@@ -106,6 +113,7 @@ const Cases = styled.div`
   gap: 40px;
   padding-bottom: 64px;
   position: relative;
+  cursor: pointer;
   z-index: 1;
   &::before{
     content: '';
@@ -115,6 +123,22 @@ const Cases = styled.div`
     right: -10%;
     position: absolute;
     z-index: 0;
+  }
+  &:hover{
+    ${SlideItem}{
+      transform: scale(1.05);
+    }
+    a{
+      .wrapper{
+        path {
+          stroke: ${colors.DarkBlue};
+        }
+        &:before {
+          -webkit-animation: move-in 0.3s forwards;
+          animation: move-in 0.3s forwards;
+        }
+      }
+    }
   }
   .left {
     flex: 1 1 100%;
@@ -188,6 +212,11 @@ const Cases = styled.div`
       .dots{
         margin-top: 40px
       }
+      a{
+        h4{
+          margin-bottom: 0;
+        }
+      }
     }
     .right{
       margin-top: -56px;
@@ -199,8 +228,3 @@ const Cases = styled.div`
   `}
 `;
 
-const SlideItem = styled.div`
-  img {
-    width: 100%;
-  }
-`;

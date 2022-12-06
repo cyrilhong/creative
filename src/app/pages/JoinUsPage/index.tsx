@@ -71,7 +71,7 @@ export function JoinUsPage() {
         <PageWrapper overflow="true">
           <HeroSection>
             <Grid className="text" container spacing={5} rowSpacing={9}>
-              {windowWidth > 1440 &&
+              {windowWidth > 1439 &&
                 <Grid xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="sentence-1 super eng">Makes work</div>
@@ -88,7 +88,7 @@ export function JoinUsPage() {
                   </Fade>
                 </Grid>}
 
-              {windowWidth > 959 && windowWidth < 1441 && <Grid xs={12}>
+              {windowWidth > 959 && windowWidth < 1440 && <Grid xs={12}>
                 <Fade bottom cascade duration={500} delay={100}>
                   <div className="sentence-1 super eng">Makes work</div>
                 </Fade>
@@ -326,6 +326,9 @@ const ParallaxImg = styled.div`
 
 const HeroSection = styled.div`
   padding: 196px 0 109px;
+  a{
+    border: 0;
+  }
   .text {
     position: relative;
     z-index: 2;
@@ -353,7 +356,7 @@ const HeroSection = styled.div`
   .amazing-teams {
     border-left: 1px solid ${color.DarkBlue};
     border-right: 1px solid ${color.DarkBlue};
-    margin: 44vw -7px 0;
+    margin: 40vw -7px 0;
     padding: 24px 40px;
     text-align: center;
     h1 {
@@ -612,8 +615,19 @@ const Jobs = styled.div`
         padding: 32px 0;
         justify-content: space-between;
         align-items: center;
+        .accordion__panel{
+          padding-right: 82px;
+        }
         &:nth-last-child(1) {
           border-bottom: 0;
+        }
+        .head{
+          h1{
+            margin: 0;
+          }
+          h3{
+            font-weight: 300;
+          }
         }
         .info {
           display: flex;
@@ -650,6 +664,9 @@ const Jobs = styled.div`
       ul{
         li{
           flex-direction: column;
+          .accordion__panel{
+            padding-right: 0;
+          }
           h1{
             margin-bottom: 8px;
           }

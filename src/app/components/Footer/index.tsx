@@ -13,6 +13,7 @@ import touch from './assets/get-in-touch.json';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import { useWindowSize } from '../../hooks'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import { isDesktop } from 'react-device-detect';
 export default function footer() {
   const target = useRef(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -20,10 +21,12 @@ export default function footer() {
   const [active, setActive] = useState(false)
   const [zIndex, setZIndex] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
-    if (ref.current!.getBoundingClientRect().top < 700) {
-      setActive(true);
-    } else {
-      setActive(false);
+    if (windowWidth > 960) {
+      if (ref.current!.getBoundingClientRect().top < 700) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
     }
   });
   const Footer = styled.div`
@@ -71,7 +74,7 @@ export default function footer() {
     .get-in-touch{
       .lottie{
         display: block;
-        width: 132px;
+        width: 118px;
       }
     }
   `}
@@ -82,14 +85,21 @@ export default function footer() {
       <PageWrapper className="page-wrapper" overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
         <ParallaxProvider>
           <Wrapper>
-            <Parallax speed={active ? -25 : 45}>
-              <Fade bottom>
+            <Parallax speed={windowWidth > 960 ? (active ? -25 : 45) : 0}>
+              <Fade bottom={windowWidth > 960}>
                 <Main>
                   <div className="left">
-                    <div className="huge eng">
-                      Let's make something
-                      <br /> great together.
-                    </div>
+                    {windowWidth > 640 ?
+                      <div className="huge eng">
+                        Let's make something
+                        <br /> great together.
+                      </div> :
+                      <div className="huge eng">
+                        Let's make <br />
+                        something great<br />
+                        together.
+                      </div>
+                    }
                     <h2>有新的商業與產品體驗需求嗎？<br />與我們聊聊吧</h2>
                     <div className='get-in-touch'>
                       <Button href={'#'}>
@@ -134,7 +144,7 @@ export default function footer() {
                   </div>
                 </Main>
               </Fade>
-              <Fade bottom>
+              <Fade bottom={windowWidth > 960}>
                 <Info>
                   <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
                     <Grid xs={0} md={3}>
@@ -187,7 +197,7 @@ export default function footer() {
                   </Grid>
                 </Info>
               </Fade>
-              <Fade bottom>
+              <Fade bottom={windowWidth > 960}>
                 <Bottom>
                   <small className="eng">
                     © Copyright 2022 AJA Creative Co., Ltd. All rights reserved.
@@ -212,7 +222,7 @@ const Wrapper = styled.div`
   /* height: 790px; */
   /* overflow: hidden; */
   ${media.medium`
-    padding-top: 48px;
+    padding: 0 0 16px;
     height: auto;
   `}
 `;

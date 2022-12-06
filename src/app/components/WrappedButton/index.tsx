@@ -26,6 +26,7 @@ export default function WrappedButton<Props>({ link = "#", isWhite = true, text 
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in;
+  pointer-events: none;
   path {
     transition: all 0.5s;
     stroke: ${isWhite ? colors.DarkBlue : colors.White};
@@ -84,6 +85,9 @@ export default function WrappedButton<Props>({ link = "#", isWhite = true, text 
   }
   ${media.medium`
     padding: 8px 16px 8px 32px;
+    &::before {
+      display: none;
+    }
   `}
 `;
   return (

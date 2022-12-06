@@ -70,7 +70,7 @@ export function ContactPage() {
   const windowWidth = useWindowSize().width
   const [enterForm, setEnterForm] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
-    if(windowWidth > 960){
+    if (windowWidth > 960) {
       // console.log(positionRef.current!.getBoundingClientRect().top);
       if (
         positionRef.current!.getBoundingClientRect().top < 680 &&
@@ -288,6 +288,7 @@ export function ContactPage() {
               <FormController
                 name="CoopTime"
                 control={control}
+                defaultValue={0}
                 render={({ field, fieldState: { invalid } }) => (
                   <SmallRadioGroup>
                     <div
@@ -359,13 +360,12 @@ export function ContactPage() {
               <InputForm>
                 {/* <label htmlFor="email">聯絡人</label> */}
                 <div className="input-group">
-
                   {/* {watch('name')} */}
                   <FormController
                     name="name"
                     control={control}
                     rules={{
-                      required: true
+                      required: '請填寫您的姓名'
                     }}
                     render={({ field, fieldState: { error, invalid } }) => (
                       <TextField
@@ -840,14 +840,14 @@ export function ContactPage() {
                             name="name"
                             control={control}
                             rules={{
-                              required: true
+                              required: '請填寫您的姓名'
                             }}
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
                                 {...field}
                                 type="text"
                                 variant="filled"
-                                label="名字 *"
+                                label="聯絡人 *"
                                 fullWidth
                                 error={invalid}
                                 helperText={error?.message}
@@ -858,7 +858,7 @@ export function ContactPage() {
                             name="company"
                             control={control}
                             rules={{
-                              required: true
+                              required: '請填寫您的公司名稱'
                             }}
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
@@ -877,13 +877,13 @@ export function ContactPage() {
                           <FormController
                             name="phone"
                             control={control}
-                            // rules={{
-                            //   required: true
-                            // }}
+                            rules={{
+                              required: '請填寫您的聯絡電話'
+                            }}
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
                                 {...field}
-                                label="聯絡電話"
+                                label="聯絡電話 *"
                                 type="text"
                                 variant="filled"
                                 fullWidth
@@ -897,7 +897,7 @@ export function ContactPage() {
                             name="email"
                             control={control}
                             rules={{
-                              required: true
+                              required: '請填寫您的電子郵件'
                             }}
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
@@ -1100,7 +1100,7 @@ const RoundButton = styled.button`
   border-radius: 100px;
   border: 2px solid ${colors.White};
   background-color: #fff;
-  background: ${colors.AJABlue};
+  background: ${colors.DarkBlue};
   /* border: 2px solid #0c1c24; */
   border-radius: 100px;
   width: 272px;
@@ -1642,17 +1642,42 @@ const InputForm = styled.div`
     margin-bottom: 40px;
   }
   .MuiFormLabel-root{
-    top: -3px;
+    top: 4px;
+    font-size: 20px;
+    &.Mui-error{
+      color: #A2AAA4!important;
+    }
   }
   .MuiFormLabel-root.Mui-focused{
     color:${colors.AJABlue};
+    font-size: 12px;
+  }
+  .MuiFilledInput-underline{
+    &.Mui-error{
+      &::before{
+        border-color: #F84214;
+        border-width: 2px!important; 
+      }
+    }
+  }
+  .Mui-focused.MuiFilledInput-underline{
+    
+    &::before{
+      border-width: 2px!important; 
+    }
+  }
+  .MuiFormHelperText-root{
+    font-size: 16px;
+    color: #F84214!important;
+    margin: 8px 0 0 0;
   }
   .MuiInputBase-root {
     flex: 1 1 50%;
-    height: 62px;
-    padding: 16px 12px;
+    height: 71px;
+    max-height: 71px;
+    padding: 12px 12px 0;
     /* padding: 0; */
-    max-height: 62px;
+    min-height: 71px;
     background-color: initial;
     border: 0;
     /* border-bottom: 1px solid ${colors.DarkBlue}; */
@@ -1782,7 +1807,7 @@ const Contact = styled.div`
     margin-bottom: 12px;
   }
   h5{
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
   }
   ${media.medium`

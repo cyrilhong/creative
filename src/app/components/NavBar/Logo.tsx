@@ -120,6 +120,9 @@ export function Logo({ color, bgColor }) {
         text-decoration: none;
       }
     }
+    ${media.small`
+      height: 383px;
+    `}
   `
 
   const Item = styled.div`

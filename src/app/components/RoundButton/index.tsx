@@ -85,6 +85,9 @@ export default function RoundButton({ link, isWhite, text }) {
       margin-right: 12px;
       width: 40px;
       height: 40px;
+      &::before {
+        display: none;
+      }
     }
   `}
 `;

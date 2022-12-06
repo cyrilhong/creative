@@ -148,8 +148,7 @@ const CaseSlider = [
 ];
 export function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const carouselRef = React.useRef < Slider > (null);
-  const sliderRef = React.createRef();
+  const carouselRef = React.useRef<Slider>(null);
   const [isBlackBg, setIsBlackBg] = useState(true);
   const windowWidth = useWindowSize().width
   const settings = {
@@ -178,21 +177,24 @@ export function HomePage() {
     carouselRef.current?.slickGoTo(index);
   };
 
-  const themeColorRef = useRef < HTMLDivElement > (null);
-  const helpColorRef = useRef < HTMLDivElement > (null);
-  const lottieRef1 = useRef < any > (null);
-  const lottieRef2 = useRef < any > (null);
-  const lottieRef3 = useRef < any > (null);
-  const ideaRef = useRef < any > (null);
+  const themeColorRef = useRef<HTMLDivElement>(null);
+  const helpColorRef = useRef<HTMLDivElement>(null);
+  const imgWall = useRef<any>(null);
+  const lottieRef1 = useRef<any>(null);
+  const lottieRef2 = useRef<any>(null);
+  const lottieRef3 = useRef<any>(null);
+  const ideaRef = useRef<any>(null);
+  const [imgWallHeight, setImgWallHeight] = useState(0)
 
   useScrollPosition(({ prevPos, currPos }) => {
     // console.log(currPos.x)
     // console.log(Math.abs(currPos.y));
-    console.log(themeColorRef.current!.getBoundingClientRect().top);
+    // console.log(themeColorRef.current!.getBoundingClientRect().top);
     // console.log(themeColorRef.current!.getBoundingClientRect().y);
     // console.log(helpColorRef.current!.getBoundingClientRect().top);
     // console.log(helpColorRef.current!.getBoundingClientRect().y);
-
+    // console.log(imgWall.current!.getBoundingClientRect().height)
+    setImgWallHeight(imgWall.current!.getBoundingClientRect().height)
     if (themeColorRef.current!.getBoundingClientRect().top < 440) {
       // debugger
       setTimeout(() => {
@@ -266,7 +268,7 @@ export function HomePage() {
 
   const target = useRef(null);
   function Mark(props) {
-    const { ref } = useParallax < HTMLDivElement > ({
+    const { ref } = useParallax<HTMLDivElement>({
       scaleX: [0, 1],
       rootMargin: { top: 0, right: 0, bottom: -600, left: 0 },
     });
@@ -320,7 +322,7 @@ export function HomePage() {
       <div style={{ position: 'relative' }} className={isBlackBg ? 'black' : 'white'}>
         <VideoWrapper className={`${videoOpen ? 'open' : ''}`}>
           <Parallax
-            scale={[1, 1.2]} speed={-10}
+            scale={windowWidth > 960 ? [1, 1.2] : [1, 1]} speed={windowWidth > 960 ? -10 : 0}
           >
             {!isMobile ? (
               <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
@@ -330,6 +332,7 @@ export function HomePage() {
                 loop
                 muted
                 playsInline
+                controls
                 style={{ width: '100%' }}
               >
                 <source src='https://aja-creative.com/video/showreel.mp4' />
@@ -496,7 +499,7 @@ export function HomePage() {
               </div>
               <h4 className="eng">02</h4>
             </Horizon>
-            <div className="content">
+            <div className="content" style={{minHeight:imgWallHeight}}>
               {!isBlackBg &&
                 <Grid container spacing={0} rowSpacing={0}>
                   {windowWidth > 960 ?
@@ -557,13 +560,14 @@ export function HomePage() {
               }
 
             </div>
-            <div className="img-wall">
+            {/* <h1>imgWallHeight: {imgWallHeight}</h1> */}
+            <div className="img-wall" ref={imgWall}>
               <Grid container spacing={0} rowSpacing={0}>
-                <Grid xs={4} md={3}>
+                <Grid xs={3} md={3}>
                   <Parallax
                     className="wall1"
-                    speed={20}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 20 : 10}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall1} alt="wall1" />
@@ -572,8 +576,8 @@ export function HomePage() {
                 <Grid xs={6} xsOffset={6} md={4} mdOffset={5}>
                   <Parallax
                     className="wall3"
-                    speed={18}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 18 : 9}
+                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall3} alt="wall3" />
@@ -582,28 +586,28 @@ export function HomePage() {
                 <Grid xs={6} md={3}>
                   <Parallax
                     className="wall4"
-                    speed={16}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 16 : 8}
+                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall4} alt="wall4" />
                   </Parallax>
                 </Grid>
-                <Grid xs={4} xsOffset={2} md={3} mdOffset={3}>
+                <Grid xs={3} xsOffset={2} md={3} mdOffset={3}>
                   <Parallax
                     className="wall5"
-                    speed={23}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 23 : 12}
+                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall5} alt="wall5" />
                   </Parallax>
                 </Grid>
-                <Grid xs={4} md={3} mdOffset={2}>
+                <Grid xs={3} md={3} mdOffset={2}>
                   <Parallax
                     className="wall6"
-                    speed={20}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 20 : 15}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1.1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall6} alt="wall6" />
@@ -612,8 +616,8 @@ export function HomePage() {
                 <Grid xs={4} xsOffset={2} md={2} mdOffset={3}>
                   <Parallax
                     className="wall2"
-                    speed={40}
-                    scale={[1.5, 0]}
+                    speed={windowWidth > 960 ? 40 : 20}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall2} alt="wall2" />
@@ -678,12 +682,12 @@ export function HomePage() {
       <Dedication>
         <div className="bg">
           <Parallax
-            speed={windowWidth > 960 ? 15 : 7}
+            speed={windowWidth > 960 ? 15 : 3}
           >
             {windowWidth > 960 ? <img src={dedicationBg} alt="dedicationBg" /> : <img src={dedicationBgMb} alt="dedicationBg" />}
           </Parallax>
         </div>
-        <Parallax translateX={[30, -55]}>
+        <Parallax translateX={windowWidth>640?[30, -55]:[1,1]}>
           <img className="marquee" src={dedicationWording} alt="Dedication beyond the expected" />
         </Parallax>
         <Fade bottom>
@@ -879,7 +883,7 @@ export function HomePage() {
         </div>
       </div>
       <SectionIdea />
-    </ParallaxProvider>
+    </ParallaxProvider >
   );
 }
 
@@ -1565,10 +1569,10 @@ const OurServices = styled.div < {
       }
     }
     .img-wall{
-      top: 80px;
+      top: 0;
       .wall1{
         margin-top: 100px;
-        margin-left: -40px;
+        margin-left: 0px;
       }
       .wall4{
         margin-top: 65px
@@ -1593,6 +1597,9 @@ const OurServices = styled.div < {
       display: inline-block;
       margin: 8px 0 48px;
     }
+    .slick-slide{
+      padding-right:40px;
+    }
     .slick-slider{
       .slick-arrow{
         pointer-events: none;
@@ -1602,7 +1609,12 @@ const OurServices = styled.div < {
       margin-top: 48px;
     }
     .slick-list{
-      width: 70%;
+      width: 84%;
+    }
+  `}
+  ${media.small`
+    .img-wall{
+      top: 80px;
     }
   `}
 `;
@@ -1628,9 +1640,7 @@ const VideoWrapper = styled.div`
     transition: all .5s ease-in;
     pointer-events: none;
     top: 0;
-    img{
-      margin-right: 24px;
-    }
+    left: 0;
   }
   &:hover{
     cursor: pointer;
@@ -1638,10 +1648,16 @@ const VideoWrapper = styled.div`
       opacity: 1;
     }
   }
+  ${media.large`
+    max-width: calc( 100% - 80px );
+  `}
   ${media.medium`
-    max-width: calc( 100% - 40px );
+    max-width: 100%;
     height: auto;
     padding: 0 20px;
+    .hover-player{
+      display: none;
+    }
   `}
 `;
 
@@ -1677,6 +1693,12 @@ const Dedication = styled.div`
     height: 372px;
     .marquee{
       height: 50px;
+    }
+  `}
+  ${media.small`
+    .marquee{
+      height: auto;
+      width: 100%;
     }
   `}
   /* @media screen and (max-width:400px) {
@@ -1775,6 +1797,13 @@ const ServiceList = styled.div`
         margin: 32px 0 8px;
       }
     }
+  `}
+  ${media.medium`
+  .right{
+    h4{
+      padding-top:0px;
+    }
+  }
   `}
 `;
 

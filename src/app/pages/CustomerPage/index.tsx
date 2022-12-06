@@ -94,7 +94,7 @@ export function CustomerPage() {
                     <h1>
                       我們
                       <Mark />
-                      幫助客戶打破框架，進而形塑共好的
+                      協助客戶創造價值，進而形塑共好的
                     </h1>
                     <h1>
                       長期夥伴關係
@@ -113,7 +113,7 @@ export function CustomerPage() {
                     <h1>
                       <Box>我們</Box>
                       <Mark />
-                      幫助客戶打破框架，進而形塑共好的長期夥伴關係
+                      協助客戶創造價值，進而形塑共好的長期夥伴關係
                     </h1>
                   </Fade>
                 </div>
