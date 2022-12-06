@@ -99,10 +99,7 @@ export function ServicePage() {
                 <div className="content">
                   <Fade bottom duration={500} delay={100}>
                     <h1>
-                      我們透過完善的設計流程與反覆驗證，
-                    </h1>
-                    <h1>
-                      <Mark />幫助客戶實現願景
+                      我們透過完善的設計流程與反覆驗證，幫助客戶實現願景
                     </h1>
                   </Fade>
                 </div>
@@ -174,8 +171,8 @@ export function ServicePage() {
             <Grid container>
               <Grid xs={12}>
                 <ParallaxImg>
-                  <Parallax speed={-15}>
-                    <img src={posters} alt="posters" />
+                  <Parallax speed={windowWidth>960?-15:0}>
+                    <img style={{minHeight: '143px', objectFit: 'cover'}} src={posters} alt="posters" />
                   </Parallax>
                 </ParallaxImg>
               </Grid>
@@ -617,7 +614,7 @@ const SecondSection = styled.div`
   h1{
     margin: 8px 0;
   }
-  h4{
+  .subtitle{
     margin: 0 0 48px;
   }
   ${Horizon}{
@@ -627,12 +624,12 @@ const SecondSection = styled.div`
     padding: 24px 0 0;
     ${Horizon}{
       padding: 32px 0 36px;
+      .title{
+        margin-top: 20px;
+      }
     }
     .huge{
       margin-top: 32px;
-    }
-    h4{
-      margin: 0 0 32px;
     }
     .title{
       padding-right: 0;
@@ -642,6 +639,7 @@ const SecondSection = styled.div`
     }
     .subtitle{
       font-size: 16px;
+      margin: 0 0 32px;
     }
     h3{
       font-size: 18px;
@@ -673,6 +671,11 @@ const ItemList = styled.div`
       }
     }
   }
+  ${media.medium`
+    p{
+      padding-right: 62px;
+    }
+  `}
 `;
 
 const Head = styled.div`

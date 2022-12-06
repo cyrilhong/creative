@@ -9,6 +9,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+import { media } from 'styles/media';
 
 export default function Collapse({ list }) {
   const [FAQS, setFAQS] = useState(list)

@@ -69,7 +69,7 @@ export function Masthead() {
           </>
         }
         <div className="content">
-          {windowWidth > 959 ?
+          {windowWidth > 639 ?
             <h1>
               <Fade bottom duration={500} delay={100}>
                 我們來自不同領域，
@@ -123,6 +123,23 @@ const Wrapper = styled.main`
   }
   ${media.large`
     padding: 72px 0 48px;
+  `}
+  ${media.medium`
+    .content {
+      h1 {
+        span{
+          top: 16px;
+          height: 16px;
+        }
+      }
+    @keyframes marker {
+      from {
+        width: 0;
+      }
+      to {
+        width: 318px;
+      }
+    }
   `}
 `;
 

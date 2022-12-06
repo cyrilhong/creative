@@ -111,7 +111,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     ${media.medium`
         font-size: 14px;
-        line-height: 21px;
+        line-height: 24px;
     `};
   }
   h5{

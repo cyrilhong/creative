@@ -206,6 +206,9 @@ const Cases = styled.div`
      order: 2;
      padding: 0;
      z-index: 1;
+     .content {
+      max-width: initial;
+     }
      .title{
         margin: 8px 0;
       }

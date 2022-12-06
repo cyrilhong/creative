@@ -26,7 +26,7 @@ export default function Idea() {
     <SectionIdea ref={ideaRef}>
       <Container maxWidth={'xl'}>
         <Grid container className="container">
-          <Grid xs={6} xsOffset={3}>
+          <Grid xs={10} xsOffset={1} md={6} mdOffset={3}>
             <Box maxWidth={'220px'} m="0 auto">
               <Fade>
                 {ideaActive && <Lottie animationData={ourWorks} loop={false} />}

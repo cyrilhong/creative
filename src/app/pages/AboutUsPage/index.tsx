@@ -61,7 +61,7 @@ export function AboutUsPage() {
           <HappyTeam>
             <Grid className="text" container spacing={5} rowSpacing={9}>
               {isDesktop() ?
-                <Grid xs={12} xsOffset={0} md={10} mdOffset={1}>
+                <Grid xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="1">
                   <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
                     <div className="super eng">Happy Teams</div>
                   </Fade>
@@ -417,12 +417,6 @@ const HappyTeam = styled.div`
   `}
   ${media.medium`
     padding: 12px 0 48px;
-    .text{
-      .super{
-        font-size: 48px;
-        line-height: 60px;
-      }
-    }
     .change {
       margin-left: 25px;
     }
@@ -460,16 +454,34 @@ const HappyTeam = styled.div`
       z-index: 0;
       :nth-child(2) {
         padding-right: 10px;
-        margin-top: -242px;
+        margin-top: -542px;
+        /* margin-top: -242px; */
       }
       :nth-child(3) {
         padding-left: 10px;
-        margin-top: -336px;
+        margin-top: -660px;
+        /* margin-top: -336px; */
       }
     }
     .mb-hotBaloon{
       display: block;
       margin-left: 36px;
+    }
+  `}
+  ${media.small`
+    .text{
+      .super{
+        font-size: 48px;
+        line-height: 60px;
+      }
+    }
+    .mb-img{
+      :nth-child(2) {
+        margin-top: -242px;
+      }
+      :nth-child(3) {
+        margin-top: -336px;
+      }
     }
   `}
 `;

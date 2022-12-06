@@ -26,7 +26,7 @@ export default function WrappedButton<Props>({ link = "#", isWhite = true, text 
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in;
-  pointer-events: none;
+  /* pointer-events: none; */
   path {
     transition: all 0.5s;
     stroke: ${isWhite ? colors.DarkBlue : colors.White};

@@ -590,7 +590,7 @@ const ParallaxWrapper02 = styled.div`
 
 const HeroWrapper = styled.main`
   text-align: left;
-  padding: 200px 0 180px;
+  padding: 200px 0 76px;
   position: relative;
   .huge, h1{
     position: relative;

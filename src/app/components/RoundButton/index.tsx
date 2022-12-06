@@ -86,7 +86,7 @@ export default function RoundButton({ link, isWhite, text }) {
       width: 40px;
       height: 40px;
       &::before {
-        display: none;
+        /* display: none; */
       }
     }
   `}
