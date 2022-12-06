@@ -78,9 +78,7 @@ export function Masthead() {
               </Fade>
             </h1> :
             <h1>
-              <Fade bottom duration={500} delay={100}>
-                我們來自不同領域，形塑合拍有默契的跨職能團隊
-              </Fade>
+              我們來自不同領域，<div className='draw'>形塑合拍有默契的跨職能團隊</div>
             </h1>
           }
         </div>
@@ -94,6 +92,15 @@ const Wrapper = styled.main`
   padding: 280px 0 120px;
   .content {
     margin-top: 24px;
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 20px ${colors.BGGrey}, inset 0px 54px #FF977C;
+    }
+    .draw::after{
+      content: '';
+      border-bottom: 15px solid ${colors.ElectricBlue};
+    }
     h1 {
       margin: 0;
       display: flex;
@@ -107,32 +114,43 @@ const Wrapper = styled.main`
         /* transition: all 0.5s ease-in-out; */
         background: ${colors.Orange};
         z-index: -1;
-        animation: marker 1s forwards;
+        animation: mark 1s forwards;
         animation-delay: .6s;
         animation-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
       }
     }
   }
-  @keyframes marker {
-    from {
-      width: 0;
-    }
-    to {
-      width: 484px;
-    }
-  }
   ${media.large`
     padding: 72px 0 48px;
+    .content{
+      h1{
+        display: inline;
+      }
+    }
+    @keyframes mark {
+      from {
+        width: 0;
+      }
+      to {
+        width: 484px;
+      }
+    }
   `}
   ${media.medium`
     .content {
       h1 {
+        .draw{
+          box-shadow: inset 0 14px ${colors.BGGrey}, inset 0px 54px #FF977C;
+        }
+        h1{
+          display: inline;
+        }
         span{
           top: 16px;
           height: 16px;
         }
       }
-    @keyframes marker {
+    @keyframes mark {
       from {
         width: 0;
       }

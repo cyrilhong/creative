@@ -142,6 +142,7 @@ export function ContactPage() {
   useEffect(() => {
     setValue(Services[0].title, true);
     setValue('time', 0);
+    setValue('CoopTime', 0);
   }, [])
 
   const getTime = watch('time')
@@ -338,9 +339,9 @@ export function ContactPage() {
               <FormTitle>
                 <div className="title">
                   <div className="dot" />
-                  <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                  <Box display={'flex'} flexDirection={windowWidth > 960 ? "row" : "column"} alignContent={"baseline"}>
                     <h2>您設想的預算大約是？</h2>
-                    <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
+                    <h5 style={{ margin: windowWidth > 960 ? '0 0 0 4px' : '0 0 0 -12px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
                   </Box>
                 </div>
               </FormTitle>
@@ -372,7 +373,7 @@ export function ContactPage() {
                         {...field}
                         type="text"
                         variant="filled"
-                        placeholder="名字 *"
+                        label="聯絡人 *"
                         fullWidth
                         error={invalid}
                         helperText={error?.message}
@@ -383,14 +384,14 @@ export function ContactPage() {
                     name="company"
                     control={control}
                     rules={{
-                      required: true
+                      required: '請填寫您的公司名稱'
                     }}
                     render={({ field, fieldState: { error, invalid } }) => (
                       <TextField
                         {...field}
                         type="text"
                         variant="filled"
-                        placeholder="公司名稱 *"
+                        label="公司名稱 *"
                         fullWidth
                         error={invalid}
                         helperText={error?.message}
@@ -402,33 +403,38 @@ export function ContactPage() {
                   <FormController
                     name="phone"
                     control={control}
-                    // rules={{
-                    //   required: true
-                    // }}
+                    rules={{
+                      required: '請填寫您的聯絡電話'
+                    }}
                     render={({ field, fieldState: { error, invalid } }) => (
                       <TextField
                         {...field}
+                        label="聯絡電話 *"
                         type="text"
                         variant="filled"
-                        placeholder="聯絡電話"
                         fullWidth
                         error={invalid}
                         helperText={error?.message}
                       />
+                      // <TextField label="Filled" variant="filled" />
                     )}
                   />
                   <FormController
                     name="email"
                     control={control}
                     rules={{
-                      required: true
+                      required: "請填寫您的電子郵件",
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: '請填寫有效的電子郵件'
+                      }
                     }}
                     render={({ field, fieldState: { error, invalid } }) => (
                       <TextField
                         {...field}
                         type="text"
                         variant="filled"
-                        placeholder="電子郵件 *"
+                        label="電子郵件 *"
                         fullWidth
                         error={invalid}
                         helperText={error?.message}
@@ -544,7 +550,7 @@ export function ContactPage() {
                     offset: -208
                   }) : setOpen(true)
                 }}>
-                  <Box>
+                  <Box className='get-in-touch-wrapper'>
                     <h2>專案詢問</h2>
                     <h5 className="eng">GET IN TOUCH</h5>
                   </Box>
@@ -897,7 +903,11 @@ export function ContactPage() {
                             name="email"
                             control={control}
                             rules={{
-                              required: '請填寫您的電子郵件'
+                              required: "請填寫您的電子郵件",
+                              pattern: {
+                                value: /\S+@\S+\.\S+/,
+                                message: '請填寫有效的電子郵件'
+                              }
                             }}
                             render={({ field, fieldState: { error, invalid } }) => (
                               <TextField
@@ -960,7 +970,7 @@ export function ContactPage() {
                   <div className="dot" />
                   <h4 className="eng">LEARN MORE</h4>
                 </div>
-                <h4 className="eng">03</h4>
+                <h4 className="eng">01</h4>
               </Horizon>
               <Grid container spacing={8}>
                 <Grid item xs={12} md={4}>
@@ -1043,7 +1053,7 @@ export function ContactPage() {
                   <div className="dot" />
                   <h4 className="eng">CONTACT</h4>
                 </div>
-                <h4 className="eng">04</h4>
+                <h4 className="eng">02</h4>
               </Horizon>
               <Contact>
                 <Grid container spacing={isDesktop() ? 8 : 0}>
@@ -1056,9 +1066,9 @@ export function ContactPage() {
                   <Grid item xs={12} md={3} className="contact-us">
                     <h4 className="eng">Contact Us.</h4>
                     <h5>
-                      TEL . +886-2-85029135 <br />
-                      FAX. +886-2-85029151 <br />
-                      MOBILE. +886-922-083-876
+                      <Box><div className="left-col">T.</div><div className="right-col">+886-2-85029135</div></Box>
+                      <Box><div className="left-col">F.</div><div className="right-col">+886-2-85029151</div></Box>
+                      <Box><div className="left-col">M.</div><div className="right-col">+886-922-083-876</div></Box>
                     </h5>
                   </Grid>
                   <Grid item xs={12} md={4}>
@@ -1175,6 +1185,7 @@ const GetInTouch = styled.div<{
   cursor: pointer;
   img{
     animation: shake 2s infinite;
+    position: relative;
   }
   @keyframes shake {
     0% {
@@ -1193,7 +1204,7 @@ const GetInTouch = styled.div<{
     width: 310px;
     height: 186px;
     background: ${colors.DarkBlue};
-    border: 1px solid rgba(162, 170, 164, 0.5);
+    /* border: 1px solid rgba(162, 170, 164, 0.5); */
     /* box-shadow: 4px 4px 15px rgb(0 0 0 / 50%); */
     box-shadow: 4px 4px 8px rgba(12, 28, 36, 0.05);
     border-radius: 100%;
@@ -1249,13 +1260,13 @@ const GetInTouch = styled.div<{
   @media screen and (max-width: 1360px) {
     position: fixed;
     right: 21px;
-    bottom: -20px;
+    bottom: 0px;
     z-index: 3;
-    width: 168px;
+    width: 200px;
     gap: 8px;
     &::after {
-      width: 168px;
-      height: 100px;
+      width: 200px;
+      height: 124px;
       top: 40px;
     }
     h5{
@@ -1273,6 +1284,19 @@ const GetInTouch = styled.div<{
   ${media.large`
     &::before {
       display: none;
+    }
+    img{
+      top: 12px;
+    }
+    .get-in-touch-wrapper{
+      position: relative;
+      top: 14px;
+    }
+  `}
+  ${media.medium`
+    img{
+      transform: rotate(-90deg);
+      animation: initial;
     }
   `}
 `;
@@ -1517,6 +1541,19 @@ const FormSection = styled.div`
     .form-section{
       display: none;
     }
+    .accordion__panel{
+      ul{
+        li{
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+      p{
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 62px;
+      }
+    }
   `}
 `;
 
@@ -1534,7 +1571,7 @@ const RadioGroup = styled.div`
     padding: 20px;
     min-height: 210px;
     position: relative;
-    transition: background-color 0.2s ease-in;
+    transition: background-color 0.1s ease-in;
     cursor: pointer;
     &:hover{
       outline: 2px solid ${colors.AJABlue};
@@ -1591,7 +1628,7 @@ const SmallRadioGroup = styled.div`
     width: 100%;
     padding: 20px;
     position: relative;
-    transition: background-color 0.5s ease-in;
+    transition: background-color 0.1s ease-in;
     cursor: pointer;
     &:hover{
       outline: 2px solid ${colors.AJABlue};
@@ -1650,9 +1687,10 @@ const InputForm = styled.div`
   }
   .MuiFormLabel-root.Mui-focused{
     color:${colors.AJABlue};
-    font-size: 12px;
+    font-size: 14px;
   }
   .MuiFilledInput-underline{
+    border-color: #0C1C24;
     &.Mui-error{
       &::before{
         border-color: #F84214;
@@ -1661,9 +1699,9 @@ const InputForm = styled.div`
     }
   }
   .Mui-focused.MuiFilledInput-underline{
-    
     &::before{
       border-width: 2px!important; 
+      border-color: #0C1C24;
     }
   }
   .MuiFormHelperText-root{
@@ -1713,6 +1751,11 @@ const InputForm = styled.div`
     /* border-bottom: 1px solid ${colors.DarkBlue}; */
     font-size: 20px;
   }
+  ${media.medium`
+    .MuiFormLabel-root{
+     font-size: 16px; 
+    }
+  `}
 `;
 
 const Horizon = styled.div<{
@@ -1770,11 +1813,16 @@ const FaqGroup = styled.div`
     font-weight: bold;
     margin-bottom: 32px;
   }
+  .accordion__panel{
+    margin-top: 26px;
+    /* margin-bottom: 26px; */
+  }
   ${media.medium`
     padding-left: 0;
     .accordion__item{
       h3{
         font-size: 18px;
+        padding-right: 16px;
       }
     }
   `}
@@ -1783,6 +1831,23 @@ const FaqGroup = styled.div`
 const Contact = styled.div`
   .contact-us{
     margin-left: -26px;
+    h5{
+      font-family: "Poppins", "Noto",sans-serif;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 1px;
+      .MuiBox-root{
+        display: flex;
+      }
+      .left-col{
+        flex: 1 1 39px;
+        min-width: 39px;
+      }
+      .right-col{
+        flex: 1 1 100%;
+        /* padding: 0px; */
+      }
+    }
   }
   .title {
     font-size: 60px;
@@ -1822,7 +1887,7 @@ const Contact = styled.div`
       margin-bottom: 24px;
     }
     h4{
-      margin: 24px 0 0;
+      margin: 24px 0 8px;
     }
     h5{
       margin: 0;
@@ -1868,7 +1933,7 @@ const FeatureHead = styled.h2`
   `}
 `
 const MbForm = styled.div`
-  padding: 24px 20px 105px;
+  padding: 84px 20px 105px;
   .horizon{
     border-bottom: 1px solid ${colors.DarkBlue};
     border-top: 4px solid ${colors.DarkBlue};
@@ -1888,6 +1953,9 @@ const MbForm = styled.div`
   }
   h1{
     margin: 8px 0 26px;
+  }
+  h5{
+    font-size: 16px;
   }
   .radio{
     min-height: 160px;
@@ -1975,4 +2043,10 @@ const CustomCheckbox = styled.div`
       filter: grayscale(0);
     }
   }
+  ${media.medium`
+    h3{
+      font-size: 18px;
+      font-weight: 500!important;
+    }
+  `}
 `

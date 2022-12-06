@@ -90,16 +90,20 @@ export function CustomerPage() {
                   </Fade>
                 </div>
                 <div className="content">
-                  <Fade bottom duration={500} delay={100}>
-                    <h1>
+
+                  <h1>
+                    <Fade bottom duration={500} delay={100}>
                       我們
                       <Mark />
                       協助客戶創造價值，進而形塑共好的
-                    </h1>
-                    <h1>
+                    </Fade>
+                  </h1>
+                  <h1>
+                    <Fade bottom duration={500} delay={100}>
                       長期夥伴關係
-                    </h1>
-                  </Fade>
+                    </Fade>
+                  </h1>
+
                 </div>
               </> :
               <>
@@ -111,9 +115,8 @@ export function CustomerPage() {
                 <div className="content">
                   <Fade bottom duration={500} delay={100}>
                     <h1>
-                      <Box>我們</Box>
-                      <Mark />
-                      協助客戶創造價值，進而形塑共好的長期夥伴關係
+                      我們協助客戶創造價值，進而形塑共好的長期夥伴關係
+
                     </h1>
                   </Fade>
                 </div>

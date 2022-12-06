@@ -146,7 +146,7 @@ export function JoinUsPage() {
               </Grid>
               <Grid xs={8} md={7} className="left-2">
                 <ParallaxImg>
-                  <Parallax speed={25}>
+                  <Parallax speed={windowWidth>960?25:10}>
                     <img src={hero3} alt="hero3" />
                   </Parallax>
                 </ParallaxImg>
@@ -531,6 +531,10 @@ const HeroSection = styled.div`
     .right{
       display: none;
     }
+    .teams-img{
+      .left-2{
+        /* bottom: -10px; */
+      }
   `}
 `;
 
@@ -653,10 +657,13 @@ const Jobs = styled.div`
     padding-bottom: 72px;
     .left{
       h2{
-        margin: 8px 0 48px;
+        margin: 8px 0 0;
       }
       br{
         display: none;
+      }
+      a{
+        margin-bottom: 32px;
       }
     }
     .job-list{
@@ -664,6 +671,11 @@ const Jobs = styled.div`
       ul{
         li{
           flex-direction: column;
+          .accordion__button{
+            h1{
+              margin-bottom: 10px;
+            }
+          }
           .accordion__panel{
             padding-right: 0;
           }
@@ -809,7 +821,8 @@ const TeamBuilding = styled.div`
       margin: 0 10px;
     }
     .slick-list {
-      margin: 0 -10px;
+      margin: 0 auto;
+      max-width: 68vw;
     }
   `}
 `;

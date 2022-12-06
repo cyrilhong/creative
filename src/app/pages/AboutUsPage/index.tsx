@@ -60,7 +60,7 @@ export function AboutUsPage() {
           </ParallaxImg>
           <HappyTeam>
             <Grid className="text" container spacing={5} rowSpacing={9}>
-              {isDesktop() ?
+              {windowWidth>960 ?
                 <Grid xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="1">
                   <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
                     <div className="super eng">Happy Teams</div>
@@ -340,6 +340,9 @@ const ParallaxImg = styled.div`
   img {
     width: 100%;
   }
+  ${media.medium`
+    margin: 0 -20px;
+  `}
 `;
 
 const HappyTeam = styled.div`
@@ -418,7 +421,8 @@ const HappyTeam = styled.div`
   ${media.medium`
     padding: 12px 0 48px;
     .change {
-      margin-left: 25px;
+      /* margin-left: 25px; */
+      margin-left: -9px;
     }
     .left{
       display: none;
@@ -454,18 +458,20 @@ const HappyTeam = styled.div`
       z-index: 0;
       :nth-child(2) {
         padding-right: 10px;
-        margin-top: -542px;
+        margin-top: -412px;
         /* margin-top: -242px; */
       }
       :nth-child(3) {
         padding-left: 10px;
-        margin-top: -660px;
+        margin-top: -540px;
         /* margin-top: -336px; */
       }
     }
     .mb-hotBaloon{
       display: block;
-      margin-left: 36px;
+      /* margin-left: 36px; */
+      max-width: 50%;
+      margin: 0 auto;
     }
   `}
   ${media.small`
@@ -578,6 +584,11 @@ const Leadership = styled.div`
     .info{
       margin: 16px 0 -32px;
       padding-bottom: 16px;
+    }
+    .accordion__panel{
+      h4{
+        font-size: 16px;
+      }
     }
   `}
 `;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Slider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import * as colors from 'styles/colors';
+import { useWindowSize, isDesktop } from '../../hooks'
 export default function SliderBar() {
   function valuetext(value: number) {
     return `${value}萬`;
@@ -11,6 +12,29 @@ export default function SliderBar() {
   const handleChange = (event: Event, newValue: number | number[]) => {
     setBudge(newValue as number[]);
   };
+  const windowWidth = useWindowSize().width
+  const CustomSlider = styled(Slider)({
+    height: 12,
+    color: colors.AJABlue,
+    '& .MuiSlider-rail': {
+      backgroundColor: colors.AJABlue,
+    },
+    '& .MuiSlider-markLabel': {
+      top: '46px',
+      transform: windowWidth> 960?'initial':'rotate(-45deg)',
+      marginLeft: windowWidth> 960?'0':'-16px'
+    },
+    '& .MuiSlider-thumb': {
+      height: 27,
+      width: 27,
+      backgroundColor: colors.AJABlue,
+      border: '3px solid' + colors.White,
+      '&:hover': {
+        boxShadow: '0 0 0 8px rgba(25, 54, 92, 0.30)',
+      }
+    }
+  })
+  
   return (
     <CustomSlider
       getAriaLabel={() => '預算'}
@@ -59,25 +83,7 @@ export default function SliderBar() {
       getAriaValueText={valuetext}
     />
   );
+  
 }
 
 
-const CustomSlider = styled(Slider)({
-  height: 12,
-  color: colors.AJABlue,
-  '& .MuiSlider-rail': {
-    backgroundColor: colors.AJABlue,
-  },
-  '& .MuiSlider-markLabel': {
-    top: '46px'
-  },
-  '& .MuiSlider-thumb': {
-    height: 27,
-    width: 27,
-    backgroundColor: colors.AJABlue,
-    border: '3px solid' + colors.White,
-    '&:hover': {
-      boxShadow: '0 0 0 8px rgba(25, 54, 92, 0.30)',
-    }
-  },
-})

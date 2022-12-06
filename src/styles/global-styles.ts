@@ -268,12 +268,17 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: end;
     display: flex;
     border-bottom: 1px solid #EDEFED;
-    button{
-    }
+    position: fixed;
+    z-index: 10;
+    background: ${colors.White};
+    border-radius: 10px 10px 0 0;
   }
   .MuiPaper-root.MuiDialog-paper{
-    margin: 75px 0 0;
+    top: 16px;
+    margin: 0;
     border-radius: 16px 16px 0 0;
+    max-height: calc(100% - 32px);
+
   }
 `;
 
