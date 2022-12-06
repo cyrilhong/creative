@@ -231,39 +231,45 @@ export function HomePage() {
 
     // You can handle player events here, for example:
     player.on('waiting', () => {
-      videojs.log('player is waiting');
+      // videojs.log('player is waiting');
     });
 
     player.on('dispose', () => {
-      videojs.log('player will dispose');
+      // videojs.log('player will dispose');
     });
 
     player.on('click', () => {
+      const paused = player.paused();
       if (player.isFullscreen()) {
         setVideoOpen(false);
-        player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
+        // player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
         // console.log('click');
-        player.exitFullscreen();
-        // player.play();
-        player.muted(true);
+        // player.exitFullscreen();
+        player.pause();
+        // player.muted(true);
+        if (paused) {
+          player.play();
+          setVideoOpen(true);
+        }
       } else {
         setVideoOpen(true);
         player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel.mp4' });
-        console.log('click');
+        // console.log('click');
         player.requestFullscreen();
         player.play();
         player.muted(false);
       }
     });
-    // player.on('fullscreenchange', function () {
-    //   if (player.isFullscreen()) {
-
-    //   } else {
-    //     player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
-    //     player.muted(true);
-    //     setVideoOpen(false);
-    //   }
-    // });
+    player.on('fullscreenchange', function () {
+      if (player.isFullscreen()) {
+        // player.pause();
+      } else {
+        player.pause();
+        // player.src({ type: 'video/mp4', src: 'https://aja-creative.com/video/showreel-short.mp4' });
+        // player.muted(true);
+        setVideoOpen(false);
+      }
+    });
   };
 
   const target = useRef(null);
@@ -313,7 +319,7 @@ export function HomePage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar bgColor={isBlackBg ? colors.DarkBlue : colors.White} color={isBlackBg ? colors.White : colors.DarkBlue} />
+      <NavBar bgColor={isBlackBg ? colors.DarkBlue : colors.BGGreen} color={isBlackBg ? colors.BGGreen : colors.DarkBlue} />
       <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper>
           <Masthead />
@@ -398,7 +404,7 @@ export function HomePage() {
           </FeatureHead>
           <WrappedButton
             text="OUR WORKS"
-            link="#"
+            link="/case"
             isWhite={false}
           />
           <CaseList>
@@ -499,7 +505,7 @@ export function HomePage() {
               </div>
               <h4 className="eng">02</h4>
             </Horizon>
-            <div className="content" style={{minHeight:imgWallHeight}}>
+            <div className="content" style={{ minHeight: imgWallHeight }}>
               {!isBlackBg &&
                 <Grid container spacing={0} rowSpacing={0}>
                   {windowWidth > 960 ?
@@ -541,7 +547,7 @@ export function HomePage() {
                     <div style={{ display: 'inline-flex' }}>
                       <WrappedButton
                         text="OUR CLIENTS"
-                        link="#"
+                        link="/customer"
                         isWhite={true}
                       />
                     </div>
@@ -577,7 +583,7 @@ export function HomePage() {
                   <Parallax
                     className="wall3"
                     speed={windowWidth > 960 ? 18 : 9}
-                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall3} alt="wall3" />
@@ -587,7 +593,7 @@ export function HomePage() {
                   <Parallax
                     className="wall4"
                     speed={windowWidth > 960 ? 16 : 8}
-                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall4} alt="wall4" />
@@ -597,7 +603,7 @@ export function HomePage() {
                   <Parallax
                     className="wall5"
                     speed={windowWidth > 960 ? 23 : 12}
-                    scale={windowWidth > 960?[1.5, 0]:[1,1]}
+                    scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
                     <img src={wall5} alt="wall5" />
@@ -687,7 +693,7 @@ export function HomePage() {
             {windowWidth > 960 ? <img src={dedicationBg} alt="dedicationBg" /> : <img src={dedicationBgMb} alt="dedicationBg" />}
           </Parallax>
         </div>
-        <Parallax translateX={windowWidth>640?[30, -55]:[1,1]}>
+        <Parallax translateX={windowWidth > 640 ? [30, -55] : [1, 1]}>
           <img className="marquee" src={dedicationWording} alt="Dedication beyond the expected" />
         </Parallax>
         <Fade bottom>
@@ -737,7 +743,7 @@ export function HomePage() {
             </FeatureHead>
             <WrappedButton
               text="OUR SERVICES"
-              link="/case"
+              link="/service"
               isWhite={false}
             />
             <ServiceList>
