@@ -3,7 +3,7 @@ import * as colors from 'styles/colors';
 import styled from 'styled-components/macro';
 import { media } from 'styles/media';
 
-export default function RoundButton({ link, isWhite, text, target="_blank" }) {
+export default function RoundButton({ link, isWhite, text, target = "_blank" }) {
   const Button = styled.a`
   background: initial;
   border: 0;
@@ -93,37 +93,69 @@ export default function RoundButton({ link, isWhite, text, target="_blank" }) {
 `;
 
   return (
-    <Button href={link} target={target}>
-      <div className="wrapper">
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
-            stroke="#fff"
-            strokeWidth="3"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
-            stroke="#fff"
-            strokeWidth="3"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M9.30701 20.0303H30.6952"
-            stroke="#fff"
-            strokeWidth="3"
-            strokeMiterlimit="10"
-          />
-        </svg>
-      </div>
-      <h4 className="eng">{text}</h4>
-    </Button>
+    !!link ?
+      <Button href={link} target={target}>
+        <div className="wrapper">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M9.30701 20.0303H30.6952"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+          </svg>
+        </div>
+        <h4 className="eng">{text}</h4>
+      </Button> :
+      <Button>
+        <div className="wrapper">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M9.30701 20.0303H30.6952"
+              stroke="#fff"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            />
+          </svg>
+        </div>
+        <h4 className="eng">{text}</h4>
+      </Button>
   );
 }
 

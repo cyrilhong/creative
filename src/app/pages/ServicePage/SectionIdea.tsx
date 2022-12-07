@@ -26,7 +26,7 @@ export default function Idea() {
     <SectionIdea ref={ideaRef}>
       <Container maxWidth={'xl'}>
         <Grid container className="container">
-          <Grid xs={10} xsOffset={1} md={6} mdOffset={3}>
+          <Grid xs={6} xsOffset={3}>
             <Box maxWidth={'220px'} m="0 auto">
               <Fade>
                 {ideaActive && <Lottie animationData={ourWorks} loop={false} />}
@@ -38,7 +38,7 @@ export default function Idea() {
             <h2>我們相信成功伴隨著責任，看看我們的精彩案例</h2>
             <WrappedButton
               text="OUR WORKS"
-              link="#"
+              link="/case"
               isWhite={true}
             />
           </Grid>
@@ -80,9 +80,22 @@ const SectionIdea = styled.div`
       height: 46px;
     }
   }
+
+  .container{
+    flex-direction: column;
+    border-right: 1px solid ${colors.DarkBlue};
+    border-left: 1px solid ${colors.DarkBlue};
+    gap: 48px;
+  }
   ${media.large`
     .more-client {
       grid-template-columns: repeat(4, 1fr);
+    }
+    .container{
+      flex-direction: column;
+      border-right: 1px solid ${colors.DarkBlue};
+      border-left: 1px solid ${colors.DarkBlue};
+      gap: 48px;
     }
   `}
   ${media.medium`

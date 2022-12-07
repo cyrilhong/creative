@@ -43,11 +43,16 @@ export function AboutUsPage() {
   //   }
   // });
   const windowWidth = useWindowSize().width
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <ParallaxProvider>
       <Helmet>
-        <title>About Us</title>
-        <meta name="description" content="About Us" />
+        <title>關於我們</title>
+        <meta name="description" content="We believe a great team comes with diversity & growth mindsets." />
       </Helmet>
       <NavBar bgColor={color.BGIvory} color={color.DarkBlue} />
       <div className="bg-about-us">
@@ -60,7 +65,7 @@ export function AboutUsPage() {
           </ParallaxImg>
           <HappyTeam>
             <Grid className="text" container spacing={5} rowSpacing={9}>
-              {windowWidth>960 ?
+              {windowWidth > 960 ?
                 <Grid xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="1">
                   <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
                     <div className="super eng">Happy Teams</div>
@@ -184,15 +189,7 @@ export function AboutUsPage() {
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4}>
                   {isDesktop() ? <div className="huge eng">
-                    <Fade bottom cascade duration={1000} delay={100}>
-                      Our
-                    </Fade>
-                    <Fade bottom cascade duration={1000} delay={100}>
-                      Leadership
-                    </Fade>
-                    <Fade bottom cascade duration={1000} delay={100}>
-                      Team
-                    </Fade>
+                    Our <br />Leadership <br />Team
                   </div> :
                     <div className="huge eng">
                       <Fade bottom cascade duration={1000} delay={100}>
@@ -384,6 +381,7 @@ const HappyTeam = styled.div`
       border-right: 1px solid #0c1c24;
       h2 {
         margin: 0 0 16px 0;
+        font-weight: 400;
       }
       h4 {
         margin: 0 0 34px;
@@ -449,6 +447,7 @@ const HappyTeam = styled.div`
           }
           h4{
             margin-bottom: 24px;
+            font-size: 16px;
           }
         }
       }
@@ -471,7 +470,7 @@ const HappyTeam = styled.div`
       display: block;
       /* margin-left: 36px; */
       max-width: 50%;
-      margin: 0 auto;
+      margin: 0 auto 40px;
     }
   `}
   ${media.small`
@@ -554,6 +553,9 @@ const Leadership = styled.div`
       filter: grayscale(0);
     }
   }
+  .huge{
+    display: inline-block;
+  }
   .info {
     display: flex;
     justify-content: space-between;
@@ -577,6 +579,12 @@ const Leadership = styled.div`
       justify-content: space-between;
     }
   }
+  ${media.large`
+    .huge{
+      font-size: 5vw;
+      line-height: 6vw;
+    }
+  `}
   ${media.medium`
     h1{
       margin: 8px 0 48px;
@@ -584,6 +592,10 @@ const Leadership = styled.div`
     .info{
       margin: 16px 0 -32px;
       padding-bottom: 16px;
+    }
+    .huge{
+      font-size: 32px;
+      line-height: 40px;
     }
     .accordion__panel{
       h4{

@@ -85,7 +85,7 @@ const SectionIdea = styled.div`
   }
   h2 {
     font-size: 24px;
-    margin: 8px 0 0;
+    margin: 8px 0 16px;
   }
   a {
     margin: 32px auto 0;
@@ -112,7 +112,7 @@ const SectionIdea = styled.div`
       margin-top: 24px;:
     }
     h2{
-      margin: 8px 0 24px;
+      margin: 8px 0 16px;
       font-size: 18px;
     }
     a{

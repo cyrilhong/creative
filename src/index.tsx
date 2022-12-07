@@ -48,10 +48,10 @@ const theme = createTheme({
     values: {
       ...defaultTheme.breakpoints.values,
       xs: 0,
-      sm: 639,
-      md: 959,
-      lg: 1439,
-      xl: 1919,
+      sm: 640,
+      md: 960,
+      lg: 1440,
+      xl: 1920,
     },
   },
 });

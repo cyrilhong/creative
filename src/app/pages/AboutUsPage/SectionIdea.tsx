@@ -42,7 +42,7 @@ export default function Idea() {
           <Box display={"flex"} justifyContent="center">
             <WrappedButton
               text="JOIN US"
-              link="#"
+              link="/join-us"
               isWhite={true}
             />
           </Box>

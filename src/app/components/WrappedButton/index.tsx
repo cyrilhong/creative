@@ -9,7 +9,7 @@ interface Props {
   blank?: boolean
 }
 
-export default function WrappedButton<Props>({ link = "#", isWhite = true, text = "", iconRotate = 0, blank = false }) {
+export default function WrappedButton<Props>({ link = "", isWhite = true, text = "", iconRotate = 0, blank = false }) {
   const CTA = styled.a`
   width: auto;
   display: inline-flex;

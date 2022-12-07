@@ -8,7 +8,7 @@ import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components/macro';
 import { useForm as formspreeUseForm, ValidationError } from '@formspree/react';
-import { Box, Checkbox, TextField } from '@mui/material';
+import { Box, Checkbox, TextField, Alert } from '@mui/material';
 import SliderBar from './Slider';
 import { Grid, Container } from '@mui/material';
 import arrowBtn from './assets/arrowBtn.svg';
@@ -30,8 +30,7 @@ import IconButton from '@mui/material/IconButton';
 import closeIcon from './assets/close-icon.svg';
 import { useForm, Controller as FormController, FormProvider } from 'react-hook-form';
 import Collapse from 'app/components/Collapse'
-import axios from 'axios';
-
+import ajax from 'ajax';
 const Services = [
   {
     "title": "創新服務設計",
@@ -96,9 +95,11 @@ export function ContactPage() {
     }
   });
   const [open, setOpen] = React.useState(false);
+  const [commentVal, setCommentVal] = React.useState('');
   const handleClose = () => {
     setOpen(false);
   };
+  const [openNotification, setOpenNotification] = useState(false)
 
   const methods = useForm()
   const {
@@ -113,52 +114,85 @@ export function ContactPage() {
   } = methods
 
   const _onSubmit = async (data) => {
-    console.log(data);
-    axios.post('https://script.googleapis.com/v1/scripts/AKfycbxOdwORwkPEfbxulZ7r8o_VlAnN_5xoWQazRYvKK1H9Y729GkabUuOskoSg95xgJsZh:run', {
-      name: "測試先生",
-      phone: "0912345678",
-      time: "2018/02/10 22:46:00",
-      order: "鹹酥雞 * 1",
-      price: "40"
-    },
-      {
-        headers: {
-          Authorization: 'AIzaSyCBFintH7Cv6A7HEL1N7u5ATmwUbGo9D4c'
-        }
+    // console.log(data);
+    let service: string[] = []
+    for (let property in data) {
+      // console.log('key:' + property, 'value:' + data[property]);
+      // console.log(typeof(property));
+      const name = property
+      if (data[property] === true) {
+        service.push(property)
       }
-    )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    }
+    // console.log(service);
+    const timeName = ["三週內", "一個月內", "二個月內", "沒有或不確定"]
+    const coopTimeName = ["三個月內", "半年內", "一年"]
 
+    const budgeArr = ["0萬", "100萬", "200萬", "300萬", "400萬", "500萬", "600萬", "700萬", "800萬以上"]
+    let budgeText = ''
+    data.budge.map((item, index) => {
+      budgeText += (budgeArr[(item / 12.5)] + (index == 0 ? '至' : ''))
+    })
+    // console.log(budgeText);
+
+    let body = {
+      "method": "write",
+      "name": data.name,
+      "company": data.company,
+      "phone": data.phone,
+      "email": data.email,
+      "service": service,
+      "startTime": timeName[data.time],
+      "coopTime": coopTimeName[data.coopTime],
+      "budge": budgeText,
+      "comment": data.comment
+    }
+    // console.log(body);
+
+    ajax.post('https://script.google.com/macros/s/AKfycbwoQO9zYA7Z5LsvZ46taKVMc_yZkItma5ykVzm4STyWCrLtBQkvyNAYLWiQZhZCSxzrnA/exec', body);
+    setOpenNotification(true)
+    setTimeout(() => {
+      setOpenNotification(false);
+    }, 3000);
   }
 
   const _onError = (error) => {
     console.log(error);
+    const element = document.getElementById(Object.keys(error)[0]);
+    // console.log(element);
+    if (element) {
+      element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
   }
   useEffect(() => {
     setValue(Services[0].title, true);
     setValue('time', 0);
-    setValue('CoopTime', 0);
+    setValue('coopTime', 0);
   }, [])
 
   const getTime = watch('time')
-  const getCoopTime = watch('CoopTime')
+  const getCoopTime = watch('coopTime')
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
 
   return (
     <ParallaxProvider>
       <Controller>
         <Helmet>
-          <title>Contact Us</title>
+          <title>聯絡我們</title>
           <meta
             name="description"
             content="Let’s talk about what we can make, build, design together."
           />
         </Helmet>
+        <Notification open={openNotification}>
+          <Alert severity="success">表單送出，我們將會盡快與您聯絡。</Alert>
+          <Fade top>
+          </Fade>
+        </Notification>
         <Dialog
           open={open}
           // TransitionComponent={Transition}
@@ -197,7 +231,6 @@ export function ContactPage() {
                       key={index}
                       render={({ field, fieldState: { invalid } }) => (
                         <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
-                          {/* <img src={item.icon} alt="careVisit" /> */}
                           <label>
                             <Checkbox
                               name={field.name}
@@ -214,7 +247,6 @@ export function ContactPage() {
                               {item.content}
                             </p>
                           </label>
-                          {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
                         </CustomCheckbox>
                       )}
                     />
@@ -287,7 +319,7 @@ export function ContactPage() {
                 </div>
               </FormTitle>
               <FormController
-                name="CoopTime"
+                name="coopTime"
                 control={control}
                 defaultValue={0}
                 render={({ field, fieldState: { invalid } }) => (
@@ -301,7 +333,7 @@ export function ContactPage() {
                           value={0}
                           checked={getCoopTime === 0}
                           onChange={() => {
-                            setValue('CoopTime', 0);
+                            setValue('coopTime', 0);
                           }}
                         />
                         <h3>三個月內</h3>
@@ -315,7 +347,7 @@ export function ContactPage() {
                           type="radio"
                           value={1}
                           checked={getCoopTime === 1}
-                          onChange={() => setValue('CoopTime', 1)}
+                          onChange={() => setValue('coopTime', 1)}
                         />
                         <h3>半年內</h3>
                       </label>
@@ -328,7 +360,7 @@ export function ContactPage() {
                           type="radio"
                           value={2}
                           checked={getCoopTime === 2}
-                          onChange={() => setValue('CoopTime', 2)}
+                          onChange={() => setValue('coopTime', 2)}
                         />
                         <h3>一年</h3>
                       </label>
@@ -346,7 +378,17 @@ export function ContactPage() {
                 </div>
               </FormTitle>
               <Box width={"100%"} padding="0 40px 0 12px">
-                <SliderBar />
+                <FormController
+                  name="budge"
+                  control={control}
+                  // defaultValue={0}
+                  render={({ field, fieldState: { invalid } }) => (
+                    <SliderBar sendBudge={(val) => {
+                      // console.log(val);
+                      setValue('budge', val)
+                    }} />
+                  )}
+                />
               </Box>
 
               <FormTitle>
@@ -359,88 +401,93 @@ export function ContactPage() {
                 </div>
               </FormTitle>
               <InputForm>
-                {/* <label htmlFor="email">聯絡人</label> */}
                 <div className="input-group">
-                  {/* {watch('name')} */}
-                  <FormController
-                    name="name"
-                    control={control}
-                    rules={{
-                      required: '請填寫您的姓名'
-                    }}
-                    render={({ field, fieldState: { error, invalid } }) => (
-                      <TextField
-                        {...field}
-                        type="text"
-                        variant="filled"
-                        label="聯絡人 *"
-                        fullWidth
-                        error={invalid}
-                        helperText={error?.message}
-                      />
-                    )}
-                  />
-                  <FormController
-                    name="company"
-                    control={control}
-                    rules={{
-                      required: '請填寫您的公司名稱'
-                    }}
-                    render={({ field, fieldState: { error, invalid } }) => (
-                      <TextField
-                        {...field}
-                        type="text"
-                        variant="filled"
-                        label="公司名稱 *"
-                        fullWidth
-                        error={invalid}
-                        helperText={error?.message}
-                      />
-                    )}
-                  />
+                  <Element id="name" name="name">
+                    <FormController
+                      name="name"
+                      control={control}
+                      rules={{
+                        required: '請填寫您的姓名'
+                      }}
+                      render={({ field, fieldState: { error, invalid } }) => (
+                        <TextField
+                          {...field}
+                          type="text"
+                          variant="filled"
+                          label="聯絡人 *"
+                          fullWidth
+                          error={invalid}
+                          helperText={error?.message}
+                        />
+                      )}
+                    />
+                  </Element>
+                  <Element id="company" name="company">
+                    <FormController
+                      name="company"
+                      control={control}
+                      rules={{
+                        required: '請填寫您的公司名稱'
+                      }}
+                      render={({ field, fieldState: { error, invalid } }) => (
+                        <TextField
+                          {...field}
+                          type="text"
+                          variant="filled"
+                          label="公司名稱 *"
+                          fullWidth
+                          error={invalid}
+                          helperText={error?.message}
+                        />
+                      )}
+                    />
+                  </Element>
                 </div>
-                <div className="input-group">
-                  <FormController
-                    name="phone"
-                    control={control}
-                    rules={{
-                      required: '請填寫您的聯絡電話'
-                    }}
-                    render={({ field, fieldState: { error, invalid } }) => (
-                      <TextField
-                        {...field}
-                        label="聯絡電話 *"
-                        type="text"
-                        variant="filled"
-                        fullWidth
-                        error={invalid}
-                        helperText={error?.message}
-                      />
-                      // <TextField label="Filled" variant="filled" />
-                    )}
-                  />
-                  <FormController
-                    name="email"
-                    control={control}
-                    rules={{
-                      required: "請填寫您的電子郵件",
-                      pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: '請填寫有效的電子郵件'
-                      }
-                    }}
-                    render={({ field, fieldState: { error, invalid } }) => (
-                      <TextField
-                        {...field}
-                        type="text"
-                        variant="filled"
-                        label="電子郵件 *"
-                        fullWidth
-                        error={invalid}
-                        helperText={error?.message}
-                      />
-                    )}
-                  />
+                <div id="phone" className="input-group">
+                  <Element  name="phone">
+                    <FormController
+                      name="phone"
+                      control={control}
+                      rules={{
+                        required: '請填寫您的聯絡電話'
+                      }}
+                      render={({ field, fieldState: { error, invalid } }) => (
+                        <TextField
+                          {...field}
+                          label="聯絡電話 *"
+                          type="text"
+                          variant="filled"
+                          fullWidth
+                          error={invalid}
+                          helperText={error?.message}
+                        />
+                      )}
+                    />
+                  </Element>
+                  <Element id="email" name="email">
+                    <FormController
+                      name="email"
+                      control={control}
+                      rules={{
+                        required: "請填寫您的電子郵件",
+                        pattern: {
+                          value: /\S+@\S+\.\S+/,
+                          message: '請填寫有效的電子郵件'
+                        }
+                      }}
+                      render={({ field, fieldState: { error, invalid } }) => (
+                        <TextField
+                          {...field}
+                          type="text"
+                          variant="filled"
+                          label="電子郵件 *"
+                          fullWidth
+                          error={invalid}
+                          helperText={error?.message}
+                        />
+                      )}
+                    />
+                  </Element>
                 </div>
                 <FormTitle>
                   <div className="title">
@@ -452,9 +499,9 @@ export function ContactPage() {
                   <FormController
                     name="comment"
                     control={control}
-                    rules={{
-                      required: true
-                    }}
+                    // rules={{
+                    //   required: true
+                    // }}
                     render={({ field, fieldState: { error, invalid } }) => (
                       <TextField
                         {...field}
@@ -596,7 +643,7 @@ export function ContactPage() {
                       </div>
                       <div className="horizon" />
                       <h4>
-                        大予向您做公司簡介並溝通專案需求，客戶可提供需求說明書（RFP）或其他有助於專案範圍評估的資料。
+                        AJA 向您做公司簡介並溝通專案需求，客戶可提供需求說明書（RFP）或其他有助於專案範圍評估的資料。
                       </h4>
                     </Step>
                   </Grid>
@@ -627,6 +674,7 @@ export function ContactPage() {
                 </Grid>
               </StepList>
             </Intro>
+
           </PageWrapper>
         </div>
         <FormSection className="service-second-section">
@@ -673,7 +721,6 @@ export function ContactPage() {
                                 key={index}
                                 render={({ field, fieldState: { invalid } }) => (
                                   <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
-                                    {/* <img src={item.icon} alt="careVisit" /> */}
                                     <label>
                                       <Checkbox
                                         name={field.name}
@@ -690,7 +737,6 @@ export function ContactPage() {
                                         {item.content}
                                       </p>
                                     </label>
-                                    {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
                                   </CustomCheckbox>
                                 )}
                               />
@@ -763,7 +809,7 @@ export function ContactPage() {
                           </div>
                         </FormTitle>
                         <FormController
-                          name="CoopTime"
+                          name="coopTime"
                           control={control}
                           render={({ field, fieldState: { invalid } }) => (
                             <SmallRadioGroup>
@@ -776,7 +822,7 @@ export function ContactPage() {
                                     value={0}
                                     checked={getCoopTime === 0}
                                     onChange={() => {
-                                      setValue('CoopTime', 0);
+                                      setValue('coopTime', 0);
                                     }}
                                   />
                                   <h3>三個月內</h3>
@@ -790,7 +836,7 @@ export function ContactPage() {
                                     type="radio"
                                     value={1}
                                     checked={getCoopTime === 1}
-                                    onChange={() => setValue('CoopTime', 1)}
+                                    onChange={() => setValue('coopTime', 1)}
                                   />
                                   <h3>半年內</h3>
                                 </label>
@@ -803,7 +849,7 @@ export function ContactPage() {
                                     type="radio"
                                     value={2}
                                     checked={getCoopTime === 2}
-                                    onChange={() => setValue('CoopTime', 2)}
+                                    onChange={() => setValue('coopTime', 2)}
                                   />
                                   <h3>一年</h3>
                                 </label>
@@ -821,8 +867,19 @@ export function ContactPage() {
                             </Box>
                           </div>
                         </FormTitle>
+                        {/* {JSON.stringify(watch('budge'))} */}
                         <Box width={"100%"} padding="0 40px 0 12px">
-                          <SliderBar />
+                          <FormController
+                            name="budge"
+                            control={control}
+                            defaultValue={[12.5, 37.5]}
+                            render={({ field, fieldState: { invalid } }) => (
+                              <SliderBar sendBudge={(val) => {
+                                console.log(val);
+                                setValue('budge', val)
+                              }} />
+                            )}
+                          />
                         </Box>
                         <FormTitle>
                           <div className="title">
@@ -834,10 +891,7 @@ export function ContactPage() {
                           </div>
                         </FormTitle>
                         <InputForm>
-                          {/* <label htmlFor="email">聯絡人</label> */}
                           <div className="input-group">
-
-                            {/* {watch('name')} */}
                             <FormController
                               name="name"
                               control={control}
@@ -892,7 +946,6 @@ export function ContactPage() {
                                   error={invalid}
                                   helperText={error?.message}
                                 />
-                                // <TextField label="Filled" variant="filled" />
                               )}
                             />
                             <FormController
@@ -924,13 +977,14 @@ export function ContactPage() {
                               <h2>告訴我們更多關於您的專案細節吧！</h2>
                             </div>
                           </FormTitle>
+                          {/* {watch('comment')} */}
                           <div className="input-group">
                             <FormController
                               name="comment"
                               control={control}
-                              rules={{
-                                required: true
-                              }}
+                              // rules={{
+                              //   required: true
+                              // }}
                               render={({ field, fieldState: { error, invalid } }) => (
                                 <TextField
                                   {...field}
@@ -940,8 +994,6 @@ export function ContactPage() {
                                   rows={5}
                                   placeholder="寫下更多關於產品或專案的想法，幫助我們更理解您的需求。"
                                   fullWidth
-                                  error={invalid}
-                                  helperText={error?.message}
                                 />
                               )}
                             />
@@ -987,7 +1039,7 @@ export function ContactPage() {
                       },
                       {
                         title: "除了 UX/UI 設計，AJA 能協助程式開發嗎？",
-                        answer: `<b>大予專注於 Web 前端開發，並不提供中、後台程式開發的服務。</b>因為程式開發和 UX/UI 設計的職能屬性大不相同。UX 與 UI 設計著重在優化使用者體驗、規劃產品該提供的功能、協助流程操作順暢、設計令人喜愛的視覺表現等。我們希望把心力放在做對的事情，發揮最大的合作成效。大予的客戶大多都有自己的 IT 或合作開發廠商，因此擁有許多與開發團隊配合的經驗。我們能提供完整規格文件，能與貴公司內外部的開發團隊合作無礙，讓設計與最終產品的結果一致。<br/><br/>若是 Web-based 的 UI ，我們會負責前端的 HTML 頁面和 CSS 程式碼。RD 只要依據我們前面跟貴公司確認的規格文件與設計圖，聚焦在完成程式功能並提升效能即可。若貴公司沒有內部開發團隊，我們也可以跟您指定的開發廠商合作，或由我們為您介紹合適的程式開發商。`,
+                        answer: `<b>AJA 專注於 Web 前端開發，並不提供中、後台程式開發的服務。</b>因為程式開發和 UX/UI 設計的職能屬性大不相同。UX 與 UI 設計著重在優化使用者體驗、規劃產品該提供的功能、協助流程操作順暢、設計令人喜愛的視覺表現等。我們希望把心力放在做對的事情，發揮最大的合作成效。AJA 的客戶大多都有自己的 IT 或合作開發廠商，因此擁有許多與開發團隊配合的經驗。我們能提供完整規格文件，能與貴公司內外部的開發團隊合作無礙，讓設計與最終產品的結果一致。<br/><br/>若是 Web-based 的 UI ，我們會負責前端的 HTML 頁面和 CSS 程式碼。RD 只要依據我們前面跟貴公司確認的規格文件與設計圖，聚焦在完成程式功能並提升效能即可。若貴公司沒有內部開發團隊，我們也可以跟您指定的開發廠商合作，或由我們為您介紹合適的程式開發商。`,
                         expanded: false
                       },
                     ]} />
@@ -997,22 +1049,22 @@ export function ContactPage() {
                     <Collapse list={[
                       {
                         title: "該在產品/服務開發的哪個階段，讓 AJA 開始參與？",
-                        answer: `<b>建議在產品的初期規劃階段或進行軟體改版計畫之前，就讓大予加入專案。</b>我們希望盡早理解貴公司的商業策略與目標，會針對公司內相關部門的需求進行訪談，研究終端使用者或消費者的潛在需求或痛點，找到產品或服務的改善點或機會點。這樣不但可節省內部人力資源，更可善用大予在各產業專案累積的經驗，提昇產品/服務的成功率與競爭力。<br/><br/>若貴公司產品都已經規劃完成，規格也已制定，我們的工作重點則會放在強化改善 UI 設計，並透過易用性測試或設計驗證，確保產品與服務的體驗。`,
+                        answer: `<b>建議在產品的初期規劃階段或進行軟體改版計畫之前，就讓 AJA 加入專案。</b>我們希望盡早理解貴公司的商業策略與目標，會針對公司內相關部門的需求進行訪談，研究終端使用者或消費者的潛在需求或痛點，找到產品或服務的改善點或機會點。這樣不但可節省內部人力資源，更可善用 AJA 在各產業專案累積的經驗，提昇產品/服務的成功率與競爭力。<br/><br/>若貴公司產品都已經規劃完成，規格也已制定，我們的工作重點則會放在強化改善 UI 設計，並透過易用性測試或設計驗證，確保產品與服務的體驗。`,
                         expanded: false
                       },
                       {
-                        title: "是否可以請AJA先提案比稿，再決定是否外包給你們？",
-                        answer: `<b>我們理解大型專案仍需經過必要的選商流程，但我們更相信，一個好設計，必須對要解決的問題有相當程度了解之後，才更有機會達成。</b>對於每個專案，AJA 會先投入相當的人力與時間，淬鍊出最好的設計。AJA 對於每個客戶的專案，是完全客製且獨特的，沒有模版也沒有捷徑，只有日積月累的專業能力和經驗。我們可先向您展示過去類似的案例作品，並協助您做內部溝通，說明我們會如何進行專案、預計交付的成果，及可能的設計方向。在一定的預算規模前提下，我們仍可依據客戶提供的邀稿/需求說明書 (RFP) 並與客戶充分溝通之後，提供服務建議書並參與選商。`,
+                        title: "是否可以請 AJA 先提案比稿，再決定是否外包給你們？",
+                        answer: `<b>我們理解大型專案仍需經過必要的選商流程，但我們更相信，一個好設計，必須對要解決的問題有相當程度了解之後，才更有機會達成。</b>對於每個專案，AJA 會先投入相當的人力與時間，淬鍊出最好的設計。AJA 對於每個客戶的專案，是完全客製且獨特的，沒有模版也沒有捷徑，只有日積月累的專業能力和經驗。我們可先向您展示過去類似的案例作品，並協助您做內部溝通，說明我們會如何進行專案、預計交付的成果，及可能的設計方向。在一定的預算規模前提下，我們仍可依據客戶提供的邀稿/需求說明書（RFP）並與客戶充分溝通之後，提供服務建議書並參與選商。`,
                         expanded: false
                       },
                       {
                         title: "專案時程需花費多久？",
-                        answer: `<b>視專案的規模與內容，以及當時人力狀況而定。平均約為 3~6 個月。</b>一般而言，一個中型規模以上的 App或網站專案，需要 4~6 週進行研究規劃，4~6 週完成 UX/UI 設計，以及額外的 4~8 週完成給圖作業或前端開發。通常開發人員在設計專案進行到中、後半段時就可以開始同步進行程式開發作業。若狀況允許，我們建議保留多點時間在前期的研究與規劃階段，包含設計重點、規格訂定、設計風格等，這些項目確認越清楚，後續細部設計與開發效率也會相對提昇。`,
+                        answer: `<b>視專案的規模與內容，以及當時人力狀況而定。平均約為 3~6 個月。</b>一般而言，一個中型規模以上的 App 或網站專案，需要 4~6 週進行研究規劃，4~6 週完成 UX/UI 設計，以及額外的 4~8 週完成給圖作業或前端開發。通常開發人員在設計專案進行到中、後半段時就可以開始同步進行程式開發作業。若狀況允許，我們建議保留多點時間在前期的研究與規劃階段，包含設計重點、規格訂定、設計風格等，這些項目確認越清楚，後續細部設計與開發效率也會相對提昇。`,
                         expanded: false
                       },
                       {
                         title: "專案進行時，如何配合達到最好成效？",
-                        answer: `<b>以專案小組與您充分討論溝通，更歡迎您與我們共同參與相關活動。</b>專案正式開始時，AJA通常會組成專案小組並配置一位專案經理（PM），PM 將與您討論開案時需要準備的事項，包含盤點現有資源、安排利益關係人內訪、使用者分群與研究方法、專案管理方式等，並舉行開案會議（kick-off meeting）。專案過程中如果包含使用者研究、訪談、測試，也將邀請您一起參與相關活動。另外，也需要貴公司協助安排提案會議、設計說明會議、交付驗收會議等，讓專案能夠如期如質的完成。`,
+                        answer: `<b>以專案小組與您充分討論溝通，更歡迎您與我們共同參與相關活動。</b>專案正式開始時，AJA 通常會組成專案小組並配置一位專案經理（PM），PM 將與您討論開案時需要準備的事項，包含盤點現有資源、安排利益關係人內訪、使用者分群與研究方法、專案管理方式等，並舉行開案會議（kick-off meeting）。專案過程中如果包含使用者研究、訪談、測試，也將邀請您一起參與相關活動。另外，也需要貴公司協助安排提案會議、設計說明會議、交付驗收會議等，讓專案能夠如期如質的完成。`,
                         expanded: false
                       },
                       {
@@ -1028,17 +1080,17 @@ export function ContactPage() {
                     <Collapse list={[
                       {
                         title: "報價如何計算？",
-                        answer: `<b>UX/UI 設計的費用會根據專案特性、工作項目，以及使用到的職能種類來計價。</b>報價通常跟以下條件相關：<br/><ul><li><b style="display:contents">是否有明確的規格書？</b>如果沒有，在前期就需要花較多的時間協助客戶訂定產品策略與目標、規劃產品資訊架構、設計操作流程、繪製框架圖（wireframe） 等。</li><li><b style="display:contents">產品/服務內容的多寡。</b>有些專案較著重在視覺表現，有些則注重使用流程，有些 icon 很多，或視覺 layout 較複雜等。</li><li><b style="display:contents">專案的專業特性。</b>一些較特殊的產業或使用者對象，會花費較多的時間在研究和改善使用經驗，如果需要進行使用者訪談與測試等，則會產生額外費用。</li></ul><br/>AJA 在一開始，會儘可能蒐集相關資訊並依據實際工作項目與投入人員的職能、工時進行報價。通常一個手機 App 的 UX/UI 設計案，預算從 150 萬到 500 萬都有；一個網站規劃與設計案，則落於 200 萬到上千萬不等。但每個專案特性和狀態都不同，建議先進行整體評估之後，再進行報價。 <br/><br/>我們也與許多公司採年約方式合作。如果專案規模和數量並不明確，但又需要長期配合的設計夥伴，我們可根據案量配置適當的設計師人力，以實際發生的工時來計價（time-base）。年約方案讓大予的設計師就像貴公司內部專屬設計師一樣，但此種合作模式較適合有一定的信任基礎，以及需要大予協助設計創新性質的專案。想暸解更多報價方式，歡迎與我們聯絡。`,
+                        answer: `<b>UX/UI 設計的費用會根據專案特性、工作項目，以及使用到的職能種類來計價。</b>報價通常跟以下條件相關：<br/><ul><li><b style="display:contents">是否有明確的規格書？</b>如果沒有，在前期就需要花較多的時間協助客戶訂定產品策略與目標、規劃產品資訊架構、設計操作流程、繪製框架圖（wireframe） 等。</li><li><b style="display:contents">產品/服務內容的多寡。</b>有些專案較著重在視覺表現，有些則注重使用流程，有些 icon 很多，或視覺 layout 較複雜等。</li><li><b style="display:contents">專案的專業特性。</b>一些較特殊的產業或使用者對象，會花費較多的時間在研究和改善使用經驗，如果需要進行使用者訪談與測試等，則會產生額外費用。</li></ul><br/>AJA 在一開始，會儘可能蒐集相關資訊並依據實際工作項目與投入人員的職能、工時進行報價。通常一個手機 App 的 UX/UI 設計案，預算從 150 萬到 500 萬都有；一個網站規劃與設計案，則落於 200 萬到上千萬不等。但每個專案特性和狀態都不同，建議先進行整體評估之後，再進行報價。 <br/><br/>我們也與許多公司採年約方式合作。如果專案規模和數量並不明確，但又需要長期配合的設計夥伴，我們可根據案量配置適當的設計師人力，以實際發生的工時來計價（time-based）。年約方案讓 AJA 的設計師就像貴公司內部專屬設計師一樣，但此種合作模式較適合有一定的信任基礎，以及需要 AJA 協助設計創新性質的專案。想暸解更多報價方式，歡迎與我們聯絡。`,
                         expanded: false
                       },
                       {
                         title: "報價之前，需要準備哪些資料？",
-                        answer: `<b>通常報價之前，需要有以下全部或部分的文件與參考資料：</b><ul><li>產品/服務的功能列表</li><li>專案預計啟動與完成的時間</li><li>若是改版專案，請提供現有網站/App版本供試用或測試帳號</li><li>現有的規劃文件或規格文件</li><li>預計新增/移除的功能及相關說明</li><li>預期達成的專案成果與目標</li></ul>如果可以，建議由大予的業務代表當面說明或展示專案需求是最有效的方式。我們會先跟您電話溝通，確定大予提供的服務能符合貴公司的需求，再行安排業務拜訪。`,
+                        answer: `<b>通常報價之前，需要有以下全部或部分的文件與參考資料：</b><ul><li>產品/服務的功能列表</li><li>專案預計啟動與完成的時間</li><li>若是改版專案，請提供現有網站/ App 版本供試用或測試帳號/App版本供試用或測試帳號</li><li>現有的規劃文件或規格文件</li><li>預計新增/移除的功能及相關說明</li><li>預期達成的專案成果與目標</li></ul>如果可以，建議由 AJA 的業務代表當面說明或展示專案需求是最有效的方式。我們會先跟您電話溝通，確定 AJA 提供的服務能符合貴公司的需求，再行安排業務拜訪。`,
                         expanded: false
                       },
                       {
                         title: "想與 AJA 合作，但預算有限？",
-                        answer: `<b>我們理解貴公司或有預算限制與考量，若初期無法一次性編列 UX/UI 設計的預算，建議可分階段進行或將工作拆分。</b>例如，一個網站設計案，可將研究規劃、視覺設計、前端開發視為三個工作分階段進行；或只外發研究規劃的部份，視覺設計或前端開發由內部製作。但並不建議只讓大予做視覺設計或前端開發的工作，因為大予的價值著重於前期對使用者的洞察與訂定體驗策略，更能為產品與服務的開發帶來更高價值。`,
+                        answer: `<b>我們理解貴公司或有預算限制與考量，若初期無法一次性編列 UX/UI 設計的預算，建議可分階段進行或將工作拆分。</b>例如，一個網站設計案，可將研究規劃、視覺設計、前端開發視為三個工作分階段進行；或只外發研究規劃的部份，視覺設計或前端開發由內部製作。但並不建議只讓 AJA 做視覺設計或前端開發的工作，因為 AJA 的價值著重於前期對使用者的洞察與訂定體驗策略，更能為產品與服務的開發帶來更高價值。`,
                         expanded: false
                       }
                     ]} />
@@ -1078,9 +1130,7 @@ export function ContactPage() {
                     <img src={location} alt="location" />
                   </Grid>
                   <Grid item xs={12} md={7}>
-                    {/* <img src={pin} alt="" /> */}
                     <div style={{ height: isDesktop() ? '400px' : '240px' }}>
-                      {/* <iframe style={{width: '100%', height: '100%'}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.630963869905!2d121.55583181577032!3d25.080494183950655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa33e89a7453%3A0x49bc12e190a1a6fd!2z5aSn5LqI5Ym15oSP6Kit6KiI6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1666725553062!5m2!1szh-TW!2stw" /> */}
                       <Map />
                     </div>
                   </Grid>
@@ -1294,6 +1344,16 @@ const GetInTouch = styled.div<{
     img{
       transform: rotate(-90deg);
       animation: initial;
+    }
+  `}
+  ${media.small`
+    right: 0px;
+    bottom: -4px;
+    &::after{
+      width: 164px;
+      height: 106px;
+      top: 52px;
+      left: 15px;
     }
   `}
 `;
@@ -1680,7 +1740,7 @@ const InputForm = styled.div`
     margin-bottom: 40px;
   }
   .MuiFormLabel-root{
-    top: 4px;
+    top: 2px;
     font-size: 18px;
     &.Mui-error{
       color: #A2AAA4!important;
@@ -1864,6 +1924,7 @@ const Contact = styled.div`
     }
   }
   .addr{
+    font-weight: 400;
     br{
       display: none;
     }
@@ -1934,7 +1995,7 @@ const FeatureHead = styled.h2`
   `}
 `
 const MbForm = styled.div`
-  padding: 84px 20px 105px;
+  padding: 24px 20px 105px;
   .horizon{
     border-bottom: 1px solid ${colors.DarkBlue};
     border-top: 4px solid ${colors.DarkBlue};
@@ -1996,6 +2057,14 @@ const MbForm = styled.div`
     font-size: 16px;
     line-height: 24px;
   }
+  span[data-index="0"].MuiSlider-markLabel{
+    top: 40px;
+    margin-left: -2px;
+  }
+  span[data-index="8"].MuiSlider-markLabel{
+    top: 52px;
+    margin-left: -30px;
+  }
 `
 
 const CustomCheckbox = styled.div`
@@ -2049,5 +2118,31 @@ const CustomCheckbox = styled.div`
       font-size: 18px;
       font-weight: 500!important;
     }
+  `}
+`
+
+const Notification = styled.div<{
+  open: boolean
+}>`
+  pointer-events: none;
+  position: fixed;
+  /* max-width: 640px; */
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 20px auto;
+  padding: 0 20px;
+  top: 0;
+  width: 100%;
+  transition: all .5s ease-in-out;
+  opacity: ${prop => prop?.open ? 1 : 0};
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  .MuiPaper-root{
+    max-width: 640px;
+    height: auto;
+    font-size: 16px;
+  }
+  ${media.medium`
+    top: -78px;
   `}
 `

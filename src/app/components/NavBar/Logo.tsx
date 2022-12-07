@@ -55,7 +55,7 @@ export function Logo({ color, bgColor }) {
         top: ${StyleConstants.NAV_BAR_HEIGHT};
         background: rgba(12, 28, 36, 0.5);
         z-index: -1;
-        display: ${open?'block':'none'};
+        display: ${open ? 'block' : 'none'};
         pointer-events: none;
       }
       .burger{
@@ -94,17 +94,17 @@ export function Logo({ color, bgColor }) {
     `};
   `;
 
-  const Content = styled.ul<{
-    open: boolean;
-  }>`
-    transition: all .5s ease-in-out;
+
+  const Content = styled.ul`
+  transition: all .5s ease-in-out;
     padding: 48px 16px;
     margin: 0;
-    height: ${prop => prop.open ? '423px' : '0'};
-    opacity: ${prop => prop.open ? '1' : '0'};
-    display:${prop => prop.open ? 'block' : 'none'};
+    height: ${open ? '375px' : '0'};
+    opacity: ${open ? '1' : '0'};
+    display:${open ? 'block' : 'none'};
     list-style: none;
     width: 100%;
+    color: ${color};
     background-color:  ${bgColor};
     text-align: center;
     font-weight: 400;
@@ -121,18 +121,9 @@ export function Logo({ color, bgColor }) {
         text-decoration: none;
       }
     }
-    ${media.small`
-      height: 383px;
-    `}
-  `
-
-  const Item = styled.div`
-    cursor: pointer;
-    color: ${color};
-    &.active {
-      color: ${color};
-    }
   `;
+
+
 
   return (
     <Wrapper>
@@ -143,7 +134,7 @@ export function Logo({ color, bgColor }) {
           </svg>
         </a>
         <Title className="eng">
-        AJA Creative, Innovative
+          AJA Creative, Innovative
           <br /> Practitioners in Experience Design{' '}
         </Title>
         <div className="burger" onClick={() => setOpen(!open)}>
@@ -158,12 +149,12 @@ export function Logo({ color, bgColor }) {
               <line x1="7" y1="19.5" x2="33" y2="19.5" stroke="white" strokeWidth="3" />
               <line x1="13" y1="27.5" x2="33" y2="27.5" stroke="white" strokeWidth="3" />
             </svg>
-            
+
 
           }
         </div>
       </div>
-      <Content open={open}>
+      <Content>
         <li>
           <Link to="/case">專案實例</Link>
         </li>
@@ -186,3 +177,4 @@ export function Logo({ color, bgColor }) {
     </Wrapper>
   );
 }
+

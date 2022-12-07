@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import styled from 'styled-components/macro';
 import { Logo } from './Logo';
 import { StyleConstants } from 'styles/StyleConstants';
@@ -6,7 +7,7 @@ import { Nav } from './Nav';
 import { PageWrapper } from '../PageWrapper';
 import * as colors from '../../../styles/colors';
 import { media } from 'styles/media';
-export function NavBar({ blackBg = '', bgColor, color }) {
+export function NavBar({ bgColor, color }) {
   const Language = styled.div`
     font-size: 14px;
     color: ${color};
@@ -63,8 +64,6 @@ export function NavBar({ blackBg = '', bgColor, color }) {
   return (
     <Wrapper>
       <div className='logo'>
-        {color}
-        {bgColor}
         <Logo color={color} bgColor={bgColor} />
       </div>
       <Nav color={color} bgColor={bgColor} />

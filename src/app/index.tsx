@@ -30,11 +30,11 @@ export function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
     {/* <HashRouter> */}
       <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
+        titleTemplate="%s - AJA Creative"
+        defaultTitle="AJA Creative"
         htmlAttributes={{ lang: i18n.language }}
       >
-        <meta name="description" content="A React Boilerplate application" />
+        <meta name="description" content="AJA Creative" />
       </Helmet>
 
       <Routes>

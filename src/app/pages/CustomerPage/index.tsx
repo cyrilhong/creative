@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import * as colors from 'styles/colors';
 import { NavBar } from 'app/components/NavBar';
@@ -59,13 +59,17 @@ export function CustomerPage() {
   }
   const windowWidth = useWindowSize().width
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <ParallaxProvider>
       <Helmet>
-        <title>Customer</title>
+        <title>客戶群</title>
         <meta
           name="description"
-          content="A React Boilerplate application CustomerPage"
+          content="We don’t change the world, but our clients do."
         />
       </Helmet>
       <NavBar bgColor={color.BGPink} color={color.DarkBlue} />
@@ -219,7 +223,7 @@ export function CustomerPage() {
                       <div className="link">
                         <a target="_blank" href="https://yoxi-case-study.aja.com.tw/">
                           <img src={arrowBtn} alt="arrowBtn" />
-                          和泰派遣服務 APP
+                          和泰派遣服務 App
                         </a>
                       </div>
                     </div>
@@ -477,6 +481,7 @@ const OurClients = styled.div`
           margin: 0 0 8px;
           align-items: center;
           font-size: 14px;
+          font-weight: 400;
           text-decoration: none;
           &:hover{
             text-decoration: underline;

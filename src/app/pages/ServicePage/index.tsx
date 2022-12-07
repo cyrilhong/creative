@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef,useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import * as colors from 'styles/colors';
 import { NavBar } from 'app/components/NavBar';
@@ -43,13 +43,17 @@ export function ServicePage() {
   }
   const windowWidth = useWindowSize().width
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <ParallaxProvider>
       <Helmet>
-        <title>Customer</title>
+        <title>設計服務與流程</title>
         <meta
           name="description"
-          content="A React Boilerplate application ServicePage"
+          content="Experience design driven by prototyping & validation."
         />
       </Helmet>
       <NavBar bgColor={color.BGGreen} color={color.DarkBlue} />
@@ -70,7 +74,7 @@ export function ServicePage() {
                 </div>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    & process.
+                    & validation.
                   </Fade>
                 </div>
                 <div className="content">
@@ -93,7 +97,7 @@ export function ServicePage() {
                 </div>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    driven by prototyping & process.
+                    driven by prototyping & validation.
                   </Fade>
                 </div>
                 <div className="content">
@@ -273,7 +277,7 @@ export function ServicePage() {
                   <h1 style={{ margin: '8px 0' }}>數位產品設計</h1>
                   <Box maxWidth={'400px'}>
                     <h4>
-                      探索創新原點，打造關鍵場景情境，跨領域整合品牌、創意、互動，建構產品解決方案。
+                    探索創新原點，打造關鍵場景情境，整合品牌、創意、互動等跨領域，建構產品解決方案。
                     </h4>
                   </Box>
                 </Grid>
@@ -283,7 +287,7 @@ export function ServicePage() {
                       <Collapse list={[
                         {
                           title: "品牌定位與溝通策略",
-                          answer: `因索創新原點，量身打造關鍵場景情境，跨領域整合品牌、創意、互動，建構符合產品的解決方案。`,
+                          answer: `因應需求與商業目標，量身打造關鍵場景情境，跨領域整合品牌、創意、互動，建構符合產品的解決方案。`,
                           expanded: false
                         },
                         {
@@ -643,7 +647,7 @@ const SecondSection = styled.div`
     }
     .subtitle{
       font-size: 16px;
-      margin: 0 0 32px;
+      margin: 0 0 6px;
     }
     h3{
       font-size: 18px;
@@ -678,6 +682,7 @@ const ItemList = styled.div`
   ${media.medium`
     p{
       padding-right: 62px;
+      font-size: 16px;
     }
   `}
 `;

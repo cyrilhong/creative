@@ -30,7 +30,7 @@ export function Masthead() {
             </Title>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
-                with diversity and growth mindsets.
+                with diversity & growth mindsets.
               </Fade>
             </Title>
           </>
@@ -49,7 +49,7 @@ export function Masthead() {
             </Title>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
-                diversity and growth
+                diversity & growth
               </Fade>
             </Title>
             <Title className="eng huge">
@@ -63,7 +63,7 @@ export function Masthead() {
           <>
             <Title className="eng huge">
               <Fade bottom duration={500} delay={100}>
-                We believe a great team comes with diversity and growth mindsets.
+                We believe a great team comes with diversity & growth mindsets.
               </Fade>
             </Title>
           </>
@@ -90,6 +90,22 @@ export function Masthead() {
 const Wrapper = styled.main`
   text-align: left;
   padding: 280px 0 120px;
+  @keyframes mark {
+    from {
+      width: 0;
+    }
+    to {
+      width: 484px;
+    }
+  }
+  @keyframes markMb {
+    from {
+      width: 0;
+    }
+    to {
+      width: 318px;
+    }
+  }
   .content {
     margin-top: 24px;
     .draw{
@@ -127,14 +143,7 @@ const Wrapper = styled.main`
         display: inline;
       }
     }
-    @keyframes mark {
-      from {
-        width: 0;
-      }
-      to {
-        width: 484px;
-      }
-    }
+    
   `}
   ${media.medium`
     .content {
@@ -148,17 +157,12 @@ const Wrapper = styled.main`
         span{
           top: 16px;
           height: 16px;
+          animation: markMb 1s forwards;
         }
       }
-    @keyframes mark {
-      from {
-        width: 0;
-      }
-      to {
-        width: 318px;
-      }
-    }
+    
   `}
+  
 `;
 
 const Title = styled.div``;

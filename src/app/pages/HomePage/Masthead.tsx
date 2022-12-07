@@ -24,27 +24,27 @@ export function Masthead() {
         {windowWidth > 1178 &&
           <>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={500} delay={100}>
                 We put insight and
-              </div>
+              </Fade>
             </Title>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={500} delay={100}>
                 imagination at the center of
-              </div>
+              </Fade>
             </Title>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={500} delay={100}>
                 everything we do.
-              </div>
+              </Fade>
             </Title>
             <div className="content">
               <h1>
-                <div>
+                <Fade bottom duration={500} delay={100}>
                   體驗創新就是巧妙地
-                  {/* <Mark /> */}
+                  <Mark />
                   連結商業目標和用戶需求，淬鍊價值
-                </div>
+                </Fade>
               </h1>
             </div>
           </>
@@ -52,30 +52,30 @@ export function Masthead() {
         {windowWidth > 959 && windowWidth < 1178 &&
           <>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={1000} delay={100}>
                 We put insight and
-              </div>
+              </Fade>
             </Title>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={1000} delay={100}>
                 imagination at the
-              </div>
+              </Fade>
             </Title>
             <Title className="eng huge">
-              <div>
+              <Fade bottom cascade duration={1000} delay={100}>
                 center of everything
-              </div>
-              <div>
+              </Fade>
+              <Fade bottom cascade duration={1000} delay={100}>
                 we do.
-              </div>
+              </Fade>
             </Title>
             <div className="content">
               <h1>
-                <div>
+                <Fade bottom duration={1000} delay={100}>
                   體驗創新就是巧妙地
-                  {/* <Mark /> */}
+                  <Mark />
                   連結商業目標和用戶需求，淬鍊價值
-                </div>
+                </Fade>
               </h1>
             </div>
           </>
@@ -83,15 +83,15 @@ export function Masthead() {
         {windowWidth < 960 &&
           <>
             <Title className="eng huge">
-              <div>
+              <Fade bottom duration={1000} delay={100}>
                 We put insight and imagination at the center of everything we do.
-              </div>
+              </Fade>
             </Title>
             <div className="content">
               <h1>
                 體驗創新就是巧妙地<div className='draw'>連結商業目標和用戶需求，淬鍊價值</div>
-                {/* <div>
-              </div> */}
+                {/* <Fade bottom duration={1000} delay={100}>
+              </Fade> */}
               </h1>
             </div>
           </>

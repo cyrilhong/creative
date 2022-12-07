@@ -135,7 +135,7 @@ export const GlobalStyle = createGlobalStyle`
   .black{
     background-color: ${colors.DarkBlue};
     color: ${colors.White};
-    transition: all .5s ease-in;
+    transition: all .25s ease-in;
     overflow: hidden;
     .lines {
       .line {
@@ -146,7 +146,7 @@ export const GlobalStyle = createGlobalStyle`
   .white{
     background-color: ${colors.BGGreen};
     color: ${colors.AJABlue};
-    transition: all .5s ease-in;
+    transition: all .25s ease-in;
     overflow: hidden;
     .lines {
       .line {
@@ -262,7 +262,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   `}
   .MuiPaper-root .MuiDialogTitle-root{
-    height: 60px;
+    height: 44px;
     padding: 0;
     width: 100%;
     justify-content: end;
@@ -272,13 +272,17 @@ export const GlobalStyle = createGlobalStyle`
     z-index: 10;
     background: ${colors.White};
     border-radius: 10px 10px 0 0;
+    margin-top: -44px;
+    button{
+      width: 43px;
+    }
   }
   .MuiPaper-root.MuiDialog-paper{
     top: 16px;
-    margin: 0;
+    margin: 44px 0 0;
     border-radius: 16px 16px 0 0;
-    max-height: calc(100% - 32px);
-
+    max-height: calc(100% - 76px);
+    border-radius: 0 0 16px 16px;
   }
 `;
 

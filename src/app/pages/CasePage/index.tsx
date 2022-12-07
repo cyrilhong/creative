@@ -16,13 +16,16 @@ import lottieClient from './assets/client.json';
 import Fade from 'react-reveal/Fade';
 import SectionIdea from './SectionIdea'
 export function CasePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <Helmet>
-        <title>Home Page</title>
+        <title>專案實例</title>
         <meta
           name="description"
-          content="A React Boilerplate application homepage"
+          content="We combine strategic design and product experience."
         />
       </Helmet>
       <NavBar bgColor={colors.BGGrey} color={colors.DarkBlue} />

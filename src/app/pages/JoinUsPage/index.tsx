@@ -60,11 +60,14 @@ export function JoinUsPage() {
     arrows: true,
   };
   const windowWidth = useWindowSize().width
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <ParallaxProvider>
       <Helmet>
-        <title>Join Us</title>
-        <meta name="description" content="Join Us" />
+        <title>加入我們</title>
+        <meta name="description" content="Make work a real joy with us!" />
       </Helmet>
       <NavBar bgColor={color.BGPeach} color={color.AJABlue} />
       <div className="bg-join-us">
@@ -221,7 +224,7 @@ export function JoinUsPage() {
                 >
                   <Grid xs={12} md={5} className="left">
                     <div className="huge eng">
-                      Join our <br />
+                      Join Our <br />
                       Team
                     </div>
                     <h2>成為我們的一員！</h2>
@@ -230,6 +233,7 @@ export function JoinUsPage() {
                       link="https://www.104.com.tw/company/b88c8k8"
                       isWhite={false}
                       iconRotate={-45}
+                      blank={true}
                     />
                   </Grid>
                   <Grid xs={12} md={7} className="job-list">

@@ -28,225 +28,226 @@ export default function CaseStudy() {
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
           <Grid item xs={12} md={4}>
-            {/* <Case>
-              <img src={img01} alt="" />
-              <h4 className="type">金融與保險</h4>
-              <h2 className="title">
-                台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
-              </h2>
-              <div className="pills eng">
-                <div className="pill">EXPERIENCE</div>
-                <div className="pill">RESEARCH</div>
-                <div className="pill">BRANDING</div>
-              </div>
-              <RoundButton
-                link={"#"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case> */}
-            <Case>
-              <div className="img-wrapper">
-                <img src={richart} alt="台新Richart" />
-              </div>
-              <Fade bottom delay={-500} cascade>
-                <h4 className="type">金融與保險</h4>
-                <h2 className="title">
-                  台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
+            <a href="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <div className="img-wrapper">
+                  <img src={richart} alt="台新Richart" />
                 </div>
-              </Fade>
-              <RoundButton
-                link={"https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+                <Fade bottom delay={-500} cascade>
+                  <h4 className="type">金融與保險</h4>
+                  <h2 className="title">
+                    台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={fetnet} alt="遠傳" />
-                </div>
-                <h4 className="type">電信媒體與科技</h4>
-                <h2 className="title">
-                  遠傳電信官網｜不只是電信，替未來生活提案
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://fetnet-revision.aja.com.tw/"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://fetnet-revision.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={fetnet} alt="遠傳" />
+                  </div>
+                  <h4 className="type">電信媒體與科技</h4>
+                  <h2 className="title">
+                    遠傳電信官網｜不只是電信，替未來生活提案
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">STRATEGY</div>
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://fetnet-revision.aja.com.tw/"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={starlux} alt="星宇" />
-                </div>
-                <h4 className="type">交通與運輸</h4>
-                <h2 className="title">
-                  星宇航空｜打造精品航空獨到的數位體驗
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">STRATEGY</div>
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://aja.com.tw/starlux-case-study/index.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://aja.com.tw/starlux-case-study/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={starlux} alt="星宇" />
+                  </div>
+                  <h4 className="type">交通與運輸</h4>
+                  <h2 className="title">
+                    星宇航空｜打造精品航空獨到的數位體驗
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">STRATEGY</div>
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://aja.com.tw/starlux-case-study/index.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={cnParenting} alt="中國信託親子銀行" />
-                </div>
-                <h4 className="type">金融與保險</h4>
-                <h2 className="title">
-                  中國信託親子銀行｜超前部署的親子金融體驗
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://aja.com.tw/portfolio/ctbc-parent-child/index.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://aja.com.tw/portfolio/ctbc-parent-child/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={cnParenting} alt="中國信託親子銀行" />
+                  </div>
+                  <h4 className="type">金融與保險</h4>
+                  <h2 className="title">
+                    中國信託親子銀行｜超前部署的親子金融體驗
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://aja.com.tw/portfolio/ctbc-parent-child/index.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={ctbc} alt="中國信託e-Cash" />
-                </div>
-                <h4 className="type">金融與保險</h4>
-                <h2 className="title">
-                  中國信託 e-Cash｜專為中小企業設計的數位金融服務
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://aja.com.tw/portfolio/ctbc-sme/index.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://aja.com.tw/portfolio/ctbc-sme/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={ctbc} alt="中國信託e-Cash" />
+                  </div>
+                  <h4 className="type">金融與保險</h4>
+                  <h2 className="title">
+                    中國信託 e-Cash｜專為中小企業設計的數位金融服務
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://aja.com.tw/portfolio/ctbc-sme/index.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={cathay} alt="國泰醫院" />
-                </div>
-                <h4 className="type">醫療與健康</h4>
-                <h2 className="title">
-                  國泰醫院｜安心、暖心的醫病橋樑
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://www.aja-creative.com/zh_tw/case_cathay_hospital.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://www.aja-creative.com/zh_tw/case_cathay_hospital.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={cathay} alt="國泰醫院" />
+                  </div>
+                  <h4 className="type">醫療與健康</h4>
+                  <h2 className="title">
+                    國泰醫院｜安心、暖心的醫病橋樑
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/zh_tw/case_cathay_hospital.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={chinaAirlines} alt="華航" />
-                </div>
-                <h4 className="type">交通與運輸</h4>
-                <h2 className="title">
-                  中華航空｜帶著走的旅遊行動助理
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://www.aja-creative.com/zh_tw/case_china_airlines.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://www.aja-creative.com/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={chinaAirlines} alt="華航" />
+                  </div>
+                  <h4 className="type">交通與運輸</h4>
+                  <h2 className="title">
+                    中華航空｜帶著走的旅遊行動助理
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/zh_tw/case_china_airlines.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={cloudGate} alt="雲門舞集" />
-                </div>
-                <h4 className="type">教育與娛樂</h4>
-                <h2 className="title">
-                  雲門舞集｜後疫情時代，數位學習趨勢研究
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">RESEARCH</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://aja.com.tw/portfolio/elearning/index.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://aja.com.tw/portfolio/elearning/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={cloudGate} alt="雲門舞集" />
+                  </div>
+                  <h4 className="type">教育與娛樂</h4>
+                  <h2 className="title">
+                    雲門舞集｜後疫情時代，數位學習趨勢研究
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">RESEARCH</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://aja.com.tw/portfolio/elearning/index.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={delta} alt="台達電" />
-                </div>
-                <h4 className="type">電信媒體與科技</h4>
-                <h2 className="title">
-                  台達電｜建構跨領域的設計系統
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"https://aja.com.tw/portfolio/delta-biczone/index.html"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
+            <a href="https://aja.com.tw/portfolio/delta-biczone/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <Fade bottom delay={-500}>
+                  <div className="img-wrapper">
+                    <img src={delta} alt="台達電" />
+                  </div>
+                  <h4 className="type">電信媒體與科技</h4>
+                  <h2 className="title">
+                    台達電｜建構跨領域的設計系統
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://aja.com.tw/portfolio/delta-biczone/index.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
           </Grid>
         </Grid>
       </Wrapper>
@@ -337,6 +338,7 @@ const Case = styled.div`
       font-size: 12px;
       font-weight: 300;
       color: #979ea0;
+      cursor: default;
     }
   }
   .type, .title{
@@ -346,6 +348,10 @@ const Case = styled.div`
   h2.title{
     margin: 0 0 24px;
     font-weight: 300;
+    color:${color.AJABlue};
+  }
+  h4{
+    color:${color.AJABlue};
   }
   &:hover{
     img{

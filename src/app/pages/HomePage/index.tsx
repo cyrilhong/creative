@@ -64,21 +64,11 @@ import kkboxLogo from './assets/kkbox.svg';
 import nanshanLogo from './assets/nan-shan.svg';
 import tdriLogo from './assets/TDRI.svg';
 import tsBankLogo from './assets/ts-bank.svg';
-import playReel from './assets/playReel.svg';
-// import showreel from './assets/showreel.mp4';
-import Lottie from 'lottie-react';
-import lottie1 from './assets/lottie-01.json';
-import lottie2 from './assets/lottie-02.json';
-import lottie3 from './assets/lottie-03.json';
-import lottieJoinUs from './assets/join-us.json';
-import lottieClient from './assets/client.json';
 import SectionIdea from './SectionIdea'
+import ServiceList from './ServiceList'
 import {
-  BrowserView,
-  MobileView,
-  isBrowser,
   isMobile,
-  isDesktop,
+  isDesktop
 } from 'react-device-detect';
 
 const CaseSlider = [
@@ -178,6 +168,10 @@ export function HomePage() {
     //   setActiveSlide(e);
     // },
   };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const gotoSlick = index => {
     // console.log(carouselRef.current);
     setActiveSlide(index);
@@ -187,26 +181,16 @@ export function HomePage() {
   const themeColorRef = useRef<HTMLDivElement>(null);
   const helpColorRef = useRef<HTMLDivElement>(null);
   const imgWall = useRef<any>(null);
-  const lottieRef1 = useRef<any>(null);
-  const lottieRef2 = useRef<any>(null);
-  const lottieRef3 = useRef<any>(null);
-  const ideaRef = useRef<any>(null);
   const [imgWallHeight, setImgWallHeight] = useState(0)
 
   useScrollPosition(({ prevPos, currPos }) => {
-    // console.log(currPos.x)
-    // console.log(Math.abs(currPos.y));
-    // console.log(themeColorRef.current!.getBoundingClientRect().top);
-    // console.log(themeColorRef.current!.getBoundingClientRect().y);
-    // console.log(helpColorRef.current!.getBoundingClientRect().top);
-    // console.log(helpColorRef.current!.getBoundingClientRect().y);
-    // console.log(imgWall.current!.getBoundingClientRect().height)
-    setImgWallHeight(imgWall.current!.getBoundingClientRect().height)
+    // console.log(lottie2Position.current!.getBoundingClientRect().top)
+    setImgWallHeight(imgWall.current!.getBoundingClientRect().height - (windowWidth > 960 ? 0 : 150))
     if (themeColorRef.current!.getBoundingClientRect().top < 440) {
       // debugger
       setTimeout(() => {
         setIsBlackBg(false);
-      }, 500);
+      }, 200);
     } else {
       setTimeout(() => {
         setIsBlackBg(true);
@@ -319,13 +303,7 @@ export function HomePage() {
 
   return (
     <ParallaxProvider>
-      <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React Boilerplate application homepage"
-        />
-      </Helmet>
+      
       <NavBar bgColor={isBlackBg ? colors.DarkBlue : colors.BGGreen} color={isBlackBg ? colors.BGGreen : colors.DarkBlue} />
       <div className={isBlackBg ? 'black' : 'white'}>
         <PageWrapper>
@@ -416,7 +394,7 @@ export function HomePage() {
           />
           <CaseList>
             <Grid container>
-              <Grid xs={12} md={7} className="case">
+              <Grid xs={12} md={7} className="case" onClick={() => window.open('https://yoxi-case-study.aja.com.tw/')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Yoxi} alt="Yoxi" />
                 </div>
@@ -429,13 +407,13 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="https://yoxi-case-study.aja.com.tw/"
+                    link=""
                     isWhite={true}
                     text="CASE STUDY"
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} lg={4} className="case">
+              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={CTBC} alt="ctbc" />
                 </div>
@@ -448,13 +426,13 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"
+                    link=""
                     isWhite={true}
                     text="CASE STUDY"
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} mdOffset={2} className="case">
+              <Grid xs={12} md={5} mdOffset={2} className="case" onClick={() => window.open('https://fetnet-revision.aja.com.tw/')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Fetnet} alt="Fetnet" />
                 </div>
@@ -468,13 +446,13 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="https://fetnet-revision.aja.com.tw/"
+                    link=""
                     isWhite={true}
                     text="CASE STUDY"
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} className="case">
+              <Grid xs={12} md={5} className="case" onClick={() => window.open('https://aja.com.tw/starlux-case-study/index.html')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Starlux} alt="Starlux" />
                 </div>
@@ -488,7 +466,7 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="https://aja.com.tw/starlux-case-study/index.html"
+                    link=""
                     isWhite={true}
                     text="CASE STUDY"
                   />
@@ -619,7 +597,7 @@ export function HomePage() {
                 <Grid xs={3} md={3} mdOffset={2}>
                   <Parallax
                     className="wall6"
-                    speed={windowWidth > 960 ? 20 : 20}
+                    speed={windowWidth > 960 ? 20 : 10}
                     scale={windowWidth > 960 ? [1.5, 0] : [1.1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
@@ -629,7 +607,7 @@ export function HomePage() {
                 <Grid xs={4} xsOffset={2} md={2} mdOffset={3}>
                   <Parallax
                     className="wall2"
-                    speed={windowWidth > 960 ? 40 : 40}
+                    speed={windowWidth > 960 ? 40 : 10}
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
@@ -753,145 +731,7 @@ export function HomePage() {
               link="/service"
               isWhite={false}
             />
-            <ServiceList>
-              <Grid container spacing={0} rowSpacing={9}>
-                <Grid xs={0} lg={4}>
-                  <div className="super eng title">
-                    <Fade bottom>
-                      01.
-                    </Fade>
-                  </div>
-                </Grid>
-                <Grid xs={12} lg={8}>
-                  <Box display={'flex'} className="right">
-                    <Box
-                      className="lottie"
-                      onMouseEnter={() => {
-                        if (lottieRef1.current !== null) {
-                          lottieRef1.current.goToAndPlay(1);
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        if (lottieRef1.current !== null) {
-                          // lottieRef1.current.pause();
-                        }
-                      }}
-                    >
-                      <Fade>
-                        <Lottie animationData={lottie1} loop={false} lottieRef={lottieRef1} />
-                      </Fade>
-                    </Box>
-                    <Box>
-                      <h1>研究與體驗策略</h1>
-                      <h4>
-                        分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品服務制訂體驗策略方針
-                      </h4>
-                      <ul>
-                        <li>
-                          <h4>市場研究與競爭分析</h4>
-                        </li>
-                        <li>
-                          <h4>產品定位與價值主張</h4>
-                        </li>
-                        <li>
-                          <h4>使用者研究</h4>
-                        </li>
-                      </ul>
-                    </Box>
-                  </Box>
-                </Grid>
-                <Grid xs={0} lg={4}>
-                  <div className="super eng title">
-                    <Fade bottom>
-                      02.
-                    </Fade>
-                  </div>
-                </Grid>
-                <Grid xs={12} lg={8}>
-                  <Box display={'flex'} className="right">
-                    <Box
-                      className="lottie"
-                      onMouseEnter={() => {
-                        if (lottieRef2.current !== null) {
-                          lottieRef2.current.goToAndPlay(1);
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        if (lottieRef2.current !== null) {
-                          // lottieRef2.current.pause();
-                        }
-                      }}
-                    >
-                      <Fade>
-                        <Lottie animationData={lottie2} loop={false} lottieRef={lottieRef2} />
-                      </Fade>
-                    </Box>
-                    <Box>
-                      <h1>核心體驗規劃</h1>
-                      <h4>
-                        以用戶洞見為聚焦點，制訂整體的體驗設計架構，營造以使用者為中心的體驗創新
-                      </h4>
-                      <ul>
-                        <li>
-                          <h4>體驗流程規劃</h4>
-                        </li>
-                        <li>
-                          <h4>設計概念驗證</h4>
-                        </li>
-                        <li>
-                          <h4>易用性測試與需求驗證</h4>
-                        </li>
-                      </ul>
-                    </Box>
-                  </Box>
-                </Grid>
-                <Grid xs={0} lg={4}>
-
-                  <div className="super eng title">
-                    <Fade bottom>03.
-                    </Fade>
-                  </div>
-                </Grid>
-                <Grid xs={12} lg={8}>
-                  <Box display={'flex'} className="right">
-                    <Box
-                      className="lottie"
-                      onMouseEnter={() => {
-                        if (lottieRef3.current !== null) {
-                          lottieRef3.current.goToAndPlay(1);
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        if (lottieRef3.current !== null) {
-                          // lottieRef3.current.pause();
-                        }
-                      }}
-                    >
-                      <Fade>
-                        <Lottie animationData={lottie3} loop={false} lottieRef={lottieRef3} />
-                      </Fade>
-                    </Box>
-                    <Box>
-                      <h1>跨渠道設計落地</h1>
-                      <h4>
-                        將核心體驗延伸至各數位接觸點，深入場景，跨域整合品牌、創意、互動設計，落實跨渠道體驗設計
-                      </h4>
-                      <ul>
-                        <li>
-                          <h4> App 規劃與設計</h4>
-                        </li>
-                        <li>
-                          <h4>網站規劃與設計</h4>
-                        </li>
-                        <li>
-                          <h4>網站規劃與設計</h4>
-                        </li>
-                      </ul>
-                    </Box>
-                  </Box>
-                </Grid>
-              </Grid>
-            </ServiceList>
+            <ServiceList />
           </PageWrapper>
         </div>
       </div>
@@ -1156,6 +996,9 @@ const CaseList = styled.div`
       font-size: 12px;
       font-weight: 300;
       color: #979ea0;
+      &:hover{
+        cursor: default;
+      }
     }
   }
   ${media.medium`
@@ -1595,10 +1438,10 @@ const OurServices = styled.div < {
         padding: 0;
       }
       .wall6{
-        margin-top: 0;
+        margin-top: 100px;
       }
       .wall2 {
-        margin-top: 0;
+        margin-top: 100px;
       }
     }
     .impact-title{
@@ -1725,101 +1568,6 @@ const Dedication = styled.div`
   } */
 `;
 
-const ServiceList = styled.div`
-  padding: 120px 0 200px;
-  .title {
-    padding: 0 40px;
-    border-left: 1px solid #5A6869;
-    border-right: 1px solid #5A6869;
-    height: 100%;
-  }
-  .right {
-    border-right: 1px solid #5A6869;
-    height: 100%;
-    padding: 0 70px 50px 70px;
-    svg {
-      /* padding-right: 40px; */
-      max-width: 290px;
-    }
-    h1 {
-      margin: 0 0 4px;
-    }
-    h4 {
-      margin: 0 0 32px;
-    }
-    ul {
-      padding: 0;
-      list-style: none;
-      li {
-        display: flex;
-        margin-bottom: 16px;
-        align-items: center;
-        &::before {
-          display: block;
-          content: '';
-          width: 12px;
-          height: 12px;
-          border-radius: 100%;
-          border: 1px solid ${colors.White};
-        }
-        h4 {
-          margin: 0 0 0 16px;
-        }
-      }
-    }
-  }
-  .lottie{
-    min-width: 290px;
-    margin-right: 40px;
-  }
-  ${media.large`
-    padding: 72px 0;
-    .title{
-      display: none;
-    }
-    .right{
-      flex-direction: column;
-      border-right: 0;
-      text-align: center;
-      border-right: 1px solid ${colors.White};
-      border-left: 1px solid ${colors.White};
-      padding: 0 20px 50px;
-      .lottie{
-        margin-right: 0;
-        min-width: auto;
-      }
-      ul{
-        display: flex;
-        flex-direction: column;
-        li{
-          justify-content: center;
-          display: inline-block;
-          h4{
-            margin: 0;
-          }
-          &::before{
-            display: inline-block;
-          }
-        }
-      }
-      h4{
-        margin: 0;
-        padding-top: 16px;
-        font-size: 16px;
-      }
-      h1{
-        margin: 32px 0 8px;
-      }
-    }
-  `}
-  ${media.medium`
-  .right{
-    h4{
-      padding-top:0px;
-    }
-  }
-  `}
-`;
 
 const FeatureHead = styled.h1`
   display: flex;

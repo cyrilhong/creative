@@ -102,7 +102,7 @@ export default function footer() {
                     }
                     <h2>有新的商業與產品體驗需求嗎？<br />與我們聊聊吧</h2>
                     <div className='get-in-touch'>
-                      <Button href={'#'}>
+                      <Button href={'/contact'}>
                         <div className="wrapper">
                           <svg
                             width="40"
@@ -149,16 +149,16 @@ export default function footer() {
                   <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
                     <Grid xs={0} md={3}>
                       <div className="main-link link">
-                        <a>
+                        <a href="/case">
                           <h3 className="eng">WORK</h3>
                         </a>
-                        <a>
+                        <a href="/service">
                           <h3 className="eng">SERVICES</h3>
                         </a>
-                        <a>
+                        <a href="/about-us">
                           <h3 className="eng">ABOUT</h3>
                         </a>
-                        <a>
+                        <a href="/contact">
                           <h3 className="eng">CONTACT</h3>
                         </a>
                       </div>
@@ -169,8 +169,16 @@ export default function footer() {
                           <h3>A Day In The Life . </h3>
                         </div>
                         <ul>
-                          <li><h5 className="eng">FACEBOOK</h5></li>
-                          <li><h5 className="eng">JOIN US</h5></li>
+                          <li>
+                            <a href="https://www.facebook.com/AJA.Creative" target={"_blank"}>
+                              <h5 className="eng">FACEBOOK</h5>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/join-us">
+                              <h5 className="eng">JOIN US</h5>
+                            </a>
+                          </li>
                         </ul>
                       </div>
                     </Grid>
@@ -358,6 +366,10 @@ const Info = styled.div`
   }
   .main-link {
     gap: 24px;
+  }
+  a{
+    text-decoration: none;
+    color:${color.White};
   }
 
   a:hover {

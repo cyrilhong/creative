@@ -12,53 +12,70 @@ import Lottie from 'lottie-react';
 import lottieClient from './assets/client.json';
 import WrappedButton from 'app/components/WrappedButton'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
-import moreClient01 from './assets/moreClient/01.png';
-import moreClient02 from './assets/moreClient/02.png';
-import moreClient03 from './assets/moreClient/03.png';
-import moreClient04 from './assets/moreClient/04.png';
-import moreClient05 from './assets/moreClient/05.png';
-import moreClient06 from './assets/moreClient/06.png';
-import moreClient07 from './assets/moreClient/07.png';
-import moreClient08 from './assets/moreClient/08.png';
-import moreClient09 from './assets/moreClient/09.png';
-import moreClient10 from './assets/moreClient/10.png';
-import moreClient11 from './assets/moreClient/11.png';
-import moreClient12 from './assets/moreClient/12.png';
-import moreClient13 from './assets/moreClient/13.png';
-import moreClient14 from './assets/moreClient/14.png';
-import moreClient15 from './assets/moreClient/15.png';
-import moreClient16 from './assets/moreClient/16.png';
-import moreClient17 from './assets/moreClient/17.png';
-import moreClient18 from './assets/moreClient/18.png';
-import moreClient19 from './assets/moreClient/19.png';
-import moreClient20 from './assets/moreClient/20.png';
-import moreClient21 from './assets/moreClient/21.png';
-import moreClient22 from './assets/moreClient/22.png';
-import moreClient23 from './assets/moreClient/23.png';
+import acer from './assets/moreClient/acer.png';
+import Advantech from './assets/moreClient/Advantech.png';
+import Amway from './assets/moreClient/Amway.png';
+import ASUS from './assets/moreClient/ASUS.png';
+import Audi from './assets/moreClient/Audi.png';
+import Cathay_Financial_Holdings from './assets/moreClient/Cathay_Financial_Holdings.png';
+import Cathay_Life_Insurance from './assets/moreClient/Cathay_Life_Insurance.png';
+import Cathay_United_Bank from './assets/moreClient/Cathay_United_Bank.png';
+import China_Airlines from './assets/moreClient/China_Airlines.png';
+import CTBC from './assets/moreClient/CTBC.png';
+import Delta from './assets/moreClient/Delta.png';
+import eslite from './assets/moreClient/eslite.png';
+import EVA_Air from './assets/moreClient/EVA_Air.png';
+import FETnet from './assets/moreClient/FETnet.png';
+import First_Bank from './assets/moreClient/First_Bank.png';
+import Fubon_Bank from './assets/moreClient/Fubon_Bank.png';
+import gamania from './assets/moreClient/gamania.png';
+import Nan_Shan from './assets/moreClient/Nan_Shan.png';
+import HOTAI from './assets/moreClient/HOTAI.png';
+import HTC from './assets/moreClient/HTC.png';
+import KKBOX from './assets/moreClient/KKBOX.png';
+import LINE from './assets/moreClient/LINE.png';
+import PChome from './assets/moreClient/PChome.png';
+import Wowprime from './assets/moreClient/Wowprime.png';
+import taxi from './assets/moreClient/55688.png';
+
+import Shin_Kong from './assets/moreClient/Shin_Kong.png';
+import Sinyi from './assets/moreClient/Sinyi.png';
+import STARLUX from './assets/moreClient/STARLUX.png';
+import Synology from './assets/moreClient/Synology.png';
+import Taipei_City_Government from './assets/moreClient/Taipei_City_Government.png';
+import Taishin_Bank from './assets/moreClient/Taishin_Bank.png';
 const moreClient = [
-  moreClient01,
-  moreClient02,
-  moreClient03,
-  moreClient04,
-  moreClient05,
-  moreClient06,
-  moreClient07,
-  moreClient08,
-  moreClient09,
-  moreClient10,
-  moreClient11,
-  moreClient12,
-  moreClient13,
-  moreClient14,
-  moreClient15,
-  moreClient16,
-  moreClient17,
-  moreClient18,
-  moreClient19,
-  moreClient20,
-  moreClient21,
-  moreClient22,
-  moreClient23,
+  acer,
+  Advantech,
+  Amway,
+  ASUS,
+  Audi,
+  China_Airlines,
+  Delta,
+  gamania,
+  HTC,
+  KKBOX,
+  LINE,
+  PChome,
+  Synology,
+  CTBC,
+  Wowprime,
+  Fubon_Bank,
+  Taishin_Bank,
+  taxi,
+  HOTAI,
+  EVA_Air,
+  Sinyi,
+  Nan_Shan,
+  STARLUX,
+  Cathay_Life_Insurance,
+  Cathay_United_Bank,
+  Cathay_Financial_Holdings,
+  First_Bank,
+  Shin_Kong,
+  eslite,
+  Taipei_City_Government,
+  FETnet
 ];
 export default function Idea() {
   const ideaRef = useRef<any>(null);
@@ -116,7 +133,7 @@ const SectionIdea = styled.div`
   }
   h2 {
     font-size: 24px;
-    margin: 8px 0 32px;
+    margin: 8px 0 72px;
   }
   a {
     margin: 32px auto 0;

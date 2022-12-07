@@ -48,53 +48,55 @@ export default function Case() {
     carouselRef.current?.slickGoTo(index);
   };
   return (
-    <Cases>
-      <div className="left">
-        <div className="case-info">
-          <div className="pills">
-            {CaseSlider[activeSlide].tag.map(item => {
-              return (
-                <div key={item} className="pill eng">
-                  {item}
-                </div>
-              );
-            })}
-          </div>
-          <h4 className="subtitle">{CaseSlider[activeSlide].type}</h4>
-          <h1 className="title">{CaseSlider[activeSlide].title}</h1>
-          <h4 className="content">{CaseSlider[activeSlide].content}</h4>
-          <RoundButton
-            link={CaseSlider[activeSlide].link}
-            isWhite={true}
-            text="CASE STUDY"
-          />
-          <div className="dots">
-            {CaseSlider.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`dot ${activeSlide === index && 'active'}`}
-                  onClick={() => gotoSlick(index)}
-                />
-              );
-            })}
+    <a href="https://yoxi-case-study.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
+      <Cases>
+        <div className="left">
+          <div className="case-info">
+            <div className="pills">
+              {CaseSlider[activeSlide].tag.map(item => {
+                return (
+                  <div key={item} className="pill eng">
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
+            <h4 className="subtitle">{CaseSlider[activeSlide].type}</h4>
+            <h1 className="title">{CaseSlider[activeSlide].title}</h1>
+            <h4 className="content">{CaseSlider[activeSlide].content}</h4>
+            <RoundButton
+              link={CaseSlider[activeSlide].link}
+              isWhite={true}
+              text="CASE STUDY"
+            />
+            <div className="dots">
+              {CaseSlider.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`dot ${activeSlide === index && 'active'}`}
+                    onClick={() => gotoSlick(index)}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="right">
-        <Slider {...settings} ref={carouselRef}>
-          {CaseSlider.map(item => {
-            return (
-              <SlideItem key={item.title}>
-                <Fade right>
-                  <img src={item.img.src} alt={item.img.alt} />
-                </Fade>
-              </SlideItem>
-            );
-          })}
-        </Slider>
-      </div>
-    </Cases>
+        <div className="right">
+          <Slider {...settings} ref={carouselRef}>
+            {CaseSlider.map(item => {
+              return (
+                <SlideItem key={item.title}>
+                  <Fade right>
+                    <img src={item.img.src} alt={item.img.alt} />
+                  </Fade>
+                </SlideItem>
+              );
+            })}
+          </Slider>
+        </div>
+      </Cases>
+    </a>
   );
 }
 
@@ -147,6 +149,7 @@ const Cases = styled.div`
       margin-bottom: 32px;
       .pill {
         margin-right: 12px;
+        cursor: default;
         border-radius: 100px;
         background-color: #2e3c42;
         color: ${colors.White};
@@ -160,9 +163,11 @@ const Cases = styled.div`
     h4 {
       margin-bottom: 8px;
       margin-top: 0;
+      text-decoration: none;
     }
     h1 {
       margin: 8px 0;
+      text-decoration: none;
     }
     .content {
       margin-bottom: 32px;
