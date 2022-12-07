@@ -630,339 +630,336 @@ export function ContactPage() {
           </PageWrapper>
         </div>
         <FormSection className="service-second-section">
-          <PageWrapper
-            overflow={'false'}
-            className="form-section"
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Grid container spacing={8}>
-              <Grid item xs={4} ref={positionRef} position="relative">
-                <div
-                  className={`left ${sticky ? 'sticky-top' : ''} ${bottomSticky ? 'sticky-bottom' : ''
-                    }`}
-                >
-                  <div className="huge eng">
-                    Let's Do <br /> This.
+          <div className="form-section">
+            <PageWrapper
+              overflow={'false'}
+            >
+              <Grid container spacing={8}>
+                <Grid item xs={4} ref={positionRef} position="relative">
+                  <div
+                    className={`left ${sticky ? 'sticky-top' : ''} ${bottomSticky ? 'sticky-bottom' : ''
+                      }`}
+                  >
+                    <div className="huge eng">
+                      Let's Do <br /> This.
+                    </div>
+                    <h1>專案諮詢</h1>
                   </div>
-                  <h1>專案諮詢</h1>
-                </div>
-              </Grid>
-              <Grid item xs={8}>
-                <div className="right">
-                  <FormDivider />
-                  <h3>
-                    已經有具體的設計需求嗎？您可以透過此份表單告訴我們您的專案細節，<br />
-                    或歡迎來電洽詢 +886-2-8502-9135 。
-                  </h3>
-                  <Element name='form' >
-                    <form onSubmit={handleSubmit(_onSubmit, _onError)}>
-                      <FormTitle>
-                        <div className="title">
-                          <div className="dot" />
-                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
-                            <h2>您需要的服務類型是？</h2>
-                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（可複選）</h5>
-                          </Box>
-                        </div>
-                      </FormTitle>
-                      <RadioGroup>
-                        {Services.map((item, index) => {
-                          return (
-                            <FormController
-                              name={item.title}
-                              control={control}
-                              key={index}
-                              render={({ field, fieldState: { invalid } }) => (
-                                <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
-                                  {/* <img src={item.icon} alt="careVisit" /> */}
-                                  <label>
-                                    <Checkbox
-                                      name={field.name}
-                                      color="primary"
-                                      checked={field.value === true}
-                                      style={{
-                                        padding: '0 8px 0 0',
-                                        ...(invalid ? { color: '#FF0000' } : {}),
-                                      }}
-                                    />
-                                    <h3>{item.title}</h3>
-                                    <hr />
-                                    <p>
-                                      {item.content}
-                                    </p>
-                                  </label>
-                                  {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
-                                </CustomCheckbox>
-                              )}
-                            />
-                          )
-                        })}
-                      </RadioGroup>
-                      <FormTitle>
-                        <div className="title">
-                          <div className="dot" />
-                          <h2>您預計的開案時間？</h2>
-                        </div>
-                      </FormTitle>
-                      <FormController
-                        name="time"
-                        control={control}
-                        render={({ field, fieldState: { invalid } }) => (
-
-                          <SmallRadioGroup>
-                            <div className={`radio ${getTime === 0 ? 'active' : ''}`}>
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={0}
-                                  checked={getTime === 0}
-                                  onChange={() => setValue('time', 0)}
-                                />
-                                <h3>三周內</h3>
-                              </label>
-                            </div>
-                            <div className={`radio ${getTime === 1 ? 'active' : ''}`}>
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={1}
-                                  checked={getTime === 1}
-                                  onChange={() => setValue('time', 1)}
-                                />
-                                <h3>一個月內</h3>
-                              </label>
-                            </div>
-                            <div className={`radio ${getTime === 2 ? 'active' : ''}`}>
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={2}
-                                  checked={getTime === 2}
-                                  onChange={() => setValue('time', 2)}
-                                />
-                                <h3>二個月內</h3>
-                              </label>
-                            </div>
-                            <div className={`radio ${getTime === 3 ? 'active' : ''}`}>
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={3}
-                                  checked={getTime === 3}
-                                  onChange={() => setValue('time', 3)}
-                                />
-                                <h3>沒有或不確定</h3>
-                              </label>
-                            </div>
-                          </SmallRadioGroup>
-                        )}
-                      />
-                      <FormTitle>
-                        <div className="title">
-                          <div className="dot" />
-                          <h2>您預計的合作時程？</h2>
-                        </div>
-                      </FormTitle>
-                      <FormController
-                        name="CoopTime"
-                        control={control}
-                        render={({ field, fieldState: { invalid } }) => (
-                          <SmallRadioGroup>
-                            <div
-                              className={`radio ${getCoopTime === 0 ? 'active' : ''}`}
-                            >
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={0}
-                                  checked={getCoopTime === 0}
-                                  onChange={() => {
-                                    setValue('CoopTime', 0);
-                                  }}
-                                />
-                                <h3>三個月內</h3>
-                              </label>
-                            </div>
-                            <div
-                              className={`radio ${getCoopTime === 1 ? 'active' : ''}`}
-                            >
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={1}
-                                  checked={getCoopTime === 1}
-                                  onChange={() => setValue('CoopTime', 1)}
-                                />
-                                <h3>半年內</h3>
-                              </label>
-                            </div>
-                            <div
-                              className={`radio ${getCoopTime === 2 ? 'active' : ''}`}
-                            >
-                              <label>
-                                <input
-                                  type="radio"
-                                  value={2}
-                                  checked={getCoopTime === 2}
-                                  onChange={() => setValue('CoopTime', 2)}
-                                />
-                                <h3>一年</h3>
-                              </label>
-                            </div>
-                          </SmallRadioGroup>
-                        )}
-                      />
-
-                      <FormTitle>
-                        <div className="title">
-                          <div className="dot" />
-                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
-                            <h2>您設想的預算大約是？</h2>
-                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
-                          </Box>
-                        </div>
-                      </FormTitle>
-                      <Box width={"100%"} padding="0 40px 0 12px">
-                        <SliderBar />
-                      </Box>
-                      <FormTitle>
-                        <div className="title">
-                          <div className="dot" />
-                          <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
-                            <h2>您的聯絡方式</h2>
-                            <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（＊必填）</h5>
-                          </Box>
-                        </div>
-                      </FormTitle>
-                      <InputForm>
-                        {/* <label htmlFor="email">聯絡人</label> */}
-                        <div className="input-group">
-
-                          {/* {watch('name')} */}
-                          <FormController
-                            name="name"
-                            control={control}
-                            rules={{
-                              required: '請填寫您的姓名'
-                            }}
-                            render={({ field, fieldState: { error, invalid } }) => (
-                              <TextField
-                                {...field}
-                                type="text"
-                                variant="filled"
-                                label="聯絡人 *"
-                                fullWidth
-                                error={invalid}
-                                helperText={error?.message}
-                              />
-                            )}
-                          />
-                          <FormController
-                            name="company"
-                            control={control}
-                            rules={{
-                              required: '請填寫您的公司名稱'
-                            }}
-                            render={({ field, fieldState: { error, invalid } }) => (
-                              <TextField
-                                {...field}
-                                type="text"
-                                variant="filled"
-                                label="公司名稱 *"
-                                fullWidth
-                                error={invalid}
-                                helperText={error?.message}
-                              />
-                            )}
-                          />
-                        </div>
-                        <div className="input-group">
-                          <FormController
-                            name="phone"
-                            control={control}
-                            rules={{
-                              required: '請填寫您的聯絡電話'
-                            }}
-                            render={({ field, fieldState: { error, invalid } }) => (
-                              <TextField
-                                {...field}
-                                label="聯絡電話 *"
-                                type="text"
-                                variant="filled"
-                                fullWidth
-                                error={invalid}
-                                helperText={error?.message}
-                              />
-                              // <TextField label="Filled" variant="filled" />
-                            )}
-                          />
-                          <FormController
-                            name="email"
-                            control={control}
-                            rules={{
-                              required: "請填寫您的電子郵件",
-                              pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: '請填寫有效的電子郵件'
-                              }
-                            }}
-                            render={({ field, fieldState: { error, invalid } }) => (
-                              <TextField
-                                {...field}
-                                type="text"
-                                variant="filled"
-                                label="電子郵件 *"
-                                fullWidth
-                                error={invalid}
-                                helperText={error?.message}
-                              />
-                            )}
-                          />
-                        </div>
+                </Grid>
+                <Grid item xs={8}>
+                  <div className="right">
+                    <FormDivider />
+                    <h3>
+                      已經有具體的設計需求嗎？您可以透過此份表單告訴我們您的專案細節，<br />
+                      或歡迎來電洽詢 +886-2-8502-9135 。
+                    </h3>
+                    <Element name='form' >
+                      <form onSubmit={handleSubmit(_onSubmit, _onError)}>
                         <FormTitle>
                           <div className="title">
                             <div className="dot" />
-                            <h2>告訴我們更多關於您的專案細節吧！</h2>
+                            <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                              <h2>您需要的服務類型是？</h2>
+                              <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（可複選）</h5>
+                            </Box>
                           </div>
                         </FormTitle>
-                        <div className="input-group">
-                          <FormController
-                            name="comment"
-                            control={control}
-                            rules={{
-                              required: true
-                            }}
-                            render={({ field, fieldState: { error, invalid } }) => (
-                              <TextField
-                                {...field}
-                                type="text"
-                                variant="filled"
-                                multiline
-                                rows={5}
-                                placeholder="寫下更多關於產品或專案的想法，幫助我們更理解您的需求。"
-                                fullWidth
-                                error={invalid}
-                                helperText={error?.message}
+                        <RadioGroup>
+                          {Services.map((item, index) => {
+                            return (
+                              <FormController
+                                name={item.title}
+                                control={control}
+                                key={index}
+                                render={({ field, fieldState: { invalid } }) => (
+                                  <CustomCheckbox className={`${field.value === true ? 'active' : ''} radio`} onClick={() => setValue(item.title, !field.value)}>
+                                    {/* <img src={item.icon} alt="careVisit" /> */}
+                                    <label>
+                                      <Checkbox
+                                        name={field.name}
+                                        color="primary"
+                                        checked={field.value === true}
+                                        style={{
+                                          padding: '0 8px 0 0',
+                                          ...(invalid ? { color: '#FF0000' } : {}),
+                                        }}
+                                      />
+                                      <h3>{item.title}</h3>
+                                      <hr />
+                                      <p>
+                                        {item.content}
+                                      </p>
+                                    </label>
+                                    {/* {field.value ? <img src={check} alt="check" /> : <div className='uncheck'></div>} */}
+                                  </CustomCheckbox>
+                                )}
                               />
-                            )}
-                          />
-                        </div>
-                      </InputForm>
-                      <Box width={'100%'} textAlign="center">
-                        <RoundButton type="submit" disabled={false}>
-                          <h4 className="">立即送出</h4>
-                          <img src={arrowWhite} alt="arrow" />
-                        </RoundButton>
-                      </Box>
-                    </form>
-                  </Element>
-                </div>
+                            )
+                          })}
+                        </RadioGroup>
+                        <FormTitle>
+                          <div className="title">
+                            <div className="dot" />
+                            <h2>您預計的開案時間？</h2>
+                          </div>
+                        </FormTitle>
+                        <FormController
+                          name="time"
+                          control={control}
+                          render={({ field, fieldState: { invalid } }) => (
+
+                            <SmallRadioGroup>
+                              <div className={`radio ${getTime === 0 ? 'active' : ''}`}>
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={0}
+                                    checked={getTime === 0}
+                                    onChange={() => setValue('time', 0)}
+                                  />
+                                  <h3>三周內</h3>
+                                </label>
+                              </div>
+                              <div className={`radio ${getTime === 1 ? 'active' : ''}`}>
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={1}
+                                    checked={getTime === 1}
+                                    onChange={() => setValue('time', 1)}
+                                  />
+                                  <h3>一個月內</h3>
+                                </label>
+                              </div>
+                              <div className={`radio ${getTime === 2 ? 'active' : ''}`}>
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={2}
+                                    checked={getTime === 2}
+                                    onChange={() => setValue('time', 2)}
+                                  />
+                                  <h3>二個月內</h3>
+                                </label>
+                              </div>
+                              <div className={`radio ${getTime === 3 ? 'active' : ''}`}>
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={3}
+                                    checked={getTime === 3}
+                                    onChange={() => setValue('time', 3)}
+                                  />
+                                  <h3>沒有或不確定</h3>
+                                </label>
+                              </div>
+                            </SmallRadioGroup>
+                          )}
+                        />
+                        <FormTitle>
+                          <div className="title">
+                            <div className="dot" />
+                            <h2>您預計的合作時程？</h2>
+                          </div>
+                        </FormTitle>
+                        <FormController
+                          name="CoopTime"
+                          control={control}
+                          render={({ field, fieldState: { invalid } }) => (
+                            <SmallRadioGroup>
+                              <div
+                                className={`radio ${getCoopTime === 0 ? 'active' : ''}`}
+                              >
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={0}
+                                    checked={getCoopTime === 0}
+                                    onChange={() => {
+                                      setValue('CoopTime', 0);
+                                    }}
+                                  />
+                                  <h3>三個月內</h3>
+                                </label>
+                              </div>
+                              <div
+                                className={`radio ${getCoopTime === 1 ? 'active' : ''}`}
+                              >
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={1}
+                                    checked={getCoopTime === 1}
+                                    onChange={() => setValue('CoopTime', 1)}
+                                  />
+                                  <h3>半年內</h3>
+                                </label>
+                              </div>
+                              <div
+                                className={`radio ${getCoopTime === 2 ? 'active' : ''}`}
+                              >
+                                <label>
+                                  <input
+                                    type="radio"
+                                    value={2}
+                                    checked={getCoopTime === 2}
+                                    onChange={() => setValue('CoopTime', 2)}
+                                  />
+                                  <h3>一年</h3>
+                                </label>
+                              </div>
+                            </SmallRadioGroup>
+                          )}
+                        />
+
+                        <FormTitle>
+                          <div className="title">
+                            <div className="dot" />
+                            <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                              <h2>您設想的預算大約是？</h2>
+                              <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（拖曳選擇範圍）</h5>
+                            </Box>
+                          </div>
+                        </FormTitle>
+                        <Box width={"100%"} padding="0 40px 0 12px">
+                          <SliderBar />
+                        </Box>
+                        <FormTitle>
+                          <div className="title">
+                            <div className="dot" />
+                            <Box display={'flex'} flexDirection="row" alignContent={"baseline"}>
+                              <h2>您的聯絡方式</h2>
+                              <h5 style={{ margin: '0 0 0 4px', display: 'flex', alignItems: "end" }}>（＊必填）</h5>
+                            </Box>
+                          </div>
+                        </FormTitle>
+                        <InputForm>
+                          {/* <label htmlFor="email">聯絡人</label> */}
+                          <div className="input-group">
+
+                            {/* {watch('name')} */}
+                            <FormController
+                              name="name"
+                              control={control}
+                              rules={{
+                                required: '請填寫您的姓名'
+                              }}
+                              render={({ field, fieldState: { error, invalid } }) => (
+                                <TextField
+                                  {...field}
+                                  type="text"
+                                  variant="filled"
+                                  label="聯絡人 *"
+                                  fullWidth
+                                  error={invalid}
+                                  helperText={error?.message}
+                                />
+                              )}
+                            />
+                            <FormController
+                              name="company"
+                              control={control}
+                              rules={{
+                                required: '請填寫您的公司名稱'
+                              }}
+                              render={({ field, fieldState: { error, invalid } }) => (
+                                <TextField
+                                  {...field}
+                                  type="text"
+                                  variant="filled"
+                                  label="公司名稱 *"
+                                  fullWidth
+                                  error={invalid}
+                                  helperText={error?.message}
+                                />
+                              )}
+                            />
+                          </div>
+                          <div className="input-group">
+                            <FormController
+                              name="phone"
+                              control={control}
+                              rules={{
+                                required: '請填寫您的聯絡電話'
+                              }}
+                              render={({ field, fieldState: { error, invalid } }) => (
+                                <TextField
+                                  {...field}
+                                  label="聯絡電話 *"
+                                  type="text"
+                                  variant="filled"
+                                  fullWidth
+                                  error={invalid}
+                                  helperText={error?.message}
+                                />
+                                // <TextField label="Filled" variant="filled" />
+                              )}
+                            />
+                            <FormController
+                              name="email"
+                              control={control}
+                              rules={{
+                                required: "請填寫您的電子郵件",
+                                pattern: {
+                                  value: /\S+@\S+\.\S+/,
+                                  message: '請填寫有效的電子郵件'
+                                }
+                              }}
+                              render={({ field, fieldState: { error, invalid } }) => (
+                                <TextField
+                                  {...field}
+                                  type="text"
+                                  variant="filled"
+                                  label="電子郵件 *"
+                                  fullWidth
+                                  error={invalid}
+                                  helperText={error?.message}
+                                />
+                              )}
+                            />
+                          </div>
+                          <FormTitle>
+                            <div className="title">
+                              <div className="dot" />
+                              <h2>告訴我們更多關於您的專案細節吧！</h2>
+                            </div>
+                          </FormTitle>
+                          <div className="input-group">
+                            <FormController
+                              name="comment"
+                              control={control}
+                              rules={{
+                                required: true
+                              }}
+                              render={({ field, fieldState: { error, invalid } }) => (
+                                <TextField
+                                  {...field}
+                                  type="text"
+                                  variant="filled"
+                                  multiline
+                                  rows={5}
+                                  placeholder="寫下更多關於產品或專案的想法，幫助我們更理解您的需求。"
+                                  fullWidth
+                                  error={invalid}
+                                  helperText={error?.message}
+                                />
+                              )}
+                            />
+                          </div>
+                        </InputForm>
+                        <Box width={'100%'} textAlign="center">
+                          <RoundButton type="submit" disabled={false}>
+                            <h4 className="">立即送出</h4>
+                            <img src={arrowWhite} alt="arrow" />
+                          </RoundButton>
+                        </Box>
+                      </form>
+                    </Element>
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
-          </PageWrapper>
+            </PageWrapper>
+          </div>
           <FAQ ref={FaqPositionRef} className="bg-FAQ">
             <PageWrapper>
               <Horizon>
@@ -1537,6 +1534,10 @@ const FormSection = styled.div`
       /* padding-left:0; */
     }
   `}
+  .form-section{
+    display: flex;
+    align-items: flex-start;
+  }
   ${media.medium`
     .form-section{
       display: none;
