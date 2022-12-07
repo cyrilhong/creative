@@ -18,6 +18,7 @@ export function Logo({ color, bgColor }) {
     padding: 24px;
     flex-basis: 410px;
     color: ${color};
+    background-color: ${bgColor};
     img {
       /* margin-left: 24px; */
     }

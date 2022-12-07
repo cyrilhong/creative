@@ -760,7 +760,7 @@ const CTA = styled.a<{
     margin-top: 165px;
   `}
   ${media.small`
-    margin-top: 105px;
+    margin-top: 145px;
   `}
 `;
 

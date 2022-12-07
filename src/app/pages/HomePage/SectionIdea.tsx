@@ -40,7 +40,7 @@ export default function Idea() {
                             <h2>我們用心生活，賦予多變創意能量</h2>
                             <WrappedButton
                                 text="ABOUT US"
-                                link="#"
+                                link="/about-us"
                                 isWhite={true}
                             />
                         </div>
@@ -56,7 +56,7 @@ export default function Idea() {
                             <h2>與我們一起加入改變的行列！</h2>
                             <WrappedButton
                                 text="JOIN US"
-                                link="#"
+                                link="/join-us"
                                 isWhite={true}
                             />
                         </div>

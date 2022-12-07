@@ -1681,14 +1681,14 @@ const InputForm = styled.div`
   }
   .MuiFormLabel-root{
     top: 4px;
-    font-size: 20px;
+    font-size: 18px;
     &.Mui-error{
       color: #A2AAA4!important;
     }
   }
   .MuiFormLabel-root.Mui-focused{
     color:${colors.AJABlue};
-    font-size: 14px;
+    font-size: 18px;
   }
   .MuiFilledInput-underline{
     border-color: #0C1C24;

@@ -193,10 +193,10 @@ export function CustomerPage() {
                         與金融領導品牌深度合作，含跨全國 ATM、企金與親子金融跨接觸點數位服務。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target={"_blank"} href="https://aja.com.tw/portfolio/ctbc-parent-child/index.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
                         </a>
-                        <a href="#">
+                        <a target={"_blank"} href="https://aja.com.tw/portfolio/ctbc-sme/index.html">
                           <img src={arrowBtn} alt="arrowBtn" />
                           中小企業數位金融服務
                         </a>
@@ -217,7 +217,7 @@ export function CustomerPage() {
                         品牌創意發想到設計執行整合，從司機到乘客的應用情境，與和泰一起重新定義舒適用車體驗。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://yoxi-case-study.aja.com.tw/">
                           <img src={arrowBtn} alt="arrowBtn" />
                           和泰派遣服務 APP
                         </a>
@@ -237,7 +237,7 @@ export function CustomerPage() {
                         全新航空品牌的數位旅程體驗，橫跨手機、官網、貨運與免稅品等跨平台數位服務。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://aja.com.tw/starlux-case-study/index.html">
                           <img src={arrowBtn} alt="arrowBtn" />
                           星宇航空數位建置案
                         </a>
@@ -257,7 +257,7 @@ export function CustomerPage() {
                         不只是電信服務，以研究洞察為起點，為個人、商務、會員生活服務的官網設計顧問案。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://fetnet-revision.aja.com.tw/">
                           <img src={arrowBtn} alt="arrowBtn" /> 遠傳數位生活平台
                         </a>
                       </div>
@@ -276,7 +276,7 @@ export function CustomerPage() {
                         為全球整體節能解決方案領導企業持續優化數位運用，打造電源、EV 充電與自動化服務。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://aja.com.tw/portfolio/delta-biczone/index.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 品牌數位設計系統
                         </a>
 
@@ -296,7 +296,7 @@ export function CustomerPage() {
                         以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 App。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_china_airlines.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 華航行動飛航體驗
                         </a>
                       </div>
@@ -315,7 +315,7 @@ export function CustomerPage() {
                         數位多元學習管道，掌握顧客與消費行為，從學習趨勢研究著手。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://aja.com.tw/portfolio/elearning/index.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 線上學習互動平台
                         </a>
                       </div>
@@ -335,7 +335,7 @@ export function CustomerPage() {
 
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_cathay_hospital.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 國泰醫院 App 服務
                         </a>
                       </div>
@@ -355,7 +355,7 @@ export function CustomerPage() {
                         與台新銀行團隊攜手合作，持續優化最懂年輕人，整合存錢、消費、理財的 Richart 數位帳戶。
                       </h5>
                       <div className="link">
-                        <a href="#">
+                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html">
                           <img src={arrowBtn} alt="arrowBtn" />數位銀行金融服務
                         </a>
                       </div>

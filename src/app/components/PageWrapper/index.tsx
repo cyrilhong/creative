@@ -1,6 +1,7 @@
 import React, { Children, useRef } from 'react';
 import styled from 'styled-components/macro';
 import { Grid, Container } from '@mui/material';
+import { useWindowSize } from '../../hooks'
 import * as colors from 'styles/colors';
 import { media } from 'styles/media';
 import Box from '@mui/material/Box';
@@ -48,6 +49,7 @@ const WrapperMb = styled.div`
 
 
 export function PageWrapper(props) {
+  const windowWidth = useWindowSize().width
   const Wrapper = styled.div<{
     blackBg?: boolean;
     bgc?: string;
@@ -92,75 +94,77 @@ export function PageWrapper(props) {
 
   return (
     <>
-      {!isMobile ? <Wrapper overflow={props.overflow} className={props.className}>
-        <Box position={'relative'} zIndex="1">
-          {props.children}
-        </Box>
-        <Grid
-          container
-          rowSpacing={5}
-          columnSpacing={0}
-          height="100%"
-          position={'absolute'}
-          className="lines"
-        >
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              className="line"
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              // borderRight={'1px solid red'}
-              height="100%"
-            />
+      {!isMobile || windowWidth > 960 ?
+        <Wrapper overflow={props.overflow} className={props.className}>
+          <Box position={'relative'} zIndex="1">
+            {props.children}
+          </Box>
+          <Grid
+            container
+            rowSpacing={5}
+            columnSpacing={0}
+            height="100%"
+            position={'absolute'}
+            className="lines"
+          >
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                className="line"
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                // borderRight={'1px solid red'}
+                height="100%"
+              />
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                className="line"
+                height="100%"
+              />
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                className="line"
+                height="100%"
+              />
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                className="line"
+                height="100%"
+              />
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                className="line"
+                height="100%"
+              />
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={1} height="100%">
+              <Box
+                // borderRight={'1px solid rgba(243, 243, 235, .5)'}
+                className="line"
+                height="100%"
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              className="line"
-              height="100%"
-            />
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              className="line"
-              height="100%"
-            />
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              className="line"
-              height="100%"
-            />
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              className="line"
-              height="100%"
-            />
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={1} height="100%">
-            <Box
-              // borderRight={'1px solid rgba(243, 243, 235, .5)'}
-              className="line"
-              height="100%"
-            />
-          </Grid>
-        </Grid>
-      </Wrapper>
+        </Wrapper>
         :
         <WrapperMb>
           <Box position={'relative'} zIndex="1">
             {props.children}
           </Box>
-        </WrapperMb>}
+        </WrapperMb>
+      }
     </>
   );
 }

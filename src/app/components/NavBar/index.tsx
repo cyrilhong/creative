@@ -63,6 +63,8 @@ export function NavBar({ blackBg = '', bgColor, color }) {
   return (
     <Wrapper>
       <div className='logo'>
+        {color}
+        {bgColor}
         <Logo color={color} bgColor={bgColor} />
       </div>
       <Nav color={color} bgColor={bgColor} />

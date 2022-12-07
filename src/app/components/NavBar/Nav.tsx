@@ -67,7 +67,7 @@ export function Nav({ color, bgColor }) {
       display: none;
     }
     &.hover {
-      --thickness: 2px;
+      --thickness: 3px;
       background: none;
       box-sizing: border-box;
       -webkit-clip-path: polygon(
@@ -86,6 +86,7 @@ export function Nav({ color, bgColor }) {
       /* font-weight: 900; */
       -webkit-mask-image: none;
       padding: 2px 0;
+      margin-bottom: -3px;
       position: relative;
       text-transform: uppercase;
     }

@@ -41,6 +41,12 @@ import wall3 from './assets/wall-3.jpg';
 import wall4 from './assets/wall-4.jpg';
 import wall5 from './assets/wall-5.jpg';
 import wall6 from './assets/wall-6.jpg';
+import wall1Mb from './assets/wall-1-mb.jpg';
+import wall2Mb from './assets/wall-2-mb.jpg';
+import wall3Mb from './assets/wall-3-mb.jpg';
+import wall4Mb from './assets/wall-4-mb.jpg';
+import wall5Mb from './assets/wall-5-mb.jpg';
+import wall6Mb from './assets/wall-6-mb.jpg';
 import ctbaLogo from './assets/ctbc-logo.png';
 import dedicationWording from './assets/dedication.svg';
 import dedicationBg from './assets/dedication.jpg';
@@ -72,13 +78,14 @@ import {
   MobileView,
   isBrowser,
   isMobile,
+  isDesktop,
 } from 'react-device-detect';
 
 const CaseSlider = [
   {
     content:
       '“ AJA 具備創新思維的設計能力，能協助客戶推出市場創新的產品，深入探究細節的設計態度，搭配實事求是的精神，令人讚賞。”',
-    name: '<b>中國信託,</b> Karl',
+    name: '<b>中國信託 數位營運規劃部</b>',
     link: '#',
     img: {
       src: ctbaLogo,
@@ -88,7 +95,7 @@ const CaseSlider = [
   {
     content:
       '“ 團隊分工清楚且合作接軌，學習力強能掌握客戶之作業細節。能接地氣聆聽使用者之心聲，回應快能接受客戶回饋及調整為適妥解決方案，是客戶喜歡的合作團隊。”',
-    name: '<b>南山人壽業務通路</b>, 劉桂如 副總經理',
+    name: '<b>南山人壽 業務通路</b>',
     link: '#',
     img: {
       src: NanShan,
@@ -98,7 +105,7 @@ const CaseSlider = [
   {
     content:
       '“ 在內部訪談時，平衡來自不同部門間的不同意見、甚至是矛盾與互相衝突的需求，不是一般設計公司做得到的。”',
-    name: '<b>KKBOX,</b> 桂國泰',
+    name: '<b>KKBOX 產品開發部</b>',
     link: '#',
     img: {
       src: kkboxLogo,
@@ -108,7 +115,7 @@ const CaseSlider = [
   {
     content:
       '“ 大予或許是你為了特定需求而找上的公司，然後在這過程中相信你也會感受到，你得到的是：「一間陪著你成長茁壯的公司、多個陪著你打怪破關的團隊夥伴。」共勉之。”',
-    name: '<b>台新銀行數位金融處生態圈發展部,</b> 林晟 副理 ',
+    name: '<b>台新銀行 數位金融處生態圈發展部</b>',
     link: '#',
     img: {
       src: tsBankLogo,
@@ -118,7 +125,7 @@ const CaseSlider = [
   {
     content:
       '“ 專業度令人印象深刻，不只是前進 UX/UI 的最佳夥伴，從合作中更激發對使用者及設計的創新想像。”',
-    name: '<b>台灣設計研究院,</b> 王翊任',
+    name: '<b>台灣設計研究院 產業創新組</b>',
     link: '#',
     img: {
       src: tdriLogo,
@@ -128,7 +135,7 @@ const CaseSlider = [
   {
     content:
       '“ 有人曾經跟我介紹大予是豪宅等級的顧問，合作以來覺得形容的真好！專案期間感受到大予的嚴謹及產出的專業性，過程中亦非常有收穫。”',
-    name: '<b>台北富邦銀行數位金融處,</b> 盧湞',
+    name: '<b>台北富邦銀行 數位金融處</b>',
     link: '#',
     img: {
       src: fbLogo,
@@ -138,7 +145,7 @@ const CaseSlider = [
   {
     content:
       '“ 大予團隊可提供超乎顧客需求的服務，服務跟呈現都令人滿意。”',
-    name: '<b>中華汽車新創小組,</b> 郭怡欣',
+    name: '<b>中華汽車 新創小組</b>',
     link: '#',
     img: {
       src: cmcLogo,
@@ -203,7 +210,7 @@ export function HomePage() {
     } else {
       setTimeout(() => {
         setIsBlackBg(true);
-      }, 500);
+      }, 200);
 
     }
   });
@@ -347,7 +354,7 @@ export function HomePage() {
             )}
           </Parallax>
           <div className="hover-player">
-            <img src={playVideo} alt="playReel" />
+            {/* <img src={playVideo} alt="playReel" /> */}
           </div>
         </VideoWrapper>
       </div>
@@ -422,7 +429,7 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="#"
+                    link="https://yoxi-case-study.aja.com.tw/"
                     isWhite={true}
                     text="CASE STUDY"
                   />
@@ -441,7 +448,7 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="#"
+                    link="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"
                     isWhite={true}
                     text="CASE STUDY"
                   />
@@ -461,7 +468,7 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="#"
+                    link="https://fetnet-revision.aja.com.tw/"
                     isWhite={true}
                     text="CASE STUDY"
                   />
@@ -481,7 +488,7 @@ export function HomePage() {
                     <div className="pill eng">BRANDING</div>
                   </div>
                   <RoundButton
-                    link="#"
+                    link="https://aja.com.tw/starlux-case-study/index.html"
                     isWhite={true}
                     text="CASE STUDY"
                   />
@@ -576,7 +583,7 @@ export function HomePage() {
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall1} alt="wall1" />
+                    <img src={windowWidth > 960 ? wall1 : wall1Mb} alt="wall1" />
                   </Parallax>
                 </Grid>
                 <Grid xs={6} xsOffset={6} md={4} mdOffset={5}>
@@ -586,7 +593,7 @@ export function HomePage() {
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall3} alt="wall3" />
+                    <img src={windowWidth > 960 ? wall3 : wall3Mb} alt="wall3" />
                   </Parallax>
                 </Grid>
                 <Grid xs={6} md={3}>
@@ -596,7 +603,7 @@ export function HomePage() {
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall4} alt="wall4" />
+                    <img src={windowWidth > 960 ? wall4 : wall4Mb} alt="wall4" />
                   </Parallax>
                 </Grid>
                 <Grid xs={3} xsOffset={2} md={3} mdOffset={3}>
@@ -606,27 +613,27 @@ export function HomePage() {
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall5} alt="wall5" />
+                    <img src={windowWidth > 960 ? wall5 : wall5Mb} alt="wall5" />
                   </Parallax>
                 </Grid>
                 <Grid xs={3} md={3} mdOffset={2}>
                   <Parallax
                     className="wall6"
-                    speed={windowWidth > 960 ? 20 : 15}
+                    speed={windowWidth > 960 ? 20 : 20}
                     scale={windowWidth > 960 ? [1.5, 0] : [1.1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall6} alt="wall6" />
+                    <img src={windowWidth > 960 ? wall6 : wall6Mb} alt="wall6" />
                   </Parallax>
                 </Grid>
                 <Grid xs={4} xsOffset={2} md={2} mdOffset={3}>
                   <Parallax
                     className="wall2"
-                    speed={windowWidth > 960 ? 40 : 20}
+                    speed={windowWidth > 960 ? 40 : 40}
                     scale={windowWidth > 960 ? [1.5, 0] : [1, 1]}
                     rootMargin={{ top: 0, right: 0, bottom: 800, left: 0 }}
                   >
-                    <img src={wall2} alt="wall2" />
+                    <img src={windowWidth > 960 ? wall2 : wall2Mb} alt="wall2" />
                   </Parallax>
                 </Grid>
 
@@ -832,7 +839,7 @@ export function HomePage() {
                           <h4>設計概念驗證</h4>
                         </li>
                         <li>
-                          <h4>概念測試與需求驗證</h4>
+                          <h4>易用性測試與需求驗證</h4>
                         </li>
                       </ul>
                     </Box>
@@ -1649,7 +1656,8 @@ const VideoWrapper = styled.div`
     left: 0;
   }
   &:hover{
-    cursor: pointer;
+    /* cursor: pointer; */
+    cursor: url(${playVideo}) 45 45,auto;
     .hover-player{
       opacity: 1;
     }
@@ -1800,7 +1808,7 @@ const ServiceList = styled.div`
         font-size: 16px;
       }
       h1{
-        margin: 32px 0 24px;
+        margin: 32px 0 8px;
       }
     }
   `}
