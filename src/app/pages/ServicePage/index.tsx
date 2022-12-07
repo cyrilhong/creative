@@ -60,7 +60,7 @@ export function ServicePage() {
               <>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    Experience Design
+                    Experience design
                   </Fade>
                 </div>
                 <div className="eng huge">
@@ -88,12 +88,12 @@ export function ServicePage() {
               <>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    Experience Design
+                    Experience design
                   </Fade>
                 </div>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    Driven By Process.
+                    driven by prototyping & process.
                   </Fade>
                 </div>
                 <div className="content">
@@ -130,7 +130,7 @@ export function ServicePage() {
             </Grid>
           </HeroWrapper>
 
-          <Horizon pt="40px">
+          <Horizon>
             <div className="title">
               <div className="dot" />
               <h4 className="eng">PROCESS</h4>
@@ -156,7 +156,7 @@ export function ServicePage() {
               </Grid>
               <Grid xs={12} md={8} padding={0}>
                 <h4>
-                  我們相信每個服務與產品的誕生都是一段連續的過程，從探索研究、創新概念到設計落實，全程都應該對應商業目標，用戶需求與市場期待。我們善於傾聽、縝密而細心的爬梳情境，深化為每一個獨特而且鮮明的洞察，進而落實到每位用戶手上愉悅且讚嘆的產品體驗，我們對待每一個承接的項目都無比認真，不忘初心方得始終。
+                  我們相信每個服務與產品的誕生都是一段連續的過程，從探索研究、創新概念到設計落實，全程都應該對應商業目標、用戶需求與市場期待。我們善於傾聽、縝密而細心的爬梳情境，深化為每一個獨特而且鮮明的洞察，進而落實到每位用戶手上愉悅且讚嘆的產品體驗，我們對待每一個承接的項目都無比認真，不忘初心方得始終。
                 </h4>
                 <Fade bottom cascade duration={500} delay={100}>
                   <img src={designProcess} alt="design-process" />
@@ -193,29 +193,29 @@ export function ServicePage() {
                 <Grid xs={12} md={10}>
                   <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
                     <h4 className='subtitle'>
-                      分析脈絡趨勢、挖掘使用者需求，我們提供全方位體驗設計諮詢服務，為你的產品制定體驗策略方針。
+                      分析脈絡趨勢、挖掘使用者需求，我們提供全方位體驗設計諮詢服務，為您的產品制訂體驗策略方針。
                     </h4>
                   </Box>
                   <ItemList>
                     <Collapse list={[
                       {
                         title: "市場研究與競爭分析",
-                        answer: `透過系統的設計方法，從競品、產業、用戶等不同面向，評估現有產品，定義產品設計方向。`,
+                        answer: `透過結構化的設計方法，從競品、產業、用戶等不同面向，評估現有產品，定義產品設計方向。`,
                         expanded: false
                       },
                       {
                         title: "產品定位與價值主張",
-                        answer: `依循研究脈絡與洞見，規劃在競爭市場上的產品優勢，在市場上建構獨特價值的設計挑戰。`,
+                        answer: `依循研究脈絡與洞見，規劃在競爭市場上的產品優勢，在市場上建構具有獨特價值的定位。`,
                         expanded: false
                       },
                       {
                         title: "使用者研究",
-                        answer: `深入使用者生活領域，深度的觀察、訪談，從使用者身上汲取洞見建立觀點。`,
+                        answer: `深入使用者生活領域，深度的觀察、訪談，從使用者身上汲取洞見並建立觀點。`,
                         expanded: false
                       },
                       {
                         title: "設計思考工作坊",
-                        answer: `鼓勵參與、共創、凝聚共識找出解決對策的手法，藉以擬定策略與發展方向。`,
+                        answer: `鼓勵參與、共創、凝聚共識找出解決對策的手法，藉以擬定策略發展方向與優先順序。`,
                         expanded: false
                       },
                     ]} />
@@ -229,25 +229,25 @@ export function ServicePage() {
                   <ItemList>
                     <Box maxWidth={`${windowWidth > 899 ? '400px' : 'initial'}`}>
                       <h4 className='subtitle'>
-                        從用戶洞見出發，制定體驗策略並落實設計創新，建立以使用者中心的使用經驗。
+                        從用戶洞見出發，制訂體驗策略並落實設計創新，建立以使用者中心的使用經驗。
                       </h4>
                     </Box>
                     <Collapse list={[
                       {
                         title: "體驗流程規劃",
-                        answer: `脈絡分析後轉化落實，規劃完整的產品主功能框架與核心價值，串連為順暢易用的使用體驗設計。`,
+                        answer: `脈絡分析後轉化落實，規劃完整的產品主功能框架與核心流程，串連為順暢易用的操作體驗。`,
                         expanded: false
                       },
                       {
-                        title: "網站規劃與設計",
+                        title: "設計概念與需求驗證",
                         answer: `將發展的雛形與設計概念，在設計過程中經歷探索與收斂，從真實用戶的測試驗證後作為修改與調整依據，進而交付與開發實作。`,
                         expanded: false
                       },
                       {
-                        title: "概念測試與需求驗證",
-                        answer: `原型測試快速測試產品概念，第一手使用回饋幫助產品更貼近市場需求。`,
+                        title: "易用性測試",
+                        answer: `以原型快速測試產品概念，第一手使用回饋幫助產品更貼近市場需求。`,
                         expanded: false
-                      },
+                      }
                     ]} />
                   </ItemList>
                 </Grid>
@@ -268,7 +268,7 @@ export function ServicePage() {
               <Grid container spacing={0} marginTop={isDesktop() ? '72px' : '58px'}>
                 <Grid xs={12} md={5}>
                   <div className="huge eng" style={{ paddingRight: '40px' }}>
-                    Digial Product Design
+                    Digital Product Design
                   </div>
                   <h1 style={{ margin: '8px 0' }}>數位產品設計</h1>
                   <Box maxWidth={'400px'}>
@@ -283,12 +283,12 @@ export function ServicePage() {
                       <Collapse list={[
                         {
                           title: "品牌定位與溝通策略",
-                          answer: `因索創新原點，量身打造關鍵場景情境，跨領域整合品牌、創意、互動，建構符合產品解決方案。`,
+                          answer: `因索創新原點，量身打造關鍵場景情境，跨領域整合品牌、創意、互動，建構符合產品的解決方案。`,
                           expanded: false
                         },
                         {
-                          title: "APP 使用者介面設計",
-                          answer: `UI 介面設計，展現操作流程上的功能、顧及使用的便利性與產品設計美學，落實介面元件與設計系統的完善。`,
+                          title: "App 使用者介面設計",
+                          answer: `UI 介面設計，展現操作流程上的功能性、顧及使用的便利性與產品設計美學，落實介面元件與設計系統的完善。`,
                           expanded: false
                         },
                         {
@@ -297,8 +297,8 @@ export function ServicePage() {
                           expanded: false
                         },
                         {
-                          title: "跨平台裝置介面設計",
-                          answer: `適應多樣的場景與使用行為，發展線上或線下的使用介面，諸如 ATM、Kiosk、平板或各項終端設備介面設計。`,
+                          title: "建立跨產品設計系統",
+                          answer: `依據企業的品牌語言，建立通用的產品介面設計準則，保持跨產品、跨平台數位接觸點的一致性與可擴充性。`,
                           expanded: false
                         },
                       ]} />
@@ -482,7 +482,7 @@ const HeroWrapper = styled.main`
     }
   }
   ${media.large`
-    padding: 200px 0 4px;
+    padding: 200px 0 0;
   `}
   ${media.medium`
     padding: 72px 0;
@@ -516,6 +516,7 @@ const Horizon = styled.div<{
   padding-top: ${prop => prop.pt ? prop.pt : '120px'};
   color: ${colors.DarkBlue};
   position: relative;
+  padding-top: 26px;
   &::after {
     content: '';
     width: 100%;
@@ -545,6 +546,9 @@ const Horizon = styled.div<{
       margin: 0;
     }
   }
+  ${media.large`
+    padding-top: 90px;
+  `}
   ${media.medium`
     padding: 32px 0 72px;
   `}

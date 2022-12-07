@@ -139,11 +139,11 @@ export function AboutUsPage() {
                 </ParallaxImg>
                 <div className="context">
                   <Fade >
-                    <h2>專業團隊，跨領域設計經驗</h2>
+                    <h2>專業團隊，跨領域的設計經驗</h2>
                     <h4>
                       AJA 聚焦因應企業的商業目標，結合用戶洞見，轉化為精采絕倫的設計方案。跨領域的設計經驗讓 AJA 有更多連結與創造的能力，能更好地協助各類型的產業與企業。
                     </h4>
-                    <h2>夥伴關係、以終為始</h2>
+                    <h2>夥伴關係，共同成長</h2>
                     <h4>
                       AJA 本身就是一個專業平台，在這個平台上，設計夥伴們的多元專業可以互相連結、彼此共鳴成長，而最終的設計成果將一舉超越客戶的期待。
                     </h4>
@@ -188,15 +188,15 @@ export function AboutUsPage() {
                       Our
                     </Fade>
                     <Fade bottom cascade duration={1000} delay={100}>
-                      leadership
+                      Leadership
                     </Fade>
                     <Fade bottom cascade duration={1000} delay={100}>
-                      team
+                      Team
                     </Fade>
                   </div> :
                     <div className="huge eng">
                       <Fade bottom cascade duration={1000} delay={100}>
-                        Our leadership team
+                        Our Leadership Team
                       </Fade>
                     </div>
                   }
@@ -278,7 +278,7 @@ export function AboutUsPage() {
                   <h2 className="eng">YEARS</h2>
                   <h2>體驗設計顧問經驗</h2>
                   <h4>
-                    體驗設計是一段連續的過程，從探索研究、創新概念到設計落實，都應該有對應的專業能力，我們相信結合用戶需求和客戶商業價值，才能為企業落實服務創新
+                    體驗設計是一段連續的過程，從探索研究、創新概念到設計落實，都應該有對應的專業能力，我們相信結合用戶需求和客戶商業價值，才能為企業落實服務創新。
                   </h4>
                 </Grid>
                 <Grid xs={12} md={4} className="item">
@@ -288,16 +288,16 @@ export function AboutUsPage() {
                   <h2 className="eng">PROJECTS</h2>
                   <h2>多樣性專案案例</h2>
                   <h4>
-                    我們重視每一位提攜與信任我們的客戶，一起攜手在金融、航空、交通、生活應用與專業領域中積累了超過300件以上饒富創意與影響力的產品
+                    我們重視每一位提攜與信任我們的客戶，一起攜手在金融、航空、交通、生活應用與專業領域中積累了超過 300 件以上饒富創意與影響力的產品。
                   </h4>
                 </Grid>
                 <Grid xs={12} md={4} className="item">
                   <div className="super eng">
-                    <CountUp end={45} />+</div>
-                  <h2 className="eng">People</h2>
+                    <CountUp end={40} />+</div>
+                  <h2 className="eng">PEOPLE</h2>
                   <h2>跨職能團隊成員</h2>
                   <h4>
-                    隨著客戶需求在廣度與深度的增長，AJA也逐步擴張，發展出從用戶研究、資訊架構、互動與品牌設計，是國內最大、最完整的體驗設計團隊
+                    隨著客戶需求在廣度與深度的增長，AJA 也逐步擴張，發展出從用戶研究、資訊架構到互動與品牌設計，是國內最大、最完整的體驗設計團隊。
                   </h4>
                 </Grid>
               </Grid>

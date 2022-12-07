@@ -32,9 +32,9 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import VideoJS from './VideoJS';
 import videojs from 'video.js';
-import CTBC from './assets/ctbc.jpg';
-import Starlux from './assets/starlux.jpg';
-import Fetnet from './assets/fetnet.jpg';
+import CTBC from './assets/img_richart.jpg';
+import Starlux from './assets/img_starlux.jpg';
+import Fetnet from './assets/img_fetnet.jpg';
 import wall1 from './assets/wall-1.jpg';
 import wall2 from './assets/wall-2.jpg';
 import wall3 from './assets/wall-3.jpg';
@@ -641,7 +641,7 @@ export function HomePage() {
             </Horizon>
             <div className="impact-title huge eng">
               We partner with our clients <br />
-              to create value
+              to create value.
             </div>
             {windowWidth > 961 ? <h1 className="impact-subtitle">
               我們協助
@@ -777,7 +777,7 @@ export function HomePage() {
                     <Box>
                       <h1>研究與體驗策略</h1>
                       <h4>
-                        分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品服務制定體驗策略方針
+                        分析脈絡趨勢、挖掘使用者需求，提供全方位體驗設計諮詢服務，為您的產品服務制訂體驗策略方針
                       </h4>
                       <ul>
                         <li>
@@ -822,7 +822,7 @@ export function HomePage() {
                     <Box>
                       <h1>核心體驗規劃</h1>
                       <h4>
-                        以用戶洞見為聚焦點，制定整體的體驗設計架構，營造以使用者為中心的體驗創新
+                        以用戶洞見為聚焦點，制訂整體的體驗設計架構，營造以使用者為中心的體驗創新
                       </h4>
                       <ul>
                         <li>
@@ -1800,7 +1800,7 @@ const ServiceList = styled.div`
         font-size: 16px;
       }
       h1{
-        margin: 32px 0 8px;
+        margin: 32px 0 24px;
       }
     }
   `}

@@ -36,7 +36,7 @@ export default function Idea() {
             </Grid>
           </Grid>
           <h1 className="eng">
-            Surround yourself with highly ambitious, friendly & humble people !
+            Surround yourself with highly ambitious, friendly & humble people!
           </h1>
           <h2>我們深知人才是最重要的資產，一起加入改變！</h2>
           <Box display={"flex"} justifyContent="center">

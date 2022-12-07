@@ -52,7 +52,7 @@ export default function Idea() {
                                     {ideaActive && <Lottie animationData={lottieJoinUs} loop={1} />}
                                 </Fade>
                             </Grid>
-                            <h1 className="eng">Let’s makes work a real joy.</h1>
+                            <h1 className="eng">Let’s make work a real joy.</h1>
                             <h2>與我們一起加入改變的行列！</h2>
                             <WrappedButton
                                 text="JOIN US"

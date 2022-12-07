@@ -81,7 +81,7 @@ export function CustomerPage() {
                 </div>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    the world. But our
+                    the world, but our
                   </Fade>
                 </div>
                 <div className="eng huge">
@@ -109,16 +109,14 @@ export function CustomerPage() {
               <>
                 <div className="eng huge">
                   <Fade bottom cascade duration={500} delay={100}>
-                    We don’t change the world. But our clients do.
+                    We don’t change the world, but our clients do.
                   </Fade>
                 </div>
                 <div className="content">
-                  <Fade bottom duration={500} delay={100}>
-                    <h1>
-                      我們協助客戶創造價值，進而形塑共好的長期夥伴關係
+                  <h1>
+                    我們協助客戶創造價值，進而形塑共好的長期夥伴關係
 
-                    </h1>
-                  </Fade>
+                  </h1>
                 </div>
               </>
             }
@@ -192,7 +190,7 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        與金融領導品牌深度合作，含跨全省 ATM、企金與親子金融跨接觸點數位服務。
+                        與金融領導品牌深度合作，含跨全國 ATM、企金與親子金融跨接觸點數位服務。
                       </h5>
                       <div className="link">
                         <a href="#">
@@ -200,7 +198,7 @@ export function CustomerPage() {
                         </a>
                         <a href="#">
                           <img src={arrowBtn} alt="arrowBtn" />
-                          企業銀行重塑案
+                          中小企業數位金融服務
                         </a>
                       </div>
                     </div>
@@ -295,7 +293,7 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 APP。
+                        以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 App。
                       </h5>
                       <div className="link">
                         <a href="#">
@@ -338,7 +336,7 @@ export function CustomerPage() {
                       </h5>
                       <div className="link">
                         <a href="#">
-                          <img src={arrowBtn} alt="arrowBtn" /> 國泰醫院 APP 服務
+                          <img src={arrowBtn} alt="arrowBtn" /> 國泰醫院 App 服務
                         </a>
                       </div>
                     </div>

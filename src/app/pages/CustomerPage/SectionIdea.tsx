@@ -83,7 +83,7 @@ export default function Idea() {
               </Box>
             </Grid>
             <h1 className="eng">
-              We serve clients across diverse industries
+              We serve clients across diverse industries.
             </h1>
             <h2>我們累積了豐富的服務經驗，在多元產業中跨領域延伸</h2>
             <div className="more-client">

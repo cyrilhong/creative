@@ -15,10 +15,10 @@ const CaseSlider = [
       '和泰集團作為 TOYOTA 台灣區總代理，2020 年在全球戰略指導與支持下，宣布加入移動事業，企圖打造全新的叫車服務首選品牌。',
     type: '交通與運輸',
     tag: ['STRATEGY', 'EXPERIENCE', 'BRANDING'],
-    link: '#',
+    link: 'https://yoxi-case-study.aja.com.tw/',
     img: {
       src: yoxi,
-      alt: 'Yoxi',
+      alt: '和泰派遣',
     },
   }
 ];

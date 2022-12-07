@@ -142,8 +142,8 @@ export function Logo({ color, bgColor }) {
           </svg>
         </a>
         <Title className="eng">
-          AJA Creative, innovative
-          <br /> practitioners in Experience design.{' '}
+        AJA Creative, Innovative
+          <br /> Practitioners in Experience Design{' '}
         </Title>
         <div className="burger" onClick={() => setOpen(!open)}>
           {open ?

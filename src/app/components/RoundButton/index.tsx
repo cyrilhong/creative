@@ -3,7 +3,7 @@ import * as colors from 'styles/colors';
 import styled from 'styled-components/macro';
 import { media } from 'styles/media';
 
-export default function RoundButton({ link, isWhite, text }) {
+export default function RoundButton({ link, isWhite, text, target="_blank" }) {
   const Button = styled.a`
   background: initial;
   border: 0;
@@ -93,7 +93,7 @@ export default function RoundButton({ link, isWhite, text }) {
 `;
 
   return (
-    <Button href={link}>
+    <Button href={link} target={target}>
       <div className="wrapper">
         <svg
           width="40"

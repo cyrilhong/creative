@@ -30,7 +30,7 @@ export function Masthead() {
             </Title>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
-                with diversity&growth mindsets.
+                with diversity and growth mindsets.
               </Fade>
             </Title>
           </>
@@ -49,7 +49,7 @@ export function Masthead() {
             </Title>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
-                diversity&growth
+                diversity and growth
               </Fade>
             </Title>
             <Title className="eng huge">
@@ -63,7 +63,7 @@ export function Masthead() {
           <>
             <Title className="eng huge">
               <Fade bottom duration={500} delay={100}>
-                We believe a great team comes with diversity&growth mindsets.
+                We believe a great team comes with diversity and growth mindsets.
               </Fade>
             </Title>
           </>

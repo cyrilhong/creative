@@ -28,7 +28,7 @@ export const useWindowSize = () => {
 
 export const isDesktop = () => {
   const windowWidth = useWindowSize().width
-  return windowWidth > 960
+  return windowWidth > 959
 }
 
 export const useWindowPosition = () => {

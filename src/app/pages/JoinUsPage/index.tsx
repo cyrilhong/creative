@@ -74,7 +74,7 @@ export function JoinUsPage() {
               {windowWidth > 1439 &&
                 <Grid xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
-                    <div className="sentence-1 super eng">Makes work</div>
+                    <div className="sentence-1 super eng">Make work</div>
                   </Fade>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="sentence-2 super eng">a real joy </div>
@@ -90,7 +90,7 @@ export function JoinUsPage() {
 
               {windowWidth > 959 && windowWidth < 1440 && <Grid xs={12}>
                 <Fade bottom cascade duration={500} delay={100}>
-                  <div className="sentence-1 super eng">Makes work</div>
+                  <div className="sentence-1 super eng">Make work</div>
                 </Fade>
                 <Fade bottom cascade duration={500} delay={100}>
                   <div className="sentence-3 super eng">a real joy</div>
@@ -108,7 +108,7 @@ export function JoinUsPage() {
               </Grid>
               }
               {windowWidth < 960 && <Grid xs={12}>
-                <div className="sentence-1 super eng">Makes work with us!</div>
+                <div className="sentence-1 super eng">Make work with us!</div>
                 <h1 className="sentence-5">與我們一同面向挑戰帶來改變</h1>
               </Grid>
               }
@@ -171,7 +171,7 @@ export function JoinUsPage() {
             <Grid container>
               <Grid xs={12} xsOffset={0} mdOffset={1} md={10}>
                 <Box className="amazing-teams">
-                  <h1 className="eng">Great people make amazing teams</h1>
+                  <h1 className="eng">Great people make amazing teams.</h1>
                   <h1>我們重視工作，也享受生活</h1>
                   <h4>
                     信任團隊成員，尊重彼此差異，透過合作共創能量。願意發揮角色職責，透過向心力與凝聚力，激盪出更精彩的創意火花！打破思維框架，擴大生活經驗，接納多面向的視野觀點，與不同產業、族群、立場的人們對話，醞釀更強大的創新動能！
@@ -222,7 +222,7 @@ export function JoinUsPage() {
                   <Grid xs={12} md={5} className="left">
                     <div className="huge eng">
                       Join our <br />
-                      team
+                      Team
                     </div>
                     <h2>成為我們的一員！</h2>
                     <WrappedButton
@@ -273,9 +273,9 @@ export function JoinUsPage() {
                       <li>
                         <Collapse list={
                           [{
-                            title: "Front-End Dev",
+                            title: " Front-end Developer",
                             name: "前端工程師",
-                            answer: `能具備豐富的前端工程知識與能力，並能夠探索、啟發與指導設計師關於技術的可能性，成為團隊中的技術專家 ; 同時具備良好的思考表達能力，協助專案經理評估可行性、工作時程等規劃，共同為專案完成絕佳的使用者經驗與介面設計。`,
+                            answer: `能具備豐富的前端工程知識與能力，並能夠探索、啟發與指導設計師關於技術的可能性，成為團隊中的技術專家；同時具備良好的思考表達能力，協助專案經理評估可行性、工作時程等規劃，共同為專案完成絕佳的使用者經驗與介面設計。`,
                             expanded: false
                           }]} />
                       </li>

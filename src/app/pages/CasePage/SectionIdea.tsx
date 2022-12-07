@@ -36,7 +36,7 @@ export default function Idea() {
             </Grid>
           </Grid>
           <h1 className="eng">
-            Serving 100+ top companies with diverse cross-field experience
+            Serving 100+ top companies with diverse cross-field experience.
           </h1>
           <h2>我們用心協助客戶創造價值，進而形塑共好的長期夥伴關係</h2>
           <Box display={"flex"} justifyContent="center">

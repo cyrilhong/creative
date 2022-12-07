@@ -8,6 +8,15 @@ import img02 from './assets/02.jpg';
 import img03 from './assets/03.jpg';
 import img04 from './assets/04.jpg';
 import img05 from './assets/05.jpg';
+import richart from './assets/img_richart.jpg';
+import fetnet from './assets/img_fetnet.jpg';
+import starlux from './assets/img_starlux.jpg';
+import cnParenting from './assets/img_ct-parenting.jpg';
+import ctbc from './assets/img_ctbc.jpg';
+import cathay from './assets/img_cathay.jpg';
+import chinaAirlines from './assets/img_china-airlines.jpg';
+import cloudGate from './assets/img_cloud-gate.jpg';
+import delta from './assets/img_delta.jpg';
 import * as color from '../../../styles/colors';
 import arrow from './assets/button-black.svg';
 import { Grid, Container } from '@mui/material';
@@ -38,7 +47,7 @@ export default function CaseStudy() {
             </Case> */}
             <Case>
               <div className="img-wrapper">
-                <img src={img01} alt="" />
+                <img src={richart} alt="台新Richart" />
               </div>
               <Fade bottom delay={-500} cascade>
                 <h4 className="type">金融與保險</h4>
@@ -52,7 +61,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -62,7 +71,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img02} alt="" />
+                  <img src={fetnet} alt="遠傳" />
                 </div>
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
@@ -76,7 +85,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://fetnet-revision.aja.com.tw/"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -86,7 +95,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img03} alt="" />
+                  <img src={starlux} alt="星宇" />
                 </div>
                 <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
@@ -100,7 +109,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://aja.com.tw/starlux-case-study/index.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -110,7 +119,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img04} alt="" />
+                  <img src={cnParenting} alt="中國信託親子銀行" />
                 </div>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
@@ -123,7 +132,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://aja.com.tw/portfolio/ctbc-parent-child/index.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -133,11 +142,11 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img05} alt="" />
+                  <img src={ctbc} alt="中國信託e-Cash" />
                 </div>
                 <h4 className="type">金融與保險</h4>
                 <h2 className="title">
-                  中國信託 SME｜專為中小企業設計的數位金融服務
+                  中國信託 e-Cash｜專為中小企業設計的數位金融服務
                 </h2>
                 <div className="pills eng">
                   <div className="pill">EXPERIENCE</div>
@@ -146,7 +155,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://aja.com.tw/portfolio/ctbc-sme/index.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -156,7 +165,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img02} alt="" />
+                  <img src={cathay} alt="國泰醫院" />
                 </div>
                 <h4 className="type">醫療與健康</h4>
                 <h2 className="title">
@@ -168,7 +177,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://www.aja-creative.com/zh_tw/case_cathay_hospital.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -178,7 +187,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img03} alt="" />
+                  <img src={chinaAirlines} alt="華航" />
                 </div>
                 <h4 className="type">交通與運輸</h4>
                 <h2 className="title">
@@ -190,7 +199,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://www.aja-creative.com/zh_tw/case_china_airlines.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -200,7 +209,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img04} alt="" />
+                  <img src={cloudGate} alt="雲門舞集" />
                 </div>
                 <h4 className="type">教育與娛樂</h4>
                 <h2 className="title">
@@ -211,7 +220,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
+                link={"https://aja.com.tw/portfolio/elearning/index.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -221,7 +230,7 @@ export default function CaseStudy() {
             <Case>
               <Fade bottom delay={-500}>
                 <div className="img-wrapper">
-                  <img src={img04} alt="" />
+                  <img src={delta} alt="台達電" />
                 </div>
                 <h4 className="type">電信媒體與科技</h4>
                 <h2 className="title">
@@ -233,30 +242,7 @@ export default function CaseStudy() {
                 </div>
               </Fade>
               <RoundButton
-                link={"#"}
-                isWhite={false}
-                text="CASE STUDY"
-              />
-            </Case>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Case>
-              <Fade bottom delay={-500}>
-                <div className="img-wrapper">
-                  <img src={img04} alt="" />
-                </div>
-                <h4 className="type">金融與保險</h4>
-                <h2 className="title">
-                  新光銀行｜數位品牌形象傳達，展現金控品牌厚實底蘊
-                </h2>
-                <div className="pills eng">
-                  <div className="pill">EXPERIENCE</div>
-                  <div className="pill">RESEARCH</div>
-                  <div className="pill">BRANDING</div>
-                </div>
-              </Fade>
-              <RoundButton
-                link={"#"}
+                link={"https://aja.com.tw/portfolio/delta-biczone/index.html"}
                 isWhite={false}
                 text="CASE STUDY"
               />
@@ -326,7 +312,7 @@ const Case = styled.div`
   }
   img {
     width: 100%;
-    filter: brightness(0.3);
+    /* filter: brightness(0.3); */
     transition: all .2s ease-in;
   }
   a {
