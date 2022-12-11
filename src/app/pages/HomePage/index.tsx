@@ -303,9 +303,8 @@ export function HomePage() {
 
   return (
     <ParallaxProvider>
-      
       <NavBar bgColor={isBlackBg ? colors.DarkBlue : colors.BGGreen} color={isBlackBg ? colors.BGGreen : colors.DarkBlue} />
-      <div className={isBlackBg ? 'black' : 'white'}>
+      <div className={'black'}>
         <PageWrapper>
           <Masthead />
         </PageWrapper>
@@ -413,7 +412,7 @@ export function HomePage() {
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html')}>
+              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={CTBC} alt="ctbc" />
                 </div>

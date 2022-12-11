@@ -1,97 +1,14 @@
-import React, { Children, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
-import { Grid, Container } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useWindowSize } from '../../hooks'
-import * as colors from 'styles/colors';
 import { media } from 'styles/media';
 import Box from '@mui/material/Box';
 import {
-  BrowserView,
-  MobileView,
-  isBrowser,
   isMobile,
 } from 'react-device-detect';
-const WrapperMb = styled.div`
-  margin: 0 auto;
-  padding: 0 80px;
-  box-sizing: content-box;
-  max-width: 1920px;
-  height: 100%;
-  position: relative;
-  overflow: initial;
-  .lines{
-    max-width: 1920px;
-    padding: 0 80px;
-    display: flex;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    bottom: 0;
-    z-index: 0;
-    transition: all .5s ease-in-out;
-    .MuiGrid-item{
-      padding-top: 0;
-    }
-  }
-  .line{
-    top: 0;
-  }
-  ${media.large`
-    padding: 0 40px
-  `}
-  ${media.medium`
-    padding: 0 20px;
-    .lines{
-      display: none;
-    }
-  `};
-`;
-
-
 export function PageWrapper(props) {
   const windowWidth = useWindowSize().width
-  const Wrapper = styled.div<{
-    blackBg?: boolean;
-    bgc?: string;
-    color?: string;
-    overflow?: string;
-  }>`
-    margin: 0 auto;
-    padding: 0 80px;
-    box-sizing: content-box;
-    max-width: 1920px;
-    height: 100%;
-    position: relative;
-    overflow: ${prop => prop.overflow === 'true' ? 'hidden' : 'initial'};
-    .lines{
-      max-width: 1920px;
-      padding: 0 80px;
-      display: flex;
-      position: absolute;
-      left: 0;
-      height: 100%;
-      bottom: 0;
-      z-index: 0;
-      transition: all .5s ease-in-out;
-      .MuiGrid-item{
-        padding-top: 0;
-      }
-    }
-    .line{
-      top: 0;
-    }
-    /* color: ${props.color ? props.color : colors.AJABlue}; */
-    ${media.large`
-      padding: 0 40px
-    `}
-    ${media.medium`
-      padding: 0 20px;
-      .lines{
-        display: none;
-      }
-    `};
-  `;
-
   return (
     <>
       {!isMobile || windowWidth > 960 ?
@@ -179,3 +96,80 @@ export function PageWrapperMb(props) {
   );
 
 }
+
+const Wrapper = styled.div<{
+  blackBg?: boolean;
+  bgc?: string;
+  color?: string;
+  overflow?: string;
+}>`
+    margin: 0 auto;
+    padding: 0 80px;
+    box-sizing: content-box;
+    max-width: 1920px;
+    height: 100%;
+    position: relative;
+    overflow: ${prop => prop.overflow === 'true' ? 'hidden' : 'initial'};
+    .lines{
+      max-width: 1920px;
+      padding: 0 80px;
+      display: flex;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      bottom: 0;
+      z-index: 0;
+      transition: all .5s ease-in-out;
+      .MuiGrid-item{
+        padding-top: 0;
+      }
+    }
+    .line{
+      top: 0;
+    }
+    ${media.large`
+      padding: 0 40px
+    `}
+    ${media.medium`
+      padding: 0 20px;
+      .lines{
+        display: none;
+      }
+    `};
+  `;
+
+const WrapperMb = styled.div`
+  margin: 0 auto;
+  padding: 0 80px;
+  box-sizing: content-box;
+  max-width: 1920px;
+  height: 100%;
+  position: relative;
+  overflow: initial;
+  .lines{
+    max-width: 1920px;
+    padding: 0 80px;
+    display: flex;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    bottom: 0;
+    z-index: 0;
+    transition: all .5s ease-in-out;
+    .MuiGrid-item{
+      padding-top: 0;
+    }
+  }
+  .line{
+    top: 0;
+  }
+  ${media.large`
+    padding: 0 40px
+  `}
+  ${media.medium`
+    padding: 0 20px;
+    .lines{
+      display: none;
+    }
+  `};
+`;

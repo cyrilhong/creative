@@ -254,7 +254,7 @@ export const GlobalStyle = createGlobalStyle`
   .MuiPaper-root{
     width: 100%;
     height: 100%;
-    margin: 75px 0 0;
+    margin: 90px 0 0;
   }
   ${media.medium`
     .MuiContainer-root{

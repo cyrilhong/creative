@@ -647,7 +647,7 @@ const SecondSection = styled.div`
     }
     .subtitle{
       font-size: 16px;
-      margin: 0 0 6px;
+      margin: 0 0 32px;
     }
     h3{
       font-size: 18px;

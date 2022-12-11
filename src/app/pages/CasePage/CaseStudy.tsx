@@ -28,7 +28,7 @@ export default function CaseStudy() {
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
           <Grid item xs={12} md={4}>
-            <a href="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <div className="img-wrapper">
                   <img src={richart} alt="台新Richart" />
@@ -45,7 +45,7 @@ export default function CaseStudy() {
                   </div>
                 </Fade>
                 <RoundButton
-                  link={"https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html"}
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />
@@ -155,7 +155,7 @@ export default function CaseStudy() {
             </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <a href="https://www.aja-creative.com/zh_tw/case_cathay_hospital.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_cathay_hospital.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
                   <div className="img-wrapper">
@@ -171,7 +171,7 @@ export default function CaseStudy() {
                   </div>
                 </Fade>
                 <RoundButton
-                  link={"https://www.aja-creative.com/zh_tw/case_cathay_hospital.html"}
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_cathay_hospital.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />
@@ -179,7 +179,7 @@ export default function CaseStudy() {
             </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <a href="https://www.aja-creative.com/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
                   <div className="img-wrapper">
@@ -195,7 +195,7 @@ export default function CaseStudy() {
                   </div>
                 </Fade>
                 <RoundButton
-                  link={"https://www.aja-creative.com/zh_tw/case_china_airlines.html"}
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />

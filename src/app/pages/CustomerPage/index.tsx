@@ -300,7 +300,7 @@ export function CustomerPage() {
                         以個人化旅行助手為核心，打造全新訂票、免稅品與會員服務的行動 App。
                       </h5>
                       <div className="link">
-                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_china_airlines.html">
+                        <a target="_blank" href="https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 華航行動飛航體驗
                         </a>
                       </div>
@@ -339,7 +339,7 @@ export function CustomerPage() {
 
                       </h5>
                       <div className="link">
-                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_cathay_hospital.html">
+                        <a target="_blank" href="https://www.aja-creative.com/aja_before/zh_tw/case_cathay_hospital.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 國泰醫院 App 服務
                         </a>
                       </div>
@@ -359,7 +359,7 @@ export function CustomerPage() {
                         與台新銀行團隊攜手合作，持續優化最懂年輕人，整合存錢、消費、理財的 Richart 數位帳戶。
                       </h5>
                       <div className="link">
-                        <a target="_blank" href="https://www.aja-creative.com/zh_tw/case_taishinbank_richart.html">
+                        <a target="_blank" href="https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html">
                           <img src={arrowBtn} alt="arrowBtn" />數位銀行金融服務
                         </a>
                       </div>

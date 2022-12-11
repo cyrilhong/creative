@@ -145,7 +145,7 @@ export function ContactPage() {
       "startTime": timeName[data.time],
       "coopTime": coopTimeName[data.coopTime],
       "budge": budgeText,
-      "comment": data.comment
+      "comment": data?.comment?data.comment:''
     }
     // console.log(body);
 
@@ -189,7 +189,7 @@ export function ContactPage() {
           />
         </Helmet>
         <Notification open={openNotification}>
-          <Alert severity="success">表單送出，我們將會盡快與您聯絡。</Alert>
+          <Alert severity="success">表單已送出，我們會盡快與您聯繫！</Alert>
           <Fade top>
           </Fade>
         </Notification>
@@ -2129,7 +2129,7 @@ const Notification = styled.div<{
   /* max-width: 640px; */
   font-family: 'Noto Sans TC', sans-serif;
   margin: 20px auto;
-  padding: 0 20px;
+  padding: 0 16px;
   top: 0;
   width: 100%;
   transition: all .5s ease-in-out;
@@ -2141,6 +2141,7 @@ const Notification = styled.div<{
     max-width: 640px;
     height: auto;
     font-size: 16px;
+    box-shadow: 4px 4px 8px rgba(12, 28, 36, 0.05);
   }
   ${media.medium`
     top: -78px;

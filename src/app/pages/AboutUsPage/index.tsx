@@ -31,17 +31,16 @@ import Collapse from './collapse'
 import CountUp from 'react-countup';
 import SectionIdea from './SectionIdea'
 export function AboutUsPage() {
-  const [blackBg, setBlackBg] = useState(true);
-  const colorRef = useRef<HTMLDivElement>(null);
-  // useScrollPosition(({ prevPos, currPos }) => {
-  //   // console.log(colorRef.current!.getBoundingClientRect().top);
-  //   if (colorRef.current!.getBoundingClientRect().top < 250) {
-  //     // debugger
-  //     setBlackBg(false);
-  //   } else {
-  //     setBlackBg(true);
-  //   }
-  // });
+  const [startCount, setStartCount] = useState(false)
+  const ref = useRef<HTMLDivElement>(null);
+  useScrollPosition(({ prevPos, currPos }) => {
+    // console.log(ref.current!.getBoundingClientRect().top);
+    if (ref.current!.getBoundingClientRect().top < 1000) {
+      setStartCount(true);
+    } else {
+      setStartCount(false);
+    }
+  });
   const windowWidth = useWindowSize().width
 
   useEffect(() => {
@@ -167,7 +166,6 @@ export function AboutUsPage() {
         </PageWrapper>
       </div>
       <div
-        ref={colorRef}
         className="leadership-team"
       // style={{ paddingBottom: '120px' }}
       >
@@ -266,11 +264,11 @@ export function AboutUsPage() {
                 </Grid>
               </Grid>
             </Leadership>
-            <Performance>
+            <Performance ref={ref}>
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4} className="item">
                   <div className="super eng">
-                    <CountUp end={13} />
+                    {startCount && <CountUp end={13} />}
                   </div>
                   <h2 className="eng">YEARS</h2>
                   <h2>體驗設計顧問經驗</h2>
@@ -280,7 +278,7 @@ export function AboutUsPage() {
                 </Grid>
                 <Grid xs={12} md={4} className="item">
                   <div className="super eng">
-                    <CountUp end={300} />
+                    {startCount && <CountUp end={300} />}
                     +</div>
                   <h2 className="eng">PROJECTS</h2>
                   <h2>多樣性專案案例</h2>
@@ -290,7 +288,7 @@ export function AboutUsPage() {
                 </Grid>
                 <Grid xs={12} md={4} className="item">
                   <div className="super eng">
-                    <CountUp end={40} />+</div>
+                    {startCount && <CountUp end={40} />}+</div>
                   <h2 className="eng">PEOPLE</h2>
                   <h2>跨職能團隊成員</h2>
                   <h4>

@@ -5,10 +5,8 @@
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
-
-import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter,HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
@@ -24,11 +22,11 @@ import { JoinUsPage } from './pages/JoinUsPage/Loadable';
 import { useTranslation } from 'react-i18next';
 import Footer from './components/Footer'
 
-export function App() {
+export function App(props) {
   const { i18n } = useTranslation();
+
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-    {/* <HashRouter> */}
       <Helmet
         titleTemplate="%s - AJA Creative"
         defaultTitle="AJA Creative"
@@ -47,6 +45,11 @@ export function App() {
         <Route path="/customer" element={<CustomerPage />} />
         <Route path="/join-us" element={<JoinUsPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        {/* <Route path="/zh_tw" element={<HomePage />} /> */}
+        <Route
+          path="/zh_tw"
+          element={<Navigate to="/" replace />}
+        />
       </Routes>
       <Footer />
       <GlobalStyle />
