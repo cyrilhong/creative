@@ -56,7 +56,7 @@ const moreClient = [
   HTC,
   KKBOX,
   LINE,
-  PChome,
+  // PChome,
   Synology,
   CTBC,
   Wowprime,

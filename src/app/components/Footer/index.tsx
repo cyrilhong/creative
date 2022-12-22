@@ -18,6 +18,7 @@ export default function footer() {
   const target = useRef(null);
   const ref = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
+  // const [active, setActive] = useState(windowWidth > 960 ? false : true)
   const [active, setActive] = useState(false)
   const [zIndex, setZIndex] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
@@ -34,6 +35,7 @@ export default function footer() {
   display: flex;
   background-color: ${color.AJABlue};
   padding: 0;
+  /* z-index: ${active ? '0' : '-1'}; */
   z-index: ${active ? '0' : '-1'};
   .page-wrapper{
     width: 100%;
@@ -85,7 +87,7 @@ export default function footer() {
       <PageWrapper className="page-wrapper" overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
         <ParallaxProvider>
           <Wrapper>
-            <Parallax speed={windowWidth > 960 ? (active ? -25 : 45) : 0}>
+            {windowWidth > 960 ? <Parallax speed={windowWidth > 960 ? (active ? -25 : 45) : 0}>
               <Fade bottom={windowWidth > 960}>
                 <Main>
                   <div className="left">
@@ -213,7 +215,130 @@ export default function footer() {
                   <img src={aja} alt="aja" />
                 </Bottom>
               </Fade>
-            </Parallax>
+            </Parallax> :
+              <Parallax speed={windowWidth > 960 ? (active ? -25 : 45) : 0}>
+                <Main>
+                  <div className="left">
+                    {windowWidth > 640 ?
+                      <div className="huge eng">
+                        Let's make something
+                        <br /> great together.
+                      </div> :
+                      <div className="huge eng">
+                        Let's make <br />
+                        something great<br />
+                        together.
+                      </div>
+                    }
+                    <h2>有新的商業與產品體驗需求嗎？<br />與我們聊聊吧</h2>
+                    <div className='get-in-touch'>
+                      <Button href={'/contact'}>
+                        <div className="wrapper">
+                          <svg
+                            width="40"
+                            height="40"
+                            viewBox="0 0 40 40"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M30.6963 20.031C25.8161 20.031 21.8397 16.0847 21.8397 11.1744"
+                              stroke="#fff"
+                              strokeWidth="3"
+                              strokeMiterlimit="10"
+                            />
+                            <path
+                              d="M21.8096 28.8264C21.8096 23.9463 25.7559 19.9698 30.6661 19.9698"
+                              stroke="#fff"
+                              strokeWidth="3"
+                              strokeMiterlimit="10"
+                            />
+                            <path
+                              d="M9.30701 20.0303H30.6952"
+                              stroke="#fff"
+                              strokeWidth="3"
+                              strokeMiterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <h4 className="eng">GET IN TOUCH</h4>
+                      </Button>
+
+                      <div className="lottie">
+                        <Lottie animationData={touch} loop={false} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="right">
+                    <Lottie animationData={touch} loop={false} />
+                  </div>
+                </Main>
+                <Info>
+                  <Grid className="container" container spacing={windowWidth > 960 ? 8 : 0}>
+                    <Grid xs={0} md={3}>
+                      <div className="main-link link">
+                        <a href="/case">
+                          <h3 className="eng">WORK</h3>
+                        </a>
+                        <a href="/service">
+                          <h3 className="eng">SERVICES</h3>
+                        </a>
+                        <a href="/about-us">
+                          <h3 className="eng">ABOUT</h3>
+                        </a>
+                        <a href="/contact">
+                          <h3 className="eng">CONTACT</h3>
+                        </a>
+                      </div>
+                    </Grid>
+                    <Grid xs={0} md={3}>
+                      <div className="social-meoda link eng">
+                        <div>
+                          <h3>A Day In The Life . </h3>
+                        </div>
+                        <ul>
+                          <li>
+                            <a href="https://www.facebook.com/AJA.Creative" target={"_blank"}>
+                              <h5 className="eng">FACEBOOK</h5>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/join-us">
+                              <h5 className="eng">JOIN US</h5>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </Grid>
+                    <Grid xs={12} md={3}>
+                      <div className="link eng">
+                        <div>
+                          <h3>Let’s Chat . </h3>
+                        </div>
+                        <h5 className="eng">TEL . +886-2-85029135 <br />FAX. +886-2-85029151 <br />MOBILE. +886-922-083-876</h5>
+                      </div>
+                    </Grid>
+                    <Grid xs={12} md={3}>
+                      <div className="link">
+                        <div className="eng">
+                          <h3>Have A Meet . </h3>
+                        </div>
+                        <h5>台北市中山區樂群二路 187 號 6 樓之 2（大直豐滙）</h5>
+                        <h5 className="eng">
+                          6F.-2, No.187, Lequn 2nd Rd., Zhongshan Dist., Taipei City
+                          104 (Da Zhi Feng Hui)
+                        </h5>
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Info>
+                <Bottom>
+                  <small className="eng">
+                    © Copyright 2022 AJA Creative Co., Ltd. All rights reserved.
+                  </small>
+                  <img src={aja} alt="aja" />
+                </Bottom>
+              </Parallax>}
           </Wrapper>
         </ParallaxProvider>
       </PageWrapper>

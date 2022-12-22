@@ -17,6 +17,9 @@ import hero3 from './assets/hero-3.jpg';
 import team1 from './assets/team-1.jpg';
 import team2 from './assets/team-2.jpg';
 import team3 from './assets/team-3.jpg';
+import team4 from './assets/team-4.jpg';
+import team5 from './assets/team-5.jpg';
+import team6 from './assets/team-6.jpg';
 import hotBaloon from './assets/img lg_happy teams.svg';
 import arrowButton from './assets/arrow-btn-round.svg';
 import arrowWhite from './assets/arrow-white.svg';
@@ -33,7 +36,7 @@ import arrowHollow from './assets/arrow-hollow-left.svg';
 import arrowHollowRight from './assets/arrow-hollow-right.svg';
 import Collapse from './collapse'
 const teamSlider = [
-  team1, team2, team3, team1, team2, team3
+  team1, team2, team3, team4, team5, team6
 ]
 export function JoinUsPage() {
   const [blackBg, setBlackBg] = useState(true);
@@ -140,14 +143,14 @@ export function JoinUsPage() {
                   </Parallax>
                 </ParallaxImg>
               </Grid>
-              <Grid xs={6} xsOffset={5} md={5} mdOffset={3} className="right">
+              <Grid xs={6} xsOffset={5} md={4} mdOffset={3} className="right">
                 <ParallaxImg>
                   <Parallax speed={20}>
                     <img src={hero2} alt="hero2" />
                   </Parallax>
                 </ParallaxImg>
               </Grid>
-              <Grid xs={8} md={7} className="left-2">
+              <Grid xs={8} md={5} mdOffset={2} className="left-2">
                 <ParallaxImg>
                   <Parallax speed={windowWidth>960?25:10}>
                     <img src={hero3} alt="hero3" />
@@ -458,12 +461,12 @@ const HeroSection = styled.div`
         /* padding-left: 0; */
       }
       .left-2{
-        margin-top: -544px;
-        margin-left: -40px;
+        margin-top: -22vh;
+        margin-left: 40px;
         padding-right: 40px;
       }
       .right{
-        margin-top: 458px;
+        margin-top: 400px;
         padding-right: 40px;
       }
     }
@@ -472,7 +475,7 @@ const HeroSection = styled.div`
     }
 
     .sentence-5{
-      margin: 0 auto;
+      margin: 0 auto 24px;
     }
   `}
   ${media.medium`

@@ -68,6 +68,8 @@ export function ContactPage() {
   const FaqPositionRef = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowSize().width
   const [enterForm, setEnterForm] = useState(false)
+
+  const [state, formSubmit] = formspreeUseForm('xbjeragy');
   useScrollPosition(({ prevPos, currPos }) => {
     if (windowWidth > 960) {
       // console.log(positionRef.current!.getBoundingClientRect().top);
@@ -147,8 +149,20 @@ export function ContactPage() {
       "budge": budgeText,
       "comment": data?.comment?data.comment:''
     }
+    let formSpreeBody = {
+      "聯絡人": data.name,
+      "公司名稱": data.company,
+      "聯絡電話": data.phone,
+      "電子郵件": data.email,
+      "需要的服務類型": service,
+      "預計的開案時間": timeName[data.time],
+      "合作時程": coopTimeName[data.coopTime],
+      "預算": budgeText,
+      "專案細節": data?.comment?data.comment:''
+    }
     // console.log(body);
 
+    formSubmit(formSpreeBody);
     ajax.post('https://script.google.com/macros/s/AKfycbwoQO9zYA7Z5LsvZ46taKVMc_yZkItma5ykVzm4STyWCrLtBQkvyNAYLWiQZhZCSxzrnA/exec', body);
     setOpenNotification(true)
     setTimeout(() => {
