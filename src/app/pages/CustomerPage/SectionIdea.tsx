@@ -73,7 +73,7 @@ const moreClient = [
   Cathay_Financial_Holdings,
   First_Bank,
   Shin_Kong,
-  eslite,
+  // eslite,
   Taipei_City_Government,
   FETnet
 ];
