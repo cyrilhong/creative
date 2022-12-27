@@ -211,7 +211,7 @@ export function HomePage() {
     loop: true,
     sources: [
       {
-        src: 'https://aja-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4',
+        src: 'https://aja-creative-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4',
         type: 'video/mp4',
       },
     ],
@@ -233,7 +233,7 @@ export function HomePage() {
       const paused = player.paused();
       if (player.isFullscreen()) {
         setVideoOpen(false);
-        // player.src({ type: 'video/mp4', src: 'https://aja-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4' });
+        // player.src({ type: 'video/mp4', src: 'https://aja-creative-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4' });
         // console.log('click');
         // player.exitFullscreen();
         player.pause();
@@ -244,7 +244,7 @@ export function HomePage() {
         }
       } else {
         setVideoOpen(true);
-        player.src({ type: 'video/mp4', src: 'https://aja-video.s3.ap-southeast-1.amazonaws.com/showreel.mp4' });
+        player.src({ type: 'video/mp4', src: 'https://aja-creative-video.s3.ap-southeast-1.amazonaws.com/showreel.mp4' });
         // console.log('click');
         player.requestFullscreen();
         player.play();
@@ -256,7 +256,7 @@ export function HomePage() {
         // player.pause();
       } else {
         player.pause();
-        // player.src({ type: 'video/mp4', src: 'https://aja-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4' });
+        // player.src({ type: 'video/mp4', src: 'https://aja-creative-video.s3.ap-southeast-1.amazonaws.com/showreel-short.mp4' });
         // player.muted(true);
         setVideoOpen(false);
       }
