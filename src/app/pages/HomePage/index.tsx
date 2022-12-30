@@ -325,7 +325,7 @@ export function HomePage() {
                 controls
                 style={{ width: '100%' }}
               >
-                <source src='https://aja-video.s3.ap-southeast-1.amazonaws.com/showreel.mp4' />
+                <source src='https://aja-creative-video.s3.ap-southeast-1.amazonaws.com/showreel.mp4' />
                 <img src="image.gif" />
               </video>
             )}

@@ -1562,6 +1562,7 @@ const FormSection = styled.div`
     /* height: calc( 100vh - 100px ); */
     /* margin-left: 0; */
     /* width: 500px; */
+    max-width: 660px;;
     height: 100vh;
     background: url(${formBg});
     background-size: cover;
