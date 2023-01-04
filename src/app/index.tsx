@@ -12,6 +12,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { CasePage } from './pages/CasePage/Loadable';
+import { SKFHPage } from './pages/SKFH/Loadable';
 import { ServicePage } from './pages/ServicePage/Loadable';
 import { WorkPage } from './pages/WorkPage/Loadable';
 import { ContactPage } from './pages/ContactPage/Loadable';
@@ -38,6 +39,7 @@ export function App(props) {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/case" element={<CasePage />} />
+        <Route path="/case/SKFH" element={<SKFHPage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/work" element={<WorkPage />} />
