@@ -34,13 +34,14 @@ import improving6 from './assets/improving-6.jpg'
 import Grid from '@mui/material/Unstable_Grid2';
 import { Container } from '@mui/material';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import { Mark } from '../HomePage/Mark';
 export function SKFHPage() {
   const windowWidth = useWindowSize().width
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }, [])
   return (
-    <>
+    <Wrapper>
       <Helmet>
         <title>專案實例</title>
         <meta
@@ -50,9 +51,11 @@ export function SKFHPage() {
       </Helmet>
       <NavBar bgColor={color.BGGrey} color={color.DarkBlue} />
       <ParallaxProvider>
-        <div className="">
-          <PageWrapper overflow={"true"}>
+        <div>
+          <PageWrapper overflow={"true"} className="page-container">
             <Masthead />
+          </PageWrapper>
+          <PageWrapper overflow={"true"}>
             <HeroSlider />
           </PageWrapper>
           <AboutTheCase />
@@ -63,12 +66,13 @@ export function SKFHPage() {
             <img src={MakeADiffrernce} alt="MakeADiffrernce" />
           </SectionMakeADiffrernce>
           <DesignConcept>
-            <PageWrapper overflow={"true"}>
+            <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
                 <div className="title">
                   <div className="dot" />
                   <h4 className="eng">DESIGN CONCEPT</h4>
                 </div>
+                <h4 className="eng">03</h4>
               </Horizon>
               <div className="huge eng">
                 Key Messages from Brand<br /> Insights
@@ -80,7 +84,7 @@ export function SKFHPage() {
             </BrandInsightImg>
           </DesignConcept>
           <SectionCrossTalk>
-            <PageWrapper overflow={"true"}>
+            <PageWrapper overflow={"true"} className="page-container">
               <Box>
                 <img style={{ width: '100%' }} src={CrossTalk} alt="cross talk" />
               </Box>
@@ -91,7 +95,9 @@ export function SKFHPage() {
                 <Grid container className="container">
                   <Grid xs={12} md={10} mdOffset={1}>
                     <h1 className="">
-                      將金控品牌底蘊特色的精神、薪火相傳的理念，利用兼容並蓄的對話，開啟多元的交流，產生共鳴。
+                      <FeatureHead>
+                        將金控品牌底蘊特色的精神、薪火相傳的理念，<div className='draw'>利用兼容並蓄的對話，開啟多元的交流</div>，產生共鳴。
+                      </FeatureHead>
                     </h1>
                     <p>從內訪中發現進步跟改變並非一昧推翻既有的價值，過程中不能背棄原本精神跟傳承理念，對話除了傳承，也能促進不同觀點交流，不同的人相互合作，讓改變不是一句口號跟潮流。</p>
                   </Grid>
@@ -110,12 +116,13 @@ export function SKFHPage() {
             </BottomImgs>
           </Parallax>
           <DesignConcept>
-            <PageWrapper overflow={"true"}>
+            <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
                 <div className="title">
                   <div className="dot" />
                   <h4 className="eng">DESIGN CONCEPT</h4>
                 </div>
+                <h4 className="eng">04</h4>
               </Horizon>
               <div className="huge eng">
                 Design Characteristic
@@ -132,15 +139,23 @@ export function SKFHPage() {
                 <Grid xs={12} md={10} mdOffset={1}>
                   <div className="head">
                     <div className="huge en">Improving the Mobility <br />Experience</div>
-                    <h1>提升行動體驗</h1>
+                    <h1>
+                      <FeatureHead>
+                        <div className="draw">
+                          提升行動體驗
+                        </div>
+                      </FeatureHead>
+                    </h1>
                   </div>
                 </Grid>
                 <TwoColumnsArticle>
-                  <Grid xs={12} md={5} mdOffset={1} lg={5} lgOffset={1} className="left">
-                    <div className="index">01</div>
-                    <h3>資訊內容呈現</h3>
-                    <h2>重新建構資訊佈局，讓資訊更清晰閱讀</h2>
-                    <h3>官網中有多種顯示不同資訊的列表跟表格，我們將資訊列表做詳細的盤點，明確地劃分資訊間的層級關係去提高資訊的清晰度，來符合手機瀏覽體驗的特性，讓使用者可以上下捲動來查閱繁複的資訊。</h3>
+                  <Grid xs={12} md={5} mdOffset={1} lg={5} lgOffset={1} xl={5} xlOffset={1} className="left">
+                    <div className="text">
+                      <div className="index">01</div>
+                      <h3>資訊內容呈現</h3>
+                      <h2>重新建構資訊佈局，讓資訊更清晰閱讀</h2>
+                      <h3>官網中有多種顯示不同資訊的列表跟表格，我們將資訊列表做詳細的盤點，明確地劃分資訊間的層級關係去提高資訊的清晰度，來符合手機瀏覽體驗的特性，讓使用者可以上下捲動來查閱繁複的資訊。</h3>
+                    </div>
                   </Grid>
                   <Grid xs={12} md={6} className="right">
                     <img src={improving1} alt="improving1" />
@@ -151,16 +166,22 @@ export function SKFHPage() {
                     <img src={improving2} alt="improving2" />
                   </Grid>
                   <Grid xs={12} md={5} lg={5} className="right">
-                    <div className="index">02</div>
-                    <h3>跨裝置一致體驗</h3>
-                    <h2>在不同裝置之間，都可以感受同樣的操作體驗</h2>
-                    <h3>在設計網站中的元件模組時，把該模組在手機版的瀏覽體驗與應用方式納入優先的考量範圍中，讓桌機與手機之間能有效地呈現一致的資訊內容與操作體驗，減少兩者間的體驗斷點。</h3>
+                    <div className="text">
+                      <div className="index">02</div>
+                      <h3>跨裝置一致體驗</h3>
+                      <h2>在不同裝置之間，都可以感受同樣的操作體驗</h2>
+                      <h3>在設計網站中的元件模組時，把該模組在手機版的瀏覽體驗與應用方式納入優先的考量範圍中，讓桌機與手機之間能有效地呈現一致的資訊內容與操作體驗，減少兩者間的體驗斷點。</h3>
+                    </div>
                   </Grid>
                 </TwoColumnsArticle>
                 <Grid xs={12} md={10} mdOffset={1} className="heads-up">
                   <div className="head">
                     <div className="huge en">Information Architecture <br />Redesign</div>
-                    <h1>資訊架構優化</h1>
+                    <FeatureHead>
+                      <div className="draw">
+                        資訊架構優化
+                      </div>
+                    </FeatureHead>
                   </div>
                 </Grid>
                 <TwoColumnsArticle>
@@ -188,7 +209,11 @@ export function SKFHPage() {
                 <Grid xs={12} md={10} mdOffset={1} className="heads-up">
                   <div className="head">
                     <div className="huge en">A System for Consistency <br /> & Efficiency</div>
-                    <h1>資訊架構優化</h1>
+                    <FeatureHead>
+                      <div className="draw">
+                        建立設計系統
+                      </div>
+                    </FeatureHead>
                   </div>
                 </Grid>
                 <TwoColumnsArticle>
@@ -206,23 +231,32 @@ export function SKFHPage() {
                   <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
                     <img src={improving6} alt="improving6" />
                   </Grid>
+
                   <Grid xs={12} md={5} lg={5} className="right">
                     <div className="index">06</div>
                     <h3>元件模組化</h3>
                     <h2>靈活運用，依需求快速組合、變化</h2>
-                    <h3>藉由模組化設計除了打造金控品牌體驗ㄧ致性之外，在運營方面，未來也可因應內容需求彈性擴充與重複使用，提升後續維運效率。</h3>
+                    <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
                   </Grid>
+
+                  {/* <Grid xs={12} md={5} lg={5} className="right">
+                    <div className="index">06</div>
+                    <h3>元件模組化</h3>
+                    <h2>靈活運用，依需求快速組合、變化</h2>
+                    <h3>藉由模組化設計除了打造金控品牌體驗ㄧ致性之外，在運營方面，未來也可因應內容需求彈性擴充與重複使用，提升後續維運效率。</h3>
+                  </Grid> */}
                 </TwoColumnsArticle>
               </Grid>
             </PageWrapper>
           </ImprovingSection>
           <GuidelineSection>
-            <PageWrapper overflow={"true"}>
+            <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
                 <div className="title">
                   <div className="dot" />
                   <h4 className="eng">DESIGN GUIDELINE</h4>
                 </div>
+                <h4 className="eng">05</h4>
               </Horizon>
               <Grid container className="container">
                 <Grid xs={12} md={8} mdOffset={2}>
@@ -242,9 +276,15 @@ export function SKFHPage() {
           </GuidelineSection>
         </div>
       </ParallaxProvider>
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  .page-container{
+    max-width: 1520px;
+  }
+`
 
 const GuidelineSection = styled.div`
   .container{
@@ -289,17 +329,27 @@ const TwoColumnsArticle = styled.div`
     font-weight: 500;
     line-height: 150px;
     margin-top: 58px;
+    /* max-width: 526px; */
   }
   h3{
     margin: 8px 0;
+    /* max-width: 526px; */
   }
   h2{
     margin: 0 0 32px;
     padding-bottom: 32px;
     border-bottom: 1px solid ${color.White};
+    /* max-width: 526px; */
+  }
+  .text{
+    /* max-width: 526px; */
+    display: block;
   }
   .MuiGrid2-root{
     position: relative;
+    /* flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0; */
   }
   ${media.xlarge`
     img{
@@ -324,7 +374,7 @@ const TwoColumnsArticle = styled.div`
 const ImprovingSection = styled.div`
   overflow: hidden;
   .wrapper{
-    max-width: calc( 100vw - 160px );
+    max-width: calc( 100vw - 80px );
     padding: 130px 0 40px;
     color: ${color.White};
     background-color: #3C4851;
@@ -343,7 +393,7 @@ const ImprovingSection = styled.div`
   }
   ${media.xlarge`
     .wrapper{
-      max-width: calc( 100vw - 160px );
+      max-width: calc( 100vw - 80px );
     }
   `}
   ${media.large`
@@ -477,3 +527,29 @@ const PageController = styled.div`
   }
 `
 
+
+const FeatureHead = styled.h1`
+  .draw::after{
+    content: '';
+    border-bottom: 15px solid #E73523;
+  }
+  .draw{
+        display: inline;
+        background-size: 1px 16px;
+        box-shadow: inset 0 21px #3C4851, inset 0px 54px #E73523;
+    }
+  ${media.large`
+    margin-bottom: -8px;
+  `}
+  ${media.medium`
+    display: block;
+    margin-bottom: -8px;
+    /* max-width: 320px; */
+    
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 21px #3C4851, inset 0px 54px #E73523;
+    }
+  `}
+`

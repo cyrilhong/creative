@@ -14,6 +14,8 @@ import challenge2 from './assets/challenge-2.jpg'
 import challenge3 from './assets/challenge-3.jpg'
 import InfoGraph1 from './assets/info-graph-1.svg'
 import InfoGraph2 from './assets/info-graph-2.svg'
+import * as colors from 'styles/colors';
+import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 export default function Target() {
     const [startCount, setStartCount] = useState(false)
     const ref = useRef<HTMLDivElement>(null);
@@ -35,16 +37,46 @@ export default function Target() {
             setSticky(false);
         }
     });
+    const windowWidth = useWindowSize().width
+
+    function Mark(props) {
+        const { ref } = useParallax<HTMLDivElement>({
+            scaleX: [0, 1],
+            rootMargin: { top: 0, right: 0, bottom: -600, left: 0 },
+        });
+        const color = props.color ? props.color : colors.ElectricBlue;
+        return (
+            <span style={{ height: windowWidth > 960 ? 'auto' : '24px', display: windowWidth > 960 ? 'inline-block' : 'inline-block' }}>
+                <div style={{ zIndex: 1, position: 'relative' }}>{props.children}</div>
+                <span
+                    style={{
+                        position: 'relative',
+                        display: 'block',
+                        bottom: '30px',
+                        height: '24px',
+                        backgroundColor: color,
+                        zIndex: 0,
+                        transformOrigin: 'left',
+                    }}
+                    ref={ref}
+                ></span>
+            </span>
+        );
+    }
     return (
         <Wrapper ref={ref}>
-            <PageWrapper>
+            <PageWrapper overflow={"true"} className="page-container">
                 <Container maxWidth={'xl'} className="target-section">
                     <Grid container className="container">
                         <Grid xs={12} md={12}>
                             <h2 className="en">
                                 設計目標
                             </h2>
-                            <h1>融入品牌精神與具內涵的核心價值，建立「令人信服、認同」的品牌意象，並提升金控集團的品牌價值。</h1>
+                            <h1>
+                                <FeatureHead>
+                                    融入品牌精神與具內涵的核心價值，建立「<div className='draw'>令人信服、認同</div>」的品牌意象，並提升金控集團的品牌價值。
+                                </FeatureHead>
+                            </h1>
                         </Grid>
                     </Grid>
                 </Container>
@@ -87,6 +119,7 @@ export default function Target() {
                         <div className="dot" />
                         <h4 className="eng">OUR CHALLENGE</h4>
                     </div>
+                    <h4 className="eng">02</h4>
                 </Horizon>
                 <Challenges>
                     <Grid container className="container">
@@ -107,7 +140,7 @@ export default function Target() {
                                 <div className="wrapper-context">
                                     <h3>“ 我們給人老成的感覺，希望做改變，帶給人與時俱進的 message。金控集團經營一段時間了，很傳統的行業，我們接受科技、接受數位。”</h3>
                                     <Box display={"flex"}>
-                                        <div className="dash"/>
+                                        <div className="dash" />
                                         <p>金控集團資深副總</p>
                                     </Box>
                                 </div>
@@ -151,6 +184,10 @@ const Wrapper = styled.div`
     color: ${color.White};
     padding-bottom: 200px;
     padding-top: 85px;
+    .page-container{
+        max-width: 1520px;
+    }
+
     .target-section{
         border-left: 1px solid ${color.White};
         border-right: 1px solid ${color.White};
@@ -350,4 +387,30 @@ const Challenges = styled.div`
         position: absolute;
         /* max-width: calc( 100% + 20px ); */
     }
+`
+
+const FeatureHead = styled.h1`
+  .draw::after{
+    content: '';
+    border-bottom: 15px solid #E73523;
+  }
+  .draw{
+        display: inline;
+        background-size: 1px 16px;
+        box-shadow: inset 0 21px #0c1c24, inset 0px 54px #E73523;
+    }
+  ${media.large`
+    margin-bottom: -8px;
+  `}
+  ${media.medium`
+    display: block;
+    margin-bottom: -8px;
+    /* max-width: 320px; */
+    
+    .draw{
+      display: inline;
+      background-size: 1px 16px;
+      box-shadow: inset 0 21px #0c1c24, inset 0px 54px #E73523;
+    }
+  `}
 `

@@ -22,7 +22,7 @@ export default function AboutTheCase() {
   });
   return (
     <Wrapper ref={ideaRef}>
-      <PageWrapper>
+      <PageWrapper overflow={"true"} className="page-container">
         <Horizon>
           <div className="title">
             <div className="dot" />
@@ -147,6 +147,9 @@ const Horizon = styled.div<{
   position: relative;
   padding-top: 26px;
   color: ${color.White};
+  .page-container{
+    max-width: 1520px;
+  }
   &::after {
     content: '';
     width: 100%;
