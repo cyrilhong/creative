@@ -68,6 +68,7 @@ const Wrapper = styled.div`
     font-size: 60px;
     font-family: 'Poppins';
     line-height: 75px;
+    font-weight: 500;
   }
   .sub{
     font-size: 36px;
@@ -134,7 +135,7 @@ const Wrapper = styled.div`
         line-height: 36px;
       }
       h3{
-        font-size:14px;
+        font-size:16px;
         margin-bottom: 32px;
       }
     }

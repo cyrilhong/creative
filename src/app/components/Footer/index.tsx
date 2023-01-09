@@ -23,7 +23,8 @@ export default function footer() {
   const [zIndex, setZIndex] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
     if (windowWidth > 960) {
-      if (ref.current!.getBoundingClientRect().top < 700) {
+      // console.log(ref.current!.getBoundingClientRect().top);
+      if (ref.current!.getBoundingClientRect().top < 1400) {
         setActive(true);
       } else {
         setActive(false);
@@ -87,7 +88,7 @@ export default function footer() {
       <PageWrapper className="page-wrapper" overflow={'false'} blackBg={true} bgc={color.AJABlue} color={color.White}>
         <ParallaxProvider>
           <Wrapper>
-            {windowWidth > 960 ? <Parallax speed={windowWidth > 960 ? (active ? -25 : 45) : 0}>
+          {windowWidth > 960 ? <Parallax speed={windowWidth > 960 ? (active ? -15 : 105) : 0}>
               <Fade bottom={windowWidth > 960}>
                 <Main>
                   <div className="left">
@@ -351,7 +352,7 @@ export default function footer() {
 
 const Wrapper = styled.div`
   color: #fff;
-  padding-top: 106px;
+  padding-top: 166px;
   /* height: 790px; */
   /* overflow: hidden; */
   ${media.medium`

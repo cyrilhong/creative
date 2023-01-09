@@ -63,9 +63,10 @@ export function SKFHPage() {
           <ParallaxImg img={brickImg} alt="brickImg" height={windowWidth > 960 ? 600 : 280} />
           <Target />
           {/* <ParallaxImg img={MakeADiffrernce} alt="MakeADiffrernce" height={810}/> */}
-          <SectionMakeADiffrernce>
+          {/* <SectionMakeADiffrernce>
             <img src={MakeADiffrernce} alt="MakeADiffrernce" />
-          </SectionMakeADiffrernce>
+          </SectionMakeADiffrernce> */}
+          <ParallaxImg img={MakeADiffrernce} alt="MakeADiffrernce" height={windowWidth > 960 ? 698 : 210} />
           <DesignConcept>
             <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
@@ -116,11 +117,11 @@ export function SKFHPage() {
           <SectionCrossTalk>
             <PageWrapper overflow={"true"} className="page-container">
               <Fade bottom>
-                <Box>
+                <Box mb="45px">
                   <img style={{ width: '100%' }} src={CrossTalk} alt="cross talk" />
                 </Box>
               </Fade>
-              <CrossXTalkImg>
+              {/* <CrossXTalkImg>
                 <img src={windowWidth > 960 ? CrossXTalk : crossTalkMb} alt="CrossXTalk" />
               </CrossXTalkImg>
               <Container maxWidth={'xl'} className="container-wrapper">
@@ -136,10 +137,10 @@ export function SKFHPage() {
                     </Fade>
                   </Grid>
                 </Grid>
-              </Container>
+              </Container> */}
             </PageWrapper>
           </SectionCrossTalk>
-          <Parallax speed={-8}>
+          {/* <Parallax speed={-8}>
             <BottomImgs>
               <Grid md={6}>
                 <img src={TalkImg} alt="TalkImg" />
@@ -148,13 +149,13 @@ export function SKFHPage() {
                 <img src={talkBrick} alt="talkBrick" />
               </Grid>
             </BottomImgs>
-          </Parallax>
+          </Parallax> */}
           <DesignConcept>
             <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
                 <div className="title">
                   <div className="dot" />
-                  <h4 className="eng">DESIGN CONCEPT</h4>
+                  <h4 className="eng">DESIGN FEATURES</h4>
                 </div>
                 <h4 className="eng">04</h4>
               </Horizon>
@@ -199,145 +200,172 @@ export function SKFHPage() {
           <ImprovingSection>
             <PageWrapper overflow={"true"} className="wrapper">
               <Grid container className="container">
-                <Grid xs={12} md={10} mdOffset={1}>
+                <Grid xs={12} className="grid" md={10} mdOffset={1}>
                   <Fade bottom>
                     <div className="head">
                       <div className="huge en">Improving the Mobility <br />Experience</div>
                       <h1>
                         <FeatureHead>
-                          <div className="draw">
-                            提升行動體驗
-                          </div>
+                          {windowWidth > 960 ?
+                            <Mark color="#E73523">
+                              提升行動體驗
+                            </Mark> :
+                            <div className="draw">
+                              提升行動體驗
+                            </div>
+                          }
                         </FeatureHead>
                       </h1>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={5} mdOffset={1} lg={5} lgOffset={1} xl={5} xlOffset={1} className="left">
-                    <Fade bottom>
-                      <div className="text">
-                        <div className="index">01</div>
-                        <h3>資訊內容呈現</h3>
-                        <h2>重新建構資訊佈局，讓資訊更清晰閱讀</h2>
-                        <h3>官網中有多種顯示不同資訊的列表跟表格，我們將資訊列表做詳細的盤點，明確地劃分資訊間的層級關係去提高資訊的清晰度，來符合手機瀏覽體驗的特性，讓使用者可以上下捲動來查閱繁複的資訊。</h3>
-                      </div>
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={6} className="right">
-                    <Fade bottom>
-                      <img src={improving1} alt="improving1" />
-                    </Fade>
-                  </Grid>
-                </TwoColumnsArticle>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
-                    <Fade bottom>
-                      <img src={improving2} alt="improving2" />
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={5} lg={5} className="right">
-                    <Fade bottom>
-                      <div className="text">
-                        <div className="index">02</div>
-                        <h3>跨裝置一致體驗</h3>
-                        <h2>在不同裝置之間，都可以感受同樣的操作體驗</h2>
-                        <h3>在設計網站中的元件模組時，把該模組在手機版的瀏覽體驗與應用方式納入優先的考量範圍中，讓桌機與手機之間能有效地呈現一致的資訊內容與操作體驗，減少兩者間的體驗斷點。</h3>
-                      </div>
-                    </Fade>
-                  </Grid>
-                </TwoColumnsArticle>
-                <Grid xs={12} md={10} mdOffset={1} className="heads-up">
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle left>
+                    <Grid xs={12} md={5} mdOffset={1} lg={4} lgOffset={1} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <div className="text">
+                          <div className="index">01</div>
+                          <h3>資訊內容呈現</h3>
+                          <h2>重新建構資訊佈局，讓資訊更清晰閱讀</h2>
+                          <h3>官網中有多種顯示不同資訊的列表跟表格，我們將資訊列表做詳細的盤點，明確地劃分資訊間的層級關係去提高資訊的清晰度，來符合手機瀏覽體驗的特性，讓使用者可以上下捲動來查閱繁複的資訊。</h3>
+                        </div>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={6} lg={6} lgOffset={1} xl={5} xlOffset={1} className="right">
+                      <Fade bottom>
+                        <img src={improving1} alt="improving1" />
+                      </Fade>
+                    </Grid>
+                  </TwoColumnsArticle>
+                </Grid>
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle>
+                    <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <img src={improving2} alt="improving2" />
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={5} lg={4} lgOffset={1} className="right">
+                      <Fade bottom>
+                        <div className="text">
+                          <div className="index">02</div>
+                          <h3>跨裝置一致體驗</h3>
+                          <h2>在不同裝置之間，都可以感受同樣的操作體驗</h2>
+                          <h3>在設計網站中的元件模組時，把該模組在手機版的瀏覽體驗與應用方式納入優先的考量範圍中，讓桌機與手機之間能有效地呈現一致的資訊內容與操作體驗，減少兩者間的體驗斷點。</h3>
+                        </div>
+                      </Fade>
+                    </Grid>
+                  </TwoColumnsArticle>
+                </Grid>
+                <Grid xs={12} md={10} mdOffset={1} className="grid">
                   <Fade bottom>
                     <div className="head">
                       <div className="huge en">Information Architecture <br />Redesign</div>
                       <FeatureHead>
-                        <div className="draw">
-                          資訊架構優化
-                        </div>
+                        {windowWidth > 960 ?
+                          <Mark color="#E73523">
+                            資訊架構優化
+                          </Mark> :
+                          <div className="draw">
+                            資訊架構優化
+                          </div>
+                        }
                       </FeatureHead>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={5} mdOffset={1} className="left">
-                    <Fade bottom>
-                      <div className="index">03</div>
-                      <h3>導覽系統</h3>
-                      <h2>快速掌握站內資訊，減少摸索時間</h2>
-                      <h3>導覽系統有如書的目錄，可幫助使用者判斷需要的內容，過去的官網導覽系統只揭露到第二層分類，經過優化後加入第三層，使用者可透過這邊的索引，快速判斷想要查看的資訊，不需要再點擊進頁面後才能判斷內容是否符合所需。</h3>
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={6} className="right">
-                    <Fade bottom>
-                      <img src={improving3} alt="improving3" />
-                    </Fade>
-                  </Grid>
-                </TwoColumnsArticle>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
-                    <Fade bottom>
-                      <img src={improving4} alt="improving4" />
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={5} lg={5} className="right">
-                    <Fade bottom>
-                      <div className="index">04</div>
-                      <h3>提煉資訊重點</h3>
-                      <h2>內容呈現輕重排序，提升取得效率</h2>
-                      <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
-                    </Fade>
-                  </Grid>
-                </TwoColumnsArticle>
-                <Grid xs={12} md={10} mdOffset={1} className="heads-up">
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle left>
+                    <Grid xs={12} md={5} mdOffset={1} lg={4} lgOffset={1} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <div className="index">03</div>
+                        <h3>導覽系統</h3>
+                        <h2>快速掌握站內資訊，減少摸索時間</h2>
+                        <h3>導覽系統有如書的目錄，可幫助使用者判斷需要的內容，過去的官網導覽系統只揭露到第二層分類，經過優化後加入第三層，使用者可透過這邊的索引，快速判斷想要查看的資訊，不需要再點擊進頁面後才能判斷內容是否符合所需。</h3>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={6} lg={6} lgOffset={1} xl={5} xlOffset={1} className="right">
+                      <Fade bottom>
+                        <img src={improving3} alt="improving3" />
+                      </Fade>
+                    </Grid>
+                  </TwoColumnsArticle>
+                </Grid>
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle>
+                    <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <img src={improving4} alt="improving4" />
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={5} lg={4} lgOffset={1} className="right">
+                      <Fade bottom>
+                        <div className="index">04</div>
+                        <h3>提煉資訊重點</h3>
+                        <h2>內容呈現輕重排序，提升取得效率</h2>
+                        <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
+                      </Fade>
+                    </Grid>
+                  </TwoColumnsArticle>
+                </Grid>
+                <Grid xs={12} md={10} mdOffset={1} className="grid">
                   <Fade bottom>
                     <div className="head">
                       <div className="huge en">A System for Consistency <br /> & Efficiency</div>
                       <FeatureHead>
-                        <div className="draw">
-                          建立設計系統
-                        </div>
+                        {windowWidth > 960 ?
+                          <Mark color="#E73523">
+                            建立設計系統
+                          </Mark> :
+                          <div className="draw">
+                            建立設計系統
+                          </div>
+                        }
                       </FeatureHead>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={5} mdOffset={1} className="left">
-                    <Fade bottom>
-                      <div className="index">05</div>
-                      <h3>數位識別系統</h3>
-                      <h2>打造豐富的視覺元素，呈現耳目一新的品牌印象</h2>
-                      <h3>依循著品牌形象與價值主張，建構出豐富的視覺設計元素來塑造氛圍，我們延伸了一套完整的識別系統，包含色彩、字型、圖標、圖紋與影像調性，幫助金控品牌訊息傳遞上能更完整、獨特。</h3>
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={6} className="right">
-                    <Fade bottom>
-                      <img src={improving5} alt="improving5" />
-                    </Fade>
-                  </Grid>
-                </TwoColumnsArticle>
-                <TwoColumnsArticle>
-                  <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
-                    <Fade bottom>
-                      <img src={improving6} alt="improving6" />
-                    </Fade>
-                  </Grid>
-                  <Grid xs={12} md={5} lg={5} className="right">
-                    <Fade bottom>
-                      <div className="index">06</div>
-                      <h3>元件模組化</h3>
-                      <h2>靈活運用，依需求快速組合、變化</h2>
-                      <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
-                    </Fade>
-                  </Grid>
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle left>
+                    <Grid xs={12} md={5} mdOffset={1} lg={4} lgOffset={1} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <div className="index">05</div>
+                        <h3>數位識別系統</h3>
+                        <h2>打造豐富的視覺元素，呈現耳目一新的品牌印象</h2>
+                        <h3>依循著品牌形象與價值主張，建構出豐富的視覺設計元素來塑造氛圍，我們延伸了一套完整的識別系統，包含色彩、字型、圖標、圖紋與影像調性，幫助金控品牌訊息傳遞上能更完整、獨特。</h3>
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={6} lg={6} lgOffset={1} xl={5} xlOffset={1} className="right">
+                      <Fade bottom>
+                        <img src={improving5} alt="improving5" />
+                      </Fade>
+                    </Grid>
+                  </TwoColumnsArticle>
+                </Grid>
+                <Grid xs={12} className="grid">
+                  <TwoColumnsArticle>
+                    <Grid xs={12} md={6} lg={6} xl={5} xlOffset={1} className="left">
+                      <Fade bottom>
+                        <img src={improving6} alt="improving6" />
+                      </Fade>
+                    </Grid>
+                    <Grid xs={12} md={5} lg={4} lgOffset={1} className="right">
+                      <Fade bottom>
+                        <div className="index">06</div>
+                        <h3>元件模組化</h3>
+                        <h2>靈活運用，依需求快速組合、變化</h2>
+                        <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
+                      </Fade>
+                    </Grid>
 
-                  {/* <Grid xs={12} md={5} lg={5} className="right">
+                    {/* <Grid xs={12} md={5} lg={4} lgOffset={1} className="right">
                     <div className="index">06</div>
                     <h3>元件模組化</h3>
                     <h2>靈活運用，依需求快速組合、變化</h2>
                     <h3>藉由模組化設計除了打造金控品牌體驗ㄧ致性之外，在運營方面，未來也可因應內容需求彈性擴充與重複使用，提升後續維運效率。</h3>
                   </Grid> */}
-                </TwoColumnsArticle>
+                  </TwoColumnsArticle>
+                </Grid>
               </Grid>
             </PageWrapper>
           </ImprovingSection>
@@ -354,19 +382,19 @@ export function SKFHPage() {
                 <Grid xs={12} md={8} mdOffset={2}>
                   <Fade bottom>
                     <h1>
-                      為金控集團打造具一致性的品牌數位體驗
+                      為集團網站打造具一致性的數位品牌體驗
                     </h1>
-                    <p>透過集合一系列預先建置、可重複利用的設計資產：色彩、元件、輔助圖形及圖標等，以及制定運用這些設計資產的原則，來協助集團各公司的內外部設計團隊能夠更快、更有效率地延續嶄新的金控品牌形象。</p>
+                    <p>透過集合一系列預先建置、可重複利用的設計資產：色彩、元件、輔助圖形及圖標等，以及制定運用這些設計資產的原則，來協助品牌內外部的各設計團隊能夠更快、更有效率地延續嶄新的品牌形象。</p>
                   </Fade>
                   <WrappedButton
-                    text="VISIT WEBSITE LINK"
+                    text="VISIT WEBSITE"
                     link="#"
                     isWhite={true}
                   />
                 </Grid>
               </Grid>
             </PageWrapper>
-            <img src={guidelineImg} alt="guidelineImg" />
+            {/* <img src={guidelineImg} alt="guidelineImg" /> */}
           </GuidelineSection>
         </div>
       </ParallaxProvider>
@@ -400,12 +428,32 @@ const GuidelineSection = styled.div`
   img{
     width: 100%;
   }
+  ${media.medium`
+    .container{
+      h1{
+        margin: 0;
+        text-align: left;
+      }
+      p{
+        font-size: 14px;
+        line-height: 21px;
+        text-align: left;
+        margin: 8px 0 48px;
+      }
+      a{
+        margin-bottom: 72px;
+      }
+    }
+  `}
 `
 
-const TwoColumnsArticle = styled.div`
+const TwoColumnsArticle = styled.div<{
+  left?: boolean
+}>`
   display: flex;
   gap: 40px;
   margin-bottom: 120px;
+  min-height: 525px;
   .left{
     img{
       margin-left: 0;
@@ -456,7 +504,7 @@ const TwoColumnsArticle = styled.div`
       img{
         margin-left: -80px;
         position: absolute;
-        right: 0;
+        right: 20px;
       }
     }
   `}
@@ -469,8 +517,31 @@ const TwoColumnsArticle = styled.div`
   `}
   ${media.medium`
     flex-direction: column;
+    gap: 32px;
+    margin-bottom: 64px;
     .left{
-      order: 1;
+      order: ${prop => prop.left ? 2 : 1};
+      img{
+        position: relative;
+        margin-left: -20px;
+      }
+    }
+    .right{
+      order: ${prop => prop.left ? 1 : 2};
+    }
+    img{
+      width: calc( 100% + 20px );
+      max-width: initial;
+    }
+    .index{
+      display: none;
+    }
+    h3{
+      margin: 0 0 4px;
+    }
+    h2{
+      margin-bottom: 16px;
+      padding-bottom: 16px;
     }
   `}
 `
@@ -483,6 +554,12 @@ const ImprovingSection = styled.div`
     background-color: #3C4851;
     overflow: visible;
   }
+  .container{
+    .grid{
+      max-width: 1520px;
+      margin: 0 auto;
+    }
+  }
   .head{
     border-left: 8px solid ${color.White};
     padding-left: 48px;
@@ -490,9 +567,6 @@ const ImprovingSection = styled.div`
     h1{
       margin: 5px 0 0;
     }
-  }
-  .heads-up{
-    margin-top: 110px;
   }
   ${media.xlarge`
     .wrapper{
@@ -507,7 +581,7 @@ const ImprovingSection = styled.div`
   ${media.medium`
     .wrapper{
       max-width: initial;
-      padding: 32px 20px 86px;
+      padding: 32px 20px 22px;
     }
     .head{
       margin-bottom: 32px;
@@ -601,6 +675,7 @@ const DesignConcept = styled.div`
       margin-bottom: 30px;
       .circle{
         width: 64px;
+        min-width: 64px;
         height: 64px;
         background-color: #E73523;
         border-radius: 100%;

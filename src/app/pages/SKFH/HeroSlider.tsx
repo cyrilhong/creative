@@ -19,7 +19,7 @@ export function HeroSlider() {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 5000,
         centerPadding: '80px',
         initialSlide: 0,
@@ -95,7 +95,7 @@ const PageController = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 0 -80px;
+  margin: 0 auto;
   .slick-arrow{
     z-index: 10;
     opacity: 0;
@@ -124,8 +124,11 @@ const Wrapper = styled.div`
     right: 0;
     cursor: url(${arrowHollowRight}), auto;
   }
+  ${media.xlarge`
+    /* margin: 0 -80px; */
+  `}
   ${media.large`
-    margin: 0 -40px;
+    margin: 0 -48px;
   `}
   ${media.medium`
     .slick-track{
@@ -141,7 +144,7 @@ const Pagination = styled.div`
   font-size: 72px;
   font-weight: 500;
   position: absolute;
-  right: 80px;
+  right: 48px;
   top: 40px;
   z-index: 10;
   color: #0C1C24;
