@@ -26,24 +26,28 @@ export default function AboutTheCase() {
         <Horizon>
           <div className="title">
             <div className="dot" />
-            <h4 className="eng">INTERDUCTION</h4>
+            <h4 className="eng">INTRODUCTION</h4>
           </div>
           <h4 className="eng">01</h4>
         </Horizon>
         <Grid container className="container">
           <Grid xs={12} md={4}>
-            <div className="title">Project <br /> Overview</div>
-            <div className="sub">專案背景</div>
+            <Fade bottom>
+              <div className="title">Project <br /> Overview</div>
+              <div className="sub">專案背景</div>
+            </Fade>
           </Grid>
           <Grid xs={12} md={8}>
-            <h3>20 年來金控品牌秉持著「光無所不在，心與你同在」的品牌精神，在銀行、人壽、證券等金融服務持續耕耘，在廣大的客戶心中樹立了良好優質的品牌形象。在迎來 20 週年之際，藉由這次官網的改版，希望在品牌原有的扎實基礎之上，刻畫出一個金控品牌的全新氣象，來面對後疫情時代和金融產業數位轉型的全新挑戰。</h3>
-            <h4 className="eng">OUR ROLE</h4>
-            <div className="pills">
-              <div className="pill eng">UI / UX</div>
-              <div className="pill eng">WEBSITE</div>
-              <div className="pill eng">DESIGN SYSTEM</div>
-              <div className="pill eng">STRATEGY</div>
-            </div>
+            <Fade bottom>
+              <h3>20 年來金控品牌秉持著「光無所不在，心與你同在」的品牌精神，在銀行、人壽、證券等金融服務持續耕耘，在廣大的客戶心中樹立了良好優質的品牌形象。在迎來 20 週年之際，藉由這次官網的改版，希望在品牌原有的扎實基礎之上，刻畫出一個金控品牌的全新氣象，來面對後疫情時代和金融產業數位轉型的全新挑戰。</h3>
+              <h4 className="eng">OUR ROLE</h4>
+              <div className="pills">
+                <div className="pill eng">UI / UX</div>
+                <div className="pill eng">WEBSITE</div>
+                <div className="pill eng">DESIGN SYSTEM</div>
+                <div className="pill eng">STRATEGY</div>
+              </div>
+            </Fade>
           </Grid>
         </Grid>
       </PageWrapper>
@@ -112,12 +116,27 @@ const Wrapper = styled.div`
     }
   `}
   ${media.medium`
-    padding: 48px 0;
+    padding: 12px 0 24px;
     .container{
       flex-direction: column;
       border-right: 1px solid ${colors.DarkBlue};
       border-left: 1px solid ${colors.DarkBlue};
       gap: 48px;
+      .title{
+        font-size: 32px;
+        line-height: 40px;
+        br{
+          display: none;
+        }
+      }
+      .sub{
+        font-size: 24px;
+        line-height: 36px;
+      }
+      h3{
+        font-size:14px;
+        margin-bottom: 32px;
+      }
     }
     .border {
       border-right: 0;

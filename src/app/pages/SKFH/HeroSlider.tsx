@@ -21,7 +21,6 @@ export function HeroSlider() {
         arrows: true,
         autoplay: true,
         autoplaySpeed: 5000,
-        // centerMode: true,
         centerPadding: '80px',
         initialSlide: 0,
         afterChange: e => {
@@ -89,6 +88,9 @@ const PageController = styled.div`
     margin: 0;
     padding: 0;
   }
+  ${media.medium`
+    display: none;
+  `}
 `
 
 const Wrapper = styled.div`
@@ -125,6 +127,14 @@ const Wrapper = styled.div`
   ${media.large`
     margin: 0 -40px;
   `}
+  ${media.medium`
+    .slick-track{
+        height: 250px!important;
+    }
+    .slick-arrow{
+        display: none;
+    }
+  `}
 `
 
 const Pagination = styled.div`
@@ -136,6 +146,9 @@ const Pagination = styled.div`
   z-index: 10;
   color: #0C1C24;
   font-family: 'Poppins';
+  ${media.medium`
+    display: none;
+  `}
 `
 
 const SlideItem = styled.div`
@@ -162,6 +175,9 @@ const SlideItem = styled.div`
     }
   `}
   ${media.medium`
+    img{
+        height: 250px!important;
+    }
     p{
       margin: 32px 0;
       font-size: 16px;

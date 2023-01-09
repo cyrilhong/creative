@@ -76,8 +76,8 @@ export function PageWrapper(props) {
           </Grid>
         </Wrapper>
         :
-        <WrapperMb>
-          <Box position={'relative'} zIndex="1">
+        <WrapperMb className={props.className}>
+          <Box overflow={props.overflow==='true'?'hidden':'visible'} position={'relative'} zIndex="1">
             {props.children}
           </Box>
         </WrapperMb>
