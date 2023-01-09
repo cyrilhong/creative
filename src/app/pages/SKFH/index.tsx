@@ -154,7 +154,7 @@ export function SKFHPage() {
               <Horizon blackBg>
                 <div className="title">
                   <div className="dot" />
-                  <h4 className="eng">DESIGN CONCEPT</h4>
+                  <h4 className="eng">DESIGN FEATURES</h4>
                 </div>
                 <h4 className="eng">04</h4>
               </Horizon>
@@ -205,15 +205,20 @@ export function SKFHPage() {
                       <div className="huge en">Improving the Mobility <br />Experience</div>
                       <h1>
                         <FeatureHead>
-                          <div className="draw">
-                            提升行動體驗
-                          </div>
+                          {windowWidth > 960 ?
+                            <Mark color="#E73523">
+                              提升行動體驗
+                            </Mark> :
+                            <div className="draw">
+                              提升行動體驗
+                            </div>
+                          }
                         </FeatureHead>
                       </h1>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
+                <TwoColumnsArticle left>
                   <Grid xs={12} md={5} mdOffset={1} lg={5} lgOffset={1} xl={5} xlOffset={1} className="left">
                     <Fade bottom>
                       <div className="text">
@@ -252,14 +257,19 @@ export function SKFHPage() {
                     <div className="head">
                       <div className="huge en">Information Architecture <br />Redesign</div>
                       <FeatureHead>
-                        <div className="draw">
-                          資訊架構優化
-                        </div>
+                        {windowWidth > 960 ?
+                          <Mark color="#E73523">
+                            資訊架構優化
+                          </Mark> :
+                          <div className="draw">
+                            資訊架構優化
+                          </div>
+                        }
                       </FeatureHead>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
+                <TwoColumnsArticle left>
                   <Grid xs={12} md={5} mdOffset={1} className="left">
                     <Fade bottom>
                       <div className="index">03</div>
@@ -294,14 +304,19 @@ export function SKFHPage() {
                     <div className="head">
                       <div className="huge en">A System for Consistency <br /> & Efficiency</div>
                       <FeatureHead>
-                        <div className="draw">
-                          建立設計系統
-                        </div>
+                        {windowWidth > 960 ?
+                          <Mark color="#E73523">
+                            建立設計系統
+                          </Mark> :
+                          <div className="draw">
+                            建立設計系統
+                          </div>
+                        }
                       </FeatureHead>
                     </div>
                   </Fade>
                 </Grid>
-                <TwoColumnsArticle>
+                <TwoColumnsArticle left>
                   <Grid xs={12} md={5} mdOffset={1} className="left">
                     <Fade bottom>
                       <div className="index">05</div>
@@ -400,9 +415,28 @@ const GuidelineSection = styled.div`
   img{
     width: 100%;
   }
+  ${media.medium`
+    .container{
+      h1{
+        margin: 0;
+        text-align: left;
+      }
+      p{
+        font-size: 14px;
+        line-height: 21px;
+        text-align: left;
+        margin: 8px 0 24px;
+      }
+      a{
+        margin-bottom: 64px;
+      }
+    }
+  `}
 `
 
-const TwoColumnsArticle = styled.div`
+const TwoColumnsArticle = styled.div<{
+  left?: boolean
+}>`
   display: flex;
   gap: 40px;
   margin-bottom: 120px;
@@ -469,8 +503,30 @@ const TwoColumnsArticle = styled.div`
   `}
   ${media.medium`
     flex-direction: column;
+    gap: 32px;
+    margin-bottom: 64px;
     .left{
-      order: 1;
+      order: ${prop => prop.left ? 2 : 1};
+      img{
+        position: relative;
+        margin-left: -20px;
+      }
+    }
+    .right{
+      order: ${prop => prop.left ? 1 : 2};
+    }
+    img{
+      width: calc( 100% + 20px );
+    }
+    .index{
+      display: none;
+    }
+    h3{
+      margin: 0 0 4px;
+    }
+    h2{
+      margin-bottom: 16px;
+      padding-bottom: 16px;
     }
   `}
 `
@@ -507,7 +563,7 @@ const ImprovingSection = styled.div`
   ${media.medium`
     .wrapper{
       max-width: initial;
-      padding: 32px 20px 86px;
+      padding: 32px 20px 22px;
     }
     .head{
       margin-bottom: 32px;
@@ -516,6 +572,9 @@ const ImprovingSection = styled.div`
         font-size: 22px;
         line-height: 33px;
       }
+    }
+    .heads-up{
+      margin-top: 0;
     }
   `}
 `

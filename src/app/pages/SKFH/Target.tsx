@@ -32,7 +32,7 @@ export default function Target() {
             setStartCount(false);
         }
         if (
-            positionRef.current!.getBoundingClientRect().top < 80&& windowWidth>960
+            positionRef.current!.getBoundingClientRect().top < 120 && windowWidth > 960
         ) {
             setSticky(true);
         } else {
@@ -217,6 +217,7 @@ const Wrapper = styled.div`
     padding-top: 85px;
     .page-container{
         max-width: 1520px;
+        overflow: visible;
     }
 
     .target-section{
@@ -439,7 +440,7 @@ const Challenges = styled.div`
     }
     .sticky-top {
         position: sticky;
-        top: 80px;
+        top: 120px;
         left: 40;
         width: calc( 33vw );
         /* margin-left: 0; */
@@ -478,6 +479,7 @@ const Challenges = styled.div`
             }
             &::before{
                 height: 100%;
+                width: 100%;
             }
         }
         h2{
