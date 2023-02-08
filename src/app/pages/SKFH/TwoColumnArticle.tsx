@@ -163,7 +163,7 @@ const TwoColumnsArticle = styled.div<{
   }>`
     display: flex;
     gap: 40px;
-    margin-bottom: 120px;
+    margin-bottom: 200px;
     min-height: 525px;
     .left{
       img{

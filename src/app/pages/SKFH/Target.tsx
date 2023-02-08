@@ -66,9 +66,9 @@ export default function Target() {
                     <Grid container className="container">
                         <Grid xs={12} md={12}>
                             <Fade bottom>
-                                <h2 className="en">
+                                <h3 className="en">
                                     設計目標
-                                </h2>
+                                </h3>
                                 <h1>
                                     <FeatureHead>
                                         融入品牌精神與具內涵的核心價值，建立具有一致性且 <br />令人信服、認同的品牌意象，進而提升品牌價值。
@@ -163,8 +163,8 @@ export default function Target() {
                             </Box> */}
                             <Grid xs={12} md={12} className="topic-2">
                                 <Fade bottom>
-                                    <h2>01. 如何在同質性偏高的金融消費市場中製造品牌差異化？</h2>
-                                    <h4>運用 Brand Essence Wheel 建構品牌核心精神，找出屬於金控的「品牌個性」與「品牌形象」，從中映射出品牌的 Tone & Manner 定義。將反映品牌精神、個性與形象的調性，轉換至金控網站改版中的各種體驗層面，像是視覺設計元素、影像調性、文案用語等，打造品牌獨特性的體驗。</h4>
+                                    <h2 style={{marginTop: 0}}>01. 如何在同質性偏高的金融消費市場中製造品牌差異化？</h2>
+                                    <h4>運用 Brand Essence Wheel 建構品牌核心精神，找出具有識別度的「品牌個性」與「品牌形象」，從中映射出品牌的 Tone & Manner 定義。將反映品牌精神、個性與形象的調性，轉換至網站改版中的各種體驗層面，像是視覺設計元素、影像調性、文案用語等，打造品牌獨特性的體驗。</h4>
                                 </Fade>
                             </Grid>
                             <Grid xs={12} md={12} className="info-graph-1">
@@ -175,7 +175,7 @@ export default function Target() {
                             <Grid xs={12} md={12}>
                                 <Fade bottom>
                                     <h2>02. 如何將功能資訊導向的內容轉化為說故事，提升網站記憶點？</h2>
-                                    <h4>金控網站過去比較是單純功能、資訊傳遞導向。單向式的傳遞訴求，用戶難以從中獲得在意的資訊與留下印象，因此在設計時需要安排整體的設計主軸與氛圍塑造，拉近與消費者的距離，建立起雙向式的體驗互動，來傳遞金控品牌的形象。</h4>
+                                    <h4>重整於設計時安排整體的設計主軸與氛圍塑造，幫助消費者獲取在意的資訊並留下印象、拉近距離，建立起雙向式的體驗互動，以傳遞更全面的品牌形象。</h4>
                                 </Fade>
                             </Grid>
                             <Grid xs={12} md={12} className="info-graph-2">
@@ -231,7 +231,7 @@ const Wrapper = styled.div`
         margin-top: 10px;
     }
     ${media.medium`
-        padding: 120px 0 96px;
+        padding: 96px 0 96px;
         .target-section{
             h2{
                 font-size: 16px;
@@ -250,7 +250,7 @@ const Wrapper = styled.div`
 const Subhead = styled.div`
     font-size: 20px;
     line-height: 30px;
-    margin: 52px auto 0;
+    margin: 120px auto 0;
     text-align: center;
     max-width: 360px;
     position: relative;
@@ -273,7 +273,7 @@ const Subhead = styled.div`
         top: 13px;
     }
     ${media.medium`
-        margin: 162px auto 0;
+        margin: 96px auto 0;
         font-size: 16px;
         max-width: initial;
         width: fit-content;

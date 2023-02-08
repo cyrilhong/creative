@@ -28,8 +28,9 @@ export default function ParallaxImg({ img = "", alt = "", height = 0 }) {
     <ParallaxProvider>
       <Img>
         <Parallax
-          speed={windowWidth > 960 ? -16 : -8}
-          rootMargin={{ top: windowWidth > 1439 ? -600 : 100, right: 0, bottom: 500, left: 0 }}
+          speed={windowWidth > 959 ? -18 : -4}
+          easing="easeInCubic"
+          rootMargin={{ top: windowWidth > 959 ? 600 : 1200, right: 0, bottom: windowWidth > 959 ? 0 : -600, left: 0 }}
         >
           <img src={img} alt={alt} />
         </Parallax>

@@ -77,19 +77,34 @@ const PageController = styled.div`
   left: 0;
   right: 0;
   justify-content: space-between;
-  padding: 0 48px;
   display: flex;
   gap: 24px;
   z-index: 11;
+  padding: 0 48px;
   button{
     cursor: pointer;
     border: 0;
     background: none;
     margin: 0;
     padding: 0;
+    transition: all .1s ease-in;
+    &:hover{
+      transform: scale(1.2);
+    }
   }
+  ${media.large`
+    padding: 0 96px;
+  `}
   ${media.medium`
-    display: none;
+    /* display: none; */
+    display: flex;
+    padding: 0 48px;
+    button{
+      margin: 0 16px;
+      img{
+        width: 40px;
+      }
+    }
   `}
 `
 
@@ -149,6 +164,9 @@ const Pagination = styled.div`
   z-index: 10;
   color: #0C1C24;
   font-family: 'Poppins';
+  ${media.large`
+    right: 96px;
+  `}
   ${media.medium`
     display: none;
   `}

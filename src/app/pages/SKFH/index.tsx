@@ -36,6 +36,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Container } from '@mui/material';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import { Mark } from '../HomePage/Mark';
+import Article from './TwoColumnArticle'
 export function SKFHPage() {
   const windowWidth = useWindowSize().width
   useEffect(() => {
@@ -60,13 +61,13 @@ export function SKFHPage() {
             <HeroSlider />
           </PageWrapper>
           <AboutTheCase />
-          <ParallaxImg img={brickImg} alt="brickImg" height={windowWidth > 960 ? 600 : 280} />
+          <ParallaxImg img={brickImg} alt="brickImg" height={windowWidth > 959 ? 600 : 420} />
           <Target />
           {/* <ParallaxImg img={MakeADiffrernce} alt="MakeADiffrernce" height={810}/> */}
           {/* <SectionMakeADiffrernce>
             <img src={MakeADiffrernce} alt="MakeADiffrernce" />
           </SectionMakeADiffrernce> */}
-          <ParallaxImg img={MakeADiffrernce} alt="MakeADiffrernce" height={windowWidth > 960 ? 698 : 210} />
+          <ParallaxImg img={MakeADiffrernce} alt="MakeADiffrernce" height={windowWidth > 959 ? 698 : 315} />
           <DesignConcept>
             <PageWrapper overflow={"true"} className="page-container">
               <Horizon blackBg>
@@ -91,21 +92,27 @@ export function SKFHPage() {
               </BrandInsightImg> :
               <div className="insights-mb">
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">01</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>沈澱累積</h1>
                     <h5 className="eng">時間發酵對話，穩健持續的突破進步</h5>
                   </Box>
                 </div>
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">02</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>保持初衷</h1>
                     <h5 className="eng">審視自己，創新的過程中不背棄精神與傳承理念</h5>
                   </Box>
                 </div>
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">03</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>簡單純粹</h1>
                     <h5 className="eng">新光忠於自己的腳步，不盲目追求趨勢</h5>
@@ -174,21 +181,27 @@ export function SKFHPage() {
               </BrandInsightImg> :
               <div className="insights-mb characteristic">
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">01</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>提升行動體驗</h1>
                     <h5 className="eng">重新建構資訊佈局，讓資訊更清晰閱讀</h5>
                   </Box>
                 </div>
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">02</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>資訊架構優化</h1>
                     <h5 className="eng">快速掌握站內資訊，減少摸索時間</h5>
                   </Box>
                 </div>
                 <div className="list">
-                  <div className="circle" />
+                  <div className="circle">
+                    <h1 className="en">03</h1>
+                  </div>
                   <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
                     <h1>建立設計系統</h1>
                     <h5 className="eng">靈活運用，依需求快速組合、變化</h5>
@@ -354,7 +367,7 @@ export function SKFHPage() {
                         <div className="index">06</div>
                         <h3>元件模組化</h3>
                         <h2>靈活運用，依需求快速組合、變化</h2>
-                        <h3>數據顯示網站中流量相當高部分為「股東專區」跟「最新消息」，所以我們在設計時也呼應需求，像是每個月的營運狀況、整個集團相關的最新消息，主動揭露於官網首頁，使用者在首頁瀏覽時就能看到關鍵重點。</h3>
+                        <h3>藉由模組化設計除了打造金控品牌體驗ㄧ致性之外，在運營方面，未來也可因應內容需求彈性擴充與重複使用，提升後續維運效率。</h3>
                       </Fade>
                     </Grid>
 
@@ -388,8 +401,9 @@ export function SKFHPage() {
                   </Fade>
                   <WrappedButton
                     text="VISIT WEBSITE"
-                    link="#"
+                    link="https://www.skfh.com.tw/"
                     isWhite={true}
+                    blank
                   />
                 </Grid>
               </Grid>
@@ -418,7 +432,7 @@ const GuidelineSection = styled.div`
       margin: 10px 0 0;
     }
     p{
-      margin: 16px 0 32px;
+      margin: 16px 0 72px;
     }
     a{
       margin: 0 0 96px;
@@ -452,7 +466,7 @@ const TwoColumnsArticle = styled.div<{
 }>`
   display: flex;
   gap: 40px;
-  margin-bottom: 120px;
+  margin-bottom: 200px;
   min-height: 525px;
   .left{
     img{
@@ -680,9 +694,14 @@ const DesignConcept = styled.div`
         background-color: #E73523;
         border-radius: 100%;
         margin-right: 12px;
-      }
-      h1{
-        margin: 0 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+          margin: 0 0 4px;
+          font-weight: bold;
+          color: ${color.White};
+        }
       }
       h5{
         margin: 0;
@@ -756,37 +775,6 @@ const Horizon = styled.div<{
     padding: 64px 0 72px;
   `}
 `;
-
-const SectionMakeADiffrernce = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 80px;
-  img{
-    width: 100%;
-  }
-  ${media.medium`
-    margin-bottom: 0;
-  `}
-`
-const PageController = styled.div`
-  position: absolute;
-  top: 0%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: space-between;
-  padding: 0 48px;
-  display: flex;
-  gap: 24px;
-  z-index: 11;
-  button{
-    cursor: pointer;
-    border: 0;
-    background: none;
-    margin: 0;
-    padding: 0;
-  }
-`
 
 
 const FeatureHead = styled.h1`
