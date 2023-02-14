@@ -24,7 +24,7 @@ import CrossXTalk from './assets/crossxtalk.svg'
 import TalkImg from './assets/talk.jpg'
 import Characteristic from './assets/design-characteristic.svg'
 import talkBrick from './assets/talk-brick.jpg'
-import guidelineImg from './assets/design-guideline.jpg'
+import ogImg from './assets/skfh-og.jpg'
 import improving1 from './assets/improving-1.jpg'
 import improving2 from './assets/improving-2.jpg'
 import improving3 from './assets/improving-3.jpg'
@@ -45,10 +45,20 @@ export function SKFHPage() {
   return (
     <Wrapper>
       <Helmet>
-        <title>專案實例</title>
+        <title>新光金控｜翻轉悠久品牌形象，定義與時俱進的溝通策略</title>
         <meta
-          name="description"
-          content="We combine strategic design and product experience."
+          name="新光金控｜翻轉悠久品牌形象，定義與時俱進的溝通策略"
+          content="如何運用品牌重塑，讓底蘊悠久的金控品牌展現全新的品牌形象？"
+        />
+        <meta
+          property="og:description"
+          key="og:description"
+          content={'如何運用品牌重塑，讓底蘊悠久的金控品牌展現全新的品牌形象？'}
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={ogImg}
         />
       </Helmet>
       <NavBar bgColor={color.BGGrey} color={color.DarkBlue} />

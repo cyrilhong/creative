@@ -8,6 +8,7 @@ import img02 from './assets/02.jpg';
 import img03 from './assets/03.jpg';
 import img04 from './assets/04.jpg';
 import img05 from './assets/05.jpg';
+import skfh from './assets/img_skfh.jpg';
 import richart from './assets/img_richart.jpg';
 import fetnet from './assets/img_fetnet.jpg';
 import starlux from './assets/img_starlux.jpg';
@@ -27,6 +28,30 @@ export default function CaseStudy() {
     <ParallaxProvider>
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
+          <Grid item xs={12} md={4}>
+            <a href="./skfh" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <div className="img-wrapper">
+                  <img src={skfh} alt="台新銀行" />
+                </div>
+                <Fade bottom delay={-500} cascade>
+                  <h4 className="type">金融與保險</h4>
+                  <h2 className="title">
+                    新光金控｜翻轉悠久品牌形象，定義與時俱進的溝通策略
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
+          </Grid>
           <Grid item xs={12} md={4}>
             <a href="https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
@@ -179,15 +204,15 @@ export default function CaseStudy() {
             </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://aja.com.tw/portfolio/delta-biczone/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
                   <div className="img-wrapper">
-                    <img src={chinaAirlines} alt="華航" />
+                    <img src={delta} alt="台達電" />
                   </div>
-                  <h4 className="type">交通與運輸</h4>
+                  <h4 className="type">電信媒體與科技</h4>
                   <h2 className="title">
-                    中華航空｜帶著走的旅遊行動助理
+                    台達電｜建構跨領域的設計系統
                   </h2>
                   <div className="pills eng">
                     <div className="pill">EXPERIENCE</div>
@@ -195,7 +220,7 @@ export default function CaseStudy() {
                   </div>
                 </Fade>
                 <RoundButton
-                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html"}
+                  link={"https://aja.com.tw/portfolio/delta-biczone/index.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />
@@ -226,15 +251,15 @@ export default function CaseStudy() {
             </a>
           </Grid>
           <Grid item xs={12} md={4}>
-            <a href="https://aja.com.tw/portfolio/delta-biczone/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
                   <div className="img-wrapper">
-                    <img src={delta} alt="台達電" />
+                    <img src={chinaAirlines} alt="華航" />
                   </div>
-                  <h4 className="type">電信媒體與科技</h4>
+                  <h4 className="type">交通與運輸</h4>
                   <h2 className="title">
-                    台達電｜建構跨領域的設計系統
+                    中華航空｜帶著走的旅遊行動助理
                   </h2>
                   <div className="pills eng">
                     <div className="pill">EXPERIENCE</div>
@@ -242,7 +267,7 @@ export default function CaseStudy() {
                   </div>
                 </Fade>
                 <RoundButton
-                  link={"https://aja.com.tw/portfolio/delta-biczone/index.html"}
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />
