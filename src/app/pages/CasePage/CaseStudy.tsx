@@ -29,7 +29,7 @@ export default function CaseStudy() {
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
           <Grid item xs={12} md={4}>
-            <a href="./skfh" target={"_blank"} style={{ textDecoration: 'none' }}>
+            <a href="https://www.aja-creative.com/case/skfh" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <div className="img-wrapper">
                   <img src={skfh} alt="台新銀行" />

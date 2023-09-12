@@ -119,7 +119,7 @@ export default function Target() {
                     rightGrid={8}
                     left={
                         <Fade bottom>
-                            <div className="title">Design<br />Process</div>
+                            <div className="title">Design<br /> Process</div>
                             <div className="sub">設計過程與挑戰</div>
                         </Fade>
                     }

@@ -63,7 +63,7 @@ export function Masthead() {
         {windowWidth < 960 &&
           <>
             <Title className="eng huge">
-            How could a long-established financial brand transform its image into a fresh one
+            How could a long-established financial brand transform its image into a fresh one?
             </Title>
             <div className="content">
               <h1>

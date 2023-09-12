@@ -382,7 +382,7 @@ export function HomePage() {
               :
               <>
                 我們透過
-                <Mark>量身定制的解決方案</Mark>，來應對不同商業需求的關鍵情境
+                <Mark>量身定制的解決方案</Mark>，來應對<Mark>不同商業需求</Mark>的關鍵情境
               </>
             }
           </FeatureHead>

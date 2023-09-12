@@ -1770,13 +1770,13 @@ const InputForm = styled.div`
     &.Mui-error{
       &::before{
         border-color: #F84214;
-        border-width: 2px!important; 
+        border-width: 2px!important;
       }
     }
   }
   .Mui-focused.MuiFilledInput-underline{
     &::before{
-      border-width: 2px!important; 
+      border-width: 2px!important;
       border-color: #0C1C24;
     }
   }
@@ -1829,7 +1829,7 @@ const InputForm = styled.div`
   }
   ${media.medium`
     .MuiFormLabel-root{
-     font-size: 16px; 
+     font-size: 16px;
     }
   `}
 `;
