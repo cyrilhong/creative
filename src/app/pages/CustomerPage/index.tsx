@@ -200,10 +200,10 @@ export function CustomerPage() {
                         <a target={"_blank"} href="https://aja.com.tw/portfolio/ctbc-parent-child/index.html">
                           <img src={arrowBtn} alt="arrowBtn" /> 親子數位金融服務
                         </a>
-                        <a target={"_blank"} href="https://aja.com.tw/portfolio/ctbc-sme/index.html">
+                        {/* <a target={"_blank"} href="https://aja.com.tw/portfolio/ctbc-sme/index.html">
                           <img src={arrowBtn} alt="arrowBtn" />
                           中小企業數位金融服務
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </Grid>

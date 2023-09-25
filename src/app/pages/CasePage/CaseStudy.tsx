@@ -154,7 +154,7 @@ export default function CaseStudy() {
               </Case>
             </a>
           </Grid>
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <a href="https://aja.com.tw/portfolio/ctbc-sme/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
@@ -178,7 +178,7 @@ export default function CaseStudy() {
                 />
               </Case>
             </a>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} md={4}>
             <a href="https://www.aja-creative.com/aja_before/zh_tw/case_cathay_hospital.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
