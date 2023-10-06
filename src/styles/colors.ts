@@ -13,3 +13,4 @@ export const BGIvory = '#FFFDF5';
 export const BGBeige = '#FFFBF7';
 export const BGPeach = '#FCF6F1';
 export const BGPink = '#F9F2F0';
+export const RichartBlue = '#2BE0EC';

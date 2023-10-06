@@ -32,7 +32,7 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import VideoJS from './VideoJS';
 import videojs from 'video.js';
-import CTBC from './assets/img_richart.jpg';
+import Richart from './assets/richart.jpg';
 import Starlux from './assets/img_starlux.jpg';
 import Fetnet from './assets/img_fetnet.jpg';
 import wall1 from './assets/wall-1.jpg';
@@ -412,9 +412,9 @@ export function HomePage() {
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html')}>
+              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('case/richart')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <img src={CTBC} alt="ctbc" />
+                  <img src={Richart} alt="richart" />
                 </div>
                 <Fade bottom>
                   <h4>金融與保險</h4>

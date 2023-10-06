@@ -8,17 +8,18 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import yoxi from './assets/yoxi.jpg';
 import Fade from 'react-reveal/Fade';
+import Richart from './assets/richart.jpg';
 const CaseSlider = [
   {
-    title: '和泰移動派遣服務｜yoxi 美好出行體驗',
+    title: '台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行',
     content:
-      '和泰集團作為 TOYOTA 台灣區總代理，2020 年在全球戰略指導與支持下，宣布加入移動事業，企圖打造全新的叫車服務首選品牌。',
-    type: '交通與運輸',
-    tag: ['STRATEGY', 'EXPERIENCE', 'BRANDING'],
-    link: 'https://yoxi-case-study.aja.com.tw/',
+      '最多人使用的數位銀行，台新2023年 Richart 大改版，傳達自由不設限的多元理財，你的銀行由你定義！',
+    type: '金融與保險',
+    tag: ['EXPERIENCE', 'RESEARCH', 'BRANDING'],
+    link: '/case/richart',
     img: {
-      src: yoxi,
-      alt: '和泰派遣',
+      src: Richart,
+      alt: 'Richart',
     },
   }
 ];
@@ -48,7 +49,7 @@ export default function Case() {
     carouselRef.current?.slickGoTo(index);
   };
   return (
-    <a href="https://yoxi-case-study.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
+    <a href="/case/richart" target={"_blank"} style={{ textDecoration: 'none' }}>
       <Cases>
         <div className="left">
           <div className="case-info">

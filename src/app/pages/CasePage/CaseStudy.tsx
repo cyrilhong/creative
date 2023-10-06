@@ -9,6 +9,7 @@ import img03 from './assets/03.jpg';
 import img04 from './assets/04.jpg';
 import img05 from './assets/05.jpg';
 import skfh from './assets/img_skfh.jpg';
+import yoxi from './assets/yoxi.jpg';
 import richart from './assets/img_richart.jpg';
 import fetnet from './assets/img_fetnet.jpg';
 import starlux from './assets/img_starlux.jpg';
@@ -19,7 +20,7 @@ import chinaAirlines from './assets/img_china-airlines.jpg';
 import cloudGate from './assets/img_cloud-gate.jpg';
 import delta from './assets/img_delta.jpg';
 import * as color from '../../../styles/colors';
-import arrow from './assets/button-black.svg';
+import Richart from './assets/richart.jpg';
 import { Grid, Container } from '@mui/material';
 import RoundButton from 'app/components/RoundButton'
 import { media } from 'styles/media';
@@ -28,6 +29,31 @@ export default function CaseStudy() {
     <ParallaxProvider>
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
+        <Grid item xs={12} md={4}>
+            <a href="https://yoxi-case-study.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <div className="img-wrapper">
+                  <img src={yoxi} alt="和泰派遣" />
+                </div>
+                <Fade bottom delay={-500} cascade>
+                  <h4 className="type">交通與運輸</h4>
+                  <h2 className="title">
+                    和泰移動派遣服務｜yoxi 美好出行體驗
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">STRATEGY</div>
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://yoxi-case-study.aja.com.tw/"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
+          </Grid>
           <Grid item xs={12} md={4}>
             <a href="https://www.aja-creative.com/case/skfh" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
@@ -41,31 +67,6 @@ export default function CaseStudy() {
                   </h2>
                   <div className="pills eng">
                     <div className="pill">EXPERIENCE</div>
-                    <div className="pill">BRANDING</div>
-                  </div>
-                </Fade>
-                <RoundButton
-                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html"}
-                  isWhite={false}
-                  text="CASE STUDY"
-                />
-              </Case>
-            </a>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
-              <Case>
-                <div className="img-wrapper">
-                  <img src={richart} alt="台新Richart" />
-                </div>
-                <Fade bottom delay={-500} cascade>
-                  <h4 className="type">金融與保險</h4>
-                  <h2 className="title">
-                    台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
-                  </h2>
-                  <div className="pills eng">
-                    <div className="pill">EXPERIENCE</div>
-                    <div className="pill">RESEARCH</div>
                     <div className="pill">BRANDING</div>
                   </div>
                 </Fade>
@@ -97,6 +98,31 @@ export default function CaseStudy() {
                 </Fade>
                 <RoundButton
                   link={"https://fetnet-revision.aja.com.tw/"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <a href="https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <div className="img-wrapper">
+                  <img src={richart} alt="台新Richart" />
+                </div>
+                <Fade bottom delay={-500} cascade>
+                  <h4 className="type">金融與保險</h4>
+                  <h2 className="title">
+                    台新 Richart 數位銀行｜和你站在同一邊，最懂你的銀行
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">EXPERIENCE</div>
+                    <div className="pill">RESEARCH</div>
+                    <div className="pill">BRANDING</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/aja_before/zh_tw/case_taishinbank_richart.html"}
                   isWhite={false}
                   text="CASE STUDY"
                 />
@@ -227,7 +253,7 @@ export default function CaseStudy() {
               </Case>
             </a>
           </Grid>
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <a href="https://aja.com.tw/portfolio/elearning/index.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <Fade bottom delay={-500}>
@@ -249,7 +275,7 @@ export default function CaseStudy() {
                 />
               </Case>
             </a>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} md={4}>
             <a href="https://www.aja-creative.com/aja_before/zh_tw/case_china_airlines.html" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
