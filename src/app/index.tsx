@@ -14,6 +14,7 @@ import { HomePage } from './pages/HomePage/Loadable';
 import { CasePage } from './pages/CasePage/Loadable';
 import { SKFHPage } from './pages/SKFH/Loadable';
 import { Richart } from './pages/Richart/Loadable';
+import { LineBank } from './pages/LineBank/Loadable';
 import { ServicePage } from './pages/ServicePage/Loadable';
 import { WorkPage } from './pages/WorkPage/Loadable';
 import { ContactPage } from './pages/ContactPage/Loadable';
@@ -42,6 +43,7 @@ export function App(props) {
         <Route path="/case" element={<CasePage />} />
         <Route path="/case/SKFH" element={<SKFHPage />} />
         <Route path="/case/richart" element={<Richart />} />
+        <Route path="/case/line-bank" element={<LineBank />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/work" element={<WorkPage />} />

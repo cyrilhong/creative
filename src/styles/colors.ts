@@ -14,3 +14,5 @@ export const BGBeige = '#FFFBF7';
 export const BGPeach = '#FCF6F1';
 export const BGPink = '#F9F2F0';
 export const RichartBlue = '#2BE0EC';
+export const LinbankMark = '#DDF9A7';
+export const LineBankGreen = '#24C875'
