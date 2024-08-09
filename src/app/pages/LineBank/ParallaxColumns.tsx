@@ -36,14 +36,13 @@ export default function ParallaxImg() {
               <img className='left' src={Left} alt="left" />
             </Tween>
             <Tween
-              position="0"
+              position="0.5"
               from={{
                 yPercent: 0,
               }}
               to={{
-                yPercent: -30,
+                yPercent: -10,
               }}
-
 
             >
               <img className='center' src={Center} alt="Center" />
@@ -54,7 +53,7 @@ export default function ParallaxImg() {
                 yPercent: isDesktop() ? -40 : 5,
               }}
               to={{
-                yPercent: isDesktop() ? 0 : -5,
+                yPercent: isDesktop() ? 5 : -5,
               }}
             >
               <img className='right' src={Right} alt="Right" />

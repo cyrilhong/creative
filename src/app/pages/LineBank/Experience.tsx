@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   .container{
     text-align: center;
     h1{
-      font-weight: 400;
+      font-weight: 300;
     }
   }
   img{
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
     text-align: center;
     h1{
       font-size: 28px;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 35px;
       text-align: center;
       margin: 0 0 8px;
@@ -77,9 +77,18 @@ const Wrapper = styled.div`
         margin: 0 0 24px;
       }
     }
+    a{
+      margin-top: 6px;
+    }
     img{
       padding: 44px 0 0;
     }
+    .gotoLineBank{
+        padding: 64px 0 80px;
+        h1{
+          font-size: 14px;
+        }
+      }
   `}
 `
 const Horizon = styled.div<{
@@ -121,6 +130,6 @@ const Horizon = styled.div<{
       }
     }
     ${media.medium`
-      padding: 136px 0 72px;
+      padding: 32px 0 72px;
     `}
   `;

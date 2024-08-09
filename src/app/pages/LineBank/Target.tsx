@@ -146,7 +146,7 @@ const Wrapper = styled.div`
     overflow: visible;
     color: ${color.White};
     /* padding-bottom: 340px; */
-    padding-top: 200px;
+    padding-top: 152px;
     .gradient{
       border-radius: 800.557px;
       opacity: 0.6;
@@ -164,7 +164,7 @@ const Wrapper = styled.div`
     h3{
       font-size: 28px;
       font-weight: 500;
-      margin: 32px 0 24px;
+      margin: 0 0 20px;
     }
     .page-container{
         max-width: 1520px;
@@ -252,15 +252,15 @@ const Wrapper = styled.div`
       }
     `}
     ${media.medium`
-      padding: 96px 0 0;
+      padding: 60px 0 0;
       .page-container{
         height: auto;
         overflow: hidden;
-        padding-bottom: 96px;
+        padding-bottom: 0px;
       }
       h3{
-        font-size: 16px;
-        margin: 16px 0;
+        font-size: 20px;
+        margin: 0 0 8px ;
       }
       .info{
         font-size: 16px;
@@ -287,8 +287,8 @@ const Wrapper = styled.div`
             margin: 16px 0 22px;
         }
         h1{
-            font-size: 22px;
-            line-height: 33px;
+            font-size: 14px;
+            line-height: 21px;
             margin: 0 0 16px;
         }
       }
@@ -394,7 +394,7 @@ const Horizon = styled.div<{
 }>`
     display: flex;
     justify-content: space-between;
-    padding: 200px 0 120px;
+    padding: 170px 0 120px;
     color: ${prop => (!prop.blackBg ? color.White : color.DarkBlue)};
     &::after {
       content: '';
@@ -428,7 +428,7 @@ const Horizon = styled.div<{
       }
     }
     ${media.medium`
-      padding: 136px 0 72px;
+      padding: 48px 0 72px;
     `}
   `;
 
@@ -451,6 +451,9 @@ const FeatureHead = styled.h1`
     display: block;
     margin-bottom: -8px;
     /* max-width: 320px; */
+    .target-section{
+      font-size: 14px;
+    }
     br{
       display: none;
     }

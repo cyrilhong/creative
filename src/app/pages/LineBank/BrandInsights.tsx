@@ -32,7 +32,7 @@ export default function BrandInsights() {
         </Horizon>
         <Fade bottom>
           <div className="huge eng characteristic">
-            Design Characteristic
+            Design <br/>Characteristic
           </div>
           <h1>設計特點</h1>
         </Fade>
@@ -90,7 +90,7 @@ export default function BrandInsights() {
 
 const BrandInsightImg = styled.div`
   display: flex;
-  margin: 58px -148px 168px;
+  margin: 58px 0 186px;
   img{
     width: 100%;
   }
@@ -103,7 +103,7 @@ const Wrapper = styled.div`
     margin: 12px 0 0;
   }
   .insights-mb{
-    margin: 66px 20px 112px;
+    margin: 66px 20px 82px;
     .list{
       display: flex;
       flex-direction: row;
@@ -144,7 +144,7 @@ const Wrapper = styled.div`
   }
   .characteristic{
     br{
-      /* display: none; */
+      display: none;
     }
   }
   ${media.medium`

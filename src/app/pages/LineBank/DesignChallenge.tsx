@@ -28,14 +28,14 @@ export default function DesignChallenge() {
               <div className="super eng">Challenge</div>
             </Fade>
           </Grid> :
-          <Grid xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="2">
+          <Grid  xs={12} xsOffset={0} md={10} mdOffset={1} zIndex="2">
             <Grid container spacing={0} rowSpacing={0}>
               <Grid xs={12}>
                 <Fade bottom cascade={windowWidth > 1432} duration={500} delay={100}>
                   <div className="super eng">Design</div>
                 </Fade>
               </Grid>
-              <Grid xs={9} xsOffset={3}>
+              <Grid xs={12} xsOffset={0} sm={9} smOffset={3}>
                 <Fade bottom cascade duration={500} delay={100}>
                   <div className="super eng">Challenge</div>
                 </Fade>
@@ -76,7 +76,7 @@ export default function DesignChallenge() {
           <ParallaxImg>
             <Parallax speed={15}>
               <Fade bottom duration={1000} delay={100}>
-                <img src={Img1} alt="Img1" />
+                <img  className='img-01' src={Img1} alt="Img1" />
               </Fade>
             </Parallax>
           </ParallaxImg>
@@ -138,7 +138,7 @@ const ParallaxImg = styled.div`
 
 
 const Wrapper = styled.div`
-  padding: 120px 0 90px;
+  padding: 0 0 90px;
   overflow: hidden;
   background-color: ${color.DarkBlue};
   color: ${color.White};
@@ -163,19 +163,21 @@ const Wrapper = styled.div`
     }
     .right {
       margin-top: -170px;
-      padding: 0 150px 0 0;
+      padding: 0 150px 0 56px;
     }
     .highHive {
       display: flex;
       justify-content: start;
-      margin-top: 300px;
+      margin-top: 150px;
+      position: relative;
+      right: -130px;
       div {
         width: 350px;
       }
     }
     .context {
       margin-top: 64px;
-      margin-bottom: 100px;
+      margin-bottom: 90px;
       padding: 0 40px 18px;
       border-left: 1px solid ${color.White};
       border-right: 1px solid ${color.White};
@@ -189,6 +191,10 @@ const Wrapper = styled.div`
           margin: 0;
         }
       }
+    }
+    .img-01{
+      position: relative;
+      right: -88px;
     }
   }
   ${ParallaxImg} {
@@ -241,7 +247,7 @@ const Wrapper = styled.div`
         }
         .context{
           margin: -16px 20px 0;
-          padding: 24px 20px 0;
+          padding: 0 20px 0;
           h2,h4{
             text-align: left;
           }
@@ -251,6 +257,9 @@ const Wrapper = styled.div`
           h4{
             margin-bottom: 16px;
             font-size: 14px;
+          }
+          &:nth-last-child(1){
+            padding-top: 24px;
           }
         }
       }
@@ -272,7 +281,7 @@ const Wrapper = styled.div`
         padding-left: 54%;
         margin-top: -20%;
         width: 100%;
-        margin-right: 20px;
+        margin-right: 0;
         padding-bottom: 200px;
       }
     }
@@ -286,8 +295,8 @@ const Wrapper = styled.div`
   ${media.small`
     .text{
       .super{
-        font-size: 48px;
-        line-height: 60px;
+        font-size: 60px;
+        line-height: 75px;
       }
     }
     .mb-img{

@@ -40,7 +40,7 @@ export default function AboutTheCase() {
           <Grid xs={12} md={8}>
             <Fade bottom>
               <h3>LINE Bank 理財網的建立為輔助銀行金融產品功能新上線，規劃導流目標用戶使用產品與開拓投資市場 ，聚焦強化數位品牌競爭優勢，思考用戶易懂的理財教育溝通策略，延續回訪查詢的動能，讓理財網成為在做投資決策前具有關鍵影響力的平台。</h3>
-              <h4 className="">OUR ROLE</h4>
+              <h4 className="eng">OUR ROLE</h4>
               <div className="pills">
                 <div className="pill eng">UI / UX</div>
                 <div className="pill eng">WEBSITE</div>
@@ -82,7 +82,7 @@ const Wrapper = styled.div`
   }
   h3{
     /* color: ${colors.White}; */
-    margin-bottom: 48px;
+    margin-bottom: 78px;
     margin-top: 0;
     font-weight: 300;
   }
@@ -96,7 +96,7 @@ const Wrapper = styled.div`
     min-width: 215px;
   }
   .pills {
-    margin-bottom: 36px;
+    /* margin-bottom: 36px; */
     .pill {
       margin-right: 12px;
       margin-bottom: 12px;
@@ -120,7 +120,7 @@ const Wrapper = styled.div`
     }
   `}
   ${media.medium`
-    padding: 12px 0 24px;
+    padding: 12px 0 72px;
     margin-bottom: 0;
     .container{
       flex-direction: column;
@@ -139,8 +139,9 @@ const Wrapper = styled.div`
         line-height: 36px;
       }
       h3{
-        font-size:16px;
-        margin-bottom: 32px;
+        font-size: 18px;
+        line-height: 27px;
+        margin-bottom: 60px;
       }
     }
     .border {
@@ -208,5 +209,8 @@ const Horizon = styled.div<{
   `}
   ${media.medium`
     padding: 32px 0 72px;
+    h4{
+      font-size: 12px;
+    }
   `}
 `;

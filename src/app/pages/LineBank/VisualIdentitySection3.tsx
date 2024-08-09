@@ -130,17 +130,18 @@ const Wrapper = styled.div`
     }
     .text{
       .index{
-        font-size: 150px;
+        font-size: 200px;
         font-family :'Poppins';
         color: #EBF0F5;
         font-weight: 500;
         line-height: 150px;
         margin-top: 58px;
+        margin-bottom: 26px;
         small{
           font-size: 28px;
           font-weight: 600;
           color: ${color.LineBankGreen};
-          margin-left: 80px;
+          margin-left: 98px;
           display: flex;
           margin-top: -140px;
         }
@@ -151,20 +152,21 @@ const Wrapper = styled.div`
       }
       h2{
         margin: 0 0 32px;
-        padding-top: 32px;
+        padding-top: 60px;
         border-top: 4px solid ${color.LineBankGreen};
         color: ${color.LineBankGreen};
-        font-weight: 600;
+        font-weight: 500;
         line-height: 41px;
-        /* max-width: 526px; */
       }
     }
     .right{
       padding-left: 150px;
+      margin-top: 112px;
       p{
         border-left: 1px solid #0C1C24;
         padding-left: 16px;
         margin: 28px 0;
+        font-size: 14px;
       }
       img{
         /* margin-bottom: 120px; */
@@ -200,7 +202,7 @@ const Wrapper = styled.div`
         padding-left: 16px;
     }
     .topic-1{
-      margin-bottom: 0px;
+      margin-bottom: 30px;
       h2{
         margin-top: 30px;
       }
@@ -238,13 +240,15 @@ const Wrapper = styled.div`
         font-size: 24px;
       }
       .left{
-        margin-bottom: 24px;
+        margin-bottom: 8px;
         .index{
           font-size: 120px;
           line-height: 188px;
           font-weight: 500;
           display: grid;
           height: 160px;
+          margin-bottom: 0;
+          margin-top: 12px;
           small{
             font-size: 24px;
             line-height: 36px;
@@ -253,10 +257,16 @@ const Wrapper = styled.div`
             margin-left: 44px;
           }
         }
+        p{
+          font-size: 14px;
+        }
         h2{
           border-width: 1.5px;
           font-weight: 500;
-          margin: 38px 0 16px;
+          margin: 0 0 16px;
+          font-size: 22px;
+          line-height: 33px;
+          padding-top: 38px;
         }
       }
       p{
@@ -275,13 +285,14 @@ const Wrapper = styled.div`
           }
       }
       .topic-2{
-        margin-bottom: 36px;
+        margin-bottom: 50px;
       }
       .topic-3{
         margin-bottom: 36px;
       }
       .right{
         padding-left: 0;
+        margin-top: 0;
         img[alt="Symbol"]{
           margin: 0 -24px 24px;
           width: calc( 100% + 48px );
@@ -292,6 +303,9 @@ const Wrapper = styled.div`
         }
         img{
           margin-bottom: 0;
+        }
+        p{
+          margin: 16px 0 12px;
         }
       }
       .symbol{

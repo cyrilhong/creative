@@ -156,7 +156,7 @@ const Wrapper = styled.div`
     font-size: 36px;
     font-weight: 300;
     text-align: center;
-    margin: 24px 0;
+    margin: 56px 0 36px;
   }
   p{
     font-size: 20px;
@@ -182,7 +182,8 @@ const Wrapper = styled.div`
     h1{
       font-size: 32px;
       line-height: 40px;
-      margin: 0 20px;
+      margin: 0 auto;
+      max-width: 200px;
     }
     h2{
       font-size: 24px;
@@ -195,9 +196,13 @@ const Wrapper = styled.div`
       margin: 0 20px;
 
     }
+    .content{
+      font-size: 22px;
+      font-weight: 300;
+    }
     .slick-dots{
       display: flex;
-      bottom: 56px;
+      bottom: 42px;
       li{
         height: 4px;
         width: 10px;

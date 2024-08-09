@@ -110,7 +110,7 @@ const Wrapper = styled.div`
         h1{
           font-size: 36px;
           line-height: 50px;
-          font-weight: 600;
+          font-weight: 500;
           margin: 182px 0 38px;
           text-align: center;
           color: ${colors.LineBankGreen};
@@ -133,20 +133,24 @@ const Wrapper = styled.div`
     }
     .text{
       .index{
-        font-size: 150px;
+        font-size: 200px;
         font-family :'Poppins';
         color: #EBF0F5;
         font-weight: 500;
         line-height: 150px;
         margin-top: 58px;
+        margin-bottom: 26px;
         small{
           font-size: 28px;
           font-weight: 600;
           color: ${color.LineBankGreen};
-          margin-left: 80px;
+          margin-left: 98px;
           display: flex;
           margin-top: -140px;
         }
+      }
+      p{
+        font-size: 20px;
       }
       h3{
         margin: 8px 0;
@@ -154,12 +158,11 @@ const Wrapper = styled.div`
       }
       h2{
         margin: 0 0 32px;
-        padding-top: 32px;
+        padding-top: 38px;
         border-top: 4px solid ${color.LineBankGreen};
         color: ${color.LineBankGreen};
-        font-weight: 600;
+        font-weight: 500;
         line-height: 41px;
-        /* max-width: 526px; */
       }
     }
     .right{
@@ -167,7 +170,8 @@ const Wrapper = styled.div`
       p{
         border-left: 1px solid #0C1C24;
         padding-left: 16px;
-        margin: 28px 0;
+        margin: 28px 0 76px;
+        font-size: 14px;
       }
       img{
         /* margin-bottom: 120px; */
@@ -269,6 +273,7 @@ const Wrapper = styled.div`
           font-weight: 500;
           display: grid;
           height: 160px;
+          margin-bottom: 0;
           small{
             font-size: 24px;
             line-height: 36px;
@@ -277,10 +282,15 @@ const Wrapper = styled.div`
             margin-left: 44px;
           }
         }
+        p{
+          font-size: 14px;
+        }
         h2{
           border-width: 1.5px;
           font-weight: 500;
-          margin: 38px 0 16px;
+          margin: 0 0 16px;
+          font-size: 22px;
+          line-height: 33px;
         }
       }
       .right{
@@ -296,6 +306,9 @@ const Wrapper = styled.div`
         img{
           margin-bottom: 0;
         }
+        p{
+          margin: 16px 0 12px;
+        }
       }
       .symbol{
         margin: 30px 0 72px;
@@ -304,7 +317,7 @@ const Wrapper = styled.div`
         h1{
           font-size: 22px;
           line-height: 32px;
-          margin: 54px 0 24px;
+          margin: 80px 0 24px;
           text-align: left;
         }
         .subtitle{

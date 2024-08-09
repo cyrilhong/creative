@@ -45,14 +45,14 @@ export function Masthead() {
           <>
             <Title className="eng huge">
               <Fade bottom cascade duration={500} delay={100}>
-                How can you magnify<br />
-                your imagination <br />
-                of the banking?
+                Connect with LINE<br />
+                Bank lets you expand <br />
+                your wealth with ease
               </Fade>
             </Title>
             <div className="content">
               <h1>
-                我們要如何讓 Richart 再次走出自己的路，<div className='draw'>無限放大你對銀行的想像?</div>
+                與 LINE Bank<div className='draw'>理財好朋友連線，讓有錢變簡單</div>
               </h1>
             </div>
           </>
@@ -60,12 +60,12 @@ export function Masthead() {
         {windowWidth < 960 &&
           <>
             <Title className="eng huge">
-              How can you magnify your <br />
-              imagination of the banking?
+              Connect with LINE Bank lets you<br />
+              expand your wealth with ease
             </Title>
             <div className="content">
               <h1>
-                我們要如何讓 Richart 再次走出自己的路，<div className='draw'>無限放大你對銀行的想像?</div>
+                與 LINE Bank<div className='draw'>理財好朋友連線，讓有錢變簡單</div>
               </h1>
             </div>
           </>
@@ -132,11 +132,12 @@ const Wrapper = styled.main`
     .content{
       h1{
         display: inline;
+        font-size: 24px;
       }
     }
   `}
   ${media.medium`
-    padding: 72px 0 24px;
+    padding: 72px 0 32px;
     br{
       display: none;
     }
@@ -147,6 +148,7 @@ const Wrapper = styled.main`
       }
       h1{
         display: inline;
+        font-size: 24px;
       }
     }
 
@@ -157,5 +159,8 @@ const Title = styled.div`
   .react-reveal{
     height: 90px;
   }
+  ${media.medium`
+    font-size: 30px;
+  `}
 `;
 

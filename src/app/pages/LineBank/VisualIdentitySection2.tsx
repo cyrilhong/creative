@@ -138,17 +138,18 @@ const Wrapper = styled.div`
     }
     .text{
       .index{
-        font-size: 150px;
+        font-size: 200px;
         font-family :'Poppins';
         color: #EBF0F5;
         font-weight: 500;
         line-height: 150px;
         margin-top: 58px;
+        margin-bottom: 26px;
         small{
           font-size: 28px;
           font-weight: 600;
           color: ${color.LineBankGreen};
-          margin-left: 80px;
+          margin-left: 98px;
           display: flex;
           margin-top: -140px;
         }
@@ -159,12 +160,11 @@ const Wrapper = styled.div`
       }
       h2{
         margin: 0 0 32px;
-        padding-top: 32px;
+        padding-top: 60px;
         border-top: 4px solid ${color.LineBankGreen};
         color: ${color.LineBankGreen};
-        font-weight: 600;
+        font-weight: 500;
         line-height: 41px;
-        /* max-width: 526px; */
       }
     }
     .right{
@@ -173,6 +173,7 @@ const Wrapper = styled.div`
         border-left: 1px solid #0C1C24;
         padding-left: 16px;
         margin: 28px 0;
+        font-size: 14px;
       }
       img{
         /* margin-bottom: 120px; */
@@ -208,7 +209,7 @@ const Wrapper = styled.div`
         padding-left: 16px;
     }
     .topic-1{
-      margin-bottom: 58px;
+      margin-bottom: 30px;
       h2{
         margin-top: 30px;
       }
@@ -253,6 +254,7 @@ const Wrapper = styled.div`
           font-weight: 500;
           display: grid;
           height: 160px;
+          margin-bottom: 0;
           small{
             font-size: 24px;
             line-height: 36px;
@@ -261,11 +263,20 @@ const Wrapper = styled.div`
             margin-left: 44px;
           }
         }
+        p{
+          font-size: 14px;
+        }
         h2{
           border-width: 1.5px;
           font-weight: 500;
-          margin: 38px 0 16px;
+          margin: 0 0 16px;
+          font-size: 22px;
+          line-height: 33px;
+          padding-top: 38px;
         }
+      }
+      .topic-1{
+        margin-bottom: 0;
       }
       p{
         font-size: 14px;
@@ -283,7 +294,7 @@ const Wrapper = styled.div`
           }
       }
       .topic-2{
-        margin-bottom: 36px;
+        margin-bottom: 0;
       }
       .topic-3{
         margin-bottom: 36px;
@@ -300,6 +311,9 @@ const Wrapper = styled.div`
         }
         img{
           margin-bottom: 0;
+        }
+        p{
+          margin: 16px 0 12px;
         }
       }
       .symbol{
