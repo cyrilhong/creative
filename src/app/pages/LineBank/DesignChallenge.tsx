@@ -279,7 +279,7 @@ const Wrapper = styled.div`
       }
       :nth-child(4) {
         padding-left: 54%;
-        margin-top: -20%;
+        margin-top: -34%;
         width: 100%;
         margin-right: 0;
         padding-bottom: 200px;

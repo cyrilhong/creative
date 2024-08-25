@@ -60,7 +60,7 @@ export function Masthead() {
         {windowWidth < 960 &&
           <>
             <Title className="eng huge">
-              Connect with LINE Bank lets you<br />
+              Connect with LINE Bank lets you <br />
               expand your wealth with ease
             </Title>
             <div className="content">

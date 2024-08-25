@@ -57,7 +57,7 @@ export default function Connect() {
         {isDesktop() ? <Controller>
           <Scene
             // indicators={true}
-            duration="50%"
+            duration="70%"
             triggerHook="onEnter"
           >
             <Timeline >
