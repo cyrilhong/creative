@@ -3,12 +3,11 @@ import styled from 'styled-components/macro';
 import { Controller, Scene } from 'react-scrollmagic';
 import { Tween, Timeline } from 'react-gsap';
 import { media } from 'styles/media';
-import { useWindowSize } from '../../hooks';
+import { useWindowSize, isDesktop } from '../../hooks';
 import Left from './assets/left.webp';
 import Right from './assets/right.webp';
 import Center from './assets/center.webp';
 import centerApp from './assets/parallax-center.png';
-
 export default function ParallaxImg() {
   const { width: initialWidth } = useWindowSize();
   const [windowSize, setWindowSize] = useState(initialWidth);
@@ -39,7 +38,7 @@ export default function ParallaxImg() {
       <Controller>
         <Scene
           // indicators={true}
-          duration="300%"
+          duration="250%"
           triggerHook="onEnter"
         >
           <Timeline wrapper={<div className="parallax" />}>
@@ -57,25 +56,41 @@ export default function ParallaxImg() {
             <Tween
               position="0"
               from={{
-                yPercent: 50,
+                yPercent: 30,
               }}
               to={{
-                yPercent: 0,
+                yPercent: -35,
               }}
             >
               <img className="center" src={Center} alt="Center" />
             </Tween>
-            <Tween
-              position="0"
-              from={{
-                yPercent: -50,
-              }}
-              to={{
-                yPercent: 20,
-              }}
-            >
-              <img className="right" src={Right} alt="Right" />
-            </Tween>
+
+            {
+              isDesktop ?
+                <Tween
+                  position="0"
+                  from={{
+                    yPercent: -50,
+                  }}
+                  to={{
+                    yPercent: 20,
+                  }}
+                >
+                  <img className="right" src={Right} alt="Right" />
+                </Tween>
+                :
+                <Tween
+                  position="0"
+                  from={{
+                    yPercent: 50,
+                  }}
+                  to={{
+                    yPercent: -30,
+                  }}
+                >
+                  <img className='right' src={Right} alt="Right" />
+                </Tween>
+            }
           </Timeline>
         </Scene>
       </Controller>

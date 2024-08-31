@@ -24,7 +24,7 @@ export default function Connect() {
     dots: true,
     infinite: true,
     speed: 500,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,

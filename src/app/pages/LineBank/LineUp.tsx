@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import Lottie from 'lottie-react';
 import beRich from './assets/be-rich.json'
 import Fade from 'react-reveal/Fade';
+import { media } from 'styles/media';
 export default class LineUp extends Component {
   render() {
     return (
@@ -55,4 +56,12 @@ const Wrapper = styled.div`
     width: 65vw;
     max-width: 100%;
   }
+  ${media.small`
+    .app{
+      width: 75px;
+      object-fit: contain;
+      right: 20px;
+      top: -46px;
+    }
+  `}
 `

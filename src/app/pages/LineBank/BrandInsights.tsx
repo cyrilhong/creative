@@ -26,7 +26,7 @@ export default function BrandInsights() {
         <Horizon blackBg>
           <div className="title">
             <div className="dot" />
-            <h4 className="eng">BrandInsights</h4>
+            <h4 className="eng">DESIGN CONCEPT</h4>
           </div>
           <h4 className="eng">03</h4>
         </Horizon>

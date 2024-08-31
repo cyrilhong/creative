@@ -5,7 +5,7 @@ import * as colors from 'styles/colors';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import { useWindowSize } from '../../hooks'
 import { media } from 'styles/media';
-
+import Box from '@mui/material/Box';
 export function Masthead() {
   const target = useRef(null);
   function Mark() {
@@ -33,7 +33,9 @@ export function Masthead() {
             <div className="content">
               <h1>
                 <Fade bottom duration={500} delay={100}>
+                  <Box mr="14px">
                   與 LINE Bank
+                  </Box>
                   <Mark />
                   理財好朋友連線，讓有錢變簡單
                 </Fade>
@@ -52,7 +54,7 @@ export function Masthead() {
             </Title>
             <div className="content">
               <h1>
-                與 LINE Bank<div className='draw'>理財好朋友連線，讓有錢變簡單</div>
+                與 LINE Bank <div className='draw'> 理財好朋友連線，讓有錢變簡單</div>
               </h1>
             </div>
           </>
@@ -65,7 +67,7 @@ export function Masthead() {
             </Title>
             <div className="content">
               <h1>
-                與 LINE Bank<div className='draw'>理財好朋友連線，讓有錢變簡單</div>
+                與 LINE Bank <div className='draw'> 理財好朋友連線，讓有錢變簡單</div>
               </h1>
             </div>
           </>
@@ -83,6 +85,7 @@ const Wrapper = styled.main`
   .content {
     margin-top: 24px;
     .draw{
+      margin-left: 4px;
       display: inline;
       background-size: 1px 16px;
       box-shadow: inset 0 20px ${colors.BGGrey}, inset 0px 54px ${colors.LinbankMark};
