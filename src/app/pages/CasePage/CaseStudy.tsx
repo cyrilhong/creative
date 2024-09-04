@@ -10,6 +10,7 @@ import img04 from './assets/04.jpg';
 import img05 from './assets/05.jpg';
 import skfh from './assets/img_skfh.jpg';
 import yoxi from './assets/yoxi.jpg';
+import lineBank from './assets/line-bank.jpg';
 import richart from './assets/img_richart.jpg';
 import fetnet from './assets/img_fetnet.jpg';
 import starlux from './assets/img_starlux.jpg';
@@ -29,6 +30,30 @@ export default function CaseStudy() {
     <ParallaxProvider>
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
+        <Grid item xs={12} md={4}>
+            <a href="https://www.aja-creative.com/case/line-bank" target={"_blank"} style={{ textDecoration: 'none' }}>
+              <Case>
+                <div className="img-wrapper">
+                  <img src={lineBank} alt="line-bank" />
+                </div>
+                <Fade bottom delay={-500} cascade>
+                  <h4 className="type">金融理財</h4>
+                  <h2 className="title">
+                  LINE Bank 理財網｜建立品牌溝通策略，吸引年輕用戶與專業投資者理財
+                  </h2>
+                  <div className="pills eng">
+                    <div className="pill">BRANDING</div>
+                    <div className="pill">EXPERIENCE</div>
+                  </div>
+                </Fade>
+                <RoundButton
+                  link={"https://www.aja-creative.com/case/line-bank"}
+                  isWhite={false}
+                  text="CASE STUDY"
+                />
+              </Case>
+            </a>
+          </Grid>
         <Grid item xs={12} md={4}>
             <a href="https://yoxi-case-study.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>

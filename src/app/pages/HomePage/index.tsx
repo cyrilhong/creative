@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Container } from '@mui/material';
 import * as colors from 'styles/colors';
+import LineBank from './assets/line-bank.jpg';
 import Yoxi from './assets/yoxi.jpg';
 import arrow from './assets/button.svg';
 import arrowBlack from './assets/arrow-black.svg';
@@ -393,7 +394,26 @@ export function HomePage() {
           />
           <CaseList>
             <Grid container>
-              <Grid xs={12} md={7} className="case" onClick={() => window.open('https://yoxi-case-study.aja.com.tw/')}>
+              <Grid xs={12} md={7} className="case" onClick={() => window.open('case/line-bank')}>
+                <div style={{ overflow: 'hidden', width: '100%' }}>
+                  <img src={LineBank} alt="LineBank" />
+                </div>
+                <Fade bottom>
+                  <h4>金融理財</h4>
+                  <h2>LINE Bank 理財網｜建立品牌溝通策略，吸引年輕用戶與專業投資者理財</h2>
+                  <div className="pills">
+                    <div className="pill">BRANDING</div>
+                    <div className="pill">EXPERIENCE</div>
+                  </div>
+                  <RoundButton
+                    link=""
+                    isWhite={true}
+                    text="CASE STUDY"
+                  />
+                </Fade>
+              </Grid>
+              <Grid xs={12} md={5} lg={4} className="case"
+                onClick={() => window.open('https://yoxi-case-study.aja.com.tw/')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Yoxi} alt="Yoxi" />
                 </div>
@@ -412,7 +432,8 @@ export function HomePage() {
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} lg={4} className="case" onClick={() => window.open('case/richart')}>
+              <Grid xs={12} md={5} mdOffset={2} className="case"
+                onClick={() => window.open('case/richart')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Richart} alt="richart" />
                 </div>
@@ -431,33 +452,14 @@ export function HomePage() {
                   />
                 </Fade>
               </Grid>
-              <Grid xs={12} md={5} mdOffset={2} className="case" onClick={() => window.open('https://fetnet-revision.aja.com.tw/')}>
+              <Grid xs={12} md={5} className="case"
+                onClick={() => window.open('https://fetnet-revision.aja.com.tw/')}>
                 <div style={{ overflow: 'hidden', width: '100%' }}>
                   <img src={Fetnet} alt="Fetnet" />
                 </div>
                 <Fade bottom>
                   <h4>電信媒體與科技</h4>
                   <h2>遠傳電信官網｜不只是電信，替未來生活提案</h2>
-                  <div className="pills">
-                    <div className="pill eng">STRATEGY</div>
-                    <div className="pill eng">EXPERIENCE</div>
-                    <div className="pill eng">RESEARCH</div>
-                    <div className="pill eng">BRANDING</div>
-                  </div>
-                  <RoundButton
-                    link=""
-                    isWhite={true}
-                    text="CASE STUDY"
-                  />
-                </Fade>
-              </Grid>
-              <Grid xs={12} md={5} className="case" onClick={() => window.open('https://aja.com.tw/starlux-case-study/index.html')}>
-                <div style={{ overflow: 'hidden', width: '100%' }}>
-                  <img src={Starlux} alt="Starlux" />
-                </div>
-                <Fade bottom>
-                  <h4>交通與運輸</h4>
-                  <h2>星宇航空｜打造精品航空獨到的數位體驗</h2>
                   <div className="pills">
                     <div className="pill eng">STRATEGY</div>
                     <div className="pill eng">EXPERIENCE</div>
