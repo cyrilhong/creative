@@ -176,6 +176,9 @@ export default function ServiceList() {
                                 <li>
                                     <h4>數位品牌設計</h4>
                                 </li>
+                                <li>
+                                    <h4>設計系統</h4>
+                                </li>
                             </ul>
                         </Box>
                     </Box>
@@ -234,7 +237,7 @@ const Wrapper = styled.div`
   }
   ${media.large`
     padding: 72px 0;
-    
+
     .title{
       /* text-align: center; */
       padding: 0 20px;

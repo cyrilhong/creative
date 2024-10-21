@@ -30,7 +30,7 @@ export default function CaseStudy() {
     <ParallaxProvider>
       <Wrapper>
         <Grid container spacing={0} rowSpacing={0} width="100%" m="0">
-        <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4}>
             <a href="https://www.aja-creative.com/case/line-bank" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <div className="img-wrapper">
@@ -39,7 +39,7 @@ export default function CaseStudy() {
                 <Fade bottom delay={-500} cascade>
                   <h4 className="type">金融理財</h4>
                   <h2 className="title">
-                  LINE Bank 理財網｜建立品牌溝通策略，吸引年輕用戶與專業投資者理財
+                    LINE Bank 理財網｜建立品牌溝通策略，吸引年輕用戶與專業投資者理財
                   </h2>
                   <div className="pills eng">
                     <div className="pill">BRANDING</div>
@@ -54,7 +54,7 @@ export default function CaseStudy() {
               </Case>
             </a>
           </Grid>
-        <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4}>
             <a href="https://yoxi-case-study.aja.com.tw/" target={"_blank"} style={{ textDecoration: 'none' }}>
               <Case>
                 <div className="img-wrapper">
@@ -469,6 +469,16 @@ const Case = styled.div`
     a{
       position: relative;
       margin: 10px 0 0;
+
+    }
+    &:hover{
+      a{
+        .wrapper{
+          path {
+            stroke: ${colors.DarkBlue};
+          }
+        }
+      }
     }
   `}
 `;

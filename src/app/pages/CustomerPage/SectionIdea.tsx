@@ -44,6 +44,10 @@ import STARLUX from './assets/moreClient/STARLUX.png';
 import Synology from './assets/moreClient/Synology.png';
 import Taipei_City_Government from './assets/moreClient/Taipei_City_Government.png';
 import Taishin_Bank from './assets/moreClient/Taishin_Bank.png';
+import LineBank from './assets/moreClient/Line-bank.png';
+import Fubon from './assets/moreClient/Fubon.png';
+import Esun from './assets/moreClient/Esun.png';
+import Hitachi from './assets/moreClient/Hitachi.png';
 const moreClient = [
   acer,
   Advantech,
@@ -75,7 +79,11 @@ const moreClient = [
   Shin_Kong,
   // eslite,
   Taipei_City_Government,
-  FETnet
+  FETnet,
+  LineBank,
+  Hitachi,
+  Fubon,
+  Esun,
 ];
 export default function Idea() {
   const ideaRef = useRef<any>(null);

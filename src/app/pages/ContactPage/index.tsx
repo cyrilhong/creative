@@ -1136,7 +1136,7 @@ export function ContactPage() {
                   </Grid>
                   <Grid item xs={12} md={4}>
                     <h4 className="eng">Find Us.</h4>
-                    <h5 className='addr'>台北市中山區樂群二路 187 號 6 樓之 2 <br />（大直豐滙）</h5>
+                    <h5 className='addr'>台北市中正區北平東路20號10F</h5>
                   </Grid>
                 </Grid>
                 <Grid className="map" container>

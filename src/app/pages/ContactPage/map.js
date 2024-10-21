@@ -15,8 +15,8 @@ export default function Map() {
         // bootstrapURLKeys={'AIzaSyA16d9FJFh__vK04jU1P64vnEpPc3jenec'}
         bootstrapURLKeys={{ key: 'AIzaSyBL9QUt86DVZO7leGNfwGz1yoLKLwQL8HE' }}
         defaultCenter={{
-          lat: 25.08067881152031,
-          lng: 121.55802049834605,
+          lat: 25.046141277370985,
+          lng: 121.52485431090766,
         }}
         options={{
           styles: demoFancyMapStyles,
@@ -27,8 +27,8 @@ export default function Map() {
         defaultZoom={15}
       >
         <div
-          lat={25.082023606446363}
-          lng={121.55828809838637}
+          lat={25.046141277370985}
+          lng={121.52485431090766}
         >
           <a href="https://goo.gl/maps/rrB6W84nUPu3FQ8v9" target={"_blank"}><img style={{ display: 'block', width: '60px', height: '76px', marginTop: '-30px', marginLeft: '-38px' }} className='pin' src={pin} alt="pin" /></a>
           {/* {windowWidth.width > 960 ? <a href="https://goo.gl/maps/rrB6W84nUPu3FQ8v9" target={"_blank"}><img style={{ display: 'block', width: '60px', height: '76px', marginTop: '-30px', marginLeft: '-38px' }} className='pin' src={pin} alt="pin" /></a> :

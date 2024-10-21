@@ -862,9 +862,6 @@ const CaseList = styled.div`
           transition: all 0.5s;
           stroke: ${colors.White};
         }
-        &:hover {
-
-        }
         &::before {
           -webkit-animation: move-out 0.3s;
           animation: move-out 0.3s;
@@ -1028,6 +1025,15 @@ const CaseList = styled.div`
       }
       &:nth-child(4){
         border-right: 0;
+      }
+      &:hover{
+        a{
+          .wrapper{
+            path {
+              stroke: ${colors.White};
+            }
+          }
+        }
       }
     }
     .pills{

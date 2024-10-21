@@ -25,6 +25,7 @@ import clients7 from './assets/selectedClient/client-07.png';
 import clients8 from './assets/selectedClient/client-08.png';
 import clients9 from './assets/selectedClient/client-09.png';
 import clients10 from './assets/selectedClient/client-10.png';
+import clients11 from './assets/selectedClient/line-bank.png';
 import clients1Hover from './assets/client-01-hover.png';
 import clients2Hover from './assets/client-02-hover.png';
 import clients3Hover from './assets/client-03-hover.png';
@@ -35,6 +36,7 @@ import clients7Hover from './assets/client-07-hover.png';
 import clients8Hover from './assets/client-08-hover.png';
 import clients9Hover from './assets/client-09-hover.png';
 import clients10Hover from './assets/client-10-hover.png';
+import clients11Hover from './assets/line-bank-hover.png';
 import arrowBtn from './assets/arrow-btn.svg';
 import Idea from './assets/idea.svg';
 import { media } from 'styles/media';
@@ -373,6 +375,23 @@ export function CustomerPage() {
                     <div className="hover">
                       <Box display={'flex'} justifyContent="center">
                         <img src={clients8} alt="08" />
+                      </Box>
+                      <hr />
+                      <h5>
+                        與餐飲集團深度合作，輔助顧客善用數位平台，提升支付、回購，強化會員加值服務。
+                      </h5>
+                      <div className="link">
+
+                      </div>
+                    </div>
+                  </Grid>
+                  <Grid className="card" xs={12} sm={6} md={6} lg={4}>
+                    <Box className="visible">
+                      <img src={clients11Hover} alt="011" />
+                    </Box>
+                    <div className="hover">
+                      <Box display={'flex'} justifyContent="center">
+                        <img src={clients11} alt="011" />
                       </Box>
                       <hr />
                       <h5>

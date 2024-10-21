@@ -301,7 +301,7 @@ export function ServicePage() {
                           expanded: false
                         },
                         {
-                          title: "建立跨產品設計系統",
+                          title: "數位品牌設計系統規劃導入",
                           answer: `依據企業的品牌語言，建立通用的產品介面設計準則，保持跨產品、跨平台數位接觸點的一致性與可擴充性。`,
                           expanded: false
                         },

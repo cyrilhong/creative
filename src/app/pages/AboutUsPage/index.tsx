@@ -47,6 +47,12 @@ export function AboutUsPage() {
     window.scrollTo(0, 0)
   }, [])
 
+  const getYears = () => {
+    const currentYear = new Date().getFullYear();
+    const startYear = 2009;
+    return currentYear - startYear;
+  }
+
   return (
     <ParallaxProvider>
       <Helmet>
@@ -268,7 +274,7 @@ export function AboutUsPage() {
               <Grid container spacing={isDesktop() ? 5 : 0} rowSpacing={isDesktop() ? 9 : 0}>
                 <Grid xs={12} md={4} className="item">
                   <div className="super eng">
-                    {startCount && <CountUp end={13} />}
+                    {startCount && <CountUp end={getYears()} />}
                   </div>
                   <h2 className="eng">YEARS</h2>
                   <h2>體驗設計顧問經驗</h2>

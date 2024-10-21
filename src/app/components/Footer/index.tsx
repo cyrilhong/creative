@@ -198,10 +198,9 @@ export default function footer() {
                         <div className="eng">
                           <h3>Have A Meet . </h3>
                         </div>
-                        <h5>台北市中山區樂群二路 187 號 6 樓之 2（大直豐滙）</h5>
+                        <h5>台北市中正區北平東路20號10F</h5>
                         <h5 className="eng">
-                          6F.-2, No.187, Lequn 2nd Rd., Zhongshan Dist., Taipei City
-                          104 (Da Zhi Feng Hui)
+                          10F., No. 20, Beiping E. Rd., Zhongzheng Dist., Taipei City  , Taiwan
                         </h5>
                       </div>
                     </Grid>
@@ -324,10 +323,9 @@ export default function footer() {
                         <div className="eng">
                           <h3>Have A Meet . </h3>
                         </div>
-                        <h5>台北市中山區樂群二路 187 號 6 樓之 2（大直豐滙）</h5>
+                        <h5>台北市中正區北平東路20號10F</h5>
                         <h5 className="eng">
-                          6F.-2, No.187, Lequn 2nd Rd., Zhongshan Dist., Taipei City
-                          104 (Da Zhi Feng Hui)
+                          10F., No. 20, Beiping E. Rd., Zhongzheng Dist., Taipei City  , Taiwan
                         </h5>
                       </div>
                     </Grid>

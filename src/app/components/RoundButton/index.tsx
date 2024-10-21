@@ -88,6 +88,11 @@ export default function RoundButton({ link, isWhite, text, target = "_blank" }) 
       &::before {
         display: none;
       }
+      &:hover {
+        path {
+          stroke: ${colors.White};
+        }
+      }
     }
   `}
 `;
