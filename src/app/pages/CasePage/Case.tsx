@@ -208,6 +208,15 @@ const Cases = styled.div`
       width: 100vw;
       left: -20px;
     }
+    &:hover{
+      a{
+        .wrapper{
+          path {
+            stroke: ${colors.White};
+          }
+        }
+      }
+    }
     .left{
      order: 2;
      padding: 0;
