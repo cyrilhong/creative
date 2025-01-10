@@ -395,7 +395,7 @@ export function CustomerPage() {
                       </Box>
                       <hr />
                       <h5>
-                        與餐飲集團深度合作，輔助顧客善用數位平台，提升支付、回購，強化會員加值服務。
+                        與 LINE Bank 合作，透過簡單易懂的理財教育與資訊，打造吸引目標用戶投資決策的平台體驗
                       </h5>
                       <div className="link">
 
