@@ -7,8 +7,7 @@ import { PageWrapper } from 'app/components/PageWrapper';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components/macro';
-import { useForm as formspreeUseForm, ValidationError } from '@formspree/react';
-import { Box, Checkbox, TextField, Alert } from '@mui/material';
+import { Box, Checkbox, TextField, Alert, Snackbar } from '@mui/material';
 import SliderBar from './Slider';
 import { Grid, Container } from '@mui/material';
 import arrowBtn from './assets/arrowBtn.svg';
@@ -57,6 +56,13 @@ const Services = [
     "content": "使用者體驗或介面設計專業諮詢、內部創新設計團隊顧問服務、體驗設計工作坊。"
   }
 ]
+
+declare global {
+  interface Window {
+    jsonpCallback?: (data: any) => void;
+  }
+}
+
 export function ContactPage() {
   function Mark() {
     const { ref } = useParallax<HTMLDivElement>({});
@@ -69,39 +75,12 @@ export function ContactPage() {
   const windowWidth = useWindowSize().width
   const [enterForm, setEnterForm] = useState(false)
 
-  const [state, formSubmit] = formspreeUseForm('moqzqyve');
-  useScrollPosition(({ prevPos, currPos }) => {
-    if (windowWidth > 960) {
-      // console.log(positionRef.current!.getBoundingClientRect().top);
-      if (
-        positionRef.current!.getBoundingClientRect().top < 680 &&
-        positionRef.current!.getBoundingClientRect().top > -2012
-      ) {
-        setEnterForm(true)
-      } else {
-        setEnterForm(false)
-      }
-    }
-    if (
-      positionRef.current!.getBoundingClientRect().top < 16 &&
-      FaqPositionRef.current!.getBoundingClientRect().top > 1100
-    ) {
-      setSticky(true);
-    } else {
-      setSticky(false);
-    }
-    if (FaqPositionRef.current!.getBoundingClientRect().top < 1100) {
-      setBottomSticky(true);
-    } else {
-      setBottomSticky(false);
-    }
-  });
-  const [open, setOpen] = React.useState(false);
-  const [commentVal, setCommentVal] = React.useState('');
-  const handleClose = () => {
-    setOpen(false);
-  };
   const [openNotification, setOpenNotification] = useState(false)
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const [open, setOpen] = useState(false);
+  const [commentVal, setCommentVal] = useState('');
 
   const methods = useForm()
   const {
@@ -116,64 +95,90 @@ export function ContactPage() {
   } = methods
 
   const _onSubmit = async (data) => {
-    // console.log(data);
-    let service: string[] = []
-    for (let property in data) {
-      // console.log('key:' + property, 'value:' + data[property]);
-      // console.log(typeof(property));
-      const name = property
-      if (data[property] === true) {
-        service.push(property)
+    try {
+      setIsSubmitting(true)
+      let service: string[] = []
+      for (let property in data) {
+        if (data[property] === true) {
+          service.push(property)
+        }
       }
-    }
-    // console.log(service);
-    const timeName = ["三週內", "一個月內", "二個月內", "沒有或不確定"]
-    const coopTimeName = ["三個月內", "半年內", "一年"]
 
-    const budgeArr = ["0萬", "100萬", "200萬", "300萬", "400萬", "500萬", "600萬", "700萬", "800萬以上"]
-    let budgeText = ''
-    data.budge.map((item, index) => {
-      budgeText += (budgeArr[(item / 12.5)] + (index == 0 ? '至' : ''))
-    })
-    // console.log(budgeText);
+      const timeName = ["三週內", "一個月內", "二個月內", "沒有或不確定"]
+      const coopTimeName = ["三個月內", "半年內", "一年"]
 
-    let body = {
-      "method": "write",
-      "name": data.name,
-      "company": data.company,
-      "phone": data.phone,
-      "email": data.email,
-      "service": service,
-      "startTime": timeName[data.time],
-      "coopTime": coopTimeName[data.coopTime],
-      "budge": budgeText,
-      "comment": data?.comment?data.comment:''
-    }
-    let formSpreeBody = {
-      "聯絡人": data.name,
-      "公司名稱": data.company,
-      "聯絡電話": data.phone,
-      "電子郵件": data.email,
-      "需要的服務類型": service,
-      "預計的開案時間": timeName[data.time],
-      "合作時程": coopTimeName[data.coopTime],
-      "預算": budgeText,
-      "專案細節": data?.comment?data.comment:''
-    }
-    // console.log(body);
+      const budgeArr = ["0萬", "100萬", "200萬", "300萬", "400萬", "500萬", "600萬", "700萬", "800萬以上"]
+      let budgeText = ''
+      data.budge.map((item, index) => {
+        budgeText += (budgeArr[(item / 12.5)] + (index == 0 ? '至' : ''))
+      })
 
-    formSubmit(formSpreeBody);
-    ajax.post('https://script.google.com/macros/s/AKfycbwoQO9zYA7Z5LsvZ46taKVMc_yZkItma5ykVzm4STyWCrLtBQkvyNAYLWiQZhZCSxzrnA/exec', body);
-    setOpenNotification(true)
-    setTimeout(() => {
-      setOpenNotification(false);
-    }, 3000);
+      const body = {
+        "method": "write",
+        "name": data.name,
+        "company": data.company,
+        "phone": data.phone,
+        "email": data.email,
+        "service": service,
+        "startTime": timeName[data.time],
+        "coopTime": coopTimeName[data.coopTime],
+        "budge": budgeText,
+        "comment": data?.comment || ''
+      }
+
+      const jsonpPromise = new Promise((resolve, reject) => {
+        window.jsonpCallback = (data) => {
+          resolve(data);
+          delete window.jsonpCallback;
+        };
+
+        const script = document.createElement('script');
+        script.src = `https://script.google.com/macros/s/AKfycby4cMmYA-Jykq6lbdpBeTV-r2exbthMUoMEQqfsNKA8lASvwno0E9D0H2tucj9jpez1Fw/exec?callback=jsonpCallback&data=${encodeURIComponent(JSON.stringify(body))}`;
+        script.onerror = () => {
+          delete window.jsonpCallback;
+          reject(new Error('送出失敗，請稍後再試'));
+        };
+        document.body.appendChild(script);
+
+        setTimeout(() => {
+          if (window.jsonpCallback) {
+            delete window.jsonpCallback;
+            reject(new Error('送出逾時，請稍後再試'));
+          }
+          if (script.parentNode) {
+            document.body.removeChild(script);
+          }
+        }, 10000);
+      });
+
+      await jsonpPromise;
+
+      // 清空表單
+      methods.reset();
+      setValue(Services[0].title, true);
+      setValue('time', 0);
+      setValue('coopTime', 0);
+
+      // 顯示成功訊息
+      setOpenNotification(true);
+      setTimeout(() => {
+        setOpenNotification(false);
+      }, 3000);
+
+    } catch (error) {
+      console.error('表單提交錯誤:', error);
+      setOpenErrorNotification(true);
+      setTimeout(() => {
+        setOpenErrorNotification(false);
+      }, 3000);
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const _onError = (error) => {
     console.log(error);
     const element = document.getElementById(Object.keys(error)[0]);
-    // console.log(element);
     if (element) {
       element.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }
@@ -191,6 +196,9 @@ export function ContactPage() {
     window.scrollTo(0, 0)
   }, [])
 
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <ParallaxProvider>
@@ -199,14 +207,32 @@ export function ContactPage() {
           <title>聯絡我們</title>
           <meta
             name="description"
-            content="Let’s talk about what we can make, build, design together."
+            content="Let's talk about what we can make, build, design together."
           />
         </Helmet>
-        <Notification open={openNotification}>
-          <Alert severity="success">表單已送出，我們會盡快與您聯繫！</Alert>
-          <Fade top>
-          </Fade>
-        </Notification>
+        {/* 成功通知 */}
+        <Snackbar
+          open={openNotification}
+          autoHideDuration={3000}
+          onClose={() => setOpenNotification(false)}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert onClose={() => setOpenNotification(false)} severity="success">
+            表單已成功送出！我們會盡快與您聯繫
+          </Alert>
+        </Snackbar>
+
+        {/* 錯誤通知 */}
+        <Snackbar
+          open={openErrorNotification}
+          autoHideDuration={3000}
+          onClose={() => setOpenErrorNotification(false)}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert onClose={() => setOpenErrorNotification(false)} severity="error">
+            表單送出失敗，請稍後再試
+          </Alert>
+        </Snackbar>
         <Dialog
           open={open}
           // TransitionComponent={Transition}
@@ -458,7 +484,7 @@ export function ContactPage() {
                   </Element>
                 </div>
                 <div id="phone" className="input-group">
-                  <Element  name="phone">
+                  <Element name="phone">
                     <FormController
                       name="phone"
                       control={control}
@@ -533,7 +559,7 @@ export function ContactPage() {
                 </div>
               </InputForm>
               <Box width={'100%'} textAlign="center">
-                <RoundButton type="submit" disabled={false}>
+                <RoundButton type="submit" disabled={isSubmitting}>
                   <h4 className="">立即送出</h4>
                   <img src={arrowWhite} alt="arrow" />
                 </RoundButton>
@@ -548,7 +574,7 @@ export function ContactPage() {
               <Grid container>
                 {windowWidth > 1054 && <Grid item xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
-                    <div className="huge eng">Let’s talk about what we </div>
+                    <div className="huge eng">Let's talk about what we </div>
                   </Fade>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">can make, build, design</div>
@@ -568,7 +594,7 @@ export function ContactPage() {
                 </Grid>}
                 {windowWidth < 1055 && windowWidth > 959 && <Grid item xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
-                    <div className="huge eng">Let’s talk about what</div>
+                    <div className="huge eng">Let's talk about what</div>
                   </Fade>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">we can make, build,</div>
@@ -588,7 +614,7 @@ export function ContactPage() {
                 </Grid>}
                 {windowWidth < 960 && <Grid item xs={12}>
                   <Fade bottom cascade duration={500} delay={100}>
-                    <div className="huge eng">Let’s talk about what</div>
+                    <div className="huge eng">Let's talk about what</div>
                   </Fade>
                   <Fade bottom cascade duration={500} delay={100}>
                     <div className="huge eng">we can make, build,</div>
@@ -1014,7 +1040,7 @@ export function ContactPage() {
                           </div>
                         </InputForm>
                         <Box width={'100%'} textAlign="center">
-                          <RoundButton type="submit" disabled={false}>
+                          <RoundButton type="submit" disabled={isSubmitting}>
                             <h4 className="">立即送出</h4>
                             <img src={arrowWhite} alt="arrow" />
                           </RoundButton>
