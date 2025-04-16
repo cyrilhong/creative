@@ -63,6 +63,55 @@ declare global {
   }
 }
 
+// 在 ContactPage 組件的開頭加入這些定義
+const timeName = {
+  0: '三週內',
+  1: '一個月內',
+  2: '二個月內',
+  3: '沒有或不確定'
+};
+
+const coopTimeName = {
+  0: '三個月內',
+  1: '半年內',
+  2: '一年'
+};
+
+const budgeArr = [
+  '100萬以下',
+  '100萬至200萬',
+  '200萬至300萬',
+  '300萬至400萬',
+  '400萬至500萬',
+  '500萬至600萬',
+  '600萬至700萬',
+  '700萬至800萬',
+  '800萬以上'
+];
+
+// 將 0-100 的值映射到 0-800 萬的預算範圍
+const mapBudgetValue = (value: number): number => {
+  // 線性映射: (value / 100) * 800
+  return Math.round((value / 100) * 800);
+};
+
+// 預算範圍計算函數
+const calculateBudget = (value: number[]): string => {
+  if (!value || value.length !== 2) return '未指定';
+
+  // 將滑桿的值（0-100）映射到實際預算範圍（0-800萬）
+  const minBudget = mapBudgetValue(value[0]); // 75 -> 600萬
+  const maxBudget = mapBudgetValue(value[1]); // 100 -> 800萬
+
+  // 如果最小值和最大值相同，表示是單一點
+  if (minBudget === maxBudget) {
+    return `${minBudget}萬`;
+  }
+
+  // 一般範圍（移除了特殊的"以上"處理）
+  return `${minBudget}萬至${maxBudget}萬`;
+};
+
 export function ContactPage() {
   function Mark() {
     const { ref } = useParallax<HTMLDivElement>({});
@@ -94,87 +143,64 @@ export function ContactPage() {
     watch
   } = methods
 
-  const _onSubmit = async (data) => {
+  const _onSubmit = async (data: any) => {
     try {
-      setIsSubmitting(true)
-      let service: string[] = []
-      for (let property in data) {
-        if (data[property] === true) {
-          service.push(property)
-        }
-      }
-
-      const timeName = ["三週內", "一個月內", "二個月內", "沒有或不確定"]
-      const coopTimeName = ["三個月內", "半年內", "一年"]
-
-      const budgeArr = ["0萬", "100萬", "200萬", "300萬", "400萬", "500萬", "600萬", "700萬", "800萬以上"]
-      let budgeText = ''
-      data.budge.map((item, index) => {
-        budgeText += (budgeArr[(item / 12.5)] + (index == 0 ? '至' : ''))
-      })
+      setIsSubmitting(true);
+      console.log("🚀 開始提交表單", data); // 先印出完整的表單資料來檢查
 
       const body = {
-        "method": "write",
-        "name": data.name,
-        "company": data.company,
-        "phone": data.phone,
-        "email": data.email,
-        "service": service,
-        "startTime": timeName[data.time],
-        "coopTime": coopTimeName[data.coopTime],
-        "budge": budgeText,
-        "comment": data?.comment || ''
-      }
+        name: data.name,
+        company: data.company,
+        phone: data.phone,
+        email: data.email,
+        service: Services
+          .filter(service => data[service.title] === true)
+          .map(service => service.title),
+        startTime: timeName[data.time as keyof typeof timeName] || '未指定',
+        coopTime: coopTimeName[data.coopTime as keyof typeof coopTimeName] || '未指定',
+        budge: calculateBudget(data.budge),
+        comment: data.comment || '' // 確保即使是空值也會傳送空字串
+      };
 
-      const jsonpPromise = new Promise((resolve, reject) => {
-        window.jsonpCallback = (data) => {
-          resolve(data);
+      console.log("📦 準備發送的資料:", body);
+
+      // 使用 JSONP 方式發送請求
+      const result = await new Promise((resolve, reject) => {
+        window.jsonpCallback = function (res) {
+          resolve(res);
           delete window.jsonpCallback;
         };
 
         const script = document.createElement('script');
-        script.src = `https://script.google.com/macros/s/AKfycby4cMmYA-Jykq6lbdpBeTV-r2exbthMUoMEQqfsNKA8lASvwno0E9D0H2tucj9jpez1Fw/exec?callback=jsonpCallback&data=${encodeURIComponent(JSON.stringify(body))}`;
+        script.src = `https://script.google.com/macros/s/AKfycbxoilD1QJFn98daTDcQM5-t75JOUUH9y2lcSpyyzehA7SQljGdWZKhG7jliJM2GOBy0nQ/exec?callback=jsonpCallback&data=${encodeURIComponent(JSON.stringify(body))}`;
         script.onerror = () => {
           delete window.jsonpCallback;
-          reject(new Error('送出失敗，請稍後再試'));
+          reject(new Error("送出失敗"));
         };
-        document.body.appendChild(script);
 
-        setTimeout(() => {
-          if (window.jsonpCallback) {
-            delete window.jsonpCallback;
-            reject(new Error('送出逾時，請稍後再試'));
-          }
-          if (script.parentNode) {
-            document.body.removeChild(script);
-          }
-        }, 10000);
+        document.body.appendChild(script);
+        document.body.removeChild(script);
       });
 
-      await jsonpPromise;
+      console.log("✅ 收到回應:", result);
 
-      // 清空表單
+      // 成功處理
       methods.reset();
       setValue(Services[0].title, true);
       setValue('time', 0);
       setValue('coopTime', 0);
-
-      // 顯示成功訊息
       setOpenNotification(true);
-      setTimeout(() => {
-        setOpenNotification(false);
-      }, 3000);
 
-    } catch (error) {
-      console.error('表單提交錯誤:', error);
+    } catch (error: unknown) {
+      console.error("❌ 表單提交失敗:", {
+        error,
+        message: error instanceof Error ? error.message : '未知錯誤'
+      });
       setOpenErrorNotification(true);
-      setTimeout(() => {
-        setOpenErrorNotification(false);
-      }, 3000);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const _onError = (error) => {
     console.log(error);
@@ -424,7 +450,7 @@ export function ContactPage() {
                   // defaultValue={0}
                   render={({ field, fieldState: { invalid } }) => (
                     <SliderBar sendBudge={(val) => {
-                      // console.log(val);
+                      console.log(val);
                       setValue('budge', val)
                     }} />
                   )}
